@@ -1,6 +1,4 @@
-:root {
-  --primary-color: #E86100;
-}
+@import 'vars.css';
 
 body {
   color: var(--primary-color);

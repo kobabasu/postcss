@@ -1,0 +1,20 @@
+/**
+ * node_modulesが存在するディレクトリからの
+ * ドキュメントルートを指定
+ *
+ * nameはtask名の先頭になる
+ */
+
+const root = './admin/';
+
+export const dir = {
+  name: '',
+
+  root:    root,
+  cfg:     root + 'postcss/postcss.json',
+  cfgmin:  root + 'postcss/postcss.min.json',
+  src:     root + 'postcss/src/',
+  dist:    root + 'css/',
+  docs:    root + 'docs/postcss/',
+  example: root + 'postcss/example/css/'
+}

@@ -1,0 +1,16 @@
+{
+  "use": [
+    "postcss-import",
+    "postcss-url",
+    "postcss-cssnext",
+    "postcss-reporter"
+  ],
+
+  "local-plugins": true,
+  "output": "example/css/style.css",
+  "input": "./style.css",
+  "watch": false,
+  "autoprefixer": {
+    "browsers": "last 2 versions"
+  }
+}

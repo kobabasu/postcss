@@ -1,0 +1,14 @@
+# common
+.DS_Store
+node_modules/
+vendor/
+
+# config
+gulp/dir.es6
+
+# build files
+
+# exclude
+
+# gitkeep
+!.gitkeep

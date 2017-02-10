@@ -1,0 +1,39 @@
+{
+  "name": "postcss-app",
+  "version": "0.0.1",
+  "description": "postcss minimum app",
+  "main": "./src/style.css",
+  "repository": {
+    "type": "git",
+    "url": "//github.com/kobabasu/micro-postcss.git"
+  },
+  "keywords": [
+    "postcss-cli",
+    "postcss-cssnext"
+  ],
+  "os": [
+    "darwin",
+    "linux",
+    "!win32"
+  ],
+
+  "dependencies": {
+    "normalize.css": "*"
+  },
+
+  "devDependencies": {
+    "postcss-cssnext": "*",
+    "postcss-import": "*",
+    "cssnano": "*",
+    "postcss-url": "*",
+    "postcss-reporter": "*"
+  },
+
+  "scripts": {
+    "global": "npm install -g postcss-cli",
+  },
+
+  "preferGlobal": true,
+  "author": "kobabasu",
+  "license": "MIT"
+}

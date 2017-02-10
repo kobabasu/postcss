@@ -27,8 +27,8 @@ git clone git@github.com-kobabasu:kobabasu/micro-postcss.git postcss
    /example/index.htmlが動作するか確認
 
 ## todo
-[ ] - postcss-cli v3 がでたらcompressがswitchできるかどうか試す
-[ ] - postcss-cli v3 がでたらnextcssrcの読み込みを試す
-[ ] - bower packageの読み込み方
-[ ] - postcss.jsonのmapのinline:false化
-[ ] - styleguideをどうするか(候補sc5, postcss-style-guide)
+- [ ] postcss-cli v3 がでたらcompressがswitchできるかどうか試す
+- [ ] postcss-cli v3 がでたらnextcssrcの読み込みを試す
+- [ ] bower packageの読み込み方
+- [ ] postcss.jsonのmapのinline:false化
+- [ ] styleguideをどうするか(候補sc5, postcss-style-guide)

@@ -17,9 +17,7 @@
     "!win32"
   ],
 
-  "dependencies": {
-    "normalize.css": "*"
-  },
+  "dependencies": {},
 
   "devDependencies": {
     "postcss-cssnext": "*",

@@ -9,6 +9,7 @@ gulp/dir.es6
 # build files
 
 # exclude
+example/css/
 
 # gitkeep
 !.gitkeep

@@ -3,12 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "normalize.css": null,
-
-    "bourbon": null,
-    "neat": null,
-
     "animate.css": null,
-
     "fontawesome": null,
     "material-design-icons-iconfont": null
   }

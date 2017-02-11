@@ -3,7 +3,8 @@
     "postcss-import",
     "postcss-url",
     "postcss-cssnext",
-    "postcss-reporter"
+    "postcss-reporter",
+    "lost"
   ],
 
   "local-plugins": true,

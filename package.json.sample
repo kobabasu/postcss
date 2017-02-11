@@ -24,7 +24,8 @@
     "postcss-import": "*",
     "cssnano": "*",
     "postcss-url": "*",
-    "postcss-reporter": "*"
+    "postcss-reporter": "*",
+    "lost": "*"
   },
 
   "scripts": {

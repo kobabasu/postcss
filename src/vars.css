@@ -1,10 +1,17 @@
 :root {
+
+  /*
+   * color
+   */
+
+  /* brand */
   --brand-primary: #004C97;
   --brand-success: #007A33;
   --brand-info:    #009CDE;
   --brand-warning: #F3D54E;
   --brand-danger:  #A6192E;
 
+  /* gray */
   --gray-darker:   color(#000 lightness(33.5%));
   --gray-dark:     color(#000 lightness(55.0%));
   --gray:          color(#000 lightness(80.5%));

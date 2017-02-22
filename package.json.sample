@@ -25,7 +25,10 @@
     "cssnano": "*",
     "postcss-url": "*",
     "postcss-reporter": "*",
-    "lost": "*"
+    "lost": "*",
+
+    "postcss-assets": "*",
+    "postcss-discard-comments": "*"
   },
 
   "scripts": {

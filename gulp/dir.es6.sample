@@ -11,8 +11,6 @@ export const dir = {
   name: '',
 
   root:    root,
-  cfg:     root + 'postcss/postcss.json',
-  cfgmin:  root + 'postcss/postcss.min.json',
   src:     root + 'postcss/src/',
   dist:    root + 'css/',
   docs:    root + 'docs/postcss/',

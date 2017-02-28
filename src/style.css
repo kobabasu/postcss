@@ -1,7 +1,3 @@
-:root {
-  --primary-color: #E86100;
-}
-
-body {
-  color: var(--primary-color);
-}
+@import 'vars.css';
+@import 'theme.css';
+@import 'layouts/index.css';

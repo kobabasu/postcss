@@ -1,0 +1,14 @@
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+header {
+  background-color: var(--gray-lighter);
+  border-bottom: 1px solid var(--gray-light);
+}
+
+input {
+  border: 1px solid #999999;
+}

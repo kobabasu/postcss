@@ -4,6 +4,17 @@
    * color
    */
 
+  /* base */
+  --color-text:  #606060;
+  --color-link:  #FFFFFF;
+  --color-hover: #FFFFFF;
+  --color-bg:    #FFFFFF;
+
+  /* corporate */
+  --color-corp:        #004C97;
+  --color-corp-second: #004C97;
+  --color-corp-third:  #004C97;
+
   /* brand */
   --brand-primary: #004C97;
   --brand-success: #007A33;
@@ -12,10 +23,9 @@
   --brand-danger:  #A6192E;
 
   /* gray */
-  --gray-darker:   color(#000 lightness(33.5%));
-  --gray-dark:     color(#000 lightness(55.0%));
-  --gray:          color(#000 lightness(80.5%));
-  --gray-light:    color(#000 lightness(87.5%));
-  --gray-lighter:  color(#000 lightness(97.5%));
+  --gray-darker:  color(var(--color-bg) blackness(85.0%));
+  --gray-dark:    color(var(--color-bg) blackness(65.0%));
+  --gray:         color(var(--color-bg) blackness(35.0%));
+  --gray-light:   color(var(--color-bg) blackness(20.0%));
+  --gray-lighter: color(var(--color-bg) blackness(3.5%));
 }
-

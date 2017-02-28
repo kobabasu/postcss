@@ -1,5 +1,3 @@
 @import 'vars.css';
-
-body {
-  color: var(--primary-color);
-}
+@import 'theme.css';
+@import 'layouts/index.css';

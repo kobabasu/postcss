@@ -16,46 +16,31 @@ class Postcss extends DefaultRegistry {
      * postcss
      */
     const style = {
-      cfg:     dir.cfg,
-      cfgmin:  dir.cfgmin,
       src:     dir.src  + 'style.css',
       dist:    dir.dist + 'style.css',
-      min:     dir.dist + 'style.min.css',
-      map:     dir.dist + 'style.min.css.map',
       watch:   dir.src  + '**/*.*',
       example: dir.example
     };
 
     gulp.task(prefix + 'postcss', shell.task([`
-      postcss -c ${style.cfg} \
-      --input ${style.src} -o ${style.dist}
-    `]));
-
-
-    /*
-     * min 
-     * mapファイルはinline
-     */
-    gulp.task(prefix + 'postcss:min', shell.task([`
-      postcss --map -c ${style.cfgmin} \
-      --input ${style.src} -o ${style.min} 
+      postcss ${style.src} \
+      -m { inline: false } \
+      -o ${style.dist};
     `]));
 
 
     /*
      * lib
-     * mapファイルはinline
      */
     const lib = {
       src:   dir.src  + 'lib.css',
       dist:  dir.dist + 'lib.css',
-      min:   dir.dist + 'lib.min.css',
-      map:   dir.dist + 'lib.min.css.map'
     };
 
     gulp.task(prefix + 'postcss:lib', shell.task([`
-      postcss --map -c ${style.cfgmin} \
-      --input ${lib.src} -o ${lib.min} 
+      postcss ${lib.src} \
+      -m { inline: false } \
+      -o ${lib.dist};
     `]));
 
 
@@ -63,10 +48,12 @@ class Postcss extends DefaultRegistry {
      * example
      */
     gulp.task(prefix + 'postcss:example', shell.task([`
-      postcss --map -c ${style.cfgmin} \
-      --input ${lib.src} -o ${style.example + 'lib.css'};
-      postcss -c ${style.cfg} \
-      --input ${style.src} -o ${style.example + 'style.css'};
+      postcss ${lib.src} \
+      -m { inline: false } \
+      -o ${style.example + 'lib.css'};
+      postcss ${style.src} \
+      -m { inline: false } \
+      -o ${style.example + 'style.css'};
     `]));
 
 
@@ -75,7 +62,10 @@ class Postcss extends DefaultRegistry {
      */
     gulp.task(prefix + 'postcss:watch', () => {
       gulp
-        .watch([style.watch], gulp.series(prefix + 'postcss'))
+        .watch(
+          [style.watch],
+          gulp.series(prefix + 'postcss')
+        )
         .on('error', err => process.exit(1));
     });
 
@@ -86,7 +76,6 @@ class Postcss extends DefaultRegistry {
     gulp.task(prefix + 'postcss:build',
       gulp.series(
         prefix + 'postcss',
-        prefix + 'postcss:min',
         prefix + 'postcss:lib'
         // prefix + 'postcss:docs'
     ));

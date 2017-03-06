@@ -27,10 +27,22 @@ module.exports = (ctx) => ({
       warnForDuplicates: false
     }),
 
+    /*
     require('postcss-assets')({
       relative: 'example/css/',
       basePath: 'admin/postcss/',
       loadPaths: ['example/imgs/']
+    }),
+    */
+
+    /*
+     * assets settings for admin case
+     */
+
+    require('postcss-assets')({
+      relative: '../css/',
+      basePath: 'admin/postcss/',
+      loadPaths: ['../imgs/']
     }),
 
     require('postcss-discard-comments')(),

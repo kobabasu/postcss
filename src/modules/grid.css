@@ -1,0 +1,31 @@
+.wrapper {
+  -js-display: flex;
+  display: flex;
+  border: 1px solid #666;
+  width: 960px;
+  margin: 0 auto;
+  /* ie11だと、画像があると隙間ができる */
+  min-width: 0%;
+}
+
+.column-3 {
+  border: 1px solid red;
+  flex: 1;
+}
+
+.column-4 {
+  border: 1px solid yellow;
+  width: 200px;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    /* ie11だと flex-direction: columnで高さが認識されない */
+    display: block;
+    width: 100%;
+  }
+
+  .column-4 {
+    width: 100%;
+  }
+}

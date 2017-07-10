@@ -1,5 +1,6 @@
 @import 'vars.css';
 @import 'base.css';
+@import 'modules/index.css';
 
 @import 'theme.css';
 @import 'layouts/index.css';

@@ -7,5 +7,9 @@
 
 @import 'normalize.css';
 @import 'animate.min.css';
+@import '../fonts/icomoon/style.css';
 @import 'font-awesome.min.css';
+
+/*
 @import 'material-design-icons.css';
+*/

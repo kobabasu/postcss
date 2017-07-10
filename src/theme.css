@@ -9,6 +9,10 @@ header {
   border-bottom: 1px solid var(--gray-light);
 }
 
+i {
+  font-family: 'icomoon';
+}
+
 input {
   border: 1px solid #999999;
 }

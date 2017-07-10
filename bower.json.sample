@@ -4,6 +4,8 @@
   "dependencies": {
     "normalize.css": null,
     "animate.css": null,
+
+    "icomoon": null,
     "fontawesome": null,
     "material-design-icons-iconfont": null
   }

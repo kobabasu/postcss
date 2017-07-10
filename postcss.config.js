@@ -19,9 +19,11 @@ module.exports = (ctx) => ({
 
     require('postcss-url')(),
 
-    require('cssnano')(),
+    // require('cssnano')(),
 
     require('postcss-reporter')(),
+
+    require('postcss-flexibility')(),
 
     require('postcss-cssnext')({
       warnForDuplicates: false

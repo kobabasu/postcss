@@ -1,0 +1,11 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+img {
+  width: auto;
+  max-width: 100%;
+  height: auto !important;
+}

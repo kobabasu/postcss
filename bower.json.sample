@@ -2,6 +2,11 @@
   "name": "postcss-app",
   "version": "0.0.1",
   "dependencies": {
+    "flexibility": null,
+    "platform": null,
+    "jquery-legacy": "jquery#^1",
+    "jquery-modern": "jquery#3",
+
     "normalize.css": null,
     "animate.css": null,
 

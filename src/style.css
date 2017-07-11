@@ -4,3 +4,7 @@
 
 @import 'theme.css';
 @import 'layouts/index.css';
+
+@import 'pc.css';
+@import 'sp.css';
+@import '5k.css';

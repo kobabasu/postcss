@@ -21,6 +21,8 @@
 
   "devDependencies": {
     "postcss-cssnext": "*",
+    "postcss-mixins": "*",
+    "postcss-extend": "*",
     "postcss-import": "*",
     "cssnano": "*",
     "postcss-url": "*",

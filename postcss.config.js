@@ -29,6 +29,10 @@ module.exports = (ctx) => ({
       warnForDuplicates: false
     }),
 
+    require('postcss-mixins')(),
+
+    require('postcss-extend')(),
+
     /*
      * default: path to example
      */

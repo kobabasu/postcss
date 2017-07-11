@@ -1,41 +1,100 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>postcss</title>
-  <link rel="stylesheet" href="css/lib.css" media="all">
-  <link rel="stylesheet" href="css/style.css" media="all">
+<head><!--{{{-->
+<meta charset="UTF-8">
+<title>postcss</title>
+<meta content="description" name="description">
+<meta content="keywords" name="keywords">
+<meta content="author" name="author">
+
+<link rel="canonical" href="/index.html">
+<link rel="help" href="/contact.html">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="stylesheet" media="all" href="css/lib.css">
+<link rel="stylesheet" media="all" href="css/style.css">
+
+
+<!--[if lte IE 9]>
+<script src="vendor/jquery-legacy/dist/jquery.min.js"></script>
+<script src="vendor/flexibility/flexibility.js"></script>
+<script>
+  $(function(){flexibility(document.documentElement);});
+</script>
+<![endif]-->
+
+<!--[if gt IE 9]><!-->
+<script src="vendor/jquery-modern/dist/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script src="vendor/devicejs/lib/device.min.js"></script>
+
+<script>
+  // tablet - disabled viewport
+  $(function() {
+    if (!device.tablet()) {
+      var metaTag=document.createElement('meta');
+      metaTag.name = 'viewport'
+      metaTag.content = 'width=device-width, initial-scale=1';
+      document.getElementsByTagName('head')[0].appendChild(metaTag);
+    }
+  });
+</script>
+
+
+<link href="/favicon.ico" rel="icon">
+<link rel="apple-touch-icon" sizes="180x180" href="180.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="title">
+<meta property="og:description" content="description">
+<meta property="og:url" content="https://example.com/">
+<meta property="og:site_name" content="site_name">
+<meta property="og:image" content="https://example.com/i.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:site" content="@site">
+<meta name="twitter:card" content="summary">
 
 </head>
+<!--}}}-->
 
 <body>
-  <header>
-     <div class="brand">
-       <a href="https://google.com/">
-         <img src="imgs/clear.png" alt="PostCss" />
-       </a>
-     </div>
-  </header>
+<header>
+  <div class="brand">
+    <a href="https://google.com/">
+      <img src="imgs/clear.png" alt="PostCss" />
+    </a>
+  </div>
+</header>
 
-  <p>
-    <i class="fa fa-bath fa-2x"></i>
-    Hello PostCss.
-  </p>
+<div class="wrapper">
+  <div class="column-3">
+    <p>
+      Hello PostCss.
+    </p>
+  </div>
 
-  <p>
-    <i class="material-icons animated bounce">face</i>
-    Hello PostCss.
-  </p>
+  <div class="column-4">
+    <p>
+      <i class="material-icons animated bounce">face</i>
+      Hello PostCss.
+    </p>
 
-  <form>
-    <input type="text" />
-  </form>
+    <p>
+      <i class="icon-lock"></i>
+      Hello PostCss.
+    </p>
+  </div>
+</div>
 
-  <section class="masonry">
-    <div>one</div>
-    <div>two</div>
-    <div>three</div>
-    <div>four</div>
-  </section>
+<section class="masonry">
+  <div>one</div>
+  <div>two</div>
+  <div>three</div>
+  <div>four</div>
+</section>
 </body>
-</html>
+</html><!--
+vim: foldmethod=marker:ts=2:sts=0:sw=2
+-->

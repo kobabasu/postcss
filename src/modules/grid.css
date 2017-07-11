@@ -2,7 +2,7 @@
   -js-display: flex;
   display: flex;
   border: 1px solid #666;
-  width: 960px;
+  width: var(--max-width);
   margin: 0 auto;
   /* ie11だと、画像があると隙間ができる */
   min-width: 0%;

@@ -5,6 +5,6 @@
 @import 'theme.css';
 @import 'layouts/index.css';
 
-@import 'pc.css';
-@import 'sp.css';
-@import '5k.css';
+@import 'devices/pc.css';
+@import 'devices/sp.css';
+@import 'devices/5k.css';

@@ -5,6 +5,9 @@
 @import 'theme.css';
 @import 'layouts/index.css';
 
+/*
+ * devices
+ */
 @import 'devices/pc.css';
 @import 'devices/sp.css';
 @import 'devices/5k.css';

@@ -1,4 +1,4 @@
-.wrapper {
+.container {
   -js-display: flex;
   display: flex;
   border: 1px solid #666;
@@ -19,7 +19,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .wrapper {
+  .container {
     /* ie11だと flex-direction: columnで高さが認識されない */
     display: block;
     width: 100%;

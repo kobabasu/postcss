@@ -27,7 +27,7 @@
 @for $i from 1 to 12 {
   .column-$i {
     /* postcss.config.jsのpostcss-forを先に読み込む事 */
-    min-width: calc((95% / 12) * $(i));
+    min-width: calc((var(--max-width) / var(--columns)) * $(i));
     flex: $(i);
   }
 }

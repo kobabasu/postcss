@@ -78,3 +78,12 @@ i, address {
 ::selection {
   background-color: color(var(--brand-warning) alpha(-50%));
 }
+
+/*
+ * globalnav
+ */
+nav.globalnav ul li a, nav.globalnav ul li a:hover {
+  font-size: var(--small-font-size);
+  line-height: var(--small-line-height);
+  text-decoration: none;
+}

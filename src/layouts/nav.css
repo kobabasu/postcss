@@ -20,8 +20,6 @@ nav.globalnav {
   height: var(--nav-height);
   margin-top: var(--header-height);
   padding: 1rem 0;
-  border-bottom: 1px solid var(--gray);
-  background-color: white;
 }
 
 nav.globalnav ul {
@@ -35,17 +33,11 @@ nav.globalnav ul {
 
 nav.globalnav ul li {
   flex: 1;
-  border-left: 1px solid #ccc;
   text-align: center;
 }
 
 nav.globalnav ul li a, nav.globalnav ul li a:hover {
   font-size: var(--small-font-size);
   line-height: var(--small-line-height);
-  color: var(--gray-dark);
   text-decoration: none;
-}
-
-nav.globalnav ul li:last-child {
-  border-right: 1px solid #ccc;
 }

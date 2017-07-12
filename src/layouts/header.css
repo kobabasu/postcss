@@ -19,7 +19,6 @@ header {
   width: 100%;
   height: var(--header-height);
   padding: 1.5rem var(--base-spacing);
-  border-bottom: 3px solid var(--color-corp);
 }
 
 /*

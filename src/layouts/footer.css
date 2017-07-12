@@ -4,11 +4,19 @@
  */
 
 /*
+ * vars
+ */
+:root {
+  --footer-height: 3rem;
+}
+
+/*
  * footer
  */
 footer {
   width: 100%;
-  padding: var(--small-spacing) 0;
+  height: var(--footer-height);
+  padding: 0.7rem 0;
 }
 
 /*

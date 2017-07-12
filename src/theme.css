@@ -18,10 +18,6 @@ header, footer {
   background-color: var(--gray-lighter);
 }
 
-header {
-  border-bottom: 1px solid var(--gray);
-}
-
 /*
  * grid
  */

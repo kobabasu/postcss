@@ -27,16 +27,12 @@
 /*
  * section
  */
-header {
-  margin-bottom: var(--base-spacing);
+article {
+  padding-top: var(--base-spacing);
 }
 
 article, section {
   padding-bottom: var(--large-spacing);
-}
-
-footer {
-  margin-top: var(--base-spacing);
 }
 
 /*

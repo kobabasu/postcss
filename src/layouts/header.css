@@ -4,11 +4,22 @@
  */
 
 /*
+ * vars
+ */
+:root {
+  --header-brand-height: 20px;
+  --header-height: calc(var(--header-brand-height) + 3rem);
+}
+
+/*
  * header
  */
 header {
+  position: fixed;
   width: 100%;
-  padding: var(--small-spacing) var(--base-spacing);
+  height: var(--header-height);
+  padding: 1.5rem var(--base-spacing);
+  border-bottom: 3px solid var(--color-corp);
 }
 
 /*
@@ -16,7 +27,7 @@ header {
  */
 div.brand {
   width: 80px;
-  height: var(--base-spacing);
+  height: var(--header-brand-height);
   background-image: resolve('example.png');
   background-size: size('example.png', 2);
   background-repeat: no-repeat;

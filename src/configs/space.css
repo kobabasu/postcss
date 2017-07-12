@@ -1,0 +1,40 @@
+/*
+ * # configs/space.css
+ * margin, paddingに関する定義
+ */
+
+/*
+ * vars
+ */
+:root {
+  --gutter: 1rem;
+
+  --base-spacing:  calc(var(--gutter) * 2);
+  --tiny-spacing:  calc(var(--gutter) / 2);
+  --small-spacing: calc(var(--gutter) * 1);
+  --large-spacing: calc(var(--gutter) * 3);
+}
+
+/*
+ * grid
+ */
+[class*='column-'] {
+  margin: 0 calc(var(--gutter) / 2);
+  margin-bottom: var(--gutter);
+  padding: var(--gutter);
+}
+
+/*
+ * section
+ */
+header {
+  margin-bottom: var(--base-spacing);
+}
+
+article, section {
+  margin-bottom: var(--large-spacing);
+}
+
+footer {
+  margin-top: var(--base-spacing);
+}

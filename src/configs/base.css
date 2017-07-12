@@ -84,7 +84,6 @@ span, small, strong {
 p, blockquote, pre {
   text-align: justify;
   word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 /*

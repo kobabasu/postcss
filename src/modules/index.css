@@ -1,1 +1,7 @@
+/*
+ * # modules/index.css
+ * モジュール定義
+ */
+
+@import 'anchor.css';
 @import 'grid.css';

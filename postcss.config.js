@@ -33,6 +33,8 @@ module.exports = (ctx) => ({
 
     require('postcss-extend')(),
 
+    require('postcss-for')(),
+
     /*
      * default: path to example
      */

@@ -20,17 +20,25 @@
   "dependencies": {},
 
   "devDependencies": {
+    "cssnano": "*",
+    "postcss": "^6.0.0",
+    "postcss-assets": "*",
     "postcss-cssnext": "*",
+    "postcss-url": "*",
+    "postcss-import": "*",
+    "postcss-discard-comments": "*",
+    "postcss-reporter": "*",
+    "postcss-flexibility": "*",
     "postcss-mixins": "*",
     "postcss-extend": "*",
-    "postcss-import": "*",
-    "cssnano": "*",
-    "postcss-url": "*",
-    "postcss-reporter": "*",
+    "postcss-for": "*",
+    "postcss-for-variables": "*",
     "lost": "*",
 
-    "postcss-assets": "*",
-    "postcss-discard-comments": "*"
+    "calipers": "*",
+    "calipers-jpeg": "*",
+    "calipers-png": "*",
+    "calipers-gif": "*"
   },
 
   "scripts": {

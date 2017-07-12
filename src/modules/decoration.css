@@ -1,0 +1,29 @@
+/*
+ * # modules/decoration.css
+ * 文章を装飾するクラス
+ */
+
+/*
+ * .headPadding
+ * 一字下げ
+ * text-align:leftはIE対策
+ */
+.headPadding {
+  display: block;
+  text-transform: capitalize;
+  padding-left: calc(1em * 1.25);
+  text-indent: calc(-1em * 1.25);
+  text-align: left;
+}
+
+/*
+ * .nowrap
+ * 三点リーダのはみ出した文章を省略
+ */
+h1.nowrap, h2.nowrap, h3.nowrap,
+h4.nowrap, h5.nowrap, h6.nowrap,
+li.nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

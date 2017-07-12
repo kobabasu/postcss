@@ -7,7 +7,7 @@
  * config
  */
 :root {
-  --max-width:  95%;
+  --max-width:  100%;
   --columns:    12;
 }
 
@@ -21,6 +21,7 @@
   flex-wrap: wrap;
   width: var(--max-width);
   margin: 0 auto;
+  padding: 0 var(--tiny-spacing);
   /* ie11だと、画像があると隙間ができる */
   min-width: 0%;
 }
@@ -35,7 +36,7 @@
 @for $i from 1 to var(--columns) {
   .column-$i {
     /* postcss.config.jsのpostcss-forを先に読み込む事 */
-    min-width: calc((var(--max-width) / var(--columns)) * $(i));
+    min-width: calc((var(--max-width) / var(--columns)) * $(i) - var(--small-spacing));
     flex: $(i);
   }
 }

@@ -20,7 +20,7 @@
  */
 [class*='column-'] {
   margin: 0 calc(var(--gutter) / 2);
-  padding: var(--gutter);
+  padding: calc(var(--gutter) * 2);
   margin-bottom: var(--gutter);
 }
 

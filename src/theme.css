@@ -31,15 +31,15 @@ nav.globalnav {
 }
 
 nav.globalnav ul li {
-  border-left: 1px solid #ccc;
+  border-left: 1px solid var(--gray);
 }
 
 nav.globalnav ul li:last-child {
-  border-right: 1px solid #ccc;
+  border-right: 1px solid var(--gray);
 }
 
 nav.globalnav ul li a, nav.globalnav ul li a:hover {
-  color: var(--gray-dark);
+  color: var(--gray-darker);
 }
 
 /*

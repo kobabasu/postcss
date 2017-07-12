@@ -87,3 +87,11 @@ i, address {
   padding-left: calc(1em * 1.25);
   text-indent: calc(-1em * 1.25);
 }
+
+h1.nowrap, h2.nowrap, h3.nowrap,
+h4.nowrap, h5.nowrap, h6.nowrap,
+li.nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

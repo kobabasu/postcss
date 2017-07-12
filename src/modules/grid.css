@@ -24,7 +24,7 @@
   /* column property here */
 }
 
-@for $i from 1 to 12 {
+@for $i from 1 to var(--columns) {
   .column-$i {
     /* postcss.config.jsのpostcss-forを先に読み込む事 */
     min-width: calc((var(--max-width) / var(--columns)) * $(i));

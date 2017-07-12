@@ -29,6 +29,8 @@ module.exports = (ctx) => ({
 
     require('postcss-extend')(),
 
+    require('postcss-for-variables')(),
+
     require('postcss-for')(),
 
     require('postcss-cssnext')({

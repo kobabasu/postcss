@@ -25,15 +25,15 @@ module.exports = (ctx) => ({
 
     require('postcss-flexibility')(),
 
-    require('postcss-cssnext')({
-      warnForDuplicates: false
-    }),
-
     require('postcss-mixins')(),
 
     require('postcss-extend')(),
 
     require('postcss-for')(),
+
+    require('postcss-cssnext')({
+      warnForDuplicates: false
+    }),
 
     /*
      * default: path to example

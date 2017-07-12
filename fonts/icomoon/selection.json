@@ -4,6 +4,35 @@
     {
       "icon": {
         "paths": [
+          "M366 698l196-196-196-196 60-60 256 256-256 256z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "keyboard_arrow_right"
+        ],
+        "grid": 24
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 1,
+        "id": 0,
+        "prevSize": 24,
+        "code": 59650,
+        "name": "keyboard_arrow_right"
+      },
+      "setIdx": 0,
+      "setId": 3,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
           "M480 701.269v0c-18.643-6.589-32-24.369-32-45.269 0-26.51 21.49-48 48-48s48 21.49 48 48c0 20.9-13.357 38.679-32 45.269v83.019c0 8.42-7.163 15.712-16 15.712-8.578 0-16-7.035-16-15.712v-83.019zM256 448v0 0c-53.045 0.15-96 42.866-96 96.303v319.393c0 53.187 43.059 96.303 96.281 96.303h479.438c53.175 0 96.281-42.772 96.281-96.303v-319.393c0-53.093-42.907-96.151-96-96.303v-112.025c0-132.535-107.721-239.976-240-239.976-132.548 0-240 107.415-240 239.976v112.025zM352 448v-111.973c0-79.731 64.471-144.027 144-144.027 79.367 0 144 64.483 144 144.027v111.973h-288z"
         ],
         "attrs": [
@@ -20,14 +49,40 @@
         {}
       ],
       "properties": {
-        "order": 3,
+        "order": 1,
         "id": 0,
         "name": "lock",
         "prevSize": 32,
         "code": 59648
       },
-      "setIdx": 2,
+      "setIdx": 1,
       "setId": 2,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M1024 590.444l-512-397.426-512 397.428v-162.038l512-397.426 512 397.428zM896 576v384h-256v-256h-256v256h-256v-384l384-288z"
+        ],
+        "tags": [
+          "home",
+          "house"
+        ],
+        "defaultCode": 59648,
+        "grid": 16,
+        "attrs": []
+      },
+      "attrs": [],
+      "properties": {
+        "ligatures": "home, house",
+        "name": "home",
+        "order": 5,
+        "id": 1,
+        "prevSize": 32,
+        "code": 59649
+      },
+      "setIdx": 2,
+      "setId": 1,
       "iconIdx": 0
     },
     {
@@ -48,12 +103,12 @@
       "properties": {
         "ligatures": "pencil2, write2",
         "name": "pencil2",
-        "order": 4,
+        "order": 3,
         "id": 7,
         "prevSize": 32,
         "code": 59654
       },
-      "setIdx": 3,
+      "setIdx": 2,
       "setId": 1,
       "iconIdx": 6
     },
@@ -76,12 +131,12 @@
       "properties": {
         "ligatures": "alarm, time4",
         "name": "alarm",
-        "order": 2,
+        "order": 4,
         "id": 81,
         "prevSize": 32,
         "code": 59728
       },
-      "setIdx": 3,
+      "setIdx": 2,
       "setId": 1,
       "iconIdx": 80
     }

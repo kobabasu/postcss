@@ -43,7 +43,7 @@ footer {
  * paragraph
  */
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: calc(var(--small-line-height) / 2);
+  margin-bottom: calc(var(--small-line-height) / 4);
 }
 
 p, blockquote, pre  {

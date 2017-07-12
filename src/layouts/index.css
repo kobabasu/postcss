@@ -1,2 +1,9 @@
+/*
+ * # layouts/index.css
+ * レイアウトに関する定義
+ * 色はtheme.css, フォントはconfings/type.cssで定義
+ */
+
 @import 'header.css';
+@import 'article.css';
 @import 'footer.css';

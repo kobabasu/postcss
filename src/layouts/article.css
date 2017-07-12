@@ -1,0 +1,11 @@
+/*
+ * # layouts/article.css
+ * articleに関する定義
+ */
+
+/*
+ * article
+ */
+article {
+  height: 92vh;
+}

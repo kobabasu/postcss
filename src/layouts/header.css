@@ -7,16 +7,16 @@
  * header
  */
 header {
-  padding: 1rem;
   width: 100%;
-  height: 5vh;
-  min-height: 3rem;
+  padding: var(--small-spacing) var(--base-spacing);
 }
 
 /*
  * .brand
  */
 div.brand {
+  width: 80px;
+  height: var(--base-spacing);
   background-image: resolve('example.png');
   background-size: size('example.png', 2);
   background-repeat: no-repeat;

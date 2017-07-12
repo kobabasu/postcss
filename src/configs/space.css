@@ -20,8 +20,8 @@
  */
 [class*='column-'] {
   margin: 0 calc(var(--gutter) / 2);
-  margin-bottom: var(--gutter);
   padding: var(--gutter);
+  padding-bottom: var(--gutter);
 }
 
 /*
@@ -32,7 +32,7 @@ header {
 }
 
 article, section {
-  margin-bottom: var(--large-spacing);
+  padding-bottom: var(--large-spacing);
 }
 
 footer {

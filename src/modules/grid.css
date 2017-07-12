@@ -9,6 +9,8 @@
 .container {
   -js-display: flex;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
   width: var(--max-width);
   margin: 0 auto;
   /* ie11だと、画像があると隙間ができる */
@@ -19,11 +21,13 @@
  * .column-num
  */
 [class*='column-'] {
-  background-color: #ccc;
+  /* column property here */
 }
 
 @for $i from 1 to 12 {
   .column-$i {
+    /* postcss.config.jsのpostcss-forを先に読み込む事 */
+    min-width: calc((95% / 12) * $(i));
     flex: $(i);
   }
 }

@@ -5,7 +5,10 @@
 
 /*
  * article
+ * header: --small-spacing * 2 + --base-spacing + border1px
+ * footer: --small-spacing * 2 + --small-line-height
+ * それぞれmargin合計 --base-spacing * 2
  */
 article {
-  height: 92vh;
+  height: calc(100vh - (var(--small-line-height) + var(--base-spacing) * 5) - 1px);
 }

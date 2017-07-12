@@ -16,7 +16,10 @@ body {
  */
 header, footer {
   background-color: var(--gray-lighter);
-  border-bottom: 1px solid var(--gray-light);
+}
+
+header {
+  border-bottom: 1px solid #ccc;
 }
 
 /*

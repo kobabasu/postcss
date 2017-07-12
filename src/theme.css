@@ -22,10 +22,6 @@ header {
   border-bottom: 1px solid var(--gray);
 }
 
-footer {
-  text-align: center;
-}
-
 /*
  * grid
  */

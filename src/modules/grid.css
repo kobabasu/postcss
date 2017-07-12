@@ -4,6 +4,14 @@
  */
 
 /*
+ * config
+ */
+:root {
+  --max-width:  95%;
+  --columns:    12;
+}
+
+/*
  * .container
  */
 .container {

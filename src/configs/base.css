@@ -69,10 +69,10 @@ a {
 }
 
 /*
- * # small, strong
+ * # span, small, strong
  * line-heightが無効にならないようにする
  */
-small, strong {
+span, small, strong {
   display: inline-block;
 }
 

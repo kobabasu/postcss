@@ -1,0 +1,83 @@
+/*
+ * # configs/type.css
+ * 文字に影響を与えるスタイルを定義
+ */
+
+/*
+ * import webfont
+ */
+@import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+/*
+ * var
+ */
+:root {
+  --base-font-size:       1.6rem;
+  --small-font-size:      1.4rem;
+  --heading-font-size:    2.4rem;
+
+  --base-line-height:     2.4rem;
+  --small-line-height:    1.6rem;
+  --heading-line-height:  3.2rem;
+}
+
+/*
+ * base
+ */
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: 'Noto Sans Japanese', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', Arial, Meiryo, sans-serif;
+
+  font-size: var(--base-font-size);
+  font-weight: normal;
+  line-height: var(--base-line-height);
+}
+
+/*
+ * heading
+ */
+h1, h2, h3, h4, h5, h6 {
+  font-size: var(--heading-font-size);
+  font-weight: 400;
+  line-height: var(--heading-line-height);
+}
+
+small, .small {
+  font-size: var(--small-font-size);
+  font-weight: 400;
+  line-height: var(--small-line-height);
+}
+
+/*
+ * link
+ */
+a, a:hover, a:visited {
+  text-decoration: underline;
+}
+
+/*
+ * decoration
+ */
+strong, .strong {
+  font-weight: 400;
+}
+
+i, address {
+  font-style: normal;
+}
+
+::selection {
+  background-color: color(var(--brand-warning) alpha(-50%));
+}
+
+/*
+ * classes
+ */
+.headPadding {
+  display: block;
+  padding-left: calc(1em * 1.25);
+  text-indent: calc(-1em * 1.25);
+}

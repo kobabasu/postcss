@@ -1,0 +1,8 @@
+/*
+ * # devices/index.css
+ * デバイスごとの定義
+ */
+
+@import 'pc.css';
+@import 'sp.css';
+@import '5k.css';

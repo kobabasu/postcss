@@ -1,21 +1,33 @@
+/*
+ * # configs/vars.css
+ * 変数
+ */
+
 :root {
 
   /*
    * config
    */
-
   --max-width:  95%;
   --columns:    12;
+
+  /*
+   * media queries
+   */
+  @custom-media --sp-viewport only screen and (max-width: 767px);
+  @custom-media --pc-viewport only screen and (min-width: 768px);
+  @custom-media --5k-viewport only screen and (min-width: 1920px);
 
   /*
    * color
    */
 
   /* base */
-  --color-text:  #606060;
-  --color-link:  #FFFFFF;
-  --color-hover: #FFFFFF;
-  --color-bg:    #FFFFFF;
+  --color-text:     #606060;
+  --color-link:     #004C97;
+  --color-hover:    color(var(--color-link) alpha(-50%));
+  --color-visited:  #004C97;
+  --color-bg:       #FFFFFF;
 
   /* corporate */
   --color-corp:        #004C97;

@@ -1,15 +1,12 @@
 /*
  * lib.css
- * 1. install via bower.json
- * 2. add path postcss-import.path option in postcss.json
- * 3. write here @import syntax
+ * ライブラリ関連の読込・定義
+ * style.cssからは独立
+ * gulp postcss:libでコンパイル
  */
 
 @import 'normalize.css';
 @import 'animate.min.css';
 @import '../fonts/icomoon/style.css';
-@import 'font-awesome.min.css';
-
-/*
-@import 'material-design-icons.css';
-*/
+/* @import 'font-awesome.min.css'; */
+/* @import 'material-design-icons.css'; */

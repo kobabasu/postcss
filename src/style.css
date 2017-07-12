@@ -1,13 +1,11 @@
-@import 'vars.css';
-@import 'base.css';
+/*
+ * style.css
+ */
+
+@import 'configs/index.css';
 @import 'modules/index.css';
 
 @import 'theme.css';
 @import 'layouts/index.css';
 
-/*
- * devices
- */
-@import 'devices/pc.css';
-@import 'devices/sp.css';
-@import 'devices/5k.css';
+@import 'devices/index.css';

@@ -43,6 +43,17 @@ nav.globalnav ul li a, nav.globalnav ul li a:hover {
 }
 
 /*
+ * topics
+ */
+ul.topics {
+  border-top: 2px solid var(--gray);
+}
+
+ul.topics li {
+  border-bottom: 1px solid var(--gray);
+}
+
+/*
  * grid
  */
 [class*='column-'] {

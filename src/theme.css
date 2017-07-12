@@ -19,7 +19,14 @@ header, footer {
 }
 
 header {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--gray);
+}
+
+/*
+ * grid
+ */
+[class*='column-'] {
+  background-color: var(--gray-lighter);
 }
 
 /*

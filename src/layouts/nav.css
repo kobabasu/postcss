@@ -19,7 +19,7 @@ nav.globalnav {
   width: 100%;
   height: var(--nav-height);
   margin-top: var(--header-height);
-  padding: 1rem 0;
+  padding-top: calc(1rem + 3px);
 }
 
 nav.globalnav ul {
@@ -34,10 +34,4 @@ nav.globalnav ul {
 nav.globalnav ul li {
   flex: 1;
   text-align: center;
-}
-
-nav.globalnav ul li a, nav.globalnav ul li a:hover {
-  font-size: var(--small-font-size);
-  line-height: var(--small-line-height);
-  text-decoration: none;
 }

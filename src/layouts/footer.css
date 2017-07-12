@@ -16,5 +16,5 @@ footer {
  */
 div.copyright {
   @extend small;
-  text-align: center;
+  display: block;
 }

@@ -69,6 +69,14 @@ a {
 }
 
 /*
+ * # small, strong
+ * line-heightが無効にならないようにする
+ */
+small, strong {
+  display: inline-block;
+}
+
+/*
  * # hr
  * background-colorで色を変更できるように設定
  */

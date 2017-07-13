@@ -16,7 +16,7 @@
    */
 
   /* base */
-  --color-text:     #606060;
+  --color-text:     #333333;
   --color-link:     #004C97;
   --color-hover:    color(var(--color-link) alpha(-50%));
   --color-visited:  #004C97;

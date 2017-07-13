@@ -126,8 +126,10 @@
 
 <script>
   $('#humberger-icon').on('click', function() {
-    $('nav.globalnav').toggleClass('active');
-    $('body').toggleClass('active');
+    $('nav.globalnav').toggleClass('humberger-active');
+    $('body').toggleClass('humberger-active');
+    $('#humberger-icon').toggleClass('humberger-active');
+    $('header').toggleClass('humberger-active');
   });
 </script>
 

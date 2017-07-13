@@ -16,7 +16,7 @@
 footer {
   width: 100%;
   height: var(--footer-height);
-  padding: 0.7rem 0;
+  padding-top: 0.7rem;
 }
 
 /*

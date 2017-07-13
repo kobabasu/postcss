@@ -18,21 +18,16 @@
    * body
    */
   body {
-    transition: transform .3s ease;
-
-    &.active {
-      transform: translateX(var(--burger-width));
-    }
   }
 
   /*
    * globalnav
    */
   nav.globalnav.humberger {
-    top: 0;
-    left: -var(--burger-width);
     width: var(--burger-width);
     height: 100vh;
+    top: 0;
+    left: -var(--burger-width);
     margin-top: 0;
     padding-top: 0;
     border: none;
@@ -83,6 +78,28 @@
 
     &:after {
       bottom: 3px;
+    }
+  }
+
+  /*
+   * toggle animation
+   */
+  body, header, {
+    transition: transform .3s ease;
+
+    &.humberger-active {
+      transform: translateX(var(--burger-width));
+    }
+  }
+
+  /*
+   * for IE11 toggle animation
+   */
+  #humberger-icon, nav.globalnav.humberger  {
+    transition: transform .3s ease;
+
+    &.humberger-active {
+      transform: translateX(var(--burger-width));
     }
   }
 }

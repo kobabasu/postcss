@@ -1,0 +1,20 @@
+/*
+ * # devices/ie.css
+ * ie用の定義
+ */
+
+@media all and (-ms-high-contrast:none) {
+  /*
+   * 遊ゴシックの下に余白ができる件対策
+   */
+	h1, h2, h3, h4, h5, h6, li, small {
+    padding: 0.3em 0.3em 0.1em;
+	}
+
+  /*
+   * vh100%がずれる対策
+   */
+  footer {
+    padding-top: 0.5rem;
+  }
+}

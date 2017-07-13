@@ -14,3 +14,12 @@ article {
     2rem
   );
 }
+
+@media (--sp-viewport) {
+  nav.globalnav.humberger ~ article {
+    padding-top: calc(
+      var(--header-height) +
+      2rem
+    );
+  }
+}

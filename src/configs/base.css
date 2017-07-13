@@ -40,15 +40,17 @@ time, mark, audio, video, canvas {
 /*
  * # body
  * positionはrelativeを予め設定
+ * responsiveのhumbergermenu用にwidth100%を指定
  * z-indexに予め0を設定
  * windowsはscrollbarの有無で
  * widthが変わるため常に表示
  */
 body {
   position: relative;
-  z-index: 0;
+  width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+  z-index: 0;
 }
 
 /*

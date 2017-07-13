@@ -61,15 +61,14 @@
 
 <body>
 <header>
-  <div class="brand">
+  <h1 class="trademark">
     <a href="https://google.com/">
-      <img src="imgs/clear.png" alt="PostCss" />
+      <img src="imgs/clear.png" alt="PostCss" width="80" height="20" />
     </a>
-  </div>
-
+  </h1>
 </header>
 
-<nav class="globalnav">
+<nav class="globalnav humberger">
   <ul>
     <li><a href="#">Home</a></li>
     <li><a href="#">会社概要</a></li>
@@ -79,6 +78,8 @@
     <li><a href="#">お問い合わせ</a></li>
   </ul>
 </nav>
+<div id="humberger-icon"></div>
+
 
 <article>
   <section id="tile" class="container">
@@ -122,6 +123,14 @@
 <footer>
   <div class="copyright">&copy;example.com Inc.</div>
 </footer>
+
+<script>
+  $('#humberger-icon').on('click', function() {
+    $('nav.globalnav').toggleClass('active');
+    $('body').toggleClass('active');
+  });
+</script>
+
 </body>
 </html><!--
 vim: foldmethod=marker:ts=2:sts=0:sw=2

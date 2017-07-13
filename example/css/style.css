@@ -2,28 +2,76 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 :root{
 }
+*, *:after, *:before{
+  -webkit-box-sizing:border-box;
+          box-sizing:border-box;
+}
+body, object, iframe, hr, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, time, mark, audio, video, canvas, div.copyright{
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  vertical-align:baseline;
+  font-style:normal;
+  font-weight:normal;
+  text-transform:normal;
+  background:transparent;
+}
+body{
+  position:relative;
+  width:100%;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  z-index:0;
+}
+header, footer, section, article, nav, aside{
+  overflow:visible;
+}
+a{
+  outline:none;
+}
+span, small, strong, div.copyright{
+  display:inline-block;
+}
+p, blockquote, pre{
+  text-align:justify;
+  word-wrap:break-word;
+}
+hr{
+  height:1px;
+  border:none;
+}
+img{
+  vertical-align:bottom;
+}
+li{
+  list-style-type:none;
+}
 html{
   font-size:10px;
 }
 body{
-  font-family:'Noto Sans Japanese', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', Arial, Meiryo, sans-serif;
+  font-family:'Noto Sans Japanese',
+               'ヒラギノ角ゴ ProN W3',
+               'Hiragino Kaku Gothic ProN',
+               'Arial', 'Meiryo', sans-serif;
 
-  font-size:16px;
-  font-size:1.6rem;
+  font-size:14px;
+  font-size:1.4rem;
   font-weight:normal;
   line-height:24px;
   line-height:2.4rem;
 }
 h1, h2, h3, h4, h5, h6{
-  font-size:24px;
-  font-size:2.4rem;
+  font-size:20px;
+  font-size:2.0rem;
   font-weight:400;
   line-height:32px;
   line-height:3.2rem;
 }
 small, .small, div.copyright{
-  font-size:14px;
-  font-size:1.4rem;
+  font-size:12px;
+  font-size:1.2rem;
   font-weight:400;
   line-height:16px;
   line-height:1.6rem;
@@ -43,47 +91,43 @@ i, address{
 ::selection{
   background-color:rgba(243, 213, 78, 0.5);
 }
-.headPadding{
-  display:block;
-  padding-left:1.25em;
-  text-indent:-1.25em;
+nav.globalnav ul li a, nav.globalnav ul li a:hover{
+  font-size:12px;
+  font-size:1.2rem;
+  line-height:16px;
+  line-height:1.6rem;
+  text-decoration:none;
 }
-*, *:after, *:before{
-  -webkit-box-sizing:border-box;
-          box-sizing:border-box;
+[class*='column-']{
+  margin:0 5px;
+  margin:0 0.5rem;
+  padding:20px;
+  padding:2rem;
+  margin-bottom:10px;
+  margin-bottom:1rem;
 }
-body, object, iframe, hr, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, time, mark, audio, video, canvas, div.copyright{
-  margin:0;
-  padding:0;
-  border:0;
-  outline:0;
-  vertical-align:baseline;
-  font-style:normal;
-  font-weight:normal;
-  text-transform:normal;
-  background:transparent;
+article{
+  padding-top:20px;
+  padding-top:2rem;
 }
-body{
-  position:relative;
-  z-index:0;
-  overflow-x:hidden;
-  overflow-y:scroll;
+article, section{
+  padding-bottom:30px;
+  padding-bottom:3rem;
 }
-header, footer, section, article, nav, aside{
-  overflow:visible;
+h1, h2, h3, h4, h5, h6{
+  margin-bottom:4px;
+  margin-bottom:0.4rem;
 }
-a{
-  outline:none;
+p, blockquote, pre{
+  margin-bottom:8px;
+  margin-bottom:0.8rem;
 }
-hr{
-  height:1px;
-  border:none;
+span, small, strong, div.copyright{
+  margin-bottom:8px;
+  margin-bottom:0.8rem;
 }
-img{
-  vertical-align:bottom;
-}
-li{
-  list-style-type:none;
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child, p:last-child, blockquote:last-child, pre:last-child, span:last-child, small:last-child, strong:last-child, div.copyright:last-child{
+  margin-bottom:0;
 }
 a, button{
   -webkit-transition:all 0.3s linear 0s;
@@ -101,69 +145,84 @@ a.noeffect, button.noeffect{
   display:-webkit-box;
   display:-ms-flexbox;
   display:flex;
-  width:95%;
+  -ms-flex-wrap:wrap;
+      flex-wrap:wrap;
+  width:100%;
   margin:0 auto;
+  padding:0 5px;
+  padding:0 0.5rem;
   min-width:0%;
 }
 [class*='column-']{
-  background-color:#ccc;
 }
 .column-1{
+    min-width:calc(8.33333% - 1rem);
     -webkit-box-flex:1;
         -ms-flex:1;
             flex:1;
   }
 .column-2{
+    min-width:calc(16.66667% - 1rem);
     -webkit-box-flex:2;
         -ms-flex:2;
             flex:2;
   }
 .column-3{
+    min-width:calc(25% - 1rem);
     -webkit-box-flex:3;
         -ms-flex:3;
             flex:3;
   }
 .column-4{
+    min-width:calc(33.33333% - 1rem);
     -webkit-box-flex:4;
         -ms-flex:4;
             flex:4;
   }
 .column-5{
+    min-width:calc(41.66667% - 1rem);
     -webkit-box-flex:5;
         -ms-flex:5;
             flex:5;
   }
 .column-6{
+    min-width:calc(50% - 1rem);
     -webkit-box-flex:6;
         -ms-flex:6;
             flex:6;
   }
 .column-7{
+    min-width:calc(58.33333% - 1rem);
     -webkit-box-flex:7;
         -ms-flex:7;
             flex:7;
   }
 .column-8{
+    min-width:calc(66.66667% - 1rem);
     -webkit-box-flex:8;
         -ms-flex:8;
             flex:8;
   }
 .column-9{
+    min-width:calc(75% - 1rem);
     -webkit-box-flex:9;
         -ms-flex:9;
             flex:9;
   }
 .column-10{
+    min-width:calc(83.33333% - 1rem);
     -webkit-box-flex:10;
         -ms-flex:10;
             flex:10;
   }
 .column-11{
+    min-width:calc(91.66667% - 1rem);
     -webkit-box-flex:11;
         -ms-flex:11;
             flex:11;
   }
 .column-12{
+    min-width:calc(100% - 1rem);
     -webkit-box-flex:12;
         -ms-flex:12;
             flex:12;
@@ -180,13 +239,64 @@ a.noeffect, button.noeffect{
     width:100%;
   }
 }
+.headPadding{
+  display:block;
+  text-transform:capitalize;
+  padding-left:1.25em;
+  text-indent:-1.25em;
+  text-align:left;
+}
+h1.nowrap, h2.nowrap, h3.nowrap, h4.nowrap, h5.nowrap, h6.nowrap, li.nowrap{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+ul.topics{
+  border-top:2px solid #ccc;
+}
+ul.topics li{
+  line-height:16px;
+  line-height:1.6rem;
+  padding:0.5em 0 0.75em;
+  padding-left:1em;
+  text-indent:-1em;
+}
+ul.topics li:before{
+  font-family:'icomoon';
+  content:"\e902";
+}
 body{
   color:#606060;
   background-color:#FFFFFF;
 }
 header, footer{
   background-color:rgb(245, 245, 245);
-  border-bottom:1px solid rgb(212, 213, 213);
+}
+header{
+  border-top:3px solid #004C97;
+}
+nav.globalnav{
+  border-top:1px solid rgb(189, 189, 189);
+  border-bottom:1px solid rgb(189, 189, 189);
+  background-color:white;
+}
+nav.globalnav ul li{
+  border-left:1px solid rgb(189, 189, 189);
+}
+nav.globalnav ul li:last-child{
+  border-right:1px solid rgb(189, 189, 189);
+}
+nav.globalnav ul li a, nav.globalnav ul li a:hover{
+  color:rgb(138, 138, 138);
+}
+ul.topics{
+  border-top:2px solid rgb(189, 189, 189);
+}
+ul.topics li{
+  border-bottom:1px solid rgb(189, 189, 189);
+}
+[class*='column-']{
+  background-color:rgb(245, 245, 245);
 }
 a{
   color:#004C97;
@@ -204,32 +314,152 @@ i{
   font-family:'icomoon';
 }
 header{
-  padding:10px;
-  padding:1rem;
+  position:fixed;
   width:100%;
-  height:5vh;
-  min-height:30px;
-  min-height:3rem;
+  height:50px;
+  height:5rem;
+  padding:15px 20px;
+  padding:1.5rem 2rem;
 }
-div.brand{
+h1.trademark{
+  width:80px;
+  height:20px;
   background-image:url('../imgs/example.png');
   background-size:80px 20px;
   background-repeat:no-repeat;
-  background-position:center left;
+  background-position:center left
 }
-article{
-  height:92vh;
+h1.trademark a{
+  display:block;
+  line-height:20px;
+}
+nav.globalnav{
+  position:fixed;
+  width:100%;
+  height:50px;
+  height:5rem;
+  padding-top:10px;
+  padding-top:1rem;
+  margin-top:50px;
+  margin-top:5rem
+}
+nav.globalnav ul{
+  -js-display:flex;
+  -js-display:flex;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  max-width:960px;
+  margin:0 auto;
+  -ms-flex-wrap:nowrap;
+      flex-wrap:nowrap;
+  vertical-align:middle;
+}
+nav.globalnav ul li{
+  -webkit-box-flex:1;
+      -ms-flex:1;
+          flex:1;
+  line-height:30px;
+  line-height:3rem;
+  text-align:center;
+}
+@media only screen and (max-width: 767px){
+  body{
+    -webkit-transition:-webkit-transform .3s ease;
+    transition:-webkit-transform .3s ease;
+    transition:transform .3s ease;
+    transition:transform .3s ease, -webkit-transform .3s ease
+  }
+  body.active{
+    -webkit-transform:translateX(240px);
+            transform:translateX(240px);
+  }
+
+  h1.trademark{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+  }
+
+  nav.globalnav.humberger{
+    top:0;
+    left:-240px;
+    width:240px;
+    height:100vh;
+    margin-top:0;
+    padding-top:0;
+    border:none;
+    -webkit-box-shadow:-3px 3px 3px rgba(0, 0, 0, .7) inset;
+            box-shadow:-3px 3px 3px rgba(0, 0, 0, .7) inset;
+    background-color:#343434
+  }
+
+  nav.globalnav.humberger ul{
+    display:block;
+  }
+
+  nav.globalnav.humberger ul li{
+    height:4rem;
+    padding:1rem;
+    text-align:left;
+    line-height:1.6rem;
+    border:none;
+    border-top:1px solid #474747;
+    border-bottom:1px solid #212121;
+    background-color:#373737;
+  }
+
+  nav.globalnav.humberger ul li:last-child{
+    border-right:none;
+  }
+
+  nav.globalnav.humberger ~ #humberger-icon{
+    position:fixed;
+    margin:1.5rem;
+    width:30px;
+    height:19px;
+    background-color:black;
+    cursor:pointer
+  }
+
+  nav.globalnav.humberger ~ #humberger-icon:before, nav.globalnav.humberger ~ #humberger-icon:after{
+    position:absolute;
+    content:'';
+    width:100%;
+    border-top:5px solid #fff;
+  }
+
+  nav.globalnav.humberger ~ #humberger-icon:before{
+    top:3px;
+  }
+
+  nav.globalnav.humberger ~ #humberger-icon:after{
+    bottom:3px;
+  }
 }
 footer{
-  padding:10px;
-  padding:1rem;
   width:100%;
-  height:5vh;
-  min-height:30px;
-  min-height:3rem;
+  height:30px;
+  height:3rem;
+  padding:7px 0;
+  padding:0.7rem 0;
 }
 div.copyright{
+  display:block;
   text-align:center;
+}
+article{
+  min-height:calc(100vh - 3rem);
+  padding-top:120px;
+  padding-top:12rem;
+}
+@media only screen and (max-width: 767px){
+  nav.globalnav.humberger ~ article{
+    padding-top:7rem;
+  }
 }
 @media only screen and (min-width: 768px){
 }

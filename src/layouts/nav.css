@@ -9,6 +9,7 @@
  */
 :root {
   --nav-height: 5rem;
+  --burger-width: 240px;
 }
 
 /*
@@ -18,20 +19,95 @@ nav.globalnav {
   position: fixed;
   width: 100%;
   height: var(--nav-height);
+  padding-top: 1rem;
   margin-top: var(--header-height);
-  padding-top: calc(1rem + 3px);
+
+  & ul {
+    -js-display: flex;
+    display: flex;
+    max-width: 960px;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+    vertical-align: middle;
+
+    & li {
+      flex: 1;
+      line-height: 3rem;
+      text-align: center;
+    }
+  }
 }
 
-nav.globalnav ul {
-  -js-display: flex;
-  display: flex;
-  max-width: 960px;
-  margin: 0 auto;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: nowrap;
-}
+@media (--sp-viewport) {
+  body {
+    transition: transform .3s ease;
 
-nav.globalnav ul li {
-  flex: 1;
-  text-align: center;
+    &.active {
+      transform: translateX(var(--burger-width));
+    }
+  }
+
+  h1.trademark {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  nav.globalnav.humberger {
+    top: 0;
+    left: -var(--burger-width);
+    width: var(--burger-width);
+    height: 100vh;
+    margin-top: 0;
+    padding-top: 0;
+    border: none;
+    box-shadow: -3px 3px 3px rgba(0,0,0,.7) inset;
+    background-color: #343434;
+
+    & ul {
+      display: block;
+
+      & li {
+        height: 4rem;
+        padding: var(--small-spacing);
+        text-align: left;
+        line-height: var(--small-line-height);
+        border: none;
+        border-top: 1px solid #474747;
+        border-bottom: 1px solid #212121;
+        background-color: #373737;
+      }
+
+      & li:last-child {
+        border-right: none;
+      }
+    }
+  }
+
+  nav.globalnav.humberger ~ #humberger-icon {
+    position: fixed;
+    margin: 1.5rem;
+    width: 30px;
+    height: 19px;
+    background-color: black;
+    cursor: pointer;
+
+    &:before, &:after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      border-top: 5px solid #fff;
+    }
+
+    &:before {
+      top: 3px;
+    }
+
+    &:after {
+      bottom: 3px;
+    }
+  }
 }

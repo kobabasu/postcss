@@ -38,6 +38,14 @@ time, mark, audio, video, canvas {
 }
 
 /*
+ * height100%でスクロールした場合対策
+ */
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+/*
  * # body
  * positionはrelativeを予め設定
  * responsiveのhumbergermenu用にwidth100%を指定

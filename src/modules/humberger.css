@@ -25,7 +25,7 @@
    */
   nav.globalnav.humberger {
     width: var(--burger-width);
-    height: 100vh;
+    min-height: 100%;
     top: 0;
     left: -var(--burger-width);
     margin-top: 0;
@@ -84,18 +84,7 @@
   /*
    * toggle animation
    */
-  body, header, {
-    transition: transform .3s ease;
-
-    &.humberger-active {
-      transform: translateX(var(--burger-width));
-    }
-  }
-
-  /*
-   * for IE11 toggle animation
-   */
-  #humberger-icon, nav.globalnav.humberger  {
+  body {
     transition: transform .3s ease;
 
     &.humberger-active {

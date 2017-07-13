@@ -4,11 +4,21 @@
  */
 
 /*
- * body
+ * html
+ * ハンバーガーのスクロール時高さ対策
  */
-body {
+html {
+  background-color: var(--device-bg);
+}
+
+/*
+ * body, article
+ * articleはハンバーガーのスクロール時高さ対策
+ */
+body, article {
   color: var(--color-text);
   background-color: var(--color-bg);
+  overflow: visible;
 }
 
 /*
@@ -27,8 +37,7 @@ header {
  * globalnav
  */
 nav.globalnav {
-  border-bottom: 1px solid var(--gray);
-  background-color: white;
+  border-bottom: 1px solid var(--gray-darker);
 
   & ul li {
     border-left: 1px solid var(--gray);

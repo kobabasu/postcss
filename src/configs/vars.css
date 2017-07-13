@@ -13,6 +13,7 @@
 
   /*
    * color
+   * device-bgは初期ロード時の背景色
    */
 
   /* base */
@@ -21,6 +22,7 @@
   --color-hover:    color(var(--color-link) alpha(-50%));
   --color-visited:  #004C97;
   --color-bg:       #FFFFFF;
+  --device-bg:      #343434;
 
   /* corporate */
   --color-corp:        #004C97;

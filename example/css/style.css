@@ -131,7 +131,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 }
 a, button{
   -webkit-transition:all 0.3s linear 0s;
-  transition:all 0.3s linear 0s;
+  transition:all 0.3s linear 0s
 }
 a:hover, button:hover{
   opacity:0.6;
@@ -252,7 +252,7 @@ h1.nowrap, h2.nowrap, h3.nowrap, h4.nowrap, h5.nowrap, h6.nowrap, li.nowrap{
   white-space:nowrap;
 }
 ul.topics{
-  border-top:2px solid #ccc;
+  border-top:2px solid #ccc
 }
 ul.topics li{
   line-height:16px;
@@ -265,6 +265,74 @@ ul.topics li:before{
   font-family:'icomoon';
   content:"\e902";
 }
+@media only screen and (max-width: 767px){
+  body{
+    -webkit-transition:-webkit-transform .3s ease;
+    transition:-webkit-transform .3s ease;
+    transition:transform .3s ease;
+    transition:transform .3s ease, -webkit-transform .3s ease
+  }
+  body.active{
+    -webkit-transform:translateX(240px);
+            transform:translateX(240px);
+  }
+  h1.trademark{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+  }
+  nav.globalnav.humberger{
+    top:0;
+    left:-240px;
+    width:240px;
+    height:100vh;
+    margin-top:0;
+    padding-top:0;
+    border:none;
+    -webkit-box-shadow:-3px 3px 3px rgba(0, 0, 0, .7) inset;
+            box-shadow:-3px 3px 3px rgba(0, 0, 0, .7) inset;
+    background-color:#343434
+  }
+  nav.globalnav.humberger ul{
+    display:block;
+  }
+  nav.globalnav.humberger ul li{
+    height:4rem;
+    padding:1rem;
+    text-align:left;
+    line-height:1.6rem;
+    border:none;
+    border-top:1px solid #474747;
+    border-bottom:1px solid #212121;
+    background-color:#373737;
+  }
+  nav.globalnav.humberger ul li:last-child{
+    border-right:none;
+  }
+  nav.globalnav.humberger ~ #humberger-icon{
+    position:fixed;
+    margin:1.5rem;
+    width:30px;
+    height:19px;
+    background-color:black;
+    cursor:pointer
+  }
+  nav.globalnav.humberger ~ #humberger-icon:before, nav.globalnav.humberger ~ #humberger-icon:after{
+    position:absolute;
+    content:'';
+    width:100%;
+    border-top:5px solid #fff;
+  }
+  nav.globalnav.humberger ~ #humberger-icon:before{
+    top:3px;
+  }
+  nav.globalnav.humberger ~ #humberger-icon:after{
+    bottom:3px;
+  }
+}
 body{
   color:#606060;
   background-color:#FFFFFF;
@@ -274,11 +342,11 @@ header, footer{
 }
 header{
   border-top:3px solid #004C97;
+  border-bottom:1px solid rgb(189, 189, 189);
 }
 nav.globalnav{
-  border-top:1px solid rgb(189, 189, 189);
   border-bottom:1px solid rgb(189, 189, 189);
-  background-color:white;
+  background-color:white
 }
 nav.globalnav ul li{
   border-left:1px solid rgb(189, 189, 189);
@@ -290,7 +358,7 @@ nav.globalnav ul li a, nav.globalnav ul li a:hover{
   color:rgb(138, 138, 138);
 }
 ul.topics{
-  border-top:2px solid rgb(189, 189, 189);
+  border-top:2px solid rgb(189, 189, 189)
 }
 ul.topics li{
   border-bottom:1px solid rgb(189, 189, 189);
@@ -364,17 +432,6 @@ nav.globalnav ul li{
   text-align:center;
 }
 @media only screen and (max-width: 767px){
-  body{
-    -webkit-transition:-webkit-transform .3s ease;
-    transition:-webkit-transform .3s ease;
-    transition:transform .3s ease;
-    transition:transform .3s ease, -webkit-transform .3s ease
-  }
-  body.active{
-    -webkit-transform:translateX(240px);
-            transform:translateX(240px);
-  }
-
   h1.trademark{
     position:absolute;
     top:0;
@@ -382,62 +439,6 @@ nav.globalnav ul li{
     left:0;
     right:0;
     margin:auto;
-  }
-
-  nav.globalnav.humberger{
-    top:0;
-    left:-240px;
-    width:240px;
-    height:100vh;
-    margin-top:0;
-    padding-top:0;
-    border:none;
-    -webkit-box-shadow:-3px 3px 3px rgba(0, 0, 0, .7) inset;
-            box-shadow:-3px 3px 3px rgba(0, 0, 0, .7) inset;
-    background-color:#343434
-  }
-
-  nav.globalnav.humberger ul{
-    display:block;
-  }
-
-  nav.globalnav.humberger ul li{
-    height:4rem;
-    padding:1rem;
-    text-align:left;
-    line-height:1.6rem;
-    border:none;
-    border-top:1px solid #474747;
-    border-bottom:1px solid #212121;
-    background-color:#373737;
-  }
-
-  nav.globalnav.humberger ul li:last-child{
-    border-right:none;
-  }
-
-  nav.globalnav.humberger ~ #humberger-icon{
-    position:fixed;
-    margin:1.5rem;
-    width:30px;
-    height:19px;
-    background-color:black;
-    cursor:pointer
-  }
-
-  nav.globalnav.humberger ~ #humberger-icon:before, nav.globalnav.humberger ~ #humberger-icon:after{
-    position:absolute;
-    content:'';
-    width:100%;
-    border-top:5px solid #fff;
-  }
-
-  nav.globalnav.humberger ~ #humberger-icon:before{
-    top:3px;
-  }
-
-  nav.globalnav.humberger ~ #humberger-icon:after{
-    bottom:3px;
   }
 }
 footer{

@@ -1,0 +1,88 @@
+/*
+ * # modules/humberger.css
+ * ハンバーガーメニューに関する定義
+ * nav.globalnav .humbergerが必要
+ * div#humberger-iconが必要
+ * jsでopen/close toggleClassするコードが必要
+ */
+
+/*
+ * vars
+ */
+:root {
+  --burger-width: 240px;
+}
+
+@media (--sp-viewport) {
+  /*
+   * body
+   */
+  body {
+    transition: transform .3s ease;
+
+    &.active {
+      transform: translateX(var(--burger-width));
+    }
+  }
+
+  /*
+   * globalnav
+   */
+  nav.globalnav.humberger {
+    top: 0;
+    left: -var(--burger-width);
+    width: var(--burger-width);
+    height: 100vh;
+    margin-top: 0;
+    padding-top: 0;
+    border: none;
+    box-shadow: -3px 3px 3px rgba(0,0,0,.7) inset;
+    background-color: #343434;
+
+    & ul {
+      display: block;
+
+      & li {
+        height: 4rem;
+        padding: var(--small-spacing);
+        text-align: left;
+        line-height: var(--small-line-height);
+        border: none;
+        border-top: 1px solid #474747;
+        border-bottom: 1px solid #212121;
+        background-color: #373737;
+      }
+
+      & li:last-child {
+        border-right: none;
+      }
+    }
+  }
+
+  /*
+   * humberger-icon
+   */
+  nav.globalnav.humberger ~ #humberger-icon {
+    position: fixed;
+    margin: 1.5rem;
+    width: 30px;
+    height: 19px;
+    background-color: black;
+    cursor: pointer;
+
+    &:before, &:after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      border-top: 5px solid #fff;
+    }
+
+    &:before {
+      top: 3px;
+    }
+
+    &:after {
+      bottom: 3px;
+    }
+  }
+}

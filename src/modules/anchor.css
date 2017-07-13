@@ -5,12 +5,12 @@
 
 a, button {
   transition: all 0.3s linear 0s;
-}
 
-a:hover, button:hover {
-  opacity: 0.6;
-}
+  &:hover {
+    opacity: 0.6;
+  }
 
-a.noeffect, button.noeffect {
-  transition: none;
+  &.noeffect {
+    transition: none;
+  }
 }

@@ -5,16 +5,16 @@
 
 ul.topics {
   border-top: 2px solid #ccc;
-}
 
-ul.topics li {
-  line-height: var(--small-line-height);
-  padding: 0.5em 0 0.75em;
-  padding-left: 1em;
-  text-indent: -1em;
-}
+  & li {
+    line-height: var(--small-line-height);
+    padding: 0.5em 0 0.75em;
+    padding-left: 1em;
+    text-indent: -1em;
+  }
 
-ul.topics li:before {
-  font-family: 'icomoon';
-  content: "\e902";
+  & li:before {
+    font-family: 'icomoon';
+    content: "\e902";
+  }
 }

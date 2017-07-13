@@ -20,27 +20,27 @@ header, footer {
 
 header {
   border-top: 3px solid var(--color-corp);
+  border-bottom: 1px solid var(--gray);
 }
 
 /*
  * globalnav
  */
 nav.globalnav {
-  border-top: 1px solid var(--gray);
   border-bottom: 1px solid var(--gray);
   background-color: white;
-}
 
-nav.globalnav ul li {
-  border-left: 1px solid var(--gray);
-}
+  & ul li {
+    border-left: 1px solid var(--gray);
 
-nav.globalnav ul li:last-child {
-  border-right: 1px solid var(--gray);
-}
+    &:last-child {
+      border-right: 1px solid var(--gray);
+    }
 
-nav.globalnav ul li a, nav.globalnav ul li a:hover {
-  color: var(--gray-darker);
+    & a, & a:hover {
+      color: var(--gray-darker);
+    }
+  }
 }
 
 /*
@@ -48,10 +48,10 @@ nav.globalnav ul li a, nav.globalnav ul li a:hover {
  */
 ul.topics {
   border-top: 2px solid var(--gray);
-}
 
-ul.topics li {
-  border-bottom: 1px solid var(--gray);
+  & li {
+    border-bottom: 1px solid var(--gray);
+  }
 }
 
 /*

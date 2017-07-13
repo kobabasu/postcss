@@ -17,4 +17,11 @@
   footer {
     padding-top: 0.5rem;
   }
+
+  /*
+   * メニューのliがずれる対策
+   */
+  nav.globalnav ul li {
+    line-height: 2.3rem;
+  }
 }

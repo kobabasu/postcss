@@ -10,7 +10,7 @@ ul.topics {
     line-height: calc(var(--small-line-height) * 1.25);
     padding: 0.5em 0;
     padding-left: 1em;
-    text-indent: -1em;
+    text-indent: -1.25em;
   }
 
   & li:before {

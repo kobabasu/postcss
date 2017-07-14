@@ -7,14 +7,28 @@ ul.topics {
   border-top: 2px solid #ccc;
 
   & li {
-    line-height: var(--small-line-height);
-    padding: 0.5em 0 0.75em;
+    line-height: calc(var(--small-line-height) * 1.25);
+    padding: 0.5em 0;
     padding-left: 1em;
     text-indent: -1em;
   }
 
   & li:before {
     font-family: 'icomoon';
+    font-size: 1.3em;
+    vertical-align: bottom;
     content: "\e902";
+  }
+}
+
+@media all and (-ms-high-contrast:none) {
+
+  /*
+   * ie用 arrow微調整
+   */
+  ul.topics {
+    & li:before {
+      vertical-align: -0.35rem;
+    }
   }
 }

@@ -62,7 +62,7 @@
       position: absolute;
       content: '';
       width: 100%;
-      border-top: 5px solid #fff;
+      border-top: 5px solid white;
     }
 
     &:before {

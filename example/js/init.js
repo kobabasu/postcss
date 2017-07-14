@@ -88,7 +88,7 @@ window.onload = function() {
   }
 
   function clickEvent(e) {
-    var hash = e.target.getAttribute('href');
+    var hash = e.target.getAttribute('href') || e.target.parentNode.getAttribute('href') ;
     if (hash && hash.match(/^#.*/)) {
       e.preventDefault();
       var el = document.getElementById(hash.replace(/#/g, ''));

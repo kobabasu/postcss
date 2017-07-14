@@ -57,7 +57,7 @@
   /*
    * humberger-icon
    */
-  nav.globalnav.humberger ~ #humberger-icon {
+  nav.globalnav.humberger ~ div.humberger-icon {
     position: fixed;
     margin: 1.5rem;
     width: 30px;
@@ -85,6 +85,19 @@
    * toggle animation
    */
   body {
+    transition: transform .3s ease;
+
+    &.humberger-active {
+      transform: translateX(var(--burger-width));
+    }
+  }
+}
+
+@media all and (-ms-high-contrast:none) {
+  /*
+   * for IE11 toggle animation
+   */
+  div.humberger-icon, header, nav.globalnav.humberger {
     transition: transform .3s ease;
 
     &.humberger-active {

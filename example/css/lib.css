@@ -680,11 +680,11 @@ template{
 
 @font-face{
   font-family:'icomoon';
-  src:url('../../fonts/icomoon/fonts/icomoon.eot?drk3p8');
-  src:url('../../fonts/icomoon/fonts/icomoon.eot?drk3p8#iefix') format('embedded-opentype'),
-    url('../../fonts/icomoon/fonts/icomoon.ttf?drk3p8') format('truetype'),
-    url('../../fonts/icomoon/fonts/icomoon.woff?drk3p8') format('woff'),
-    url('../../fonts/icomoon/fonts/icomoon.svg?drk3p8#icomoon') format('svg');
+  src:url('../../fonts/icomoon/fonts/icomoon.eot?a2ew4b');
+  src:url('../../fonts/icomoon/fonts/icomoon.eot?a2ew4b#iefix') format('embedded-opentype'),
+    url('../../fonts/icomoon/fonts/icomoon.ttf?a2ew4b') format('truetype'),
+    url('../../fonts/icomoon/fonts/icomoon.woff?a2ew4b') format('woff'),
+    url('../../fonts/icomoon/fonts/icomoon.svg?a2ew4b#icomoon') format('svg');
   font-weight:normal;
   font-style:normal;
 }
@@ -703,24 +703,16 @@ template{
   -moz-osx-font-smoothing:grayscale;
 }
 
+.icon-chevron-circle-up:before{
+  content:"\e900";
+}
+
 .icon-keyboard_arrow_right:before{
   content:"\e902";
 }
 
-.icon-lock:before{
-  content:"\e900";
-}
-
 .icon-home:before{
   content:"\e901";
-}
-
-.icon-pencil2:before{
-  content:"\e906";
-}
-
-.icon-alarm:before{
-  content:"\e950";
 }
 
 /*!

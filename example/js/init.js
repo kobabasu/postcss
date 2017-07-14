@@ -40,9 +40,9 @@ window.onload = function() {
    * set viewport without tablet
    */
   if (!device.tablet()) {
-    var metaTag=document.createElement('meta');
+    var metaTag = document.createElement('meta');
     metaTag.name = 'viewport'
-    metaTag.content = 'width=device-width, initial-scale=1';
+    metaTag.content = 'width=device-width, initial-scale=1, user-scalable=no';
     document.getElementsByTagName('head')[0].appendChild(metaTag);
   }
 
@@ -68,7 +68,6 @@ window.onload = function() {
    */
   var humberger = document.getElementsByClassName('humberger-icon')[0];
   humberger.addEventListener('click', function() {
-
     var body = document.getElementsByTagName('body')[0];
     var nav = document.getElementsByClassName('globalnav')[0];
     var header = document.getElementsByTagName('header')[0];
@@ -145,5 +144,25 @@ window.onload = function() {
       }
     }
     tick();
+  }
+
+};
+
+/*
+ * scrolltop position fixed
+ */
+window.onscroll = function() {
+  var footer = document.getElementsByTagName('footer')[0].clientHeight;
+  var target = document.getElementsByClassName('scrolltop')[0];
+
+  var body = window.document.body;
+  var html = window.document.documentElement;
+  var scrollTop = body.scrollTop || html.scrollTop ;
+  var pos = html.scrollHeight - html.clientHeight - scrollTop;
+
+  if (footer > pos) {
+    target.style.bottom = footer + 10 + 'px';
+  } else {
+    target.style.bottom = '10px';
   }
 };

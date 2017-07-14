@@ -29,6 +29,8 @@
 <!--<![endif]-->
 
 <script src="vendor/devicejs/lib/device.min.js"></script>
+<script src="vendor/platform/platform.js"></script>
+<script src="vendor/animejs/anime.min.js"></script>
 
 <link href="/favicon.ico" rel="icon">
 <link rel="apple-touch-icon" sizes="180x180" href="180.png">
@@ -48,7 +50,7 @@
 
 <body>
 <header>
-  <h1 class="trademark">
+  <h1 id="pagetop" class="trademark">
     <a href="https://google.com/">
       <img src="imgs/clear.png" alt="PostCss" width="80" height="20" />
     </a>
@@ -57,7 +59,7 @@
 
 <nav class="globalnav humberger">
   <ul>
-    <li><a href="#">Home</a></li>
+    <li><a href="#home">Home</a></li>
     <li><a href="#">会社概要</a></li>
     <li><a href="#">商品ラインアップ</a></li>
     <li><a href="#">アクセス</a></li>
@@ -79,7 +81,7 @@
       </small>
     </div>
 
-    <div class="column-5">
+    <div class="column-5" id="home">
       <h2 class="nowrap">親譲おやゆずりの無鉄砲むてっぽうで小供の時から</h2>
       <p>親譲おやゆずりの無鉄砲むてっぽうで小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰こしを抜ぬかした事がある。なぜそんな無闇むやみをしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談じょうだんに、いくら威張いばっても、そこから飛び降りる事は出来まい。弱虫やーい。と囃はやしたからである。</p>
     </div>
@@ -108,6 +110,7 @@
 </article>
 
 <footer>
+  <a href="#pagetop">scrollit</a>
   <div class="copyright">&copy;example.com Inc.</div>
 </footer>
 

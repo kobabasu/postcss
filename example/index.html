@@ -30,19 +30,6 @@
 
 <script src="vendor/devicejs/lib/device.min.js"></script>
 
-<script>
-  // tablet - disable viewport
-  $(function() {
-    if (!device.tablet()) {
-      var metaTag=document.createElement('meta');
-      metaTag.name = 'viewport'
-      metaTag.content = 'width=device-width, initial-scale=1';
-      document.getElementsByTagName('head')[0].appendChild(metaTag);
-    }
-  });
-</script>
-
-
 <link href="/favicon.ico" rel="icon">
 <link rel="apple-touch-icon" sizes="180x180" href="180.png">
 
@@ -124,15 +111,7 @@
   <div class="copyright">&copy;example.com Inc.</div>
 </footer>
 
-<script>
-  $('#humberger-icon').on('click', function() {
-    $('nav.globalnav').toggleClass('humberger-active');
-    $('body').toggleClass('humberger-active');
-    $('#humberger-icon').toggleClass('humberger-active');
-    $('header').toggleClass('humberger-active');
-  });
-</script>
-
+<script src="js/init.js"></script>
 </body>
 </html><!--
 vim: foldmethod=marker:ts=2:sts=0:sw=2

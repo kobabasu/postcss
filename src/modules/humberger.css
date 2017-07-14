@@ -15,17 +15,32 @@
 
 @media (--sp-viewport) {
   /*
+   * body toggle animation
+   */
+  body {
+    left: 0;
+    transition: left .3s ease;
+    &.humberger-active {
+      left: var(--burger-width);
+    }
+  }
+
+  /*
    * globalnav
    */
   nav.globalnav.humberger {
     width: var(--burger-width);
-    min-height: 100%;
     top: 0;
-    left: -var(--burger-width);
     margin-top: 0;
     padding-top: 0;
     border: none;
     background-color: #343434;
+
+    left: -var(--burger-width);
+    transition: left .3s ease;
+    &.humberger-active {
+      left: 0;
+    }
 
     & ul {
       display: block;
@@ -71,30 +86,6 @@
 
     &:after {
       bottom: 3px;
-    }
-  }
-
-  /*
-   * toggle animation
-   */
-  body {
-    transition: transform .3s ease;
-
-    &.humberger-active {
-      transform: translateX(var(--burger-width));
-    }
-  }
-}
-
-@media all and (-ms-high-contrast:none) {
-  /*
-   * for IE11 toggle animation
-   */
-  div.humberger-icon, header, nav.globalnav.humberger {
-    transition: transform .3s ease;
-
-    &.humberger-active {
-      transform: translateX(var(--burger-width));
     }
   }
 }

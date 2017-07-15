@@ -30,15 +30,17 @@ window.onload = function() {
   ScrollInnerLinks();
   enableHumbergerMenu();
 
-  var scrolltop = FixedScrollTop();
-  var inview = InView();
-  inview.onload();
+  loading.trigger(function() {
+    var scrolltop = FixedScrollTop();
+    var inview = InView();
+    inview.onload();
 
-  window.onscroll = function() {
-    scrolltop.animate();
-    inview.detect();
-  };
-}
+    window.onscroll = function() {
+      scrolltop.animate();
+      inview.detect();
+    };
+  });
+};
 
 
 /*
@@ -49,7 +51,7 @@ function Loading(element) {
   var el = element || '#wrap' ;
 
   _ = {
-    status: true,
+    complete: false,
     el: document.querySelector(el),
 
     run: function() {
@@ -59,7 +61,7 @@ function Loading(element) {
     loaded: function() {
       document.removeEventListener('DOMContentLoaded', _.loaded, false);
       
-      if (_.status) {
+      if (!_.complete) {
         setTimeout(function() {
           _.el.classList.add('loaded');
           _.el.addEventListener('transitionend', _.remove, false);
@@ -69,7 +71,11 @@ function Loading(element) {
 
     remove: function() {
       document.body.removeChild(_.el);
-      _.status = false;
+      _.complete = true;
+    },
+
+    trigger: function(fnc) {
+      fnc();
     }
   };
 
@@ -331,5 +337,6 @@ function InView(cls) {
 
   return _;
 }
+
 
 // vim: foldmethod=marker:ts=2:sts=0:sw=2

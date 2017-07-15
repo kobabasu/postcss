@@ -9,6 +9,7 @@
  * -------------
  */
 window.onload = function() {
+  EnableViewport();
   DetectViewport('sp', '(max-width: 767px)').listen();
   DetectViewport('5k', '(min-width: 1280px)').listen();
   ScrollInnerLinks();
@@ -22,6 +23,34 @@ window.onload = function() {
     scrolltop.animate();
     inview.detect();
   };
+}
+
+
+/*
+ * set viewport without tablet
+ */
+function EnableViewport() {
+  if ('device' in this) {
+    var _ = Object.create(p);
+
+    _ = {
+      target: document.getElementsByTagName('head')[0],
+      tag: document.createElement('meta'),
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1, user-scalable=no'
+    };
+
+    if (!device.tablet()) {
+      _.tag.name = _.name;
+      _.tag.content = _.content;
+      _.target.appendChild(_.tag);
+    };
+
+    return true;
+  } else {
+    console.log('error [EnableViewport()]: "device.js" not found.');
+    return false;
+  }
 }
 
 

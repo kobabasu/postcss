@@ -9,6 +9,17 @@
  * -------------
  */
 var loading = Loading();
+loading.emitter = function() {
+  var scrolltop = FixedScrollTop();
+  var inview = InView();
+  inview.onload();
+
+  window.onscroll = function() {
+    scrolltop.animate();
+    inview.detect();
+  };
+};
+
 if (!DEBUG_MODE) {
   loading.run();
   setTimeout(loading.loaded, 7000);
@@ -29,17 +40,6 @@ window.onload = function() {
   DetectViewport('5k', '(min-width: 1280px)').listen();
   ScrollInnerLinks();
   enableHumbergerMenu();
-
-  loading.trigger(function() {
-    var scrolltop = FixedScrollTop();
-    var inview = InView();
-    inview.onload();
-
-    window.onscroll = function() {
-      scrolltop.animate();
-      inview.detect();
-    };
-  });
 };
 
 
@@ -53,6 +53,7 @@ function Loading(element) {
   _ = {
     complete: false,
     el: document.querySelector(el),
+    emitter: null,
 
     run: function() {
       document.addEventListener('DOMContentLoaded', _.loaded, false);
@@ -72,6 +73,7 @@ function Loading(element) {
     remove: function() {
       document.body.removeChild(_.el);
       _.complete = true;
+      _.emitter();
     },
 
     trigger: function(fnc) {

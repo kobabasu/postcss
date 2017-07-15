@@ -1,0 +1,12 @@
+/*
+ * # configs/zindex.css
+ * z-indexを定義
+ */
+
+body {
+  z-index: 0;
+}
+
+div#wrap {
+  z-index: 9999;
+}

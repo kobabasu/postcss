@@ -13,7 +13,6 @@ div#wrap {
   background-color: #252525;
   opacity: 1;
   transition: opacity .3s ease 1s;
-  z-index: 9999;
 }
 
 div#wrap.loaded {

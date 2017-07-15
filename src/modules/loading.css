@@ -1,0 +1,54 @@
+/*
+ * # modules/loading.css
+ * ローディング画面
+ * htmlにインラインで記述する場合もあるため、
+ * nestは使っていない
+ */
+
+div#wrap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #252525;
+  opacity: 1;
+  transition: opacity .3s ease 1s;
+  z-index: 9999;
+}
+
+div#wrap.loaded {
+  opacity: 0;
+}
+
+div#wrap > p {
+  font-family: 'Courier New';
+  position: absolute;
+  display: block;
+  top: 50%;
+  bottom: 50%;
+  right: 0;
+  left: 0;
+  width: 11rem;
+  height: 2.0rem;
+  margin: auto;
+  padding-top: 0.4rem;
+  line-height: 1.2rem;
+  color: #ccc;
+  border-right: 1px solid #777;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2.5s steps(12, end) infinite,
+             blink .5s step-end infinite alternate;
+}
+
+@keyframes typing {
+  0%   { width: 0; }
+  20%  { width: 11rem; }
+  100% { width: 11rem; }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

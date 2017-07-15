@@ -3,6 +3,7 @@
  * モジュール定義
  */
 
+@import 'loading.css';
 @import 'anchor.css';
 @import 'grid.css';
 @import 'decoration.css';

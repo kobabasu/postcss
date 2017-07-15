@@ -10,6 +10,7 @@
  */
 window.onload = function() {
   EnableViewport();
+  DisableWindowsMouseWheel();
   DetectViewport('sp', '(max-width: 767px)').listen();
   DetectViewport('5k', '(min-width: 1280px)').listen();
   ScrollInnerLinks();
@@ -51,6 +52,31 @@ function EnableViewport() {
     console.log('error [EnableViewport()]: "device.js" not found.');
     return false;
   }
+}
+
+
+/*
+ * disabled windows smooth scroll
+ */
+function DisableWindowsMouseWheel() {
+  var _ = Object.create(p);
+  _ = {};
+
+  if(
+    navigator.userAgent.match(/MSIE 10/i) ||
+    navigator.userAgent.match(/Trident\/7\./) ||
+    navigator.userAgent.match(/Edge\/12\./)
+  ) {
+    if (document.attachEvent) {
+      document.attachEvent('onmouseweel', function(e) {
+        e.preventDefault();
+        var wd = e.wheelDelta;
+        var csp = window.pageYOffset;
+        window.scrollTo(0, csp - wd);
+      });
+    }
+  }
+  return true;
 }
 
 

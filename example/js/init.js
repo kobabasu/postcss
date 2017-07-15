@@ -1,22 +1,51 @@
+/*
+ * object.create
+ */
+var p = {};
+var _bjectCreate = function(arg) {
+  if (!arg) { return {} };
+  function obj() {};
+  obj.prototype = arg;
+  return new obj;
+};
+Object.create = Object.create || ObjectCreate ;
+
+/*
+ * request animation frame
+ */
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+
 window.onload = function() {
+  EnableViewport();
+  DisableWindowsMouseWheel();
 
-  var innerLinkFixed = -100;
+  DetectViewport('sp', '(max-width: 767px)').listen();
+  DetectViewport('5k', '(min-width: 1280px)').listen();
+  ScrollInnerLinks();
+  enableHumbergerMenu();
 
-  /*
-   * request animation frame
-   */
-  window.requestAnimFrame = (function(){
-    return  window.requestAnimationFrame       ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
-            function( callback ){
-              window.setTimeout(callback, 1000 / 60);
-            };
-  })();
+  var scrolltop = FixedScrollTop();
 
-  /*
-   * disabled windows smooth scroll
-   */
+  window.onscroll = function() {
+    scrolltop.animate();
+  };
+}
+
+/*
+ * disabled windows smooth scroll
+ */
+function DisableWindowsMouseWheel() {
+  var _ = Object.create(p);
+  _ = {};
+
   if(
     navigator.userAgent.match(/MSIE 10/i) ||
     navigator.userAgent.match(/Trident\/7\./) ||
@@ -24,145 +53,195 @@ window.onload = function() {
   ) {
     if (document.attachEvent) {
       document.attachEvent('onmouseweel', function(e) {
-        disableMouseWheel(e);
+        e.preventDefault();
+        var wd = e.wheelDelta;
+        var csp = window.pageYOffset;
+        window.scrollTo(0, csp - wd);
       });
     }
+  }
+  return true;
+}
 
-    function disableMouseWheel(e) {
-      e.preventDefault();
-      var wd = e.wheelDelta;
-      var csp = window.pageYOffset;
-      window.scrollTo(0, csp - wd);
+/*
+ * set viewport without tablet
+ */
+function EnableViewport() {
+  if ('device' in this) {
+    var _ = Object.create(p);
+
+    _ = {
+      target: document.getElementsByTagName('head')[0],
+      tag: document.createElement('meta'),
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1, user-scalable=no'
+    };
+
+    if (!device.tablet()) {
+      _.tag.name = _.name;
+      _.tag.content = _.content;
+      _.target.appendChild(_.tag);
+    };
+
+    return true;
+  } else {
+    console.log('error [EnableViewport()]: "device.js" not found.');
+    return false;
+  }
+}
+
+/*
+ * detect viewport
+ */
+function DetectViewport(name, viewport) {
+  var _ = Object.create(p);
+
+  _ = {
+    name: name,
+    viewport: viewport,
+
+    listen: function() {
+      window.matchMedia(this.viewport).addListener(function(e) {
+        if (e.matches) {
+          console.log(name);
+        }
+      });
     }
+  };
+
+  return _;
+};
+
+/*
+ * humberger menu
+ */
+function enableHumbergerMenu(nav) {
+  var _ = Object.create(p);
+
+  var nav = nav || '.globalnav.humberger';
+  
+  _ = {
+    body: document.body,
+    header: document.getElementsByTagName('header')[0],
+    nav: document.querySelector(nav),
   }
 
-  /*
-   * set viewport without tablet
-   */
-  if (!device.tablet()) {
-    var metaTag = document.createElement('meta');
-    metaTag.name = 'viewport'
-    metaTag.content = 'width=device-width, initial-scale=1, user-scalable=no';
-    document.getElementsByTagName('head')[0].appendChild(metaTag);
-  }
+  var icon = document.createElement('div');
+  icon.className = 'humberger-icon';
+  _.nav.parentNode.insertBefore(icon, _.nav.nextElementSibling);
 
-  /*
-   * detect viewport
-   */
-  window.matchMedia('(max-width: 767px)').addListener(viewPortSp);
-  function viewPortSp(e) {
-    if (e.matches) {
-      console.log('viewport sp');
-    }
-  }
-
-  window.matchMedia('(min-width: 1280px)').addListener(viewPort5k);
-  function viewPort5k(e) {
-    if (e.matches) {
-      console.log('viewport 5k');
-    }
-  }
-
-  /*
-   * humberger menu
-   */
-  var humberger = document.getElementsByClassName('humberger-icon')[0];
-  humberger.addEventListener('click', function() {
-    var body = document.getElementsByTagName('body')[0];
-    var nav = document.getElementsByClassName('globalnav')[0];
-    var header = document.getElementsByTagName('header')[0];
-
-    body.classList.toggle('humberger-active');
-    nav.classList.toggle('humberger-active');
-    header.classList.toggle('humberger-active');
-    this.classList.toggle('humberger-active');
+  icon.addEventListener('click', function() {
+    _.body.classList.toggle('humberger-active');
+    _.nav.classList.toggle('humberger-active');
+    _.header.classList.toggle('humberger-active');
+    icon.classList.toggle('humberger-active');
   });
 
-  /*
-   * inner link scroll
-   */
-  var innerLinks = document.documentElement.querySelectorAll('a[href^="#"]');
-  for (var i = 0; i < innerLinks.length; i++) {
-    innerLinks[i].addEventListener('click', clickEvent, false);
-  }
+  return true;
+}
 
-  function clickEvent(e) {
-    var hash = e.target.getAttribute('href') || e.target.parentNode.getAttribute('href') ;
-    if (hash && hash.match(/^#.*/)) {
-      e.preventDefault();
-      var el = document.getElementById(hash.replace(/#/g, ''));
-      if (el) {
-        scrollToY(el.offsetTop + innerLinkFixed, 50, 'easeInOutQuint');
-      }
-    }
-  }
+/*
+ * inner link scroll
+ */
+function ScrollInnerLinks() {
+  var _ = Object.create(p);
 
-  /*
-   * scroll animation
-   */
-  function scrollToY(scrollTargetY, speed, easing) {
-    var scrollY = window.pageYOffset,
-      scrollTargetY = scrollTargetY || 0,
-      speed = speed || 2000,
-      easing = easing || 'easeOutSine',
-      currentTime = 0;
+  _ = {
+    links: document.documentElement.querySelectorAll('a[href^="#"]'),
+    fixed: -100,
 
-    var time = Math.max(
-      .1,
-      Math.min(Math.abs(scrollY - scrollTargetY) / speed, .8)
-    );
+    click: function(e) {
+      var hash = e.target.getAttribute('href') ||
+          e.target.parentNode.getAttribute('href');
 
-    var PI_D2 = Math.PI / 2,
-      easingEquations = {
-        easeOutSine: function (pos) {
-          return Math.sin(pos * (Math.PI / 2));
-        },
-        easeInOutSine: function (pos) {
-          return (-0.5 * (Math.cos(Math.PI * pos) - 1));
-        },
-        easeInOutQuint: function (pos) {
-          if ((pos /= 0.5) < 1) {
-            return 0.5 * Math.pow(pos, 5);
-          }
-          return 0.5 * (Math.pow((pos - 2), 5) + 2);
+      if (hash && hash.match(/^#.*/)) {
+        e.preventDefault();
+        var el = document.getElementById(hash.replace(/#/g, ''));
+        if (el) {
+          _.scroll(el.offsetTop + _.fixed, 50, 'easeInOutQuint');
         }
-      };
-
-    function tick() {
-      currentTime += 1 / 60;
-
-      var p = currentTime / time;
-      var t = easingEquations[easing](p);
-
-      if (p < 1) {
-        requestAnimFrame(tick);
-
-        window.scrollTo(0, scrollY + ((scrollTargetY - scrollY) * t));
-      } else {
-        // console.log('scroll done');
-        window.scrollTo(0, scrollTargetY);
       }
+    },
+
+    scroll: function(scrollTargetY, speed, easing) {
+      var scrollY = window.pageYOffset,
+        scrollTargetY = scrollTargetY || 0,
+        speed = speed || 2000,
+        easing = easing || 'easeOutSine',
+        currentTime = 0;
+
+      var time = Math.max(
+        .1,
+        Math.min(Math.abs(scrollY - scrollTargetY) / speed, .8)
+      );
+
+      var PI_D2 = Math.PI / 2,
+        easingEquations = {
+          easeOutSine: function (pos) {
+            return Math.sin(pos * (Math.PI / 2));
+          },
+          easeInOutSine: function (pos) {
+            return (-0.5 * (Math.cos(Math.PI * pos) - 1));
+          },
+          easeInOutQuint: function (pos) {
+            if ((pos /= 0.5) < 1) {
+              return 0.5 * Math.pow(pos, 5);
+            }
+            return 0.5 * (Math.pow((pos - 2), 5) + 2);
+          }
+        };
+
+      function tick() {
+        currentTime += 1 / 60;
+
+        var p = currentTime / time;
+        var t = easingEquations[easing](p);
+
+        if (p < 1) {
+          requestAnimFrame(tick);
+
+          window.scrollTo(0, scrollY + ((scrollTargetY - scrollY) * t));
+        } else {
+          // console.log('scroll done');
+          window.scrollTo(0, scrollTargetY);
+        }
+      }
+      tick();
     }
-    tick();
+  };
+
+  for (var i = 0; i < _.links.length; i++) {
+    _.links[i].addEventListener('click', _.click, false);
   }
 
-};
+  return true;
+}
 
 /*
  * scrolltop position fixed
  */
-window.onscroll = function() {
-  var footer = document.getElementsByTagName('footer')[0].clientHeight;
-  var target = document.getElementsByClassName('scrolltop')[0];
+function FixedScrollTop() {
+  var _ = Object.create(p);
 
-  var body = window.document.body;
-  var html = window.document.documentElement;
-  var scrollTop = body.scrollTop || html.scrollTop ;
-  var pos = html.scrollHeight - html.clientHeight - scrollTop;
+  _ = {
+    footer: document.getElementsByTagName('footer')[0].clientHeight,
+    target: document.getElementsByClassName('scrolltop')[0],
+    body: window.document.body,
+    html: window.document.documentElement,
 
-  if (footer > pos) {
-    target.style.bottom = footer + 10 + 'px';
-  } else {
-    target.style.bottom = '10px';
+    now: 0,
+    pos: 0,
+
+    animate: function() {
+      _.now = _.body.scrollTop || _.html.scrollTop ;
+      _.pos = _.html.scrollHeight - _.html.clientHeight - _.now;
+
+      if (_.footer > _.pos) {
+        _.target.style.bottom = _.footer + 10 + 'px';
+      } else {
+        _.target.style.bottom = '10px';
+      }
+    }
   }
-};
+  return _;
+}

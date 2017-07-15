@@ -87,6 +87,16 @@ h1, h2, h3, h4, h5, h6{
   line-height:3.2rem;
 }
 
+.h2{ font-size:19px; font-size:1.9rem; }
+
+.h3{ font-size:18px; font-size:1.8rem; }
+
+.h4{ font-size:17px; font-size:1.7rem; }
+
+.h5{ font-size:16px; font-size:1.6rem; }
+
+.h6{ font-size:15px; font-size:1.5rem; }
+
 small, .small, div.copyright{
   font-size:14px;
   font-size:1.4rem;
@@ -159,6 +169,73 @@ span, small, strong, div.copyright{
 
 h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child, p:last-child, blockquote:last-child, pre:last-child, span:last-child, small:last-child, strong:last-child, div.copyright:last-child{
   margin-bottom:0;
+}
+
+div#wrap{
+  position:fixed;
+  width:100%;
+  height:100%;
+  text-align:center;
+  background-color:#252525;
+  opacity:1;
+  -webkit-transition:opacity .3s ease 1s;
+  transition:opacity .3s ease 1s;
+  z-index:9999;
+}
+
+div#wrap.loaded{
+  opacity:0;
+}
+
+div#wrap > p{
+  font-family:'Courier New';
+  position:absolute;
+  display:block;
+  top:50%;
+  bottom:50%;
+  right:0;
+  left:0;
+  width:110px;
+  width:11rem;
+  height:20px;
+  height:2.0rem;
+  margin:auto;
+  padding-top:4px;
+  padding-top:0.4rem;
+  line-height:12px;
+  line-height:1.2rem;
+  color:#ccc;
+  border-right:1px solid #777;
+  white-space:nowrap;
+  overflow:hidden;
+  -webkit-animation:typing 2.5s steps(12, end) infinite,
+             blink .5s step-end infinite alternate;
+          animation:typing 2.5s steps(12, end) infinite,
+             blink .5s step-end infinite alternate;
+}
+
+@-webkit-keyframes typing{
+  0%{ width:0; }
+  20%{ width:11rem; }
+  100%{ width:11rem; }
+}
+
+@keyframes typing{
+  0%{ width:0; }
+  20%{ width:11rem; }
+  100%{ width:11rem; }
+}
+
+@-webkit-keyframes blink{
+  50%{
+    border-color:transparent;
+  }
+}
+
+@keyframes blink{
+  50%{
+    border-color:transparent;
+  }
 }
 
 a, button{
@@ -403,8 +480,8 @@ a.scrolltop{
 
 .inview{
   opacity:0;
-  -webkit-transition:all .8s ease 1s;
-  transition:all .8s ease 1s;
+  -webkit-transition:all 1.6s ease 0.3s;
+  transition:all 1.6s ease 0.3s;
 }
 
 .inview.animate{
@@ -432,7 +509,7 @@ header{
 
 nav.globalnav{
   border-bottom:1px solid rgb(138, 138, 138);
-  background-color:#FFFFFF
+  background-color:rgba(255, 255, 255, 0.95)
 }
 
 nav.globalnav ul li{

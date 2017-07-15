@@ -2,12 +2,31 @@
  * page initialization
  */
 
+/*
+ * loading
+ */
+document.addEventListener('DOMContentLoaded', loaded, false);
+function loaded() {
+  document.removeEventListener('DOMContentLoaded', loaded, false);
+  var el = document.getElementById('wrap');
+  
+  if (el) {
+    el.classList.add('loaded');
+    el.addEventListener('transitionend', remove, false);
+  }
+  function remove() {
+    document.body.removeChild(el);
+  }
+};
+
+setTimeout(loaded, 7000);
+
 
 /*
  * object.create
  */
 var p = {};
-var _bjectCreate = function(arg) {
+var ObjectCreate = function(arg) {
   if (!arg) { return {} };
   function obj() {};
   obj.prototype = arg;

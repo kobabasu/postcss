@@ -8,6 +8,9 @@
  */
 :root {
   --header-height: 5rem;
+  --trademark-img: 'example.png';
+  --trademark-width: 80px;
+  --trademark-height: 20px;
 }
 
 /*
@@ -22,19 +25,19 @@ header {
 }
 
 /*
- * .trademark
+ * h1.trademark
  */
 h1.trademark {
-  width: 80px;
-  height: 20px;
-  background-image: resolve('example.png');
-  background-size: size('example.png', 2);
+  width: var(--trademark-width);
+  height: var(--trademark-height);
+  background-image: resolve(var(--trademark-img));
+  background-size: size(var(--trademark-img), 2);
   background-repeat: no-repeat;
   background-position: center left;
 
   & a {
     display: block;
-    line-height: 20px;
+    line-height: var(--trademark-height);
   }
 }
 

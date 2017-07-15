@@ -5,12 +5,19 @@
  * nestは使っていない
  */
 
+/*
+ * vars
+ */
+:root {
+  --loading-font-width: 11rem;
+}
+
 div#wrap {
   position: fixed;
   width: 100%;
   height: 100%;
   text-align: center;
-  background-color: #252525;
+  background-color: var(--device-bg);
   opacity: 1;
   transition: opacity .3s ease 1s;
 }
@@ -27,13 +34,13 @@ div#wrap > p {
   bottom: 50%;
   right: 0;
   left: 0;
-  width: 11rem;
-  height: 2.0rem;
+  width: var(--loading-font-width);
+  height: var(--base-spacing);
   margin: auto;
-  padding-top: 0.4rem;
-  line-height: 1.2rem;
-  color: #ccc;
-  border-right: 1px solid #777;
+  padding-top: var(--tiny-spacing);
+  line-height: var(--small-spacing);
+  color: color(var(--device-bg) lightness(+40%));
+  border-right: 1px solid color(var(--device-bg) lightness(+20%));
   white-space: nowrap;
   overflow: hidden;
   animation: typing 2.5s steps(12, end) infinite,
@@ -42,8 +49,8 @@ div#wrap > p {
 
 @keyframes typing {
   0%   { width: 0; }
-  20%  { width: 11rem; }
-  100% { width: 11rem; }
+  20%  { width: var(--loading-font-width); }
+  100% { width: var(--loading-font-width); }
 }
 
 @keyframes blink {

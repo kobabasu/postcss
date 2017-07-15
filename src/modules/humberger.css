@@ -58,8 +58,8 @@
         line-height: var(--small-line-height);
         border: none;
         border-top: 1px solid color(var(--device-bg) lightness(+7%));
-        border-bottom: 1px solid color(var(--device-bg) blackness(+20%));
-        background-color: color(var(--device-bg) lightness(+1%));
+        border-bottom: 1px solid color(var(--device-bg) blackness(+90%));
+        background-color: color(var(--device-bg) lightness(+2%));
       }
 
       & li:last-child {

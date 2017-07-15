@@ -198,14 +198,14 @@ div#wrap > p{
   width:110px;
   width:11rem;
   height:20px;
-  height:2.0rem;
+  height:2rem;
   margin:auto;
-  padding-top:4px;
-  padding-top:0.4rem;
-  line-height:12px;
-  line-height:1.2rem;
-  color:#ccc;
-  border-right:1px solid #777;
+  padding-top:5px;
+  padding-top:0.5rem;
+  line-height:10px;
+  line-height:1rem;
+  color:rgb(140, 140, 140);
+  border-right:1px solid rgb(89, 89, 89);
   white-space:nowrap;
   overflow:hidden;
   -webkit-animation:typing 2.5s steps(12, end) infinite,
@@ -418,10 +418,9 @@ ul.topics li:before{
   nav.globalnav.humberger{
     width:240px;
     top:0;
-    margin-top:0;
     padding-top:0;
     border:none;
-    background-color:#343434;
+    background-color:#252525;
 
     left:-240px;
     -webkit-transition:left .3s ease;
@@ -439,9 +438,9 @@ ul.topics li:before{
     text-align:left;
     line-height:1.8rem;
     border:none;
-    border-top:1px solid #474747;
-    border-bottom:1px solid #212121;
-    background-color:#373737;
+    border-top:1px solid rgb(56, 56, 56);
+    border-bottom:1px solid rgb(33, 33, 33);
+    background-color:rgb(43, 43, 43);
   }
   nav.globalnav.humberger ul li:last-child{
     border-right:none;
@@ -452,14 +451,14 @@ ul.topics li:before{
     margin:1.7rem;
     width:30px;
     height:19px;
-    background-color:black;
+    background-color:#252525;
     cursor:pointer
   }
   div.humberger-icon:before, div.humberger-icon:after{
     position:absolute;
     content:'';
     width:100%;
-    border-top:5px solid white;
+    border-top:5px solid #FFFFFF;
   }
   div.humberger-icon:before{
     top:3px;
@@ -491,7 +490,7 @@ a.scrolltop{
 }
 
 html{
-  background-color:#343434;
+  background-color:#252525;
 }
 
 body, article{
@@ -582,6 +581,17 @@ h1.trademark a{
   line-height:20px;
 }
 
+@media only screen and (max-width: 767px){
+  h1.trademark{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+  }
+}
+
 nav.globalnav{
   position:fixed;
   top:50px;
@@ -613,17 +623,6 @@ nav.globalnav ul li{
   line-height:30px;
   line-height:3rem;
   text-align:center;
-}
-
-@media only screen and (max-width: 767px){
-  h1.trademark{
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    margin:auto;
-  }
 }
 
 footer{

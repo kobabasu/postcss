@@ -33,9 +33,12 @@ window.onload = function() {
   enableHumbergerMenu();
 
   var scrolltop = FixedScrollTop();
+  var inview = InView();
+  inview.onload();
 
   window.onscroll = function() {
     scrolltop.animate();
+    inview.detect();
   };
 }
 
@@ -243,5 +246,39 @@ function FixedScrollTop() {
       }
     }
   }
+  return _;
+}
+
+function InView(cls) {
+  var _ = Object.create(p);
+  var classname = cls || '.inview' ;
+  var all = document.querySelectorAll(classname);
+  var target = Array.apply(null, all);
+
+  _ = {
+    target: target,
+
+    animate: function(i) {
+      var rect = _.target[i].getBoundingClientRect();
+
+      if (window.innerHeight - rect.top > 0) {
+        _.target[i].classList.add('animate');
+        _.target.splice(i, 1);
+      }
+    },
+
+    detect: function() {
+      for (var i = 0; i < _.target.length; i++) {
+        _.animate(i);
+      }
+    },
+
+    onload: function() {
+      for (var i = 0; i < _.target.length; i++) {
+        _.animate(i);
+      }
+    }
+  };
+
   return _;
 }

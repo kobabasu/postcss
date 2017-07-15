@@ -368,7 +368,7 @@ ul.topics li:before{
   nav.globalnav.humberger ul li:last-child{
     border-right:none;
   }
-  nav.globalnav.humberger ~ div.humberger-icon{
+  div.humberger-icon{
     position:fixed;
     margin:1.7rem;
     width:30px;
@@ -376,16 +376,16 @@ ul.topics li:before{
     background-color:black;
     cursor:pointer
   }
-  nav.globalnav.humberger ~ div.humberger-icon:before, nav.globalnav.humberger ~ div.humberger-icon:after{
+  div.humberger-icon:before, div.humberger-icon:after{
     position:absolute;
     content:'';
     width:100%;
     border-top:5px solid white;
   }
-  nav.globalnav.humberger ~ div.humberger-icon:before{
+  div.humberger-icon:before{
     top:3px;
   }
-  nav.globalnav.humberger ~ div.humberger-icon:after{
+  div.humberger-icon:after{
     bottom:3px;
   }
 }
@@ -399,6 +399,16 @@ a.scrolltop{
   bottom:1rem;
   text-decoration:none;
   font-size:48px;
+}
+
+.inview{
+  opacity:0;
+  -webkit-transition:all .8s ease 1s;
+  transition:all .8s ease 1s;
+}
+
+.inview.animate{
+  opacity:1;
 }
 
 html{

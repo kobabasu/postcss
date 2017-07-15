@@ -252,30 +252,35 @@ function FixedScrollTop() {
 function InView(cls) {
   var _ = Object.create(p);
   var classname = cls || '.inview' ;
-  var all = document.querySelectorAll(classname);
-  var target = Array.apply(null, all);
+  var obj = document.querySelectorAll(classname);
+  var target = Object.keys(obj).map(function(key) {return obj[key];});
 
   _ = {
+    delayInterval: 0.7,
     target: target,
 
-    animate: function(i) {
+    animate: function(i, mode) {
       var rect = _.target[i].getBoundingClientRect();
 
       if (window.innerHeight - rect.top > 0) {
+        if (mode == 'onload') {
+          var d = parseFloat(getComputedStyle(_.target[i])['transitionDelay']);
+          _.target[i].style.transitionDelay = d + (_.delayInterval * i) + 's';
+        }
         _.target[i].classList.add('animate');
-        _.target.splice(i, 1);
+        delete _.target[i];
       }
     },
 
     detect: function() {
-      for (var i = 0; i < _.target.length; i++) {
-        _.animate(i);
+      for (key in _.target) {
+        _.animate(key);
       }
     },
 
     onload: function() {
-      for (var i = 0; i < _.target.length; i++) {
-        _.animate(i);
+      for (key in _.target) {
+        _.animate(key, 'onload');
       }
     }
   };

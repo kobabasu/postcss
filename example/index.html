@@ -59,26 +59,17 @@
 
 <nav class="globalnav humberger">
   <ul>
-    <li><a href="#home">Home</a></li>
+    <li><a href="#">Home</a></li>
     <li><a href="#">会社概要</a></li>
     <li><a href="#">商品ラインアップ</a></li>
     <li><a href="#">アクセス</a></li>
     <li><a href="#">FAQ</a></li>
-    <li><a href="#">お問い合わせ</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
   </ul>
 </nav>
 
 <article>
   <section class="container">
-
-    <div class="column-5">
-      <i class="icon-home"></i>
-      <!--span class="fa-stack fa-lg">
-        <i class="fa fa-square-o fa-stack-2x"></i>
-        <i class="fa fa-facebook fa-stack-1x"></i>
-      </span-->
-      <a href="#" id="test" class="noeffect">こんにちはHello PostCss.</a>
-    </div>
 
     <div class="column-5">
       <h2 class="nowrap">親譲おやゆずりの無鉄砲むてっぽうで小供の時から</h2>
@@ -89,13 +80,13 @@
       </small>
     </div>
 
-    <div class="column-5" id="home">
+    <div class="column-5 inview">
       <h2 class="nowrap">親譲おやゆずりの無鉄砲むてっぽうで小供の時から</h2>
       <p>親譲おやゆずりの無鉄砲むてっぽうで小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰こしを抜ぬかした事がある。なぜそんな無闇むやみをしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談じょうだんに、いくら威張いばっても、そこから飛び降りる事は出来まい。弱虫やーい。と囃はやしたからである。</p>
     </div>
 
-    <div class="column-2">
-      <h2 class="nowrap">新着情報</h2>
+    <div class="column-2 inview">
+      <h2 class="nowrap h4">新着情報</h2>
       <ul class="topics">
         <li><a href="#">臨時自動ドアメンテナンスのお知らせ</a></li>
         <li><a href="#">営業カレンダーを更新しました</a></li>
@@ -104,6 +95,15 @@
         <li><a href="#">ホームページリニューアル</a></li>
       </ul>
     </div>
+
+    <div class="column-12 inview">
+      <i class="icon-home"></i>
+      <!--span class="fa-stack fa-lg">
+        <i class="fa fa-square-o fa-stack-2x"></i>
+        <i class="fa fa-facebook fa-stack-1x"></i>
+      </span-->
+      <a href="#" id="test" class="noeffect">こんにちはHello PostCss.</a>
+    </div>
   </section>
 </article>
 
@@ -111,7 +111,7 @@
   <a href="#scrolltop" class="scrolltop">
     <i class="icon-chevron-circle-up"></i>
   </a>
-  <div class="copyright">&copy;example.com Inc.</div>
+  <div id="contact" class="copyright inview">&copy;example.com Inc.</div>
 </footer>
 
 <script src="js/init.js"></script>

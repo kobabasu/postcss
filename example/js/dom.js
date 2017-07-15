@@ -5,6 +5,15 @@
 
 /*
  * -------------
+ * before load
+ * -------------
+ */
+var loading = Loading();
+setTimeout(loading.loaded, 7000);
+
+
+/*
+ * -------------
  * main
  * -------------
  */
@@ -24,6 +33,38 @@ window.onload = function() {
     scrolltop.animate();
     inview.detect();
   };
+}
+
+
+/*
+ * loading
+ */
+function Loading(element) {
+  var _ = Object.create(p);
+  var el = element || '#wrap' ;
+
+  _ = {
+    status: true,
+    el: document.querySelector(el),
+
+    remove: function() {
+      document.body.removeChild(_.el);
+      _.status = false;
+    },
+
+    loaded: function() {
+      document.removeEventListener('DOMContentLoaded', _.loaded, false);
+      
+      if (_.status) {
+        _.el.classList.add('loaded');
+        _.el.addEventListener('transitionend', _.remove, false);
+      }
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', setTimeout(_.loaded, 1000), false);
+
+  return _;
 }
 
 

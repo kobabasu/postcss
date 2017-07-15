@@ -38,10 +38,9 @@
   nav.globalnav.humberger {
     width: var(--burger-width);
     top: 0;
-    margin-top: 0;
     padding-top: 0;
     border: none;
-    background-color: #343434;
+    background-color: var(--device-bg);
 
     left: -var(--burger-width);
     transition: left .3s ease;
@@ -58,9 +57,9 @@
         text-align: left;
         line-height: var(--small-line-height);
         border: none;
-        border-top: 1px solid #474747;
-        border-bottom: 1px solid #212121;
-        background-color: #373737;
+        border-top: 1px solid color(var(--device-bg) lightness(+7%));
+        border-bottom: 1px solid color(var(--device-bg) blackness(+20%));
+        background-color: color(var(--device-bg) lightness(+1%));
       }
 
       & li:last-child {
@@ -78,14 +77,14 @@
     margin: 1.7rem;
     width: 30px;
     height: 19px;
-    background-color: black;
+    background-color: var(--device-bg);
     cursor: pointer;
 
     &:before, &:after {
       position: absolute;
       content: '';
       width: 100%;
-      border-top: 5px solid white;
+      border-top: 5px solid var(--color-bg);
     }
 
     &:before {

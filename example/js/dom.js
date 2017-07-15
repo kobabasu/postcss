@@ -56,13 +56,15 @@ function Loading(element) {
       document.removeEventListener('DOMContentLoaded', _.loaded, false);
       
       if (_.status) {
-        _.el.classList.add('loaded');
-        _.el.addEventListener('transitionend', _.remove, false);
+        setTimeout(function() {
+          _.el.classList.add('loaded');
+          _.el.addEventListener('transitionend', _.remove, false);
+        }, 1800);
       }
     }
   };
 
-  document.addEventListener('DOMContentLoaded', setTimeout(_.loaded, 1000), false);
+  document.addEventListener('DOMContentLoaded', _.loaded, false);
 
   return _;
 }

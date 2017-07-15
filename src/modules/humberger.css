@@ -4,6 +4,9 @@
  * nav.globalnav .humbergerが必要
  * div#humberger-iconが必要
  * jsでopen/close toggleClassするコードが必要
+ * activeのoverflow-x:hiddenはheaderをhtml下部に
+ * 移動した際に横スクロールがでる問題の対策
+ * -xをつけないと縦スクロールがいかなくなる
  */
 
 /*
@@ -20,8 +23,12 @@
   body {
     left: 0;
     transition: left .3s ease;
+
+    /*
+     */
     &.humberger-active {
       left: var(--burger-width);
+      overflow-x: hidden;
     }
   }
 
@@ -67,6 +74,7 @@
    */
   div.humberger-icon {
     position: fixed;
+    top: 0;
     margin: 1.7rem;
     width: 30px;
     height: 19px;

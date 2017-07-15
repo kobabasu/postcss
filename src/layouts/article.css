@@ -16,7 +16,7 @@ article {
 }
 
 @media (--sp-viewport) {
-  nav.globalnav.humberger ~ article {
+  article {
     padding-top: calc(
       var(--header-height) +
       2rem

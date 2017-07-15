@@ -9,7 +9,12 @@
  * -------------
  */
 var loading = Loading();
-setTimeout(loading.loaded, 7000);
+if (!DEBUG_MODE) {
+  loading.run();
+  setTimeout(loading.loaded, 7000);
+} else {
+  loading.remove();
+}
 
 
 /*
@@ -47,9 +52,8 @@ function Loading(element) {
     status: true,
     el: document.querySelector(el),
 
-    remove: function() {
-      document.body.removeChild(_.el);
-      _.status = false;
+    run: function() {
+      document.addEventListener('DOMContentLoaded', _.loaded, false);
     },
 
     loaded: function() {
@@ -61,10 +65,13 @@ function Loading(element) {
           _.el.addEventListener('transitionend', _.remove, false);
         }, 1800);
       }
+    },
+
+    remove: function() {
+      document.body.removeChild(_.el);
+      _.status = false;
     }
   };
-
-  document.addEventListener('DOMContentLoaded', _.loaded, false);
 
   return _;
 }

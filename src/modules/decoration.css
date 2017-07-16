@@ -4,6 +4,25 @@
  */
 
 /*
+ * .strong
+ */
+.strong {
+  font-weight: bold;
+}
+
+/*
+ * .mono
+ *  等幅フォント
+ */
+.mono {
+  font-family: 'Consolas', 
+               'Courier New', Courier, Monaco,
+               monospace;
+
+  font-size: 110%;
+}
+
+/*
  * .headPadding
  * 一字下げ
  * text-align:leftはIE対策
@@ -26,4 +45,21 @@ li.nowrap {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/*
+ * span.fixedhead
+ * TEL:, FAX:などちょっとした固定に
+ * アルファベットの4文字, 6文字, 8文字を用意
+ */
+.headfixed-4 {
+  width: calc(var(--base-font-size) * (4 / 2));
+}
+
+.headfixed-6 {
+  width: calc(var(--base-font-size) * (6 / 2) + 0.25rem);
+}
+
+.headfixed-8 {
+  width: calc(var(--base-font-size) * (8 / 2) + 0.5rem);
 }

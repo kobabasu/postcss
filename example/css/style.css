@@ -190,8 +190,8 @@ div#wrap > p{
   bottom:50%;
   right:0;
   left:0;
-  width:110px;
-  width:11rem;
+  width:120px;
+  width:12rem;
   height:20px;
   height:2rem;
   margin:auto;
@@ -211,14 +211,14 @@ div#wrap > p{
 
 @-webkit-keyframes typing{
   0%{ width:0; }
-  20%{ width:11rem; }
-  100%{ width:11rem; }
+  20%{ width:12rem; }
+  100%{ width:12rem; }
 }
 
 @keyframes typing{
   0%{ width:0; }
-  20%{ width:11rem; }
-  100%{ width:11rem; }
+  20%{ width:12rem; }
+  100%{ width:12rem; }
 }
 
 @-webkit-keyframes blink{
@@ -693,8 +693,8 @@ div.footerlink{
 
 div.footerlink img{
   float:left;
-  margin:5px;
-  margin:0.5rem;
+  margin:2.5px;
+  margin:0.25rem;
   margin-left:0;
 }
 

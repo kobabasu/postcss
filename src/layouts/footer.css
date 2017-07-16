@@ -30,7 +30,7 @@ div.footerlink {
 
   & img {
     float: left;
-    margin: var(--tiny-spacing);
+    margin: calc(var(--tiny-spacing) / 2);
     margin-left: 0;
   }
 

@@ -47,7 +47,7 @@ nav.globalnav {
     }
 
     & a, & a:hover {
-      color: var(--gray-darker);
+      color: var(--color-text);
     }
   }
 }
@@ -68,6 +68,13 @@ ul.topics {
  */
 [class*='column-'] {
   background-color: var(--gray-lighter);
+}
+
+[class*='column-']:nth-child(odd) {
+  background-color: color(
+    var(--gray-lighter)
+    blackness(+3%)
+  );
 }
 
 /*

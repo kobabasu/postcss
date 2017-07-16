@@ -61,6 +61,19 @@ nav.globalnav {
 }
 
 /*
+ * footerlink
+ */
+div.footerlink {
+  & h2, & address, & li, & a, & a:hover {
+    color: var(--color-text);
+  }
+}
+
+/*
+ * .copyright
+ */
+
+/*
  * topics
  */
 ul.topics {

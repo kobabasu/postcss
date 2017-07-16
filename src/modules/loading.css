@@ -27,7 +27,6 @@ div#wrap.loaded {
 }
 
 div#wrap > p {
-  font-family: 'Courier New';
   position: absolute;
   display: block;
   top: 50%;

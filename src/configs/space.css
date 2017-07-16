@@ -7,21 +7,10 @@
  * vars
  */
 :root {
-  --gutter: 1rem;
-
   --base-spacing:  calc(var(--gutter) * 2);
   --tiny-spacing:  calc(var(--gutter) / 2);
   --small-spacing: calc(var(--gutter) * 1);
   --large-spacing: calc(var(--gutter) * 3);
-}
-
-/*
- * grid
- */
-[class*='column-'] {
-  margin: 0 calc(var(--gutter) / 2);
-  padding: calc(var(--gutter) * 2);
-  margin-bottom: var(--gutter);
 }
 
 /*

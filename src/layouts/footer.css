@@ -27,7 +27,7 @@ footer {
  */
 div.footerLink {
   font-size: var(--small-font-size);
-  padding-top: var(--base-spacing);
+  padding: var(--base-spacing) 0;
 
   & > div {
 

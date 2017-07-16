@@ -23,10 +23,6 @@ nav.globalnav {
   margin-top: var(--header-height);
 
   & ul {
-    -js-display: flex;
-    display: flex;
-    max-width: 960px;
-    margin: 0 auto;
     flex-wrap: nowrap;
     vertical-align: middle;
 

@@ -7,7 +7,12 @@
  * vars
  */
 :root {
-  --footer-height: 3rem;
+  --footer-link-height: 12rem;
+  --copyright-height: 3rem;
+  --footer-height: calc(
+    var(--footer-link-height) +
+    var(--copyright-height)
+  );
 }
 
 /*
@@ -15,8 +20,31 @@
  */
 footer {
   width: 100%;
-  height: var(--footer-height);
-  padding-top: 0.7rem;
+}
+
+/*
+ * footerlink
+ */
+div.footerLink {
+  font-size: var(--small-font-size);
+  padding-top: var(--base-spacing);
+
+  & > div {
+
+    & > h1 {
+      font-size: var(--base-font-size);
+      line-height: var(--base-line-height);
+    }
+    & > address {
+      line-height: var(--small-line-height);
+
+      & > span {
+        font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+        display: inline-block;
+        padding-right: var(--small-spacing);
+      }
+    }
+  }
 }
 
 /*
@@ -25,5 +53,7 @@ footer {
 div.copyright {
   @extend small;
   display: block;
+  line-height: var(--copyright-height);
+  vertical-align: middle;
   text-align: center;
 }

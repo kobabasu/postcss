@@ -376,6 +376,18 @@ a.noeffect, button.noeffect{
   }
 }
 
+@media only screen and (min-width: 768px){
+  .nopc{
+    display:none;
+  }
+}
+
+@media only screen and (max-width: 767px){
+  .nosp{
+    display:none;
+  }
+}
+
 .headPadding{
   display:block;
   text-transform:capitalize;
@@ -610,6 +622,7 @@ h1.trademark a{
 
 nav.globalnav{
   position:fixed;
+  top:0;
   width:100%;
   height:50px;
   height:5rem;

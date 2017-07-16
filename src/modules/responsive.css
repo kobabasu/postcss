@@ -1,0 +1,16 @@
+/*
+ * # modules/responsive.css
+ * レスポンシブ関連の定義
+ */
+
+@media (--pc-viewport) {
+  .nopc {
+    display: none;
+  }
+}
+
+@media (--sp-viewport) {
+  .nosp {
+    display: none;
+  }
+}

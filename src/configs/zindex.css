@@ -7,6 +7,10 @@ body {
   z-index: 0;
 }
 
+nav.globalnav {
+  z-index: 100;
+}
+
 div#wrap {
   z-index: 9999;
 }

@@ -28,6 +28,12 @@ footer {
 div.footerlink {
   padding: var(--base-spacing) 0;
 
+  & img {
+    float: left;
+    margin: var(--tiny-spacing);
+    margin-left: 0;
+  }
+
   & h2, & address, & li, & a, & a:hover {
     font-size: var(--small-font-size);
     line-height: var(--tiny-line-height);

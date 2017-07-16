@@ -691,6 +691,13 @@ div.footerlink{
   padding:2rem 0
 }
 
+div.footerlink img{
+  float:left;
+  margin:5px;
+  margin:0.5rem;
+  margin-left:0;
+}
+
 div.footerlink h2, div.footerlink address, div.footerlink li, div.footerlink a, div.footerlink a:hover{
   font-size:14px;
   font-size:1.4rem;

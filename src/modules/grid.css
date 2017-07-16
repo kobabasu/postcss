@@ -19,7 +19,6 @@
 .container, .inner-container {
   -js-display: flex;
   display: flex;
-  -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   width: var(--max-width);
   margin: 0 auto;
@@ -27,6 +26,9 @@
   min-width: 0%;
 }
 
+/*
+ * .inner-container
+ */
 .inner-container {
   max-width: var(--inner-container-width);
 }
@@ -35,30 +37,37 @@
  * .column-num
  */
 [class*='column-'] {
-  padding: calc(var(--gutter) * 2) var(--gutter);
+  padding: var(--gutter);
 }
 
 @for $i from 1 to var(--columns) {
   .column-$i {
-    /* postcss.config.jsのpostcss-forを先に読み込む事 */
-    min-width: calc((var(--max-width) / var(--columns)) * $(i) - var(--small-spacing));
+    /* postcss.config.jsのpostcss-forを先読込 */
+    min-width: calc(
+      (var(--max-width) / var(--columns)) * $(i) -
+      var(--small-spacing)
+    );
     flex: $(i);
   }
 }
 
-/*
- * responsive
- */
+
 @media (--sp-viewport) {
+  /*
+   * .container, .inner-container
+   */
+  .container, .inner-container {
+    /* ie11だとflex-direction:columnで高さ誤認識 */
+    display: block;
+    width: 100%;
+  }
+
+  /*
+   * img
+   */
   img {
     width: auto;
     max-width: 100%;
     height: auto !important;
-  }
-
-  .container, .inner-container {
-    /* ie11だと flex-direction: columnで高さが認識されない */
-    display: block;
-    width: 100%;
   }
 }

@@ -693,6 +693,8 @@ div.footerlink{
 
 div.footerlink img{
   float:left;
+  width:80px;
+  height:20px;
   margin:2.5px;
   margin:0.25rem;
   margin-left:0;
@@ -717,6 +719,10 @@ div.footerlink h2{
   font-weight:bold;
   height:45px;
   height:4.5rem;
+}
+
+div.footerlink address, div.footerlink li:last-child{
+  height:auto;
 }
 
 div.footerlink span{

@@ -30,6 +30,8 @@ div.footerlink {
 
   & img {
     float: left;
+    width: 80px;
+    height: 20px;
     margin: calc(var(--tiny-spacing) / 2);
     margin-left: 0;
   }
@@ -48,6 +50,10 @@ div.footerlink {
   & h2 {
     font-weight: bold;
     height: calc(var(--large-spacing) * 1.5);
+  }
+
+  & address, & li:last-child {
+    height: auto;
   }
 
   & span {

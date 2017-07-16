@@ -43,6 +43,8 @@ div.footerlink {
     text-decoration: none;
   }
 
+
+
   & h1 {
     font-size: var(--base-font-size);
   }
@@ -69,4 +71,33 @@ div.copyright {
   line-height: var(--base-line-height);
   vertical-align: middle;
   text-align: center;
+}
+
+@media (--sp-viewport) {
+  div.footerlink {
+    padding-top: 0;
+
+    & h2 {
+      height: auto;
+    }
+
+    & li, & a, & a:hover {
+      display: inline-block;
+      line-height: 1.2rem;
+      height: auto;
+    }
+
+    & li {
+      border-right: 1px solid var(--gray);
+      padding: 0 var(--tiny-spacing);
+    }
+
+    & li:last-child {
+      border-right: none;
+    }
+
+    & h2 br, & li br {
+      display: none;
+    }
+  }
 }

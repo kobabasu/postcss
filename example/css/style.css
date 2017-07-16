@@ -738,6 +738,30 @@ div.copyright{
   text-align:center;
 }
 
+@media only screen and (max-width: 767px){
+  div.footerlink{
+    padding-top:0
+  }
+  div.footerlink h2{
+    height:auto;
+  }
+  div.footerlink li, div.footerlink a, div.footerlink a:hover{
+    display:inline-block;
+    line-height:1.2rem;
+    height:auto;
+  }
+  div.footerlink li{
+    border-right:1px solid rgb(189, 189, 189);
+    padding:0 0.5rem;
+  }
+  div.footerlink li:last-child{
+    border-right:none;
+  }
+  div.footerlink h2 br, div.footerlink li br{
+    display:none;
+  }
+}
+
 article{
   min-height:calc(100vh - 15rem);
   padding-top:100px;

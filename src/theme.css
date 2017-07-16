@@ -18,7 +18,6 @@ html {
 body, article {
   color: var(--color-text);
   background-color: var(--color-bg);
-  overflow: visible;
 }
 
 /*

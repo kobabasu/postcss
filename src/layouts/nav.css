@@ -16,10 +16,10 @@
  */
 nav.globalnav {
   position: fixed;
-  top: var(--header-height);
   width: 100%;
   height: var(--nav-height);
   padding-top: 1rem;
+  margin-top: var(--header-height);
 
   & ul {
     -js-display: flex;

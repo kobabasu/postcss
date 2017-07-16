@@ -21,14 +21,13 @@
    * body toggle animation
    */
   body {
+    width: 100%;
     left: 0;
-    transition: left .3s ease;
+    transition: all .3s ease;
 
-    /*
-     */
     &.humberger-active {
       left: var(--burger-width);
-      overflow-x: hidden;
+      width: calc(100% - var(--burger-width));
     }
   }
 
@@ -37,14 +36,15 @@
    */
   nav.globalnav.humberger {
     width: var(--burger-width);
-    top: 0;
+    margin-top: 0;
+    left: -var(--burger-width);
     padding-top: 0;
     border: none;
     background-color: var(--device-bg);
-
-    left: -var(--burger-width);
     transition: left .3s ease;
+
     &.humberger-active {
+      top: 0;
       left: 0;
     }
 
@@ -78,6 +78,8 @@
     width: 30px;
     height: 19px;
     background-color: var(--device-bg);
+    left: 0;
+    transition: left .3s ease;
     cursor: pointer;
 
     &:before, &:after {
@@ -93,6 +95,10 @@
 
     &:after {
       bottom: 3px;
+    }
+
+    &.humberger-active {
+      left: var(--burger-width);
     }
   }
 }

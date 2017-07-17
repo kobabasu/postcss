@@ -164,6 +164,10 @@ header, nav.globalnav{
   z-index:100;
 }
 
+div.humberger-icon{
+  z-index:200;
+}
+
 div#wrap{
   z-index:9999;
 }
@@ -492,11 +496,11 @@ ul.topics li:before{
   div.humberger-icon{
     position:fixed;
     top:0;
+    left:0;
     margin:1.7rem;
     width:30px;
     height:19px;
     background-color:#252525;
-    left:0;
     -webkit-transition:left .3s ease;
     transition:left .3s ease;
     cursor:pointer

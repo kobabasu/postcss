@@ -262,7 +262,7 @@ function ScrollInnerLinks() {
 
   for (var i = 0; i < _.links.length; i++) {
     _.links[i].addEventListener('click', _.click, false);
-  }
+  };
 
   return true;
 }
@@ -287,13 +287,15 @@ function FixedScrollTop() {
       _.now = _.body.scrollTop || _.html.scrollTop ;
       _.pos = _.html.scrollHeight - _.html.clientHeight - _.now;
 
+      console.log(_.footer + 10 + 'px');
       if (_.footer > _.pos) {
         _.target.style.bottom = _.footer + 10 + 'px';
       } else {
         _.target.style.bottom = '10px';
-      }
+      };
     }
-  }
+  };
+
   return _;
 }
 

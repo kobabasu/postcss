@@ -4,18 +4,6 @@
  */
 
 /*
- * vars
- */
-:root {
-  --footer-link-height: 12rem;
-  --copyright-height: 3rem;
-  --footer-height: calc(
-    var(--footer-link-height) +
-    var(--copyright-height)
-  );
-}
-
-/*
  * footer
  */
 footer {
@@ -68,7 +56,7 @@ div.footerlink {
  */
 div.copyright {
   display: block;
-  line-height: var(--base-line-height);
+  line-height: calc(var(--small-spacing) * 1.5);
   vertical-align: middle;
   text-align: center;
 }

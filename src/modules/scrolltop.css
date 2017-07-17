@@ -6,7 +6,7 @@
 
 a.scrolltop {
   position: fixed;
-  right: 1rem;
+  right: 0;
   padding-right: var(--small-spacing);
   font-size: 48px;
   text-decoration: none;

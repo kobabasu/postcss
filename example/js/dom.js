@@ -18,6 +18,10 @@ loading.emitter = function() {
     scrolltop.animate();
     inview.detect();
   };
+
+  window.resize = function() {
+    scrolltop.animate();
+  }
 };
 
 if (!DEBUG_MODE) {
@@ -275,21 +279,16 @@ function FixedScrollTop() {
   var _ = Object.create(p);
 
   _ = {
-    footer: document.getElementsByTagName('footer')[0].clientHeight,
+    footer: document.getElementsByTagName('footer')[0],
     target: document.getElementsByClassName('scrolltop')[0],
-    body: window.document.body,
-    html: window.document.documentElement,
-
-    now: 0,
-    pos: 0,
 
     animate: function() {
-      _.now = _.body.scrollTop || _.html.scrollTop ;
-      _.pos = _.html.scrollHeight - _.html.clientHeight - _.now;
+      var pos = (window.innerHeight -
+        _.footer.getBoundingClientRect().top
+      );
 
-      console.log(_.footer + 10 + 'px');
-      if (_.footer > _.pos) {
-        _.target.style.bottom = _.footer + 10 + 'px';
+      if (pos > 0) {
+        _.target.style.bottom = pos + 10 + 'px';
       } else {
         _.target.style.bottom = '10px';
       };

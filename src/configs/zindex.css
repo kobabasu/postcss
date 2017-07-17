@@ -7,7 +7,7 @@ body {
   z-index: 0;
 }
 
-nav.globalnav {
+header, nav.globalnav {
   z-index: 100;
 }
 

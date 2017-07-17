@@ -1,0 +1,98 @@
+/*
+ * # configs/type.css
+ * 文字に影響を与えるスタイルを定義
+ */
+
+/*
+ * import Noto Sans webfont
+ * NotoSansJapaneseを使用する場合は以下を利用 
+ */
+/* @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css); */
+
+/*
+ * var
+ */
+:root {
+  --base-font-size:       1.6rem;
+  --small-font-size:      1.4rem;
+  --heading-font-size:    2.0rem;
+
+  --base-line-height:     2.4rem;
+  --small-line-height:    1.8rem;
+  --tiny-line-height:     1.4rem;
+  --heading-line-height:  3.2rem;
+}
+
+/*
+ * base
+ */
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont,
+  'Droid Sans',
+  'Yu Gothic', YuGothic,
+  'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN',
+  Arial, 'メイリオ', Meiryo, sans-serif;
+
+  font-size: var(--base-font-size);
+  font-weight: normal;
+  line-height: var(--base-line-height);
+}
+
+/*
+ * heading
+ */
+h1, h2, h3, h4, h5, h6 {
+  font-size: var(--heading-font-size);
+  font-weight: 400;
+  line-height: var(--heading-line-height);
+}
+
+.h2 { font-size: calc(var(--heading-font-size) * 0.95); }
+.h3 { font-size: calc(var(--heading-font-size) * 0.90); }
+.h4 { font-size: calc(var(--heading-font-size) * 0.85); }
+.h5 { font-size: calc(var(--heading-font-size) * 0.80); }
+.h6 { font-size: calc(var(--heading-font-size) * 0.75); }
+
+/*
+ * small
+ */
+small, .small {
+  font-size: var(--small-font-size);
+  font-weight: 400;
+  line-height: var(--small-line-height);
+}
+
+/*
+ * link
+ */
+a, a:hover, a:visited {
+  text-decoration: underline;
+}
+
+/*
+ * decoration
+ */
+strong, .strong {
+  font-weight: 400;
+}
+
+i, address {
+  font-style: normal;
+}
+
+::selection {
+  background-color: color(var(--brand-warning) alpha(-50%));
+}
+
+/*
+ * globalnav
+ */
+nav.globalnav ul li a, nav.globalnav ul li a:hover {
+  font-size: var(--small-font-size);
+  line-height: var(--small-line-height);
+  text-decoration: none;
+}

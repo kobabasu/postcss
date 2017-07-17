@@ -1,0 +1,70 @@
+/*
+ * # modules/decoration.css
+ * 文章を装飾するクラス
+ */
+
+/*
+ * .strong
+ */
+.strong {
+  font-weight: bold;
+}
+
+/*
+ * .mono
+ *  等幅フォント
+ */
+.mono {
+  font-family: 'Consolas', 
+               'Courier New', Courier, Monaco,
+               monospace;
+
+  font-size: 110%;
+  line-height: 95%;
+}
+
+.mono:nth-of-type(1) {
+  padding-top: var(--tiny-spacing);
+}
+
+/*
+ * .headPadding
+ * 一字下げ
+ * text-align:leftはIE対策
+ */
+.headPadding {
+  display: block;
+  text-transform: capitalize;
+  padding-left: calc(1em * 1.25);
+  text-indent: calc(-1em * 1.25);
+  text-align: left;
+}
+
+/*
+ * .nowrap
+ * 三点リーダのはみ出した文章を省略
+ */
+h1.nowrap, h2.nowrap, h3.nowrap,
+h4.nowrap, h5.nowrap, h6.nowrap,
+li.nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * span.fixedhead
+ * TEL:, FAX:などちょっとした固定に
+ * アルファベットの4文字, 6文字, 8文字を用意
+ */
+.headfixed-4 {
+  width: calc(var(--base-font-size) * (4 / 2));
+}
+
+.headfixed-6 {
+  width: calc(var(--base-font-size) * (6 / 2) + 0.25rem);
+}
+
+.headfixed-8 {
+  width: calc(var(--base-font-size) * (8 / 2) + 0.5rem);
+}

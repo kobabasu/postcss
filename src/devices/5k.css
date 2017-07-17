@@ -1,2 +1,7 @@
-@media only screen and (min-width: 1920px) {
+/*
+ * # devices/5k.css
+ * iMacなど5k用の定義
+ */
+
+@media (--5k-viewport) {
 }

@@ -5,7 +5,9 @@
     "jquery-modern": "jquery#3",
     "jquery-legacy": "jquery#^1",
     "devicejs": null,
+    "platform": null,
     "flexibility": null,
+    "animejs": null,
 
     "normalize.css": null,
     "animate.css": null,

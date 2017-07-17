@@ -1,0 +1,20 @@
+/*
+ * # configs/zindex.css
+ * z-indexを定義
+ */
+
+body {
+  z-index: 0;
+}
+
+header, nav.globalnav {
+  z-index: 100;
+}
+
+div.humberger-icon {
+  z-index: 200;
+}
+
+div#wrap {
+  z-index: 9999;
+}

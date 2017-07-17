@@ -1,31 +1,73 @@
-.wrapper {
+/*
+ * # modules/grid.css
+ * レスポンシブ・gridに関する定義
+ */
+
+/*
+ * config
+ */
+:root {
+  --max-width:  100%;
+  --columns:    12;
+  --gutter:     1rem;
+  --inner-container-width: 960px;
+}
+
+/*
+ * .container
+ */
+.container, .inner-container {
   -js-display: flex;
   display: flex;
-  border: 1px solid #666;
-  width: 960px;
+  flex-wrap: wrap;
+  width: var(--max-width);
   margin: 0 auto;
   /* ie11だと、画像があると隙間ができる */
   min-width: 0%;
 }
 
-.column-3 {
-  border: 1px solid red;
-  flex: 1;
+/*
+ * .inner-container
+ */
+.inner-container {
+  max-width: var(--inner-container-width);
 }
 
-.column-4 {
-  border: 1px solid yellow;
-  width: 200px;
+/*
+ * .column-num
+ */
+[class*='column-'] {
+  padding: var(--gutter);
 }
 
-@media only screen and (max-width: 768px) {
-  .wrapper {
-    /* ie11だと flex-direction: columnで高さが認識されない */
+@for $i from 1 to var(--columns) {
+  .column-$i {
+    /* postcss.config.jsのpostcss-forを先読込 */
+    min-width: calc(
+      (var(--max-width) / var(--columns)) * $(i) -
+      var(--small-spacing)
+    );
+    flex: $(i);
+  }
+}
+
+
+@media (--sp-viewport) {
+  /*
+   * .container, .inner-container
+   */
+  .container, .inner-container {
+    /* ie11だとflex-direction:columnで高さ誤認識 */
     display: block;
     width: 100%;
   }
 
-  .column-4 {
-    width: 100%;
+  /*
+   * img
+   */
+  img {
+    width: auto;
+    max-width: 100%;
+    height: auto !important;
   }
 }

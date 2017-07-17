@@ -1,18 +1,128 @@
+/*
+ * theme.css
+ * 色・スタイルに関する定義
+ */
 
-body {
+/*
+ * html
+ * ハンバーガーのスクロール時高さ対策
+ */
+html {
+  background-color: var(--device-bg);
+}
+
+/*
+ * body, article
+ * articleはハンバーガーのスクロール時高さ対策
+ */
+body, article {
   color: var(--color-text);
   background-color: var(--color-bg);
 }
 
-header {
+/*
+ * section
+ */
+header, footer {
   background-color: var(--gray-lighter);
-  border-bottom: 1px solid var(--gray-light);
 }
 
-i {
-  font-family: 'icomoon';
+header {
+  border-top: 3px solid var(--color-corp);
+  border-bottom: 1px solid var(--gray);
 }
 
+/*
+ * globalnav
+ */
+nav.globalnav {
+  border-bottom: 1px solid var(--gray-darker);
+  background-color: color(var(--color-bg) alpha(-5%));
+
+  & ul li {
+    border-left: 1px solid var(--gray);
+
+    &:last-child {
+      border-right: 1px solid var(--gray);
+    }
+
+    & a, & a:hover {
+      color: var(--color-text);
+    }
+  }
+}
+
+@media (--sp-viewport) {
+  nav.globalnav.humberger {
+    & a, & a:hover {
+      color: var(--gray-dark);
+    }
+  }
+}
+
+/*
+ * footerlink
+ */
+div.footerlink {
+  & h2, & address, & li, & a, & a:hover {
+    color: var(--color-text);
+  }
+}
+
+/*
+ * .copyright
+ */
+
+/*
+ * topics
+ */
+ul.topics {
+  border-top: 2px solid var(--gray);
+
+  & li {
+    border-bottom: 1px solid var(--gray);
+  }
+}
+
+/*
+ * grid
+ */
+[class*='column-'] {
+  background-color: var(--gray-lighter);
+}
+
+[class*='column-']:nth-child(odd) {
+  background-color: color(
+    var(--gray-lighter)
+    blackness(+3%)
+  );
+}
+
+/*
+ * link
+ */
+a {
+  color: var(--color-link);
+}
+
+a:hover {
+  color: var(--color-hover);
+}
+
+a:visited {
+  color: var(--color-visited);
+}
+
+/*
+ * form
+ */
 input {
   border: 1px solid #999999;
+}
+
+/*
+ * webfont
+ */
+i {
+  font-family: 'icomoon';
 }

@@ -1,0 +1,120 @@
+/*
+ * # configs/base.css
+ * 要素に影響を与えるスタイルを定義
+ */
+
+/*
+ * すべてにborder-boxを
+ */
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+/*
+ * # reset
+ * html5用のreset.cssから引用
+ * body, tableなどはnormalize.css
+ * section elementsは削除
+ */
+body, object, iframe, hr,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+time, mark, audio, video, canvas {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: normal;
+  background: transparent;
+}
+
+/*
+ * height100%でスクロールした場合対策
+ */
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+/*
+ * # body
+ * positionはrelativeを予め設定
+ * responsiveのhumbergermenu用にwidth100%を指定
+ * windowsはscrollbarの有無で
+ * widthが変わるため常に表示
+ */
+body {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/*
+ * # section elements
+ * outer-containerを設定
+ * overflowをvisibleに設定
+ */
+header, footer, section, article, nav, aside {
+  overflow: visible;
+}
+
+/*
+ * # anchor
+ * 下線を消す
+ */
+a {
+  outline: none;
+}
+
+/*
+ * # span, small, strong
+ * line-heightが無効にならないようにする
+ */
+span, small, strong {
+  display: inline-block;
+}
+
+/*
+ * # p, blockquote, pre
+ * 両端揃えにする
+ * 長い単語も折り返す
+ */
+p, blockquote, pre {
+  text-align: justify;
+  word-wrap: break-word;
+}
+
+/*
+ * # hr
+ * background-colorで色を変更できるように設定
+ */
+hr {
+  height: 1px;
+  border: none;
+}
+
+/*
+ * # img
+ * ブロック要素に内容した際2pxの隙間の対応
+ */
+img {
+  vertical-align: bottom;
+}
+
+/*
+ * # list
+ * 装飾を消す
+ */
+li {
+  list-style-type: none;
+}

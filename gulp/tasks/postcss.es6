@@ -24,7 +24,7 @@ class Postcss extends DefaultRegistry {
 
     gulp.task(prefix + 'postcss', shell.task([`
       postcss ${style.src} \
-      -m { inline: false } \
+      -m \
       -o ${style.dist};
     `]));
 
@@ -39,7 +39,7 @@ class Postcss extends DefaultRegistry {
 
     gulp.task(prefix + 'postcss:lib', shell.task([`
       postcss ${lib.src} \
-      -m { inline: false } \
+      -m \
       -o ${lib.dist};
     `]));
 
@@ -49,10 +49,10 @@ class Postcss extends DefaultRegistry {
      */
     gulp.task(prefix + 'postcss:example', shell.task([`
       postcss ${lib.src} \
-      -m { inline: false } \
+      -m \
       -o ${style.example + 'lib.css'};
       postcss ${style.src} \
-      -m { inline: false } \
+      -m \
       -o ${style.example + 'style.css'};
     `]));
 

@@ -1,0 +1,13 @@
+/*
+ * # modules/scrolltop.css
+ * ページの先頭への定義
+ */
+
+
+a.scrolltop {
+  position: fixed;
+  right: 0;
+  padding-right: var(--small-spacing);
+  font-size: 48px;
+  text-decoration: none;
+}

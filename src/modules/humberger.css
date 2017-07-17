@@ -1,0 +1,104 @@
+/*
+ * # modules/humberger.css
+ * ハンバーガーメニューに関する定義
+ * nav.globalnav .humbergerが必要
+ * div#humberger-iconが必要
+ * jsでopen/close toggleClassするコードが必要
+ * activeのoverflow-x:hiddenはheaderをhtml下部に
+ * 移動した際に横スクロールがでる問題の対策
+ * -xをつけないと縦スクロールがいかなくなる
+ */
+
+/*
+ * vars
+ */
+:root {
+  --burger-width: 240px;
+}
+
+@media (--sp-viewport) {
+  /*
+   * body toggle animation
+   */
+  body {
+    width: 100%;
+    left: 0;
+    transition: all .3s ease;
+
+    &.humberger-active {
+      left: var(--burger-width);
+      width: calc(100% - var(--burger-width));
+    }
+  }
+
+  /*
+   * globalnav
+   */
+  nav.globalnav.humberger {
+    width: var(--burger-width);
+    margin-top: 0;
+    left: -var(--burger-width);
+    padding-top: 0;
+    border: none;
+    background-color: var(--device-bg);
+    transition: left .3s ease;
+
+    &.humberger-active {
+      top: 0;
+      left: 0;
+    }
+
+    & ul {
+      display: block;
+
+      & li {
+        height: 4rem;
+        padding: var(--small-spacing);
+        text-align: left;
+        line-height: var(--small-line-height);
+        border: none;
+        border-top: 1px solid color(var(--device-bg) lightness(+7%));
+        border-bottom: 1px solid color(var(--device-bg) blackness(+90%));
+        background-color: color(var(--device-bg) lightness(+2%));
+      }
+
+      & li:last-child {
+        border-right: none;
+      }
+    }
+  }
+
+  /*
+   * humberger-icon
+   */
+  div.humberger-icon {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 1.7rem;
+    width: 30px;
+    height: 19px;
+    background-color: var(--device-bg);
+    transition: left .3s ease;
+    cursor: pointer;
+
+    &:before, &:after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      border-top: 5px solid var(--color-bg);
+    }
+
+    &:before {
+      top: 3px;
+    }
+
+    &:after {
+      bottom: 3px;
+    }
+
+    &.humberger-active {
+      left: var(--burger-width);
+    }
+  }
+}

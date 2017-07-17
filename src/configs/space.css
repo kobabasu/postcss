@@ -1,0 +1,42 @@
+/*
+ * # configs/space.css
+ * margin, paddingに関する定義
+ */
+
+/*
+ * vars
+ */
+:root {
+  --base-spacing:  calc(var(--gutter) * 2);
+  --tiny-spacing:  calc(var(--gutter) / 2);
+  --small-spacing: calc(var(--gutter) * 1);
+  --large-spacing: calc(var(--gutter) * 3);
+}
+
+/*
+ * section
+ */
+article {
+  padding-top: var(--base-spacing);
+}
+
+article, section {
+  padding-bottom: var(--large-spacing);
+}
+
+/*
+ * paragraph
+ */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: calc(var(--small-line-height) / 4);
+}
+
+p, blockquote, pre  {
+  margin-bottom: calc(var(--small-line-height) / 2);
+}
+
+h1:last-child, h2:last-child, h3:last-child,
+h4:last-child, h5:last-child, h6:last-child,
+p:last-child, blockquote:last-child, pre:last-child {
+  margin-bottom: 0;
+}

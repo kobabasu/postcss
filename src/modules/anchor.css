@@ -1,0 +1,16 @@
+/*
+ * # modules/anchor.css
+ * リンクのマウスオーバー時のトランジション
+ */
+
+a, button {
+  transition: all 0.3s linear 0s;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &.noeffect {
+    transition: none;
+  }
+}

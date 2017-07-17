@@ -1,41 +1,193 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>postcss</title>
-  <link rel="stylesheet" href="css/lib.css" media="all">
-  <link rel="stylesheet" href="css/style.css" media="all">
+<head><!--{{{-->
+<meta charset="UTF-8">
+<title>postcss</title>
+<meta content="description" name="description">
+<meta content="keywords" name="keywords">
+<meta content="author" name="author">
+
+<link rel="canonical" href="/index.html">
+<link rel="help" href="/contact.html">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="stylesheet" media="all" href="css/lib.css">
+<link rel="stylesheet" media="all" href="css/style.css">
+
+
+<!--[if lte IE 9]>
+<script src="vendor/jquery-legacy/dist/jquery.min.js"></script>
+<script src="vendor/flexibility/flexibility.js"></script>
+<script>
+  $(function(){flexibility(document.documentElement);});
+</script>
+<![endif]-->
+
+<!--[if gt IE 9]><!-->
+<!--script src="vendor/jquery-modern/dist/jquery.min.js"></script-->
+<!--<![endif]-->
+
+<script src="vendor/devicejs/lib/device.min.js"></script>
+<!--script src="vendor/platform/platform.js"></script-->
+<!--script src="vendor/animejs/anime.min.js"></script-->
+
+<script src="js/init.js"></script>
+<script src="js/debug.js"></script>
+
+
+<link href="/favicon.ico" rel="icon">
+<link rel="apple-touch-icon" sizes="180x180" href="180.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="title">
+<meta property="og:description" content="description">
+<meta property="og:url" content="https://example.com/">
+<meta property="og:site_name" content="site_name">
+<meta property="og:image" content="https://example.com/i.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:site" content="@site">
+<meta name="twitter:card" content="summary">
 
 </head>
+<!--}}}-->
 
 <body>
-  <header>
-     <div class="brand">
-       <a href="https://google.com/">
-         <img src="imgs/clear.png" alt="PostCss" />
-       </a>
-     </div>
-  </header>
+<div id="wrap"><p class="mono">&nbsp;loading...</p></div>
 
-  <p>
-    <i class="fa fa-bath fa-2x"></i>
-    Hello PostCss.
-  </p>
+<article>
+  <section class="container">
 
-  <p>
-    <i class="material-icons animated bounce">face</i>
-    Hello PostCss.
-  </p>
+    <div class="column-5 inview">
+      <h2 class="nowrap">親譲おやゆずりの無鉄砲むてっぽうで小供の時から</h2>
+      <p>親譲おやゆずりの無鉄砲むてっぽうで小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰こしを抜ぬかした事がある。なぜそんな無闇むやみをしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談じょうだんに、いくら威張いばっても、そこから飛び降りる事は出来まい。弱虫やーい。と囃はやしたからである。小使こづかいに負ぶさって帰って来た時、おやじが大きな眼めをして二階ぐらいから飛び降りて腰を抜かす奴やつがあるかと云いったから、この次は抜かさずに飛んで見せますと答えた。</p>
+      <small class="headPadding">
+        ※
+        親譲おやゆずりの無鉄砲むてっぽうで小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰こしを抜ぬかした事がある。
+      </small>
+    </div>
 
-  <form>
-    <input type="text" />
-  </form>
+    <div class="column-5 inview">
+      <h2 class="nowrap">親譲おやゆずりの無鉄砲むてっぽうで小供の時から</h2>
+      <p>親譲おやゆずりの無鉄砲むてっぽうで小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰こしを抜ぬかした事がある。なぜそんな無闇むやみをしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談じょうだんに、いくら威張いばっても、そこから飛び降りる事は出来まい。弱虫やーい。と囃はやしたからである。</p>
+    </div>
 
-  <section class="masonry">
-    <div>one</div>
-    <div>two</div>
-    <div>three</div>
-    <div>four</div>
+    <div class="column-2 inview">
+      <h2 class="nowrap h4">新着情報</h2>
+      <ul class="topics">
+        <li><a href="#">臨時自動ドアメンテナンスのお知らせ</a></li>
+        <li><a href="#">営業カレンダーを更新しました</a></li>
+        <li><a href="#">窓口のご案内</a></li>
+        <li><a href="#">年末・年始の営業日のお知らせ</a></li>
+        <li><a href="#">ホームページリニューアル</a></li>
+      </ul>
+    </div>
+
+    <div class="column-12 inview nopc">
+      <i class="icon-home"></i>
+      <!--span class="fa-stack fa-lg">
+        <i class="fa fa-square-o fa-stack-2x"></i>
+        <i class="fa fa-facebook fa-stack-1x"></i>
+      </span-->
+      <a href="#" id="test" class="noeffect">こんにちはHello PostCss.</a>
+    </div>
   </section>
+</article>
+
+<header>
+  <h1 id="scrolltop" class="trademark">
+    <a href="https://google.com/">
+      <img src="imgs/clear.png" alt="PostCss" width="80" height="20" />
+    </a>
+  </h1>
+</header>
+
+<nav class="globalnav humberger">
+  <ul class="inner-container">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">会社概要</a></li>
+    <li><a href="#">商品ラインアップ</a></li>
+    <li><a href="#">アクセス</a></li>
+    <li><a href="#">FAQ</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<footer>
+  <a href="#scrolltop" class="scrolltop">
+    <i class="icon-chevron-circle-up"></i>
+  </a>
+
+  <div class="footerlink inner-container">
+    <div class="column-4">
+      <img src="imgs/example.png" width="80" height="20" alt="postcss" />
+      <h1>株式会社example.com</h1>
+      <address>
+        〒420-1234 静岡県静岡市葵区天満宮12-24<br />
+        <span class="mono">
+          <strong class="headfixed-4">TEL:</strong>
+          054-999-8888
+        </span>
+        <span class="mono">
+          <strong class="headfixed-4">FAX:</strong>
+          054-222-3333
+        </span>
+        <br />
+        <span class="mono">
+          <strong class="headfixed-4">URL:</strong>
+          <a href="#">https://www.example.com/</a>
+        </span>
+      </address>
+    </div>
+
+    <div class="column-2">
+      <h2>example.com</h2>
+      <ul>
+        <li><a href="#">会社概要</a></li>
+        <li><a href="#">アクセス</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+      </ul>
+    </div>
+
+    <div class="column-2">
+      <h2>商品ラインアップ</h2>
+      <ul>
+        <li><a href="#">商品A</a></li>
+        <li><a href="#">商品B</a></li>
+        <li><a href="#">商品C</a></li>
+        <li><a href="#">商品D</a></li>
+        <li><a href="#">商品E</a></li>
+        <li><a href="#">商品F</a></li>
+      </ul>
+    </div>
+
+    <div class="column-2">
+      <h2>新卒・中途採用の<br />ご案内について</h2>
+      <ul>
+        <li><a href="#">新卒採用</a></li>
+        <li><a href="#">中途採用</a></li>
+        <li><a href="#">労働者事業に係る<br />情報提供</a></li>
+      </ul>
+    </div>
+
+    <div class="column-2">
+      <h2>このサイトについて</h2>
+      <ul>
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">サイトポリシー</a></li>
+        <li><a href="#">個人情報の取り扱い<br />について</a></li>
+        <li><a href="#">個人情報保護方針</a></li>
+        <li><a href="#">サイトマップ</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="contact" class="copyright small">&copy;example.com Inc.</div>
+</footer>
+
+<script src="js/dom.js"></script>
 </body>
-</html>
+</html><!--
+vim: foldmethod=marker:ts=2:sts=0:sw=2
+-->

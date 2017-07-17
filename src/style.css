@@ -1,3 +1,11 @@
-@import 'vars.css';
+/*
+ * style.css
+ */
+
+@import 'configs/index.css';
+@import 'modules/index.css';
+
 @import 'theme.css';
 @import 'layouts/index.css';
+
+@import 'devices/index.css';

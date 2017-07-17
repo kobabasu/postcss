@@ -2,8 +2,17 @@
   "name": "postcss-app",
   "version": "0.0.1",
   "dependencies": {
+    "jquery-modern": "jquery#3",
+    "jquery-legacy": "jquery#^1",
+    "devicejs": null,
+    "platform": null,
+    "flexibility": null,
+    "animejs": null,
+
     "normalize.css": null,
     "animate.css": null,
+
+    "icomoon": null,
     "fontawesome": null,
     "material-design-icons-iconfont": null
   }

@@ -42,4 +42,11 @@
   --gray:         color(var(--color-bg) blackness(35.0%));
   --gray-light:   color(var(--color-bg) blackness(20.0%));
   --gray-lighter: color(var(--color-bg) blackness(3.5%));
+
+  /* category */
+  --color-category-01: #004C97;
+  --color-category-02: #004C97;
+  --color-category-03: #004C97;
+  --color-category-04: #004C97;
+  --color-category-05: #004C97;
 }

@@ -22,6 +22,8 @@
   display: grid;
   grid-template-rows: var(--grid-template-rows);
   grid-template-columns: var(--grid-template-columns);
+
+  margin: 0 auto;
 }
 
 /*

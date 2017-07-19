@@ -106,6 +106,13 @@ ul.topics {
 }
 
 /*
+ * masonry
+ */
+[class*='masonry-item-'] {
+  border: 1px solid var(--gray);
+}
+
+/*
  * link
  */
 a {

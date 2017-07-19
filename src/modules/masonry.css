@@ -1,0 +1,19 @@
+/*
+ * # modules/masonry.css
+ * masonry layout用のスタイルを定義
+ */
+
+.masonry {
+  -webkit-columns: 33.3%;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 2em;
+}
+
+.masonry > div {
+  display: inline-block;
+  border: 1px solid red;
+  width: 300px;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid; /* Firefox is dumb */
+  break-inside: avoid;
+}

@@ -56,7 +56,8 @@ div.footerlink {
  */
 div.copyright {
   display: block;
-  line-height: calc(var(--small-spacing) * 1.5);
+  line-height: calc(var(--base-spacing) * 1.5);
+  height: calc(var(--base-spacing) * 1.5);
   vertical-align: middle;
   text-align: center;
 }

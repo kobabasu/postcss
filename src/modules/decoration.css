@@ -4,6 +4,16 @@
  */
 
 /*
+ * heading
+ */
+.h1 { font-size: calc(var(--heading-font-size) * 1.25); }
+.h2 { font-size: calc(var(--heading-font-size) * 0.95); }
+.h3 { font-size: calc(var(--heading-font-size) * 0.90); }
+.h4 { font-size: calc(var(--heading-font-size) * 0.85); }
+.h5 { font-size: calc(var(--heading-font-size) * 0.80); }
+.h6 { font-size: calc(var(--heading-font-size) * 0.75); }
+
+/*
  * .strong
  */
 .strong {

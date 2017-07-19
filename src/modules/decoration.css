@@ -53,6 +53,15 @@ li.nowrap {
 }
 
 /*
+ * .wrap
+ * word-wrap: break-wordでは折り返さないため
+ * break-allを使用
+ */
+a.wrap {
+  word-break: break-all;
+}
+
+/*
  * span.fixedhead
  * TEL:, FAX:などちょっとした固定に
  * アルファベットの4文字, 6文字, 8文字を用意

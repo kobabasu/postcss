@@ -4,4 +4,10 @@
  */
 
 @media (--5k-viewport) {
+  /*
+   * .inner-container
+   */
+  .inner-container {
+    max-width: var(--inner-container-width);
+  }
 }

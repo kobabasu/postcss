@@ -14,7 +14,7 @@
 /*
  * .flexbox-container
  */
-.flexbox-container, .inner-container {
+.flexbox-container {
   -js-display: flex;
   display: flex;
   flex-wrap: wrap;
@@ -22,13 +22,6 @@
   margin: 0 auto;
   /* ie11だと、画像があると隙間ができる */
   min-width: 0%;
-}
-
-/*
- * .inner-container
- */
-.inner-container {
-  max-width: var(--inner-container-width);
 }
 
 /*
@@ -52,9 +45,9 @@
 
 @media (--sp-viewport) {
   /*
-   * .flexbox-container, .inner-container
+   * .flexbox-container
    */
-  .flexbox-container, .inner-container {
+  .flexbox-container {
     /* ie11だとflex-direction:columnで高さ誤認識 */
     display: block;
     width: 100%;

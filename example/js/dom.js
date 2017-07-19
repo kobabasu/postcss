@@ -43,7 +43,8 @@ window.onload = function() {
   DetectViewport('sp', '(max-width: 767px)').listen();
   DetectViewport('5k', '(min-width: 1280px)').listen();
   ScrollInnerLinks();
-  enableHumbergerMenu();
+  EnableHumbergerMenu();
+  hero();
 };
 
 
@@ -168,7 +169,7 @@ function DetectViewport(name, viewport) {
 /*
  * humberger menu
  */
-function enableHumbergerMenu(nav) {
+function EnableHumbergerMenu(nav) {
   var _ = Object.create(p);
 
   var nav = nav || '.globalnav.humberger';

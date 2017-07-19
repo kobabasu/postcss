@@ -12,6 +12,12 @@
   @custom-media --5k-viewport only screen and (min-width: 1920px);
 
   /*
+   * containers
+   */
+  --container-width:  100%;
+  --inner-container-width: 960px;
+
+  /*
    * color
    * color-device-bgは初期ロード時の背景色
    */

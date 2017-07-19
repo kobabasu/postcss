@@ -701,6 +701,10 @@ ul.topics li{
   background-color:rgb(238, 238, 238);
 }
 
+[class*='grid-item-']{
+  border:1px solid rgb(189, 189, 189);
+}
+
 a{
   color:#004C97;
 }
@@ -833,8 +837,10 @@ div.footerlink span{
 
 div.copyright{
   display:block;
-  line-height:15px;
-  line-height:1.5rem;
+  line-height:30px;
+  line-height:3rem;
+  height:30px;
+  height:3rem;
   vertical-align:middle;
   text-align:center;
 }

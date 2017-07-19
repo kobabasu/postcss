@@ -24,7 +24,7 @@
       ) /
       var(--masonry-column-count)
   );
-  column-gap: 1rem;
+  column-gap: var(--masonry-column-gap);
   text-align: center;
 }
 
@@ -39,7 +39,7 @@
         var(--masonry-column-gap) *
         (var(--masonry-column-count) - 1)
       ) /
-      var(--masonry-column-count) - 1px
+      var(--masonry-column-count)
   );
   column-break-inside: avoid;
   page-break-inside: avoid; /* Firefox is dumb */

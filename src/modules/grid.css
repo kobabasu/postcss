@@ -1,71 +1,98 @@
 /*
  * # modules/grid.css
- * レスポンシブ・gridに関する定義
+ * metro uiのようなdisplay:gridを使用したスタイルを定義
  */
 
 /*
  * config
  */
 :root {
-  --columns:    12;
-  --gutter:     1rem;
+  --grid-template-rows: 150px 150px 150px;
+  --grid-template-columns: 20% 30% 1fr;
 }
 
 /*
- * .container
+ * .grid-container
  */
-.container, .inner-container {
-  -js-display: flex;
-  display: flex;
-  flex-wrap: wrap;
-  width: var(--container-width);
-  margin: 0 auto;
-  /* ie11だと、画像があると隙間ができる */
-  min-width: 0%;
+.grid-container {
+  display: -ms-grid;
+  -ms-grid-rows:  var(--grid-template-rows);
+  -ms-grid-columns: var(--grid-template-columns);
+
+  display: grid;
+  grid-template-rows: var(--grid-template-rows);
+  grid-template-columns: var(--grid-template-columns);
 }
 
 /*
- * .inner-container
+ * .grid-item-num
  */
-.inner-container {
-  max-width: var(--inner-container-width);
+[class*='grid-item-'] {
+  border: 1px solid var(--gray);
+  margin: var(--small-spacing);
+  padding: var(--small-spacing);
+  text-align: center;
 }
 
 /*
- * .column-num
+ * set each items
  */
-[class*='column-'] {
-  padding: var(--gutter);
+.grid-item-1 {
+  grid-column: 1; grid-row: 1;
+  -ms-grid-column: 1; -ms-grid-row: 1;
 }
 
-@for $i from 1 to var(--columns) {
-  .column-$i {
-    /* postcss.config.jsのpostcss-forを先読込 */
-    min-width: calc(
-      (var(--container-width) / var(--columns)) * $(i) -
-      var(--small-spacing)
-    );
-    flex: $(i);
-  }
+.grid-item-2 {
+  -ms-grid-column: 2; -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  grid-column: 2; grid-row: 1 / 4;
+}
+
+.grid-item-3 {
+  -ms-grid-column: 3; -ms-grid-row: 1;
+  grid-column: 3; grid-row: 1;
+}
+
+.grid-item-4 {
+  -ms-grid-column: 1; -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  grid-column: 1; grid-row: 2 / 4;
+}
+
+.grid-item-5 {
+  -ms-grid-column: 3; -ms-grid-row: 2;
+  grid-column: 3; grid-row: 2;
+}
+
+.grid-item-6 {
+  -ms-grid-column: 3; -ms-grid-row: 3;
+  grid-column: 3; grid-row: 3;
+}
+
+/*
+ * reset gutter both ends
+ */
+.grid-item-1, .grid-item-4 {
+  margin-left: 0;
+}
+
+.grid-item-3, .grid-item-5, .grid-item-6 {
+  margin-right: 0;
 }
 
 
 @media (--sp-viewport) {
   /*
-   * .container, .inner-container
+   * .grid-container
    */
-  .container, .inner-container {
-    /* ie11だとflex-direction:columnで高さ誤認識 */
+  .grid-container {
     display: block;
-    width: 100%;
   }
 
   /*
-   * img
+   * .grid-item-num
    */
-  img {
-    width: auto;
-    max-width: 100%;
-    height: auto !important;
+  [class*='grid-item-'] {
+    margin: var(--tiny-spacing);
   }
 }

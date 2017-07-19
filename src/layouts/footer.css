@@ -26,12 +26,10 @@ div.footerlink {
 
   & h2, & address, & li, & a, & a:hover {
     font-size: var(--small-font-size);
-    line-height: var(--tiny-line-height);
-    height: calc(var(--large-spacing) * 1.15);
+    line-height: var(--small-line-height);
+    height: calc(var(--large-spacing) * 1.5);
     text-decoration: none;
   }
-
-
 
   & h1 {
     font-size: var(--base-font-size);
@@ -39,7 +37,6 @@ div.footerlink {
 
   & h2 {
     font-weight: bold;
-    height: calc(var(--large-spacing) * 1.5);
   }
 
   & address, & li:last-child {
@@ -61,6 +58,7 @@ div.copyright {
   vertical-align: middle;
   text-align: center;
 }
+
 
 @media (--sp-viewport) {
   div.footerlink {

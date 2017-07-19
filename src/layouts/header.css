@@ -35,7 +35,7 @@ h1.trademark {
     var(--trademark-img) 1x,
     var(--trademark-img-2x) 2x
   );
-  background-size: size(var(--trademark-img));
+  background-size: size(var(--trademark-img), 2);
   background-repeat: no-repeat;
   background-position: center left;
 

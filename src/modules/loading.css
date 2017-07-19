@@ -17,7 +17,7 @@ div#wrap {
   width: 100%;
   height: 100%;
   text-align: center;
-  background-color: var(--device-bg);
+  background-color: var(--color-device-bg);
   opacity: 1;
   transition: opacity .3s ease 1s;
 }
@@ -38,8 +38,8 @@ div#wrap > p {
   margin: auto;
   padding-top: var(--tiny-spacing);
   line-height: var(--small-spacing);
-  color: color(var(--device-bg) lightness(+40%));
-  border-right: 1px solid color(var(--device-bg) lightness(+20%));
+  color: color(var(--color-device-bg) lightness(+40%));
+  border-right: 1px solid color(var(--color-device-bg) lightness(+20%));
   white-space: nowrap;
   overflow: hidden;
   animation: typing 2.5s steps(12, end) infinite,

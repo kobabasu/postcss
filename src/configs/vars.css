@@ -13,18 +13,18 @@
 
   /*
    * color
-   * device-bgは初期ロード時の背景色
+   * color-device-bgは初期ロード時の背景色
    */
 
   /* base */
-  --color-text:     #333333;
-  --color-link:     #004C97;
-  --color-hover:    color(var(--color-link) alpha(-50%));
-  --color-visited:  #004C97;
-  --color-bg:       #FFFFFF;
-  --device-bg:      #252525;
+  --color-text:      #333333;
   --color-text-bold: #004C97;
+  --color-link:      #004C97;
+  --color-hover:     color(var(--color-link) alpha(-50%));
+  --color-visited:   #004C97;
+  --color-bg:        #FFFFFF;
   --color-bg-second: #FFFFFF;
+  --color-device-bg: #252525;
 
   /* corporate */
   --color-corp:        #004C97;

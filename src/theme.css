@@ -8,7 +8,7 @@
  * ハンバーガーのスクロール時高さ対策
  */
 html {
-  background-color: var(--device-bg);
+  background-color: var(--color-device-bg);
 }
 
 /*

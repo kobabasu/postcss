@@ -27,12 +27,12 @@
 /*
  * .column-num
  */
-[class*='column-'] {
+[class*='flexbox-item-'] {
   padding: var(--gutter);
 }
 
 @for $i from 1 to var(--columns) {
-  .column-$i {
+  .flexbox-item-$i {
     /* postcss.config.jsのpostcss-forを先読込 */
     min-width: calc(
       (var(--container-width) / var(--columns)) * $(i) -

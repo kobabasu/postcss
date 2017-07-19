@@ -1,0 +1,62 @@
+/*
+ * # modules/hero.css
+ * hero imageのスタイルの定義
+ */
+
+/*
+ * config
+ */
+:root {
+  --hero-height: 300px;
+}
+
+/*
+ * .hero-container
+ */
+.hero-container {
+  padding-bottom: 0;
+  text-align: center;
+}
+
+/*
+ * .hero-item-num
+ */
+[class*='hero-item-'] {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: var(--hero-height);
+}
+
+[class*='hero-item-']:first-child {
+  display: block;
+}
+
+/*
+ * .hero-item-num > div
+ */
+[class*='hero-item-'] > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 75%;
+  height: 25%;
+  vertical-align: middle;
+
+  & > p {
+    text-align: center;
+  }
+}
+
+
+@media (--sp-viewport) {
+  /*
+   * .hero-item-num
+   */
+  [class*='hero-item-'] {
+    height: calc(var(--hero-height) * 0.75);
+  }
+}

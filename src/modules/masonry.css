@@ -1,0 +1,68 @@
+/*
+ * # modules/masonry.css
+ * masonry layout用のスタイルを定義
+ */
+
+/*
+ * config
+ */
+:root {
+  --masonry-width: 960px;
+  --masonry-column-count: 4;
+  --masonry-column-gap: var(--small-spacing);
+}
+
+/*
+ * .masonry-container
+ */
+.masonry-container {
+  columns: calc(
+      (
+        var(--masonry-width) -
+        var(--masonry-column-gap) *
+        (var(--masonry-column-count) - 1)
+      ) /
+      var(--masonry-column-count)
+  );
+  column-gap: var(--masonry-column-gap);
+  text-align: center;
+}
+
+/*
+ * .masonry-item-num
+ */
+[class*='masonry-item-'] {
+  display: inline-block;
+  width: calc(
+      (
+        var(--masonry-width) -
+        var(--masonry-column-gap) *
+        (var(--masonry-column-count) - 1)
+      ) /
+      var(--masonry-column-count)
+  );
+  column-break-inside: avoid;
+  page-break-inside: avoid; /* Firefox is dumb */
+  break-inside: avoid;
+  margin-bottom: var(--small-spacing);
+  padding: var(--small-spacing);
+}
+
+
+@media (--sp-viewport) {
+  /*
+   * .masonry-container
+   */
+  .masonry-container {
+    display: block;
+  }
+
+  /*
+   * .masonry-item-num
+   */
+  [class*='masonry-item-'] {
+    display: block;
+    width: auto;
+    margin: var(--tiny-spacing);
+  }
+}

@@ -42,7 +42,7 @@
   },
 
   "scripts": {
-    "global": "npm install -g postcss-cli",
+    "global": "npm install -g postcss-cli"
   },
 
   "preferGlobal": true,

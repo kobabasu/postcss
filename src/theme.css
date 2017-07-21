@@ -8,7 +8,7 @@
  * ハンバーガーのスクロール時高さ対策
  */
 html {
-  background-color: var(--device-bg);
+  background-color: var(--color-device-bg);
 }
 
 /*
@@ -85,17 +85,43 @@ ul.topics {
 }
 
 /*
- * grid
+ * flexbox
  */
-[class*='column-'] {
+[class*='flexbox-item-'] {
   background-color: var(--gray-lighter);
 }
 
-[class*='column-']:nth-child(odd) {
+[class*='flexbox-item-']:nth-child(odd) {
   background-color: color(
     var(--gray-lighter)
     blackness(+3%)
   );
+}
+
+/*
+ * hero
+ */
+[class*='hero-item-'] {
+  background-color: var(--gray);
+}
+
+[class*='hero-item-']:nth-child(odd) {
+  color: white;
+  background-color: var(--gray-dark);
+}
+
+/*
+ * grid
+ */
+[class*='grid-item-'] {
+  border: 1px solid var(--gray);
+}
+
+/*
+ * masonry
+ */
+[class*='masonry-item-'] {
+  border: 1px solid var(--gray);
 }
 
 /*

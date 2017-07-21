@@ -4,6 +4,16 @@
  */
 
 /*
+ * heading
+ */
+.h1 { font-size: calc(var(--heading-font-size) * 1.25); }
+.h2 { font-size: calc(var(--heading-font-size) * 0.95); }
+.h3 { font-size: calc(var(--heading-font-size) * 0.90); }
+.h4 { font-size: calc(var(--heading-font-size) * 0.85); }
+.h5 { font-size: calc(var(--heading-font-size) * 0.80); }
+.h6 { font-size: calc(var(--heading-font-size) * 0.75); }
+
+/*
  * .strong
  */
 .strong {
@@ -50,6 +60,15 @@ li.nowrap {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/*
+ * .wrap
+ * word-wrap: break-wordでは折り返さないため
+ * break-allを使用
+ */
+a.wrap {
+  word-break: break-all;
 }
 
 /*

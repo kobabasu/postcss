@@ -4,4 +4,11 @@
  */
 
 @media (--pc-viewport) {
+  /*
+   * .inner-container
+   */
+  .inner-container {
+    max-width: var(--inner-container-width);
+    margin: 0 auto;
+  }
 }

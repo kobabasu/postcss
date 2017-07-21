@@ -40,7 +40,7 @@
     left: -var(--burger-width);
     padding-top: 0;
     border: none;
-    background-color: var(--device-bg);
+    background-color: var(--color-device-bg);
     transition: left .3s ease;
 
     &.humberger-active {
@@ -57,9 +57,9 @@
         text-align: left;
         line-height: var(--small-line-height);
         border: none;
-        border-top: 1px solid color(var(--device-bg) lightness(+7%));
-        border-bottom: 1px solid color(var(--device-bg) blackness(+90%));
-        background-color: color(var(--device-bg) lightness(+2%));
+        border-top: 1px solid color(var(--color-device-bg) lightness(+7%));
+        border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%));
+        background-color: color(var(--color-device-bg) lightness(+2%));
       }
 
       & li:last-child {
@@ -78,7 +78,7 @@
     margin: 1.7rem;
     width: 30px;
     height: 19px;
-    background-color: var(--device-bg);
+    background-color: var(--color-device-bg);
     transition: left .3s ease;
     cursor: pointer;
 

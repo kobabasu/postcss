@@ -7,10 +7,10 @@
  * vars
  */
 :root {
-  --base-spacing:  calc(var(--gutter) * 2);
-  --tiny-spacing:  calc(var(--gutter) / 2);
-  --small-spacing: calc(var(--gutter) * 1);
-  --large-spacing: calc(var(--gutter) * 3);
+  --base-spacing:  2rem;
+  --tiny-spacing:  calc(1rem / 2);
+  --small-spacing: 1rem;
+  --large-spacing: 3rem;
 }
 
 /*

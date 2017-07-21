@@ -95,6 +95,35 @@
     {
       "icon": {
         "paths": [
+          "M658 686l-60 60-256-256 256-256 60 60-196 196z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "keyboard_arrow_left"
+        ],
+        "grid": 24
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 1,
+        "id": 2,
+        "prevSize": 24,
+        "code": 59652,
+        "name": "keyboard_arrow_left"
+      },
+      "setIdx": 2,
+      "setId": 3,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
           "M366 698l196-196-196-196 60-60 256 256-256 256z"
         ],
         "attrs": [
@@ -119,7 +148,7 @@
       },
       "setIdx": 2,
       "setId": 3,
-      "iconIdx": 0
+      "iconIdx": 2
     },
     {
       "icon": {
@@ -138,7 +167,7 @@
       "properties": {
         "ligatures": "home, house",
         "name": "home",
-        "order": 5,
+        "order": 8,
         "id": 1,
         "prevSize": 32,
         "code": 59649

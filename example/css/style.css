@@ -243,18 +243,24 @@ a.noeffect, button.noeffect{
 
 .hero-container{
   padding-bottom:0;
-  text-align:center;
+}
+
+.hero-container > ul{
+  position:relative;
+  height:300px;
+  overflow:hidden;
 }
 
 [class*='hero-item-']{
-  position:relative;
-  display:none;
+  position:absolute;
   width:100%;
+  margin-left:100%;
   height:300px;
 }
 
-[class*='hero-item-']:first-child{
-  display:block;
+[class*='hero-item-'].active{
+  -webkit-animation:slideshow .7s ease 0s forwards;
+          animation:slideshow .7s ease 0s forwards;
 }
 
 [class*='hero-item-'] > div{
@@ -266,16 +272,85 @@ a.noeffect, button.noeffect{
   margin:auto;
   width:75%;
   height:25%;
-  vertical-align:middle
+  text-align:center;
+  vertical-align:middle;
+  opacity:0;
+
+  //for ios safari z-index issue -webkit-transform:translate3d(0,0,0)
 }
 
 [class*='hero-item-'] > div > p{
   text-align:center;
 }
 
+[class*='hero-item-'].active > div{
+  -webkit-transform:translate3d(0,0,0);
+  -webkit-animation:fadein .7s ease .8s forwards;
+          animation:fadein .7s ease .8s forwards;
+}
+
+@-webkit-keyframes slideshow{
+  0%{
+    -webkit-transform:translateX(0);
+            transform:translateX(0);
+  }
+
+  100%{
+    -webkit-transform:translateX(-100%);
+            transform:translateX(-100%);
+  }
+}
+
+@keyframes slideshow{
+  0%{
+    -webkit-transform:translateX(0);
+            transform:translateX(0);
+  }
+
+  100%{
+    -webkit-transform:translateX(-100%);
+            transform:translateX(-100%);
+  }
+}
+
+@-webkit-keyframes fadein{
+  0%{
+    opacity:0;
+  }
+
+  100%{
+    opacity:1;
+  }
+}
+
+@keyframes fadein{
+  0%{
+    opacity:0;
+  }
+
+  100%{
+    opacity:1;
+  }
+}
+
 @media only screen and (max-width: 767px){
+  .hero-container > ul{
+    height:225px;
+  }
   [class*='hero-item-']{
     height:225px;
+  }
+  [class*='hero-item-'] > div{
+    height:40%
+  }
+  [class*='hero-item-'] > div > h1{
+    font-size:2.0rem;
+  }
+  [class*='hero-item-'] > div > span{
+    font-size:1.4rem;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
   }
 }
 

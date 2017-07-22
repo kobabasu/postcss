@@ -566,6 +566,25 @@ a.wrap{
   width:6.9rem;
 }
 
+.note{
+  color:#A6192E;
+}
+
+.blink{
+  -webkit-animation:blink 1s ease 0s infinite;
+          animation:blink 1s ease 0s infinite;
+}
+
+@keyframes blink{
+  0%{
+    opacity:0;
+  }
+
+  100%{
+    opacity:1;
+  }
+}
+
 ul.topics{
   border-top:2px solid #ccc
 }
@@ -1018,6 +1037,9 @@ article{
 }
 
 @media only screen and (max-width: 767px){
+  a{
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+  }
 }
 
 @media only screen and (min-width: 1920px){

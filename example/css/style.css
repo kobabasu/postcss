@@ -107,11 +107,11 @@ i, address{
 }
 
 ::-moz-selection{
-  background-color:rgba(243, 213, 78, 0.5);
+  background-color:rgba(240, 173, 78, 0.5);
 }
 
 ::selection{
-  background-color:rgba(243, 213, 78, 0.5);
+  background-color:rgba(240, 173, 78, 0.5);
 }
 
 nav.globalnav ul li a, nav.globalnav ul li a:hover{
@@ -567,7 +567,7 @@ a.wrap{
 }
 
 .note{
-  color:#A6192E;
+  color:#d9534f;
 }
 
 .blink{
@@ -633,7 +633,7 @@ ul.topics li:before{
   }
 
   div.slidemenu-icon:before, div.slidemenu-icon:after{
-    border-top:5px solid #FFFFFF;
+    border-top:5px solid #ffffff;
   }
 }
 
@@ -728,7 +728,7 @@ a.scrolltop{
 }
 
 .slideshow-dot > li.active{
-  background-color:#007A33;
+  background-color:#5cb85c;
 }
 
 .slideshow-container{
@@ -874,7 +874,7 @@ html{
 
 body, article{
   color:#333333;
-  background-color:#FFFFFF;
+  background-color:#ffffff;
 }
 
 header, footer{
@@ -882,7 +882,7 @@ header, footer{
 }
 
 header{
-  border-top:3px solid #004C97;
+  border-top:3px solid #195fa5;
   border-bottom:1px solid rgb(189, 189, 189);
 }
 
@@ -932,15 +932,15 @@ ul.topics li{
 }
 
 a{
-  color:#004C97;
+  color:#1d3994;
 }
 
 a:hover{
-  color:rgba(0, 76, 151, 0.5);
+  color:rgba(29, 57, 148, 0.5);
 }
 
 a:visited{
-  color:#004C97;
+  color:#663399;
 }
 
 input{

@@ -24,25 +24,25 @@
 
   /* base */
   --color-text:      #333333;
-  --color-text-bold: #004C97;
-  --color-link:      #004C97;
+  --color-text-bold: #444444;
+  --color-link:      #1d3994;
   --color-hover:     color(var(--color-link) alpha(-50%));
-  --color-visited:   #004C97;
-  --color-bg:        #FFFFFF;
-  --color-bg-second: #FFFFFF;
+  --color-visited:   #663399;
+  --color-bg:        #ffffff;
+  --color-bg-second: #d9ebf0;
   --color-device-bg: #252525;
 
   /* corporate */
-  --color-corp:        #004C97;
-  --color-corp-second: #004C97;
-  --color-corp-third:  #004C97;
+  --color-corp:        #195fa5;
+  --color-corp-second: #b51c15;
+  --color-corp-third:  #fefff8;
 
   /* brand */
-  --brand-primary: #004C97;
-  --brand-success: #007A33;
-  --brand-info:    #009CDE;
-  --brand-warning: #F3D54E;
-  --brand-danger:  #A6192E;
+  --brand-primary: #337ab7;
+  --brand-success: #5cb85c;
+  --brand-info:    #5bc0de;
+  --brand-warning: #f0ad4e;
+  --brand-danger:  #d9534f;
 
   /* gray */
   --gray-darker:  color(var(--color-bg) blackness(85.0%));
@@ -52,9 +52,9 @@
   --gray-lighter: color(var(--color-bg) blackness(3.5%));
 
   /* category */
-  --color-category-01: #004C97;
-  --color-category-02: #004C97;
-  --color-category-03: #004C97;
-  --color-category-04: #004C97;
-  --color-category-05: #004C97;
+  --color-category-01: #ffb6b6;
+  --color-category-02: #ffde9c;
+  --color-category-03: #b3e581;
+  --color-category-04: #90eeff;
+  --color-category-05: #c1a4eb;
 }

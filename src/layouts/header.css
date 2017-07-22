@@ -4,7 +4,7 @@
  */
 
 /*
- * vars
+ * config
  */
 :root {
   --header-height: 5rem;
@@ -14,21 +14,35 @@
   --trademark-height: 20px;
 }
 
+
+/*
+ * theme
+ */
+header > div.header-right {
+  & li {
+    border-right: 1px solid var(--gray);
+  }
+}
+
+
 /*
  * header
  */
 header {
   position: fixed;
+  display: table;
   top: 0;
   width: 100%;
   height: var(--header-height);
-  padding: 1.5rem var(--base-spacing);
+  padding: 0 var(--base-spacing);
+  vertical-align: middle;
 }
 
 /*
  * h1.trademark
  */
 h1.trademark {
+  display: table-cell;
   width: var(--trademark-width);
   height: var(--trademark-height);
   background-image: image-set(
@@ -45,6 +59,27 @@ h1.trademark {
   }
 }
 
+/*
+ * header-right
+ */
+header > div.header-right {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+
+  & li {
+    display: inline-block;
+    font-size: var(--small-font-size);
+    border-right: 1px solid var(--gray);
+    padding: 0 var(--base-spacing);
+  }
+
+  & li:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+}
+
 
 @media (--sp-viewport) {
   /*
@@ -57,5 +92,12 @@ h1.trademark {
     left: 0;
     right: 0;
     margin: auto;
+  }
+
+  /*
+   * div.header-right
+   */
+  header > div.header-right {
+    display: none;
   }
 }

@@ -9,10 +9,12 @@
  * -------------
  */
 var loading = Loading();
+var slideshow = SlideShow();
 loading.emitter = function() {
   var scrolltop = FixedScrollTop();
   var inview = InView();
   inview.onload();
+  slideshow.start();
 
   window.onscroll = function() {
     scrolltop.animate();
@@ -45,7 +47,6 @@ window.onload = function() {
   ScrollInnerLinks();
   EnableSlideMenu();
   // EnableHumbergerMenu();
-  SlideShow();
 };
 
 
@@ -57,6 +58,8 @@ function Loading(element) {
   var el = element || '#wrap' ;
 
   _ = {
+    duration: 1800,
+
     complete: false,
     el: document.querySelector(el),
     emitter: null,
@@ -72,7 +75,7 @@ function Loading(element) {
         setTimeout(function() {
           _.el.classList.add('loaded');
           _.el.addEventListener('transitionend', _.remove, false);
-        }, 1800);
+        }, _.duration);
       }
     },
 
@@ -399,7 +402,9 @@ function SlideShow() {
 
       _.createDot();
       _.createBg();
+    },
 
+    start: function() {
       _.timer = setInterval(_.loop, _.duration);
     },
 

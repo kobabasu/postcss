@@ -24,25 +24,19 @@
  * .hero
  */
 .hero {
-  display: block;
+  display: table;
   width: 100%;
   height: var(--hero-height);
   padding-bottom: 0;
+  text-align: center;
 }
 
 /*
  * .hero > div
  */
 .hero > div {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 75%;
-  height: 25%;
-  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
 
   & > h1 {
     font-size: calc(var(--heading-font-size) * 1.25);
@@ -62,8 +56,6 @@
    * .hero > div
    */
   .hero > div {
-    height: 40%;
-
     & > h1 {
       font-size: var(--heading-font-size);
     }

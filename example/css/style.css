@@ -246,22 +246,16 @@ a.noeffect, button.noeffect{
 }
 
 .hero{
-  display:block;
+  display:table;
   width:100%;
   height:300px;
   padding-bottom:0;
+  text-align:center;
 }
 
 .hero > div{
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  margin:auto;
-  width:75%;
-  height:25%;
-  text-align:center
+  display:table-cell;
+  vertical-align:middle
 }
 
 .hero > div > h1{
@@ -272,9 +266,6 @@ a.noeffect, button.noeffect{
 @media only screen and (max-width: 767px){
   .hero{
     height:225px;
-  }
-  .hero > div{
-    height:40%
   }
   .hero > div > h1{
     font-size:2.0rem;

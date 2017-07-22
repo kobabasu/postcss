@@ -31,6 +31,9 @@
   padding-bottom: 0;
 }
 
+/*
+ * .hero > div
+ */
 .hero > div {
   position: absolute;
   top: 0;
@@ -56,6 +59,9 @@
     height: var(--hero-height-sp);
   }
 
+  /*
+   * .hero > div
+   */
   .hero > div {
     height: 40%;
 

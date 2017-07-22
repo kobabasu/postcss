@@ -19,12 +19,11 @@ nav.globalnav {
   top: 0;
   width: 100%;
   height: var(--nav-height);
-  padding-top: 1rem;
   margin-top: var(--header-height);
 
   & ul {
     flex-wrap: nowrap;
-    vertical-align: middle;
+    padding-top: 1rem;
 
     & li {
       flex: 1;

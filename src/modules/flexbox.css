@@ -7,9 +7,10 @@
  * config
  */
 :root {
-  --columns:    12;
-  --gutter:     1rem;
+  --flexbox-columns:    12;
+  --flexbox-gutter:     1rem;
 }
+
 
 /*
  * .flexbox-container
@@ -28,14 +29,14 @@
  * .column-num
  */
 [class*='flexbox-item-'] {
-  padding: var(--gutter);
+  padding: var(--flexbox-gutter);
 }
 
-@for $i from 1 to var(--columns) {
+@for $i from 1 to var(--flexbox-columns) {
   .flexbox-item-$i {
     /* postcss.config.jsのpostcss-forを先読込 */
     min-width: calc(
-      (var(--container-width) / var(--columns)) * $(i) -
+      (var(--container-width) / var(--flexbox-columns)) * $(i) -
       var(--small-spacing)
     );
     flex: $(i);

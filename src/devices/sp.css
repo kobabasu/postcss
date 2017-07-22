@@ -4,4 +4,11 @@
  */
 
 @media (--sp-viewport) {
+  /*
+   * a
+   * タップ時の青いバックグラウンドを消す
+   */
+  a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
 }

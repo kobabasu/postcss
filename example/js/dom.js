@@ -369,6 +369,9 @@ function InView(cls) {
   return _;
 }
 
+/*
+ * slide show
+ */
 function SlideShow() {
   var _ = Object.create(p);
 

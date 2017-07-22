@@ -21,7 +21,8 @@
   /*
    * メニューのliがずれる対策
    */
-  nav.globalnav ul li {
-    line-height: 2.3rem;
+  header > div.header-right li, nav.globalnav ul li {
+    line-height: 2.0rem;
+    padding-top: 0.6rem;
   }
 }

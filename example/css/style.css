@@ -1180,8 +1180,9 @@ article{
   footer{
     padding-top:0.5rem;
   }
-  nav.globalnav ul li{
-    line-height:2.3rem;
+  header > div.header-right li, nav.globalnav ul li{
+    line-height:2.0rem;
+    padding-top:0.6rem;
   }
 }
 

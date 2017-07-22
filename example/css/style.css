@@ -611,40 +611,51 @@ ul.topics li:before{
 }
 
 @media only screen and (max-width: 767px){
+  nav.globalnav.slidemenu{
+    border:none;
+    opacity:0
+  }
   nav.globalnav.slidemenu a, nav.globalnav.slidemenu a:hover{
     color:rgb(155, 155, 155);
   }
-
-  nav.globalnav.slidemenu{
-    position:fixed;
-    top:-240px;
-    border:none;
-    -webkit-transition:top .5s ease;
-    transition:top .5s ease;
-    //スマホでロード時に表示されるため一度消す opacity:0
-  }
-
-  nav.globalnav.slidemenu.slidemenu-active{
-    top:0;
-  }
-
-  nav.globalnav.slidemenu ul{
-    display:block;
-    padding-top:0;
-  }
-
-  nav.globalnav.slidemenu ul li{
-    height:4rem;
-    padding:1rem;
-    line-height:1.8rem;
+  nav.globalnav.slidemenu li{
     border:none;
     border-top:1px solid rgb(56, 56, 56);
     border-bottom:1px solid rgb(33, 33, 33);
     background-color:rgb(43, 43, 43);
   }
-
-  nav.globalnav.slidemenu ul li:last-child{
+  nav.globalnav.slidemenu li:last-child{
     border-right:none;
+  }
+
+  div.slidemenu-icon{
+    background-color:#252525
+  }
+
+  div.slidemenu-icon:before, div.slidemenu-icon:after{
+    border-top:5px solid #FFFFFF;
+  }
+}
+
+@media only screen and (max-width: 767px){
+  nav.globalnav.slidemenu{
+    position:fixed;
+    top:-240px;
+    -webkit-transition:top .5s ease;
+    transition:top .5s ease;
+    //スマホでロード時に表示されるため一度消す opacity:0
+  }
+  nav.globalnav.slidemenu.slidemenu-active{
+    top:0;
+  }
+  nav.globalnav.slidemenu ul{
+    display:block;
+    padding-top:0;
+  }
+  nav.globalnav.slidemenu ul li{
+    height:4rem;
+    padding:1rem;
+    line-height:1.8rem;
   }
   div.slidemenu-icon{
     position:fixed;
@@ -653,7 +664,6 @@ ul.topics li:before{
     margin:1.7rem;
     width:30px;
     height:19px;
-    background-color:#252525;
     z-index:200;
     -webkit-transition:left .3s ease;
     transition:left .3s ease;
@@ -663,7 +673,6 @@ ul.topics li:before{
     position:absolute;
     content:'';
     width:100%;
-    border-top:5px solid #FFFFFF;
   }
   div.slidemenu-icon:before{
     top:3px;

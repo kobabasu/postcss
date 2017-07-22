@@ -16,22 +16,46 @@
 /*
  * theme
  */
-
-
 @media (--sp-viewport) {
   nav.globalnav.slidemenu {
+    border: none;
+    // スマホでロード時に表示されるため一度消す
+    opacity: 0;
+
     & a, & a:hover {
       color: var(--gray-dark);
     }
+
+    & li {
+      border: none;
+      border-top: 1px solid color(var(--color-device-bg) lightness(+7%));
+      border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%));
+      background-color: color(var(--color-device-bg) lightness(+2%));
+    }
+
+    & li:last-child {
+      border-right: none;
+    }
   }
 
+  div.slidemenu-icon {
+    background-color: var(--color-device-bg);
+
+    &:before, &:after {
+      border-top: 5px solid var(--color-bg);
+    }
+  }
+}
+
+
+@media (--sp-viewport) {
+  /*
+   * globalnav
+   */
   nav.globalnav.slidemenu {
     position: fixed;
-    top: var(-slidemenu-height);
-    border: none;
+    top: var(--slidemenu-height);
     transition: top .5s ease;
-    // スマホでロード時に表示されるため一度消す
-    opacity: 0;
 
     &.slidemenu-active {
       top: 0;
@@ -45,14 +69,6 @@
         height: 4rem;
         padding: var(--small-spacing);
         line-height: var(--small-line-height);
-        border: none;
-        border-top: 1px solid color(var(--color-device-bg) lightness(+7%));
-        border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%));
-        background-color: color(var(--color-device-bg) lightness(+2%));
-      }
-
-      & li:last-child {
-        border-right: none;
       }
     }
   }
@@ -67,7 +83,6 @@
     margin: 1.7rem;
     width: 30px;
     height: 19px;
-    background-color: var(--color-device-bg);
     z-index: 200;
     transition: left .3s ease;
     cursor: pointer;
@@ -76,7 +91,6 @@
       position: absolute;
       content: '';
       width: 100%;
-      border-top: 5px solid var(--color-bg);
     }
 
     &:before {

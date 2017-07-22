@@ -16,15 +16,38 @@
 /*
  * theme
  */
-
-
 @media (--sp-viewport) {
   nav.globalnav.humberger {
+    background-color: var(--color-device-bg);
+    border: none;
+
     & a, & a:hover {
       color: var(--gray-dark);
     }
+
+    & li {
+      border: none;
+      border-top: 1px solid color(var(--color-device-bg) lightness(+7%));
+      border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%));
+      background-color: color(var(--color-device-bg) lightness(+2%));
+    }
+
+    & li:last-child {
+      border-right: none;
+    }
   }
 
+  nav.globalnav.humberger {
+    background-color: var(--color-device-bg);
+
+    &:before, &:after {
+      border-top: 5px solid var(--color-bg);
+    }
+  }
+}
+
+
+@media (--sp-viewport) {
   /*
    * body toggle animation
    */
@@ -47,8 +70,6 @@
     margin-top: 0;
     left: -var(--burger-width);
     padding-top: 0;
-    border: none;
-    background-color: var(--color-device-bg);
     transition: left .3s ease;
 
     &.humberger-active {
@@ -65,14 +86,6 @@
         padding: var(--small-spacing);
         text-align: left;
         line-height: var(--small-line-height);
-        border: none;
-        border-top: 1px solid color(var(--color-device-bg) lightness(+7%));
-        border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%));
-        background-color: color(var(--color-device-bg) lightness(+2%));
-      }
-
-      & li:last-child {
-        border-right: none;
       }
     }
   }
@@ -87,7 +100,6 @@
     margin: 1.7rem;
     width: 30px;
     height: 19px;
-    background-color: var(--color-device-bg);
     z-index: 200;
     transition: left .3s ease;
     cursor: pointer;
@@ -96,7 +108,6 @@
       position: absolute;
       content: '';
       width: 100%;
-      border-top: 5px solid var(--color-bg);
     }
 
     &:before {

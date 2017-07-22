@@ -697,6 +697,10 @@ ul.topics li:before{
   }
 }
 
+a.scrolltop:visited{
+  color:#1d3994;
+}
+
 a.scrolltop{
   position:fixed;
   right:0;

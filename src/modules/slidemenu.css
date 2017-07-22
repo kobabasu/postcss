@@ -1,7 +1,7 @@
 /*
- * # modules/humberger.css
- * ハンバーガーメニューに関する定義
- * nav.globalnav .humbergerが必要
+ * # modules/slidemenu.css
+ * slidemenuのスタイルの定義
+ * nav.globalnav .slidemenuが必要
  * jsでopen/close toggleClassするコードが必要
  */
 
@@ -9,7 +9,7 @@
  * config
  */
 :root {
-  --burger-width: 160px;
+  --slidemenu-height: -240px;
 }
 
 
@@ -17,9 +17,10 @@
  * theme
  */
 @media (--sp-viewport) {
-  nav.globalnav.humberger {
-    background-color: var(--color-device-bg);
+  nav.globalnav.slidemenu {
     border: none;
+    // スマホでロード時に表示されるため一度消す
+    opacity: 0;
 
     & a, & a:hover {
       color: var(--gray-dark);
@@ -37,7 +38,7 @@
     }
   }
 
-  nav.globalnav.humberger {
+  div.slidemenu-icon {
     background-color: var(--color-device-bg);
 
     &:before, &:after {
@@ -49,32 +50,15 @@
 
 @media (--sp-viewport) {
   /*
-   * body toggle animation
-   */
-  body {
-    width: 100%;
-    left: 0;
-    transition: all .3s ease;
-
-    &.humberger-active {
-      left: var(--burger-width);
-      width: calc(100% - var(--burger-width));
-    }
-  }
-
-  /*
    * globalnav
    */
-  nav.globalnav.humberger {
-    width: var(--burger-width);
-    margin-top: 0;
-    left: -var(--burger-width);
-    padding-top: 0;
-    transition: left .3s ease;
+  nav.globalnav.slidemenu {
+    position: fixed;
+    top: var(--slidemenu-height);
+    transition: top .5s ease;
 
-    &.humberger-active {
+    &.slidemenu-active {
       top: 0;
-      left: 0;
     }
 
     & ul {
@@ -84,19 +68,18 @@
       & li {
         height: 4rem;
         padding: var(--small-spacing);
-        text-align: left;
         line-height: var(--small-line-height);
       }
     }
   }
 
   /*
-   * humberger-icon
+   * slidemenu-icon
    */
-  div.humberger-icon {
+  div.slidemenu-icon {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     margin: 1.7rem;
     width: 30px;
     height: 19px;
@@ -116,10 +99,6 @@
 
     &:after {
       bottom: 3px;
-    }
-
-    &.humberger-active {
-      left: var(--burger-width);
     }
   }
 }

@@ -87,3 +87,29 @@ a.wrap {
 .headfixed-8 {
   width: calc(var(--base-font-size) * (8 / 2) + 0.5rem);
 }
+
+/*
+ * .note
+ * 注意文用に色を赤系にするスタイル
+ */
+.note {
+  color: var(--brand-danger);
+}
+
+/*
+ * .blink
+ * 注意文用に色を赤系にするスタイル
+ */
+.blink {
+  animation: blink 1s ease 0s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

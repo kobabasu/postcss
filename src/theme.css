@@ -52,14 +52,6 @@ nav.globalnav {
   }
 }
 
-@media (--sp-viewport) {
-  nav.globalnav.humberger {
-    & a, & a:hover {
-      color: var(--gray-dark);
-    }
-  }
-}
-
 /*
  * footerlink
  */
@@ -68,10 +60,6 @@ div.footerlink {
     color: var(--color-text);
   }
 }
-
-/*
- * .copyright
- */
 
 /*
  * topics
@@ -96,18 +84,6 @@ ul.topics {
     var(--gray-lighter)
     blackness(+3%)
   );
-}
-
-/*
- * hero
- */
-[class*='hero-item-'] {
-  background-color: var(--gray);
-}
-
-[class*='hero-item-']:nth-child(odd) {
-  color: white;
-  background-color: var(--gray-dark);
 }
 
 /*

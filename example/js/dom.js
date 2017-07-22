@@ -370,7 +370,7 @@ function InView(cls) {
 }
 
 /*
- * slide show
+ * slideshow
  */
 function SlideShow() {
   var _ = Object.create(p);
@@ -379,10 +379,12 @@ function SlideShow() {
     duration: 3000,
     totalCounts: 120,
 
-    ul: document.querySelector('.slideshow-container > ul'),
+    container: document.querySelector('.slideshow-container'),
+    ul: document.querySelector('.slideshow-container > ul:nth-of-type(1)'),
     items: document.querySelectorAll("[class*='slideshow-item-']"),
-    forward: document.querySelector('.home-next'),
-    prev: document.querySelector('.home-prev'),
+    forward: document.querySelector('.slideshow-forward'),
+    prev: document.querySelector('.slideshow-prev'),
+    dots: [], 
 
     now: 0,
     next: 1,
@@ -395,6 +397,13 @@ function SlideShow() {
       _.ul.style.overflow = 'visible';
       _.ul.style.width = '100%';
 
+      _.createDot();
+      _.createBg();
+
+      _.timer = setInterval(_.loop, _.duration);
+    },
+
+    createBg: function() {
       var bg = _.items[0].cloneNode(true);
       bg.style.marginLeft = 0;
       bg.style.zIndex = 0;
@@ -404,7 +413,29 @@ function SlideShow() {
 
       _.ul.appendChild(bg);
 
-      _.timer = setInterval(_.loop, _.duration);
+      _.dots[0].classList.add('active');
+      _.dots[0].style.cursor = 'default';
+    },
+
+    createDot: function() {
+      var ul = document.createElement('ul');
+      ul.className = 'slideshow-dot';
+
+      for (var i = 0; i < _.items.length; i++) {
+        var li = document.createElement('li');
+        li.eventParam = i;
+        li.addEventListener('click', function(e) {
+          if (_.now != e.target.eventParam) {
+            _.next = e.target.eventParam;
+            _.reset();
+          }
+        }, false);
+
+        _.dots[i] = li;
+        ul.appendChild(li);
+      }
+
+      _.container.appendChild(ul);
     },
 
     restore: function() {
@@ -415,6 +446,8 @@ function SlideShow() {
 
       for (var i = 0; i < _.items.length; i++) {
         _.items[i].style.zIndex = 10;
+        _.dots[i].classList.remove('active');
+        _.dots[i].style.cursor = 'pointer';
         if (i != _.now) {
           _.items[i].classList.remove('active');
         }
@@ -425,6 +458,8 @@ function SlideShow() {
       _.items[_.next].style.zIndex = 20;
       _.items[_.next].addEventListener('animationend', _.animationEnd, false);
       _.items[_.next].classList.add('active');
+      _.dots[_.next].classList.add('active');
+      _.dots[_.next].style.cursor = 'default';
     },
 
     animationEnd: function() {

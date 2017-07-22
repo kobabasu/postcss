@@ -613,7 +613,7 @@ ul.topics li:before{
 @media only screen and (max-width: 767px){
   nav.globalnav.slidemenu{
     border:none;
-    opacity:0
+    //スマホでロード時に表示されるため一度消す opacity:0
   }
   nav.globalnav.slidemenu a, nav.globalnav.slidemenu a:hover{
     color:rgb(155, 155, 155);
@@ -642,8 +642,7 @@ ul.topics li:before{
     position:fixed;
     top:-240px;
     -webkit-transition:top .5s ease;
-    transition:top .5s ease;
-    //スマホでロード時に表示されるため一度消す opacity:0
+    transition:top .5s ease
   }
   nav.globalnav.slidemenu.slidemenu-active{
     top:0;
@@ -710,7 +709,30 @@ a.scrolltop{
   background-color:rgb(155, 155, 155);
 }
 
+.slideshow-prev, .slideshow-forward{
+  color:white;
+}
+
+.slideshow-dot{
+  color:white
+
+}
+
+.slideshow-dot > li{
+  border-radius:6px;
+  width:12px;
+  height:12px;
+  background-color:white;
+  -webkit-box-shadow:0px 1px 1px black inset;
+          box-shadow:0px 1px 1px black inset;
+}
+
+.slideshow-dot > li.active{
+  background-color:#007A33;
+}
+
 .slideshow-container{
+  position:relative;
   height:300px;
   padding-bottom:0;
   overflow:hidden;
@@ -734,6 +756,64 @@ a.scrolltop{
 [class*='slideshow-item-'].active > *{
   -webkit-animation:slideshow-fadein .7s ease .8s forwards;
           animation:slideshow-fadein .7s ease .8s forwards;
+}
+
+.slideshow-prev, .slideshow-forward{
+  position:absolute; 
+  display:inline-block;
+  height:50px;
+  height:5rem;
+  top:0;
+  bottom:0;
+  margin:auto 0;
+  font-size:50px;
+  font-size:5rem;
+  z-index:30;
+  cursor:pointer;
+  opacity:.3;
+  -webkit-transition:opacity .7s ease;
+  transition:opacity .7s ease
+}
+
+.slideshow-prev:hover, .slideshow-forward:hover{
+  opacity:1;
+}
+
+.slideshow-prev{
+  left:0;
+}
+
+.slideshow-forward{
+  right:0;
+}
+
+.slideshow-dot{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:20px;
+  bottom:2rem;
+  z-index:30;
+  margin:0 auto;
+  text-align:center
+}
+
+.slideshow-dot > li{
+  display:inline-block;
+  margin:0 10px;
+  margin:0 1rem;
+  opacity:.3;
+  -webkit-transition:all .5s ease;
+  transition:all .5s ease;
+  cursor:pointer;
+}
+
+.slideshow-dot > li:hover{
+  opacity:1;
+}
+
+.slideshow-dot > li.active{
+  opacity:1;
 }
 
 @-webkit-keyframes slideshow{

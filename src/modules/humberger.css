@@ -13,7 +13,7 @@
  * vars
  */
 :root {
-  --burger-width: 240px;
+  --burger-width: 160px;
 }
 
 @media (--sp-viewport) {

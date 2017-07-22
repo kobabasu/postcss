@@ -246,7 +246,6 @@ a.noeffect, button.noeffect{
 }
 
 .hero{
-  position:relative;
   display:block;
   width:100%;
   height:300px;
@@ -274,15 +273,12 @@ a.noeffect, button.noeffect{
   .hero{
     height:225px;
   }
-
   .hero > div{
     height:40%
   }
-
   .hero > div > h1{
     font-size:2.0rem;
   }
-
   .hero > div > span{
     font-size:1.4rem;
     overflow:hidden;
@@ -612,13 +608,13 @@ ul.topics li:before{
     transition:all .3s ease
   }
   body.humberger-active{
-    left:240px;
-    width:calc(100% - 240px);
+    left:160px;
+    width:calc(100% - 160px);
   }
   nav.globalnav.humberger{
-    width:240px;
+    width:160px;
     margin-top:0;
-    left:-240px;
+    left:-160px;
     padding-top:0;
     border:none;
     background-color:#252525;
@@ -670,7 +666,7 @@ ul.topics li:before{
     bottom:3px;
   }
   div.humberger-icon.humberger-active{
-    left:240px;
+    left:160px;
   }
 }
 
@@ -703,56 +699,48 @@ a.scrolltop{
 }
 
 .slideshow-container{
-  height:300px
+  height:300px;
+  padding-bottom:0;
+  overflow:hidden;
 }
 
-.slideshow-container [class*='slideshow-item-']{
+[class*='slideshow-item-']{
   position:absolute;
-  margin-left:100%;
+  margin-left:100%
 }
 
-.slideshow-container{
-}
-
-.slideshow-container [class*='slideshow-item-'] > *{
+[class*='slideshow-item-'] > *{
   opacity:0;
   //for ios safari z-index issue -webkit-transform:translate3d(0,0,0);
 }
 
-.slideshow-container{
-}
-
-.slideshow-container [class*='slideshow-item-'].active{
+[class*='slideshow-item-'].active{
   -webkit-animation:slideshow .7s ease 0s forwards;
-          animation:slideshow .7s ease 0s forwards;
+          animation:slideshow .7s ease 0s forwards
 }
 
-.slideshow-container [class*='slideshow-item-'].active > *{
+[class*='slideshow-item-'].active > *{
   -webkit-animation:slideshow-fadein .7s ease .8s forwards;
           animation:slideshow-fadein .7s ease .8s forwards;
 }
 
 @-webkit-keyframes slideshow{
   0%{
-    -webkit-transform:translateX(0);
-            transform:translateX(0);
+    left:0;
   }
 
   100%{
-    -webkit-transform:translateX(-100%);
-            transform:translateX(-100%);
+    left:-100%;
   }
 }
 
 @keyframes slideshow{
   0%{
-    -webkit-transform:translateX(0);
-            transform:translateX(0);
+    left:0;
   }
 
   100%{
-    -webkit-transform:translateX(-100%);
-            transform:translateX(-100%);
+    left:-100%;
   }
 }
 
@@ -779,6 +767,12 @@ a.scrolltop{
 @media only screen and (max-width: 767px){
   .slideshow-container{
     height:225px;
+
+    // for ios safari overflow-x issue
+    & > ul{
+      position:relative;
+      overflow:hidden;
+    }
   }
 }
 

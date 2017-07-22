@@ -32,14 +32,8 @@
  */
 .slideshow-container {
   height: var(--slideshow-height);
-  // for ios safari
-  overflow: hidden;
   padding-bottom: 0;
-
-  & > ul {
-    // for ios safari
-    position: relative;
-  }
+  overflow: hidden;
 }
 
 /*
@@ -73,11 +67,11 @@
  */
 @keyframes slideshow {
   0% {
-    transform: translateX(0);
+    left: 0;
   }
 
   100% {
-    transform: translateX(-100%);
+    left: -100%;
   }
 }
 
@@ -98,5 +92,11 @@
    */
   .slideshow-container {
     height: var(--slideshow-height-sp);
+
+    // for ios safari overflow-x issue
+    & > ul {
+      position: relative;
+      overflow: hidden;
+    }
   }
 }

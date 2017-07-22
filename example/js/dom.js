@@ -361,6 +361,11 @@ function SlideShow() {
     timer: null,
 
     init: function() {
+      // for ios safari overflow-x issue
+      _.ul.style.position = 'relative';
+      _.ul.style.overflow = 'visible';
+      _.ul.style.width = '100%';
+
       var bg = _.items[0].cloneNode(true);
       bg.style.marginLeft = 0;
       bg.style.zIndex = 0;

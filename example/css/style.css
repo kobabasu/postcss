@@ -150,12 +150,12 @@ body{
   z-index:0;
 }
 
-header, nav.globalnav{
-  z-index:100;
+nav.globalnav{
+  z-index:50;
 }
 
-div.humberger-icon{
-  z-index:200;
+header{
+  z-index:100;
 }
 
 div#wrap{
@@ -611,72 +611,65 @@ ul.topics li:before{
 }
 
 @media only screen and (max-width: 767px){
-  body{
-    width:100%;
-    left:0;
-    -webkit-transition:all .3s ease;
-    transition:all .3s ease
+  nav.globalnav.slidemenu a, nav.globalnav.slidemenu a:hover{
+    color:rgb(155, 155, 155);
   }
-  body.humberger-active{
-    left:160px;
-    width:calc(100% - 160px);
-  }
-  nav.globalnav.humberger{
-    width:160px;
-    margin-top:0;
-    left:-160px;
-    padding-top:0;
+
+  nav.globalnav.slidemenu{
+    position:fixed;
+    top:-240px;
     border:none;
-    background-color:#252525;
-    -webkit-transition:left .3s ease;
-    transition:left .3s ease
+    -webkit-transition:top .5s ease;
+    transition:top .5s ease;
+    //スマホでロード時に表示されるため一度消す opacity:0
   }
-  nav.globalnav.humberger.humberger-active{
+
+  nav.globalnav.slidemenu.slidemenu-active{
     top:0;
-    left:0;
   }
-  nav.globalnav.humberger ul{
+
+  nav.globalnav.slidemenu ul{
     display:block;
+    padding-top:0;
   }
-  nav.globalnav.humberger ul li{
+
+  nav.globalnav.slidemenu ul li{
     height:4rem;
     padding:1rem;
-    text-align:left;
     line-height:1.8rem;
     border:none;
     border-top:1px solid rgb(56, 56, 56);
     border-bottom:1px solid rgb(33, 33, 33);
     background-color:rgb(43, 43, 43);
   }
-  nav.globalnav.humberger ul li:last-child{
+
+  nav.globalnav.slidemenu ul li:last-child{
     border-right:none;
   }
-  div.humberger-icon{
+  div.slidemenu-icon{
     position:fixed;
     top:0;
-    left:0;
+    right:0;
     margin:1.7rem;
     width:30px;
     height:19px;
     background-color:#252525;
+    z-index:200;
     -webkit-transition:left .3s ease;
     transition:left .3s ease;
     cursor:pointer
   }
-  div.humberger-icon:before, div.humberger-icon:after{
+  div.slidemenu-icon:before, div.slidemenu-icon:after{
     position:absolute;
     content:'';
     width:100%;
     border-top:5px solid #FFFFFF;
   }
-  div.humberger-icon:before{
+  div.slidemenu-icon:before{
     top:3px;
   }
-  div.humberger-icon:after{
+  div.slidemenu-icon:after{
     bottom:3px;
-  }
-  div.humberger-icon.humberger-active{
-    left:160px;
   }
 }
 
@@ -821,12 +814,6 @@ nav.globalnav ul li a, nav.globalnav ul li a:hover{
   color:#333333;
 }
 
-@media only screen and (max-width: 767px){
-  nav.globalnav.humberger a, nav.globalnav.humberger a:hover{
-    color:rgb(155, 155, 155);
-  }
-}
-
 div.footerlink h2, div.footerlink address, div.footerlink li, div.footerlink a, div.footerlink a:hover{
   color:#333333;
 }
@@ -916,8 +903,6 @@ nav.globalnav{
   width:100%;
   height:50px;
   height:5rem;
-  padding-top:10px;
-  padding-top:1rem;
   margin-top:50px;
   margin-top:5rem
 }
@@ -925,7 +910,8 @@ nav.globalnav{
 nav.globalnav ul{
   -ms-flex-wrap:nowrap;
       flex-wrap:nowrap;
-  vertical-align:middle;
+  padding-top:10px;
+  padding-top:1rem;
 }
 
 nav.globalnav ul li{

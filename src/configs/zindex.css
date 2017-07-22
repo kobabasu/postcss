@@ -7,12 +7,12 @@ body {
   z-index: 0;
 }
 
-header, nav.globalnav {
-  z-index: 100;
+nav.globalnav {
+  z-index: 50;
 }
 
-div.humberger-icon {
-  z-index: 200;
+header {
+  z-index: 100;
 }
 
 div#wrap {

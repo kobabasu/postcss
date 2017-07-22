@@ -43,8 +43,8 @@ window.onload = function() {
   DetectViewport('sp', '(max-width: 767px)').listen();
   DetectViewport('5k', '(min-width: 1280px)').listen();
   ScrollInnerLinks();
-  EnableHumbergerMenu();
-  // Hero();
+  EnableSlideMenu();
+  // EnableHumbergerMenu();
   SlideShow();
 };
 
@@ -165,6 +165,32 @@ function DetectViewport(name, viewport) {
 
   return _;
 };
+
+
+/*
+ * slide menu
+ */
+function EnableSlideMenu(nav) {
+  var _ = Object.create(p);
+
+  var nav = nav || '.globalnav.slidemenu';
+  
+  _ = {
+    body: document.body,
+    header: document.getElementsByTagName('header')[0],
+    nav: document.querySelector(nav),
+  }
+
+  var icon = document.createElement('div');
+  icon.className = 'slidemenu-icon';
+  _.nav.parentNode.insertBefore(icon, _.nav.nextElementSibling);
+  icon.addEventListener('click', function() {
+    _.nav.style.opacity = 1;
+    _.nav.classList.toggle('slidemenu-active');
+  });
+
+  return true;
+}
 
 
 /*

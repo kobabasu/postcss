@@ -52,14 +52,6 @@ nav.globalnav {
   }
 }
 
-@media (--sp-viewport) {
-  nav.globalnav.humberger {
-    & a, & a:hover {
-      color: var(--gray-dark);
-    }
-  }
-}
-
 /*
  * footerlink
  */

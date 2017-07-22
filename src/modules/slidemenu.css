@@ -1,57 +1,37 @@
 /*
- * # modules/humberger.css
- * ハンバーガーメニューに関する定義
- * nav.globalnav .humbergerが必要
- * div#humberger-iconが必要
- * jsでopen/close toggleClassするコードが必要
- * activeのoverflow-x:hiddenはheaderをhtml下部に
- * 移動した際に横スクロールがでる問題の対策
- * -xをつけないと縦スクロールがいかなくなる
+ * # modules/slidemenu.css
+ * slidemenuのスタイルの定義
  */
 
 /*
- * vars
+ * config
  */
 :root {
-  --burger-width: 160px;
+  --slidemenu-height: 300px;
+  --slidemenu-height-sp: 225px;
 }
 
+
+/*
+ * theme
+ */
 @media (--sp-viewport) {
-  nav.globalnav.humberger {
+  nav.globalnav.slidemenu {
     & a, & a:hover {
       color: var(--gray-dark);
     }
   }
 
-  /*
-   * body toggle animation
-   */
-  body {
-    width: 100%;
-    left: 0;
-    transition: all .3s ease;
-
-    &.humberger-active {
-      left: var(--burger-width);
-      width: calc(100% - var(--burger-width));
-    }
-  }
-
-  /*
-   * globalnav
-   */
-  nav.globalnav.humberger {
-    width: var(--burger-width);
-    margin-top: 0;
-    left: -var(--burger-width);
-    padding-top: 0;
+  nav.globalnav.slidemenu {
+    position: fixed;
+    top: -240px;
     border: none;
-    background-color: var(--color-device-bg);
-    transition: left .3s ease;
+    transition: top .5s ease;
+    // スマホでロード時に表示されるため一度消す
+    opacity: 0;
 
-    &.humberger-active {
+    &.slidemenu-active {
       top: 0;
-      left: 0;
     }
 
     & ul {
@@ -61,7 +41,6 @@
       & li {
         height: 4rem;
         padding: var(--small-spacing);
-        text-align: left;
         line-height: var(--small-line-height);
         border: none;
         border-top: 1px solid color(var(--color-device-bg) lightness(+7%));
@@ -78,10 +57,10 @@
   /*
    * humberger-icon
    */
-  div.humberger-icon {
+  div.slidemenu-icon {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     margin: 1.7rem;
     width: 30px;
     height: 19px;
@@ -103,10 +82,6 @@
 
     &:after {
       bottom: 3px;
-    }
-
-    &.humberger-active {
-      left: var(--burger-width);
     }
   }
 }

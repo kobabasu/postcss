@@ -32,7 +32,13 @@
  */
 .slideshow-container {
   height: var(--slideshow-height);
+  // for ios safari
+  overflow: hidden;
 
+  & > ul {
+    // for ios safari
+    position: relative;
+  }
 }
 
 /*

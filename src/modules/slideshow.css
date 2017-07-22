@@ -1,0 +1,94 @@
+/*
+ * # modules/slideshow.css
+ * slideshowのスタイルの定義
+ */
+
+/*
+ * config
+ */
+:root {
+  --slideshow-height: 300px;
+  --slideshow-height-sp: 225px;
+}
+
+
+/*
+ * theme
+ */
+.slideshow-container {
+  & [class*='slideshow-item-'] {
+    background-color: var(--gray);
+  }
+
+  & [class*='slideshow-item-']:nth-child(odd) {
+    color: white;
+    background-color: var(--gray-dark);
+  }
+}
+
+
+/*
+ * .slideshow-container
+ */
+.slideshow-container {
+  height: var(--slideshow-height);
+
+  /*
+   * .slideshow-item-num
+   */
+  & [class*='slideshow-item-'] {
+    position: absolute;
+    margin-left: 100%;
+  }
+
+  /*
+   * .slideshow-item-num > div
+   */
+  & [class*='slideshow-item-'] > * {
+    opacity: 0;
+
+    // for ios safari z-index issue
+    -webkit-transform: translate3d(0,0,0);
+  }
+
+  /*
+   * animation
+   */
+  & [class*='slideshow-item-'].active {
+    animation: slideshow .7s ease 0s forwards;
+
+    & > * {
+      animation: slideshow-fadein .7s ease .8s forwards;
+    }
+  }
+}
+
+
+/*
+ * kekyframes
+ */
+@keyframes slideshow {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideshow-fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (--sp-viewport) {
+  .slideshow-container {
+    height: var(--slideshow-height-sp);
+  }
+}

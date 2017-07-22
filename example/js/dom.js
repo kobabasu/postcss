@@ -44,7 +44,8 @@ window.onload = function() {
   DetectViewport('5k', '(min-width: 1280px)').listen();
   ScrollInnerLinks();
   EnableHumbergerMenu();
-  Hero();
+  // Hero();
+  SlideShow();
 };
 
 
@@ -342,57 +343,76 @@ function InView(cls) {
   return _;
 }
 
-
-/*
- * hero
- */
-function Hero() {
+function SlideShow() {
   var _ = Object.create(p);
 
   _ = {
-    ul: document.querySelector('.hero-container > ul'),
-    items: document.querySelectorAll("[class*='hero-item-']"),
-    next: document.querySelector('.home-next'),
-    prev: document.querySelector('.home-prev'),
     duration: 3000,
+    totalCounts: 120,
+
+    ul: document.querySelector('.slideshow-container > ul'),
+    items: document.querySelectorAll("[class*='slideshow-item-']"),
+    forward: document.querySelector('.home-next'),
+    prev: document.querySelector('.home-prev'),
+
+    now: 0,
+    next: 1,
+    count: 0,
     timer: null,
-    status: 0,
-    paused: null,
 
     init: function() {
-      var start = _.items[0].cloneNode(true);
-      start.style.marginLeft = 0;
-      start.style.zIndex = 0;
+      var bg = _.items[0].cloneNode(true);
+      bg.style.marginLeft = 0;
+      bg.style.zIndex = 0;
 
-      var el = start.childNodes[1];
+      var el = bg.childNodes[1];
       el.style.opacity = 1;
 
-      _.ul.appendChild(start);
+      _.ul.appendChild(bg);
 
-      _.timer = setInterval(_.run, _.duration);
+      _.timer = setInterval(_.loop, _.duration);
     },
 
-    trigger: function() {
-      if (_.paused == null) {
-        _.paused = _.turnover(_.status - 1);
+    restore: function() {
+      _.count += 1;
+      if (_.count >= _.totalCounts) {
+        _.stop();
       }
 
       for (var i = 0; i < _.items.length; i++) {
-        if (_.paused != i) {
+        _.items[i].style.zIndex = 10;
+        if (i != _.now) {
           _.items[i].classList.remove('active');
         }
-        _.items[i].style.zIndex = 10;
       }
-
-      _.paused = null;
-      _.items[_.status].style.zIndex = 20;
-      _.items[_.status].classList.add('active');
-      _.items[_.status].addEventListener('animationend', _.replace, false);
     },
 
-    replace: function() {
-      var target = _.turnover(_.status - 1);
-      _.items[target].classList.remove('active');
+    animate: function() {
+      _.items[_.next].style.zIndex = 20;
+      _.items[_.next].addEventListener('animationend', _.animationEnd, false);
+      _.items[_.next].classList.add('active');
+    },
+
+    animationEnd: function() {
+      _.items[_.next].removeEventListener('animationend', _.animationEnd, false);
+      _.items[_.now].classList.remove('active');
+      _.now = _.next;
+      _.next = _.returntozero(_.next + 1);
+    },
+
+    loop: function() {
+      _.restore();
+      _.animate();
+    },
+
+    reset: function() {
+      clearInterval(_.timer);
+      _.loop();
+      _.timer = setInterval(_.loop, _.duration);
+    },
+
+    stop: function() {
+      clearInterval(_.timer);
     },
 
     turnover: function(num) {
@@ -407,34 +427,21 @@ function Hero() {
         num = 0;
       }
       return num;
-    },
-
-    run: function() {
-      _.status = _.returntozero(_.status + 1);
-      _.trigger();
-    },
-
-    rerun: function() {
-      clearInterval(_.timer);
-      _.run();
-      _.timer = setInterval(_.run, _.duration);
     }
-  }
+  };
 
   _.init();
 
-  _.next.addEventListener('click', function() {
-    _.paused = _.status;
-    _.rerun();
+  _.forward.addEventListener('click', function() {
+    _.next = _.returntozero(_.now + 1);
+    _.reset();
   }, false);
 
   _.prev.addEventListener('click', function() {
-    _.paused = _.turnover(_.status - 1);
-    var target = _.turnover(_.status - 1);
-    _.status = _.turnover(target - 1);
-    _.rerun();
+    _.next = _.turnover(_.now - 1);
+    _.reset();
   }, false);
-
+  
   return _;
 }
 

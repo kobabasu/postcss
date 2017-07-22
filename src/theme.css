@@ -99,18 +99,6 @@ ul.topics {
 }
 
 /*
- * hero
- */
-[class*='hero-item-'] {
-  background-color: var(--gray);
-}
-
-[class*='hero-item-']:nth-child(odd) {
-  color: white;
-  background-color: var(--gray-dark);
-}
-
-/*
  * grid
  */
 [class*='grid-item-'] {

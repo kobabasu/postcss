@@ -1,20 +1,23 @@
 /*
  * # modules/slidemenu.css
  * slidemenuのスタイルの定義
+ * nav.globalnav .slidemenuが必要
+ * jsでopen/close toggleClassするコードが必要
  */
 
 /*
  * config
  */
 :root {
-  --slidemenu-height: 300px;
-  --slidemenu-height-sp: 225px;
+  --slidemenu-height: -240px;
 }
 
 
 /*
  * theme
  */
+
+
 @media (--sp-viewport) {
   nav.globalnav.slidemenu {
     & a, & a:hover {
@@ -24,7 +27,7 @@
 
   nav.globalnav.slidemenu {
     position: fixed;
-    top: -240px;
+    top: var(-slidemenu-height);
     border: none;
     transition: top .5s ease;
     // スマホでロード時に表示されるため一度消す
@@ -55,7 +58,7 @@
   }
 
   /*
-   * humberger-icon
+   * slidemenu-icon
    */
   div.slidemenu-icon {
     position: fixed;

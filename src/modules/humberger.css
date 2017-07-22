@@ -2,19 +2,21 @@
  * # modules/humberger.css
  * ハンバーガーメニューに関する定義
  * nav.globalnav .humbergerが必要
- * div#humberger-iconが必要
  * jsでopen/close toggleClassするコードが必要
- * activeのoverflow-x:hiddenはheaderをhtml下部に
- * 移動した際に横スクロールがでる問題の対策
- * -xをつけないと縦スクロールがいかなくなる
  */
 
 /*
- * vars
+ * config
  */
 :root {
   --burger-width: 160px;
 }
+
+
+/*
+ * theme
+ */
+
 
 @media (--sp-viewport) {
   nav.globalnav.humberger {

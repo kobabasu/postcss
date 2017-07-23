@@ -531,11 +531,11 @@ function RippleEffect() {
     els: document.querySelectorAll('.ripple'),
 
     add: function(el) {
-      el.addEventListener('mousedown', function(e) {
-        var fx = document.createElement('span');
-        fx.className = 'ripple-effect';
-        el.appendChild(fx);
+      var fx = document.createElement('span');
+      fx.className = 'ripple-effect';
+      el.appendChild(fx);
 
+      el.addEventListener('mousedown', function(e) {
         var x = e.offsetX;
         var y = e.offsetY;
         var w = fx.clientWidth;
@@ -550,7 +550,6 @@ function RippleEffect() {
         function remove() {
           fx.removeEventListener('aniimationend', remove, false);
           fx.classList.remove('active');
-          el.removeChild(fx);
         }
       }, false);
     }

@@ -936,6 +936,24 @@ a.scrolltop{
   }
 }
 
+.scrollit-up, .scrollit-down{
+  background-size:100% auto;
+  -webkit-transition:all .5s ease-out;
+  transition:all .5s ease-out;
+}
+
+.scrollit-left, .scrollit-right{
+  background-size:auto 100%;
+  -webkit-transition:all .5s ease-out;
+  transition:all .5s ease-out;
+}
+
+@media only screen and (max-width: 767px){
+  .scrollit-up, .scrollit-down, .scrollit-left, .scrollit-right{
+    background-size:200% auto;
+  }
+}
+
 html{
   background-color:#252525;
 }
@@ -989,6 +1007,10 @@ ul.topics li{
 
 [class*='flexbox-item-']:nth-child(odd){
   background-color:rgb(238, 238, 238);
+}
+
+.scrollit-up, .scrollit-down, .scrollit-left, .scrollit-right{
+  background-image:url('../imgs/sky.jpg');
 }
 
 [class*='grid-item-']{

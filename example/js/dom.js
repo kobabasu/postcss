@@ -13,12 +13,15 @@ var slideshow = SlideShow();
 loading.emitter = function() {
   var scrolltop = FixedScrollTop();
   var inview = InView();
+  var scrollit = ScrollIt();
+
   inview.onload();
   slideshow.start();
 
   window.onscroll = function() {
     scrolltop.animate();
     inview.detect();
+    scrollit.scroll();
   };
 
   window.resize = function() {
@@ -562,5 +565,63 @@ function RippleEffect() {
   return false;
 }
 
+
+/*
+ * Scroll Background
+ */
+function ScrollIt() {
+  var _ = Object.create(p);
+
+  _ = {
+    distance: 50,
+
+    doc: document.documentElement.clientHeight,
+    ups: document.querySelectorAll('.scrollit-up'),
+    downs: document.querySelectorAll('.scrollit-down'),
+    lefts: document.querySelectorAll('.scrollit-left'),
+    rights: document.querySelectorAll('.scrollit-right'),
+
+    scroll: function() {
+      var scroll = window.pageYOffset;
+      var ratio = scroll / _.doc;
+      ratio = (ratio > 1) ? 1 : ratio ;
+      ratio = ratio * _.distance;
+        
+      for (var u = 0; u < _.ups.length; u++) {
+        _.up(_.ups[u], ratio);
+      };
+
+      for (var d = 0; d < _.downs.length; d++) {
+        _.down(_.downs[d], ratio);
+      };
+
+      for (var l = 0; l < _.lefts.length; l++) {
+        _.left(_.lefts[l], ratio);
+      };
+
+      for (var r = 0; r < _.rights.length; r++) {
+        _.right(_.rights[r], ratio);
+      };
+    },
+
+    up: function(el, r) {
+      el.style.backgroundPositionY = 50 + r + '%';
+    },
+
+    down: function(el, r) {
+      el.style.backgroundPositionY = 50 - r + '%';
+    },
+
+    left: function(el, r) {
+      el.style.backgroundPositionX = 50 - r + '%';
+    },
+
+    right: function(el, r) {
+      el.style.backgroundPositionX = 50 + r + '%';
+    }
+  };
+
+  return _;
+}
 
 // vim: foldmethod=marker:ts=2:sts=0:sw=2

@@ -1,0 +1,60 @@
+/*
+ * # modules/ripple.css
+ * ripple effectのスタイルを定義
+ */
+
+/*
+ * config
+ */
+:root {
+  --ripple-effect-size: 500px;
+}
+
+
+/*
+ * theme
+ */
+.ripple-effect {
+  background-color: var(--brand-info);
+}
+
+/*
+ * .ripple
+ */
+.ripple {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/*
+ * .ripple-effect
+ */
+.ripple-effect {
+  width: var(--ripple-effect-size);
+  height: var(--ripple-effect-size);
+
+  position: absolute;
+  border-radius: 100%;
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+
+  &.active {
+    animation: ripple .75s ease-out;
+  }
+}
+
+
+/*
+ * keyframes
+ */
+@keyframes ripple {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}

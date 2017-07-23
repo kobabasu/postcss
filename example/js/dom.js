@@ -9,14 +9,19 @@
  * -------------
  */
 var loading = Loading();
+var slideshow = SlideShow();
 loading.emitter = function() {
   var scrolltop = FixedScrollTop();
   var inview = InView();
+  var scrollit = ScrollIt();
+
   inview.onload();
+  slideshow.start();
 
   window.onscroll = function() {
     scrolltop.animate();
     inview.detect();
+    scrollit.scroll();
   };
 
   window.resize = function() {
@@ -44,8 +49,8 @@ window.onload = function() {
   DetectViewport('5k', '(min-width: 1280px)').listen();
   ScrollInnerLinks();
   EnableSlideMenu();
+  RippleEffect();
   // EnableHumbergerMenu();
-  SlideShow();
 };
 
 
@@ -57,6 +62,8 @@ function Loading(element) {
   var el = element || '#wrap' ;
 
   _ = {
+    duration: 1800,
+
     complete: false,
     el: document.querySelector(el),
     emitter: null,
@@ -72,7 +79,7 @@ function Loading(element) {
         setTimeout(function() {
           _.el.classList.add('loaded');
           _.el.addEventListener('transitionend', _.remove, false);
-        }, 1800);
+        }, _.duration);
       }
     },
 
@@ -399,7 +406,9 @@ function SlideShow() {
 
       _.createDot();
       _.createBg();
+    },
 
+    start: function() {
       _.timer = setInterval(_.loop, _.duration);
     },
 
@@ -514,5 +523,105 @@ function SlideShow() {
   return _;
 }
 
+
+/*
+ * ripple effect
+ */
+function RippleEffect() {
+  var _ = Object.create(p);
+
+  _ = {
+    els: document.querySelectorAll('.ripple'),
+
+    add: function(el) {
+      var fx = document.createElement('span');
+      fx.className = 'ripple-effect';
+      el.appendChild(fx);
+
+      el.addEventListener('mousedown', function(e) {
+        var x = e.offsetX;
+        var y = e.offsetY;
+        var w = fx.clientWidth;
+        var h = fx.clientHeight;
+
+        fx.style.left = x - w / 2 + 'px';
+        fx.style.top = y - h / 2 + 'px';
+
+        fx.classList.add('active');
+
+        fx.addEventListener('animationend', remove, false);
+        function remove() {
+          fx.removeEventListener('aniimationend', remove, false);
+          fx.classList.remove('active');
+        }
+      }, false);
+    }
+  };
+  
+  for (var i = 0; i < _.els.length; i++) {
+    _.add(_.els[i]);
+  }
+  
+  return false;
+}
+
+
+/*
+ * Scroll Background
+ */
+function ScrollIt() {
+  var _ = Object.create(p);
+
+  _ = {
+    distance: 50,
+
+    doc: document.documentElement.clientHeight,
+    ups: document.querySelectorAll('.scrollit-up'),
+    downs: document.querySelectorAll('.scrollit-down'),
+    lefts: document.querySelectorAll('.scrollit-left'),
+    rights: document.querySelectorAll('.scrollit-right'),
+
+    scroll: function() {
+      var scroll = window.pageYOffset;
+      var ratio = scroll / _.doc;
+      ratio = (ratio > 1) ? 1 : ratio ;
+      ratio = ratio * _.distance;
+        
+      for (var u = 0; u < _.ups.length; u++) {
+        _.up(_.ups[u], ratio);
+      };
+
+      for (var d = 0; d < _.downs.length; d++) {
+        _.down(_.downs[d], ratio);
+      };
+
+      for (var l = 0; l < _.lefts.length; l++) {
+        _.left(_.lefts[l], ratio);
+      };
+
+      for (var r = 0; r < _.rights.length; r++) {
+        _.right(_.rights[r], ratio);
+      };
+    },
+
+    up: function(el, r) {
+      el.style.backgroundPositionY = 50 + r + '%';
+    },
+
+    down: function(el, r) {
+      el.style.backgroundPositionY = 50 - r + '%';
+    },
+
+    left: function(el, r) {
+      el.style.backgroundPositionX = 50 - r + '%';
+    },
+
+    right: function(el, r) {
+      el.style.backgroundPositionX = 50 + r + '%';
+    }
+  };
+
+  return _;
+}
 
 // vim: foldmethod=marker:ts=2:sts=0:sw=2

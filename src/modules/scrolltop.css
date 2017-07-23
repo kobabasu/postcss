@@ -3,6 +3,13 @@
  * ページの先頭への定義
  */
 
+/*
+ * theme
+ */
+a.scrolltop:visited {
+  color: var(--color-link);
+}
+
 
 a.scrolltop {
   position: fixed;

@@ -6,18 +6,34 @@
  */
 
 /*
- * vars
+ * config 
  */
 :root {
   --loading-font-width: 12rem;
 }
 
+
+/*
+ * theme
+ */
+div#wrap {
+  background-color: var(--color-device-bg);
+}
+
+div#wrap > p {
+  color: color(var(--color-device-bg) lightness(+40%));
+  border-right: 1px solid color(var(--color-device-bg) lightness(+20%));
+}
+
+
+/*
+ * div#wrap
+ */
 div#wrap {
   position: fixed;
   width: 100%;
   height: 100%;
   text-align: center;
-  background-color: var(--color-device-bg);
   opacity: 1;
   transition: opacity .3s ease 1s;
 }
@@ -38,21 +54,23 @@ div#wrap > p {
   margin: auto;
   padding-top: var(--tiny-spacing);
   line-height: var(--small-spacing);
-  color: color(var(--color-device-bg) lightness(+40%));
-  border-right: 1px solid color(var(--color-device-bg) lightness(+20%));
   white-space: nowrap;
   overflow: hidden;
   animation: typing 2.5s steps(12, end) infinite,
-             blink .5s step-end infinite alternate;
+             loadingBlink .5s step-end infinite alternate;
 }
 
+
+/*
+ * keyframes
+ */
 @keyframes typing {
   0%   { width: 0; }
   20%  { width: var(--loading-font-width); }
   100% { width: var(--loading-font-width); }
 }
 
-@keyframes blink {
+@keyframes loadingBlink {
   50% {
     border-color: transparent;
   }

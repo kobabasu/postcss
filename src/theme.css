@@ -87,6 +87,14 @@ ul.topics {
 }
 
 /*
+ * scrollit
+ */
+.scrollit-up, .scrollit-down,
+.scrollit-left, .scrollit-right {
+  background-image: resolve('../imgs/sky.jpg');
+}
+
+/*
  * grid
  */
 [class*='grid-item-'] {

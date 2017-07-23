@@ -887,6 +887,73 @@ a.scrolltop{
   }
 }
 
+.ripple-effect{
+  background-color:#5bc0de;
+}
+
+.ripple{
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.ripple-effect{
+  width:500px;
+  height:500px;
+
+  position:absolute;
+  border-radius:100%;
+  -webkit-transform:scale(0);
+          transform:scale(0);
+  opacity:0;
+  pointer-events:none
+}
+
+.ripple-effect.active{
+  -webkit-animation:ripple .75s ease-out;
+          animation:ripple .75s ease-out;
+}
+
+@-webkit-keyframes ripple{
+  0%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+    -webkit-transform:scale(2);
+            transform:scale(2);
+  }
+}
+
+@keyframes ripple{
+  0%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+    -webkit-transform:scale(2);
+            transform:scale(2);
+  }
+}
+
+.scrollit-up, .scrollit-down{
+  background-size:100% auto;
+  -webkit-transition:all .5s ease-out;
+  transition:all .5s ease-out;
+}
+
+.scrollit-left, .scrollit-right{
+  background-size:auto 100%;
+  -webkit-transition:all .5s ease-out;
+  transition:all .5s ease-out;
+}
+
+@media only screen and (max-width: 767px){
+  .scrollit-up, .scrollit-down, .scrollit-left, .scrollit-right{
+    background-size:200% auto;
+  }
+}
+
 html{
   background-color:#252525;
 }
@@ -940,6 +1007,10 @@ ul.topics li{
 
 [class*='flexbox-item-']:nth-child(odd){
   background-color:rgb(238, 238, 238);
+}
+
+.scrollit-up, .scrollit-down, .scrollit-left, .scrollit-right{
+  background-image:url('../imgs/sky.jpg');
 }
 
 [class*='grid-item-']{

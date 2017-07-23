@@ -18,15 +18,15 @@ loading.emitter = function() {
   inview.onload();
   slideshow.start();
 
-  window.onscroll = function() {
+  window.addEventListener('scroll', function() {
     scrolltop.animate();
     inview.detect();
     scrollit.scroll();
-  };
+  }, {passive: true});
 
-  window.resize = function() {
+  window.addEventListener('resize', function() {
     scrolltop.animate();
-  }
+  }, {passive: true});
 };
 
 if (!DEBUG_MODE) {

@@ -887,6 +887,55 @@ a.scrolltop{
   }
 }
 
+.ripple-effect{
+  background-color:#5bc0de;
+}
+
+.ripple{
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.ripple-effect{
+  width:500px;
+  height:500px;
+
+  position:absolute;
+  border-radius:100%;
+  -webkit-transform:scale(0);
+          transform:scale(0);
+  opacity:0;
+  pointer-events:none
+}
+
+.ripple-effect.active{
+  -webkit-animation:ripple .75s ease-out;
+          animation:ripple .75s ease-out;
+}
+
+@-webkit-keyframes ripple{
+  0%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+    -webkit-transform:scale(2);
+            transform:scale(2);
+  }
+}
+
+@keyframes ripple{
+  0%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+    -webkit-transform:scale(2);
+            transform:scale(2);
+  }
+}
+
 html{
   background-color:#252525;
 }

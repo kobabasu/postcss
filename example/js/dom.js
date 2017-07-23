@@ -46,6 +46,7 @@ window.onload = function() {
   DetectViewport('5k', '(min-width: 1280px)').listen();
   ScrollInnerLinks();
   EnableSlideMenu();
+  RippleEffect();
   // EnableHumbergerMenu();
 };
 
@@ -517,6 +518,49 @@ function SlideShow() {
   }, false);
   
   return _;
+}
+
+
+/*
+ * ripple effect
+ */
+function RippleEffect() {
+  var _ = Object.create(p);
+
+  _ = {
+    els: document.querySelectorAll('.ripple'),
+
+    add: function(el) {
+      el.addEventListener('mousedown', function(e) {
+        var fx = document.createElement('span');
+        fx.className = 'ripple-effect';
+        el.appendChild(fx);
+
+        var x = e.offsetX;
+        var y = e.offsetY;
+        var w = fx.clientWidth;
+        var h = fx.clientHeight;
+
+        fx.style.left = x - w / 2 + 'px';
+        fx.style.top = y - h / 2 + 'px';
+
+        fx.classList.add('active');
+
+        fx.addEventListener('animationend', remove, false);
+        function remove() {
+          fx.removeEventListener('aniimationend', remove, false);
+          fx.classList.remove('active');
+          el.removeChild(fx);
+        }
+      }, false);
+    }
+  };
+  
+  for (var i = 0; i < _.els.length; i++) {
+    _.add(_.els[i]);
+  }
+  
+  return false;
 }
 
 

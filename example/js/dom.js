@@ -618,7 +618,7 @@ function ScrollIt() {
         
       for (var i = 0; i < _.ups.length; i++) {
         var loc = _.ups[i].getBoundingClientRect();
-        var dis = loc.top / height * _.distance;
+        var dis = limit - loc.top / height * _.distance;
         if (0 < dis && 100 > dis) {
           _.ups[i].style.backgroundPositionY = dis + '%';
         }
@@ -626,7 +626,7 @@ function ScrollIt() {
 
       for (var i = 0; i < _.downs.length; i++) {
         var loc = _.downs[i].getBoundingClientRect();
-        var dis = limit - loc.top / height * _.distance;
+        var dis = loc.top / height * _.distance;
         if (0 < dis && 100 > dis) {
           _.downs[i].style.backgroundPositionY = dis + '%';
         }

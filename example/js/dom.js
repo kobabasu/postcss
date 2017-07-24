@@ -14,8 +14,6 @@ loading.emitter = function() {
   var scrolltop = FixedScrollTop();
   var inview = InView();
   var scrollit = ScrollIt();
-
-  inview.onload();
   slideshow.start();
 
 
@@ -27,7 +25,7 @@ loading.emitter = function() {
 
         // process
         scrolltop.animate();
-        inview.detect();
+        inview.animate();
         scrollit.animate();
 
         scrollFlag = true;
@@ -363,39 +361,48 @@ function FixedScrollTop() {
  */
 function InView(cls) {
   var _ = Object.create(p);
-  var classname = cls || '.inview' ;
-  var obj = document.querySelectorAll(classname);
-  var target = Object.keys(obj).map(function(key) {return obj[key];});
 
   _ = {
-    delayInterval: 0.7,
-    target: target,
+    els: document.querySelectorAll('.inview'),
 
-    animate: function(i, mode) {
-      var rect = _.target[i].getBoundingClientRect();
-
-      if (window.innerHeight - rect.top > 0) {
-        if (mode == 'onload') {
-          var d = parseFloat(getComputedStyle(_.target[i])['transitionDelay']);
-          _.target[i].style.transitionDelay = d + (_.delayInterval * i) + 's';
+    animate: function() {
+      for (var i = 0; i < _.els.length; i++) {
+        var loc = _.els[i].getBoundingClientRect();
+        if (window.innerHeight - loc.top > 0) {
+          _.els[i].classList.add('active');
         }
-        _.target[i].classList.add('animate');
-        delete _.target[i];
       }
     },
 
-    detect: function() {
-      for (key in _.target) {
-        _.animate(key);
-      }
-    },
+    remove: function(e) {
+      e.target.removeEventListener(
+        'transitionend',
+        _.remove,
+        {passive: true}
+      );
 
-    onload: function() {
-      for (key in _.target) {
-        _.animate(key, 'onload');
+      for (var i = 0; i < _.els.length; i++) {
+        if (_.els[i].eventParam == e.target.eventParam) {
+          _.els.splice(i, 1);
+        }
       }
     }
   };
+
+  // arrayに変換
+  _.els = Object.keys(_.els).map(function(key) {return _.els[key];});
+
+  for (var i = 0; i < _.els.length; i++) {
+    _.els[i].eventParam = i;
+    _.els[i].addEventListener(
+      'transitionend',
+      _.remove,
+      {passive: true}
+    );
+  }
+
+  // 初期ロード時用
+  _.animate();
 
   return _;
 }

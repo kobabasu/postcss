@@ -14,19 +14,41 @@ loading.emitter = function() {
   var scrolltop = FixedScrollTop();
   var inview = InView();
   var scrollit = ScrollIt();
-
-  inview.onload();
   slideshow.start();
 
-  window.onscroll = function() {
-    scrolltop.animate();
-    inview.detect();
-    scrollit.scroll();
-  };
 
-  window.resize = function() {
-    scrolltop.animate();
-  }
+  var scrollFlag = true;
+  window.addEventListener('scroll', function() {
+    if (scrollFlag) {
+      scrollFlag = false;
+      setTimeout(function() {
+
+        // process
+        scrolltop.animate();
+        inview.animate();
+        scrollit.animate();
+
+        scrollFlag = true;
+        return scrollFlag;
+      }, 300);
+    }
+  }, {passive: true});
+
+
+  var resizeFlag = true;
+  window.addEventListener('resize', function() {
+    if (resizeFlag) {
+      resizeFlag = false;
+      setTimeout(function() {
+
+        // process
+        scrolltop.animate();
+
+        resizeFlag = true;
+        return resizeFlag;
+      }, 300);
+    }
+  }, {passive: true});
 };
 
 if (!DEBUG_MODE) {
@@ -339,39 +361,48 @@ function FixedScrollTop() {
  */
 function InView(cls) {
   var _ = Object.create(p);
-  var classname = cls || '.inview' ;
-  var obj = document.querySelectorAll(classname);
-  var target = Object.keys(obj).map(function(key) {return obj[key];});
 
   _ = {
-    delayInterval: 0.7,
-    target: target,
+    els: document.querySelectorAll('.inview'),
 
-    animate: function(i, mode) {
-      var rect = _.target[i].getBoundingClientRect();
-
-      if (window.innerHeight - rect.top > 0) {
-        if (mode == 'onload') {
-          var d = parseFloat(getComputedStyle(_.target[i])['transitionDelay']);
-          _.target[i].style.transitionDelay = d + (_.delayInterval * i) + 's';
+    animate: function() {
+      for (var i = 0; i < _.els.length; i++) {
+        var loc = _.els[i].getBoundingClientRect();
+        if (window.innerHeight - loc.top > 0) {
+          _.els[i].classList.add('active');
         }
-        _.target[i].classList.add('animate');
-        delete _.target[i];
       }
     },
 
-    detect: function() {
-      for (key in _.target) {
-        _.animate(key);
-      }
-    },
+    remove: function(e) {
+      e.target.removeEventListener(
+        'transitionend',
+        _.remove,
+        {passive: true}
+      );
 
-    onload: function() {
-      for (key in _.target) {
-        _.animate(key, 'onload');
+      for (var i = 0; i < _.els.length; i++) {
+        if (_.els[i].eventParam == e.target.eventParam) {
+          _.els.splice(i, 1);
+        }
       }
     }
   };
+
+  // arrayに変換
+  _.els = Object.keys(_.els).map(function(key) {return _.els[key];});
+
+  for (var i = 0; i < _.els.length; i++) {
+    _.els[i].eventParam = i;
+    _.els[i].addEventListener(
+      'transitionend',
+      _.remove,
+      {passive: true}
+    );
+  }
+
+  // 初期ロード時用
+  _.animate();
 
   return _;
 }
@@ -581,44 +612,42 @@ function ScrollIt() {
     lefts: document.querySelectorAll('.scrollit-left'),
     rights: document.querySelectorAll('.scrollit-right'),
 
-    scroll: function() {
-      var scroll = window.pageYOffset;
-      var ratio = scroll / _.doc;
-      ratio = (ratio > 1) ? 1 : ratio ;
-      ratio = ratio * _.distance;
+    animate: function() {
+      var limit = _.distance * 2;
+      var height = window.innerHeight;
         
-      for (var u = 0; u < _.ups.length; u++) {
-        _.up(_.ups[u], ratio);
+      for (var i = 0; i < _.ups.length; i++) {
+        var loc = _.ups[i].getBoundingClientRect();
+        var dis = limit - loc.top / height * _.distance;
+        if (0 < dis && 100 > dis) {
+          _.ups[i].style.backgroundPositionY = dis + '%';
+        }
       };
 
-      for (var d = 0; d < _.downs.length; d++) {
-        _.down(_.downs[d], ratio);
+      for (var i = 0; i < _.downs.length; i++) {
+        var loc = _.downs[i].getBoundingClientRect();
+        var dis = loc.top / height * _.distance;
+        if (0 < dis && 100 > dis) {
+          _.downs[i].style.backgroundPositionY = dis + '%';
+        }
       };
 
-      for (var l = 0; l < _.lefts.length; l++) {
-        _.left(_.lefts[l], ratio);
+      for (var i = 0; i < _.lefts.length; i++) {
+        var loc = _.lefts[i].getBoundingClientRect();
+        var dis = loc.top / height * _.distance;
+        if (0 < dis && 100 > dis) {
+          _.lefts[i].style.backgroundPositionX = dis + '%';
+        }
       };
 
-      for (var r = 0; r < _.rights.length; r++) {
-        _.right(_.rights[r], ratio);
+      for (var i = 0; i < _.rights.length; i++) {
+        var loc = _.rights[i].getBoundingClientRect();
+        var dis = limit - loc.top / height * _.distance;
+        if (0 < dis && 100 > dis) {
+          _.rights[i].style.backgroundPositionX = dis + '%';
+        }
       };
     },
-
-    up: function(el, r) {
-      el.style.backgroundPositionY = 50 + r + '%';
-    },
-
-    down: function(el, r) {
-      el.style.backgroundPositionY = 50 - r + '%';
-    },
-
-    left: function(el, r) {
-      el.style.backgroundPositionX = 50 - r + '%';
-    },
-
-    right: function(el, r) {
-      el.style.backgroundPositionX = 50 + r + '%';
-    }
   };
 
   return _;

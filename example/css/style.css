@@ -716,7 +716,7 @@ a.scrolltop{
   transition:all 1.6s ease 0.3s;
 }
 
-.inview.animate{
+.inview.active{
   opacity:1;
 }
 

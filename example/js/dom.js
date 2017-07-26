@@ -16,7 +16,6 @@ loading.emitter = function() {
   var scrollit = ScrollIt();
   slideshow.start();
 
-
   var scrollFlag = true;
   window.addEventListener('scroll', function() {
     if (scrollFlag) {
@@ -72,6 +71,7 @@ window.onload = function() {
   ScrollInnerLinks();
   EnableSlideMenu();
   RippleEffect();
+  updateCopyRight();
   // EnableHumbergerMenu();
 };
 
@@ -652,5 +652,33 @@ function ScrollIt() {
 
   return _;
 }
+
+
+/*
+ * update copyright
+ */
+function updateCopyRight() {
+  var _ = Object.create(p);
+
+  _ = {
+    prefix: '',
+    target: document.querySelector('.copyright span'),
+    thisyear: null,
+
+    getThisYear: function() {
+      var obj = new Date();
+      return obj.getFullYear();
+    },
+
+    setThisYear: function() {
+      _.target.innerHTML = _.prefix + _.getThisYear();
+    }
+  };
+
+  _.setThisYear();
+
+  return true;
+}
+
 
 // vim: foldmethod=marker:ts=2:sts=0:sw=2

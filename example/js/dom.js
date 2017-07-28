@@ -1,7 +1,7 @@
 /*
  * dom control
  */
-
+// 'use strict'
 
 /*
  * -------------

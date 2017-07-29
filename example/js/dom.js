@@ -1,7 +1,27 @@
 /*
  * dom control
  */
-// 'use strict'
+var GLOBAL = (this || 0).self || global;
+
+(function(global) {
+  'use strict';
+
+  function Some() { console.log('somesome'); };
+
+  Some['prototype']['method'] = SomeMethod;
+
+  function SomeMethod(arg) {};
+
+  if ('process' in global) {
+    module['exports'] = Some;
+  };
+
+  global['Some'] = Some;
+
+  console.log(global);
+})(GLOBAL);
+
+
 
 /*
  * -------------

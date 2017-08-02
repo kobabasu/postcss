@@ -196,15 +196,15 @@ function Loading(element) {
  *
  * @return {void}
  */
-(function(factory) {
+(function(global, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(factory);
+    define(factory(global));
   } else if (typeof exports === 'object') {
-    module.exports = factory();
+    module.exports = factory(global);
   } else {
-    DetectViewport = factory();
+    DetectViewport = factory(global);
   }
-})(function() {
+})((this || 0).self || global, function(global) {
   'use strict';
 
   function DetectViewport(options) {
@@ -222,7 +222,7 @@ function Loading(element) {
 
   function DetectViewport_listen() {
     var name = this._name;
-    window.matchMedia(this._viewport).addListener(function(e) {
+    global.matchMedia(this._viewport).addListener(function(e) {
       if (e.matches) {
         console.log(name);
       }

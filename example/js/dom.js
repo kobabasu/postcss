@@ -64,7 +64,8 @@ if (!DEBUG_MODE) {
  * -------------
  */
 window.onload = function() {
-  EnableViewport();
+  var y = new EnableViewport();
+  console.log(y);
   new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'}).listen();
   new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'}).listen();
   ScrollInnerLinks();
@@ -75,7 +76,6 @@ window.onload = function() {
 
   var u = new UpdateCopyright({'prefix': '2013-'});
   u.change();
-  console.log(u);
 };
 
 
@@ -123,32 +123,66 @@ function Loading(element) {
 }
 
 
-/*
- * set viewport without tablet
+/**
+ * EnableViewport
+ *
+ * viewportをjsで有効にする
+ * tabletはdefaultで無効
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {Boolean} options[].isTablet=false - タブレットもsp表示する場合はtrue
+ *
+ * @return {Boolean} device.jsが読み込めればtrue
  */
-function EnableViewport() {
-  if ('device' in this) {
-    var _ = Object.create(p);
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports = factory;
+  } else {
+    EnableViewport = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
 
-    _ = {
-      target: document.getElementsByTagName('head')[0],
-      tag: document.createElement('meta'),
-      name: 'viewport',
-      content: 'width=device-width, initial-scale=1, user-scalable=no'
+  var CONTENT = 'width=device-width, initial-scale=1, user-scalable=no';
+
+  function EnableViewport(options) {
+
+    options = options || {};
+
+    this._isTablet = options['isTablet'] || false;
+
+    if (!('device' in global)) {
+      console.error('EnableViewport:error device.js not found.');
+      return false;
     };
 
-    if (!device.tablet()) {
-      _.tag.name = _.name;
-      _.tag.content = _.content;
-      _.target.appendChild(_.tag);
-    };
+    this.append();
 
     return true;
-  } else {
-    console.log('error [EnableViewport()]: "device.js" not found.');
-    return false;
   }
-}
+
+  EnableViewport.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': EnableViewport },
+    'append': { 'value': EnableViewport_append }
+  });
+
+  function _generate() {
+    var tag = document.createElement('meta');
+    tag.name = 'viewport';
+    tag.content = CONTENT;
+    return tag;
+  }
+
+  function EnableViewport_append() {
+    if (!this._isTablet && !device.tablet()) return;
+    var head = document.getElementByTagNAme('head')[0];
+    head.appendChild(_generate());
+  }
+
+  return EnableViewport;
+});
 
 
 /**

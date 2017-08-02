@@ -177,8 +177,16 @@ function DisableWindowsMouseWheel() {
 }
 
 
-/*
- * detect viewport
+/**
+ * DetectViewport
+ *
+ * window.matchMediaを利用してviewportを検出
+ * 
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].name='sp' - viewportの名前 consoleに表示
+ * @param {string} options[].viewport='(max-width: 767px)' - viewport
+ *
+ * @return {void}
  */
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
@@ -681,7 +689,7 @@ function ScrollIt() {
  * 'div.copyright span'内の年を動的に更新する
  *
  * @param {Object[]} options - 各オプションを指定
- * @param {string} options[].thisyear=Date.getFuullYear - 年を指定する
+ * @param {string} options[].thisyear=Date.getFullYear - 年を指定する
  * @param {string} options[].prefix=null - 年の前に表示する
  *
  * @return {void}

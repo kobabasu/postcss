@@ -69,8 +69,8 @@ window.onload = function() {
   new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
   ScrollInnerLinks();
   EnableSlideMenu();
-  RippleEffect();
-  // updateCopyRight();
+  var u = new RippleEffect();
+  console.log(u);
   // EnableHumbergerMenu();
 
   new UpdateCopyright({'prefix': '2013-'});
@@ -592,46 +592,87 @@ function SlideShow() {
 }
 
 
-/*
- * ripple effect
+/**
+ * RippleEffect
+ *
+ * ripple effectを追加する
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} opotions[].class='.ripple' - 付加するクラスを指定する
+ *
+ * @return {void}
  */
-function RippleEffect() {
-  var _ = Object.create(p);
-
-  _ = {
-    els: document.querySelectorAll('.ripple'),
-
-    add: function(el) {
-      var fx = document.createElement('span');
-      fx.className = 'ripple-effect';
-      el.appendChild(fx);
-
-      el.addEventListener('mousedown', function(e) {
-        var x = e.offsetX;
-        var y = e.offsetY;
-        var w = fx.clientWidth;
-        var h = fx.clientHeight;
-
-        fx.style.left = x - w / 2 + 'px';
-        fx.style.top = y - h / 2 + 'px';
-
-        fx.classList.add('active');
-
-        fx.addEventListener('animationend', remove, false);
-        function remove() {
-          fx.removeEventListener('aniimationend', remove, false);
-          fx.classList.remove('active');
-        }
-      }, false);
-    }
-  };
-  
-  for (var i = 0; i < _.els.length; i++) {
-    _.add(_.els[i]);
+(function(factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
+  } else {
+    RippleEffect = factory();
   }
-  
-  return false;
-}
+})(function() {
+  'use strict';
+
+  var APPEND_CLASS_NAME = 'ripple-effect';
+
+  function RippleEffect(options) {
+
+    options = options || {};
+
+    this._class = options['class'] || '.ripple' ;
+
+    this.init();
+  }
+
+  RippleEffect.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': RippleEffect },
+    'init': { 'value': RippleEffect_init }
+  });
+
+  function RippleEffect_init() {
+    var els = document.querySelectorAll(this._class);
+    for (var i = 0; i < els.length; i++) {
+      _append(els[i]);
+    }
+  }
+
+  function _generate() {
+    var fx = document.createElement('span');
+    fx.className = APPEND_CLASS_NAME;
+
+    return fx;
+  }
+
+  function _append(el) {
+    el.addEventListener('mousedown', function(e) {
+      _add(e, el);
+    }, false);
+  }
+
+  function _add(e, el) {
+    var fx = _generate();
+    el.appendChild(fx);
+
+    var x = e.offsetX;
+    var y = e.offsetY;
+    var w = fx.clientWidth;
+    var h = fx.clientHeight;
+
+    fx.style.left = x - w / 2 + 'px';
+    fx.style.top = y - h / 2 + 'px';
+
+    fx.classList.add('active');
+    fx.addEventListener('animationend', _remove, false);
+  }
+
+  function _remove(e) {
+    var fx = e.target;
+    fx.removeEventListener('aniimationend', _remove, false);
+    fx.parentNode.removeChild(fx);
+  }
+
+  return RippleEffect;
+});
 
 
 /*

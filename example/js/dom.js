@@ -66,8 +66,8 @@ if (!DEBUG_MODE) {
 window.onload = function() {
   var y = new EnableViewport();
   console.log(y);
-  new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'}).listen();
-  new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'}).listen();
+  new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
+  new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
   ScrollInnerLinks();
   EnableSlideMenu();
   RippleEffect();
@@ -213,6 +213,8 @@ function Loading(element) {
 
     this._name = options['name'] || 'sp';
     this._viewport = options['viewport'] || '(max-width: 767px)';
+
+    this.listen();
   }
 
   DetectViewport.prototype = Object.create(Object.prototype, {

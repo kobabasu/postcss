@@ -1,26 +1,6 @@
 /*
  * dom control
  */
-var GLOBAL = (this || 0).self || global;
-
-(function(global) {
-  'use strict';
-
-  function Some() { console.log('somesome'); };
-
-  Some['prototype']['method'] = SomeMethod;
-
-  function SomeMethod(arg) {};
-
-  if ('process' in global) {
-    module['exports'] = Some;
-  };
-
-  global['Some'] = Some;
-
-  console.log(global);
-})(GLOBAL);
-
 
 
 /*
@@ -86,13 +66,17 @@ if (!DEBUG_MODE) {
 window.onload = function() {
   EnableViewport();
   DisableWindowsMouseWheel();
-  DetectViewport('sp', '(max-width: 767px)').listen();
-  DetectViewport('5k', '(min-width: 1280px)').listen();
+  new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'}).listen();
+  new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'}).listen();
   ScrollInnerLinks();
   EnableSlideMenu();
   RippleEffect();
-  updateCopyRight();
+  // updateCopyRight();
   // EnableHumbergerMenu();
+
+  var u = new UpdateCopyright({'prefix': '2013-'});
+  u.change();
+  console.log(u);
 };
 
 
@@ -196,24 +180,41 @@ function DisableWindowsMouseWheel() {
 /*
  * detect viewport
  */
-function DetectViewport(name, viewport) {
-  var _ = Object.create(p);
+(function(factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
+  } else {
+    DetectViewport = factory();
+  }
+})(function() {
+  'use strict';
 
-  _ = {
-    name: name,
-    viewport: viewport,
+  function DetectViewport(options) {
 
-    listen: function() {
-      window.matchMedia(this.viewport).addListener(function(e) {
-        if (e.matches) {
-          console.log(name);
-        }
-      });
-    }
-  };
+    options = options || {};
 
-  return _;
-};
+    this._name = options['name'] || 'sp';
+    this._viewport = options['viewport'] || '(max-width: 767px)';
+  }
+
+  DetectViewport.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': DetectViewport },
+    'listen': { 'value': DetectViewport_listen }
+  });
+
+  function DetectViewport_listen() {
+    var name = this._name;
+    window.matchMedia(this._viewport).addListener(function(e) {
+      if (e.matches) {
+        console.log(name);
+      }
+    });
+  }
+
+  return DetectViewport;
+});
 
 
 /*
@@ -674,31 +675,54 @@ function ScrollIt() {
 }
 
 
-/*
- * update copyright
+/**
+ * UpdateCopyright
+ *
+ * 'div.copyright span'内の年を動的に更新する
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].thisyear=Date.getFuullYear - 年を指定する
+ * @param {string} options[].prefix=null - 年の前に表示する
+ *
+ * @return {void}
  */
-function updateCopyRight() {
-  var _ = Object.create(p);
+(function(factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
+  } else {
+    UpdateCopyright = factory();
+  }
+})(function() {
+  'use strict';
 
-  _ = {
-    prefix: '',
-    target: document.querySelector('.copyright span'),
-    thisyear: null,
+  var TARGET = '.copyright span';
 
-    getThisYear: function() {
-      var obj = new Date();
-      return obj.getFullYear();
-    },
+  function UpdateCopyright(options) {
+    
+    options = options || {};
 
-    setThisYear: function() {
-      _.target.innerHTML = _.prefix + _.getThisYear();
-    }
+    this.thisyear = options['thisyear'] || _getThisyear();
+    this.prefix = options['prefix'] || null;
+  }
+
+  UpdateCopyright.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': UpdateCopyright },
+    'change': { 'value': UpdateCopyright_change }
+  });
+
+  function _getThisyear() {
+    return new Date().getFullYear();
   };
 
-  _.setThisYear();
+  function UpdateCopyright_change() {
+    var el = document.querySelector(TARGET);
+    el.innerHTML = this.prefix + this.thisyear;
+  };
 
-  return true;
-}
+  return UpdateCopyright;
+});
 
 
 // vim: foldmethod=marker:ts=2:sts=0:sw=2

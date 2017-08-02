@@ -64,8 +64,7 @@ if (!DEBUG_MODE) {
  * -------------
  */
 window.onload = function() {
-  var y = new EnableViewport();
-  console.log(y);
+  new EnableViewport();
   new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
   new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
   ScrollInnerLinks();
@@ -74,8 +73,7 @@ window.onload = function() {
   // updateCopyRight();
   // EnableHumbergerMenu();
 
-  var u = new UpdateCopyright({'prefix': '2013-'});
-  u.change();
+  new UpdateCopyright({'prefix': '2013-'});
 };
 
 
@@ -723,6 +721,8 @@ function ScrollIt() {
 
     this.thisyear = options['thisyear'] || _getThisyear();
     this.prefix = options['prefix'] || null;
+
+    this.change();
   }
 
   UpdateCopyright.prototype = Object.create(Object.prototype, {

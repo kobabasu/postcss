@@ -67,9 +67,9 @@ window.onload = function() {
   new EnableViewport();
   new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
   new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
-  ScrollInnerLinks();
-  // new SlideMenu();
-  new HumbergerMenu();
+  new InnerLink();
+  new SlideMenu();
+  // new HumbergerMenu();
   new RippleEffect();
 
   new UpdateCopyright({'prefix': '2013-'});
@@ -361,82 +361,103 @@ function Loading(element) {
 });
 
 
-/*
- * inner link scroll
+/**
+ * InnerLink
+ *
+ * インナーリンクにスクロールを加える
+ *
+ * @return {void}
  */
-function ScrollInnerLinks() {
-  var _ = Object.create(p);
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports = factory(global);
+  } else {
+    InnerLink = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
 
-  _ = {
-    links: document.documentElement.querySelectorAll('a[href^="#"]'),
-    fixed: -100,
+  var FIXED = -100;
 
-    click: function(e) {
-      var hash = e.target.getAttribute('href') ||
-          e.target.parentNode.getAttribute('href');
+  function InnerLink(options) {
 
-      if (hash && hash.match(/^#.*/)) {
-        e.preventDefault();
-        var el = document.getElementById(hash.replace(/#/g, ''));
-        if (el) {
-          _.scroll(el.offsetTop + _.fixed, 50, 'easeInOutQuint');
-        }
+    options = options || {} ;
+
+    this._links = global.document.documentElement
+      .querySelectorAll('a[href^="#"]');
+
+    for (var i = 0; i < this._links.length; i++) {
+      this._links[i].addEventListener('click', _click, false);
+    };
+  }
+
+  InnerLink.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': InnerLink }
+  });
+
+  function _click(e) {
+    var hash = e.target.getAttribute('href') ||
+        e.target.parentNode.getAttribute('href');
+
+    if (hash && hash.match(/^#.*/)) {
+      e.preventDefault();
+      var el = global.document.getElementById(hash.replace(/#/g, ''));
+      if (el) {
+        _scroll(el.offsetTop + FIXED, 50, 'easeInOutQuint');
       }
-    },
-
-    scroll: function(scrollTargetY, speed, easing) {
-      var scrollY = window.pageYOffset,
-        scrollTargetY = scrollTargetY || 0,
-        speed = speed || 2000,
-        easing = easing || 'easeOutSine',
-        currentTime = 0;
-
-      var time = Math.max(
-        .1,
-        Math.min(Math.abs(scrollY - scrollTargetY) / speed, .8)
-      );
-
-      var PI_D2 = Math.PI / 2,
-        easingEquations = {
-          easeOutSine: function (pos) {
-            return Math.sin(pos * (Math.PI / 2));
-          },
-          easeInOutSine: function (pos) {
-            return (-0.5 * (Math.cos(Math.PI * pos) - 1));
-          },
-          easeInOutQuint: function (pos) {
-            if ((pos /= 0.5) < 1) {
-              return 0.5 * Math.pow(pos, 5);
-            }
-            return 0.5 * (Math.pow((pos - 2), 5) + 2);
-          }
-        };
-
-      function tick() {
-        currentTime += 1 / 60;
-
-        var p = currentTime / time;
-        var t = easingEquations[easing](p);
-
-        if (p < 1) {
-          requestAnimFrame(tick);
-
-          window.scrollTo(0, scrollY + ((scrollTargetY - scrollY) * t));
-        } else {
-          // console.log('scroll done');
-          window.scrollTo(0, scrollTargetY);
-        }
-      }
-      tick();
     }
-  };
+  }
 
-  for (var i = 0; i < _.links.length; i++) {
-    _.links[i].addEventListener('click', _.click, false);
-  };
+  function _scroll(scrollTargetY, speed, easing) {
+    var scrollY = global.pageYOffset,
+      scrollTargetY = scrollTargetY || 0,
+      speed = speed || 2000,
+      easing = easing || 'easeOutSine',
+      currentTime = 0;
 
-  return true;
-}
+    var time = Math.max(
+      .1,
+      Math.min(Math.abs(scrollY - scrollTargetY) / speed, .8)
+    );
+
+    var PI_D2 = Math.PI / 2,
+      easingEquations = {
+        easeOutSine: function (pos) {
+          return Math.sin(pos * (Math.PI / 2));
+        },
+        easeInOutSine: function (pos) {
+          return (-0.5 * (Math.cos(Math.PI * pos) - 1));
+        },
+        easeInOutQuint: function (pos) {
+          if ((pos /= 0.5) < 1) {
+            return 0.5 * Math.pow(pos, 5);
+          }
+          return 0.5 * (Math.pow((pos - 2), 5) + 2);
+        }
+      };
+
+    function tick() {
+      currentTime += 1 / 60;
+
+      var p = currentTime / time;
+      var t = easingEquations[easing](p);
+
+      if (p < 1) {
+        requestAnimFrame(tick);
+
+        global.scrollTo(0, scrollY + ((scrollTargetY - scrollY) * t));
+      } else {
+        // console.log('scroll done');
+        global.scrollTo(0, scrollTargetY);
+      }
+    }
+    tick();
+  }
+
+  return InnerLink;
+});
 
 
 /**

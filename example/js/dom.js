@@ -68,12 +68,9 @@ window.onload = function() {
   new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
   new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
   ScrollInnerLinks();
-  // EnableSlideMenu();
-  var u = new SlideMenu();
-  console.log(u);
-
+  // new SlideMenu();
+  new HumbergerMenu();
   new RippleEffect();
-  // EnableHumbergerMenu();
 
   new UpdateCopyright({'prefix': '2013-'});
 };
@@ -296,33 +293,67 @@ function Loading(element) {
 });
 
 
-/*
- * humberger menu
+/**
+ * HumbergerMenu
+ *
+ * SP表示時のハンバーガーメニューを表示・非表示
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].class='glbalnav.humberger' - メニューのタグを指定
+ *
+ * @return {void}
  */
-function EnableHumbergerMenu(nav) {
-  var _ = Object.create(p);
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports = factory(global);
+  } else {
+    HumbergerMenu = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
 
-  var nav = nav || '.globalnav.humberger';
-  
-  _ = {
-    body: document.body,
-    header: document.getElementsByTagName('header')[0],
-    nav: document.querySelector(nav),
+  var CLASS_NAME = '.globalnav.humberger';
+  var APPEND_CLASS_NAME_ACTIVE = 'humberger-active';
+  var APPEND_CLASS_NAME_ICON = 'humberger-icon';
+
+  function HumbergerMenu(options) {
+
+    options = options || {} ;
+
+    this._class = options['class'] || CLASS_NAME ;
+
+    this.attach();
   }
 
-  var icon = document.createElement('div');
-  icon.className = 'humberger-icon';
-  _.nav.parentNode.insertBefore(icon, _.nav.nextElementSibling);
-
-  icon.addEventListener('click', function() {
-    _.body.classList.toggle('humberger-active');
-    _.nav.classList.toggle('humberger-active');
-    _.header.classList.toggle('humberger-active');
-    icon.classList.toggle('humberger-active');
+  HumbergerMenu.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': HumbergerMenu },
+    'attach': { 'value': HumbergerMenu_attach }
   });
 
-  return true;
-}
+  function _generate() {
+    var el = document.createElement('div');
+    el.className = APPEND_CLASS_NAME_ICON;
+
+    return el;
+  }
+
+  function HumbergerMenu_attach() {
+    var icon = _generate();
+    var nav = global.document.querySelector(CLASS_NAME);
+    nav.parentNode.insertBefore(icon, nav.nextElementSibling);
+    icon.addEventListener('click', function() {
+      global.document.body.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
+      global.document.getElementsByTagName('header')[0]
+        .classList.toggle(APPEND_CLASS_NAME_ACTIVE);
+      nav.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
+      icon.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
+    });
+  }
+
+  return HumbergerMenu;
+});
 
 
 /*

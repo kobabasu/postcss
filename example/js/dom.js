@@ -279,14 +279,16 @@ function Loading(element) {
   }
 
   function SlideMenu_attach() {
-    var icon = _generate();
-    var nav = global.document.querySelector(CLASS_NAME);
-    nav.parentNode.insertBefore(icon, nav.nextElementSibling);
+    if (global.document.querySelector(CLASS_NAME)) {
+      var icon = _generate();
+      var nav = global.document.querySelector(CLASS_NAME);
+      nav.parentNode.insertBefore(icon, nav.nextElementSibling);
 
-    icon.addEventListener('click', function() {
-      nav.style.opacity = 1;
-      nav.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
-    });
+      icon.addEventListener('click', function() {
+        nav.style.opacity = 1;
+        nav.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
+      });
+    }
   }
 
   return SlideMenu;
@@ -340,16 +342,19 @@ function Loading(element) {
   }
 
   function HumbergerMenu_attach() {
-    var icon = _generate();
-    var nav = global.document.querySelector(CLASS_NAME);
-    nav.parentNode.insertBefore(icon, nav.nextElementSibling);
-    icon.addEventListener('click', function() {
-      global.document.body.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
-      global.document.getElementsByTagName('header')[0]
-        .classList.toggle(APPEND_CLASS_NAME_ACTIVE);
-      nav.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
-      icon.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
-    });
+    if (global.document.querySelector(CLASS_NAME)) {
+      var icon = _generate();
+      var nav = global.document.querySelector(CLASS_NAME);
+      nav.parentNode.insertBefore(icon, nav.nextElementSibling);
+
+      icon.addEventListener('click', function() {
+        global.document.body.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
+        global.document.getElementsByTagName('header')[0]
+          .classList.toggle(APPEND_CLASS_NAME_ACTIVE);
+        nav.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
+        icon.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
+      });
+    }
   }
 
   return HumbergerMenu;

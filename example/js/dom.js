@@ -11,7 +11,7 @@
 var loading = Loading();
 var slideshow = SlideShow();
 loading.emitter = function() {
-  var scrolltop = FixedScrollTop();
+  var scrolltop = new ScrollTop();
   var inview = InView();
   var scrollit = ScrollIt();
   slideshow.start();
@@ -439,31 +439,57 @@ function ScrollInnerLinks() {
 }
 
 
-/*
- * scrolltop position fixed
+/**
+ * ScrollTop
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].class='.scrolltop' - スクロールアイコンのクラス
+ *
+ * @return {void}
  */
-function FixedScrollTop() {
-  var _ = Object.create(p);
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports = factory(global);
+  } else {
+    ScrollTop = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
 
-  _ = {
-    footer: document.getElementsByTagName('footer')[0],
-    target: document.getElementsByClassName('scrolltop')[0],
+  var CLASS_NAME = '.scrolltop';
+  var MARGIN_BOTTOM_ELEMENT = 'footer';
+  var DISTANCE = 5;
 
-    animate: function() {
-      var pos = (window.innerHeight -
-        _.footer.getBoundingClientRect().top
-      );
+  function ScrollTop(options) {
 
-      if (pos > 0) {
-        _.target.style.bottom = pos + 10 + 'px';
-      } else {
-        _.target.style.bottom = '10px';
-      };
-    }
-  };
+    options = options || {} ;
 
-  return _;
-}
+    this._class = options['class'] || CLASS_NAME ;
+    this._target = global.document.querySelector(this._class);
+    this._bottomElement = global.document
+      .querySelector(MARGIN_BOTTOM_ELEMENT);
+  }
+
+  ScrollTop.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': ScrollTop },
+    'animate': { 'value': ScrollTop_animate }
+  });
+
+  function ScrollTop_animate() {
+    var pos = global.innerHeight - this._bottomElement
+      .getBoundingClientRect().top;
+
+    if (pos > 0) {
+      this._target.style.bottom = pos + DISTANCE + 'px';
+    } else {
+      this._target.style.bottom = DISTANCE + 'px';
+    };
+  }
+
+  return ScrollTop;
+});
 
 
 /*

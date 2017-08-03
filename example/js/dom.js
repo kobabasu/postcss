@@ -68,9 +68,11 @@ window.onload = function() {
   new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
   new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
   ScrollInnerLinks();
-  EnableSlideMenu();
-  var u = new RippleEffect();
+  // EnableSlideMenu();
+  var u = new SlideMenu();
   console.log(u);
+
+  new RippleEffect();
   // EnableHumbergerMenu();
 
   new UpdateCopyright({'prefix': '2013-'});
@@ -233,30 +235,65 @@ function Loading(element) {
 });
 
 
-/*
- * slide menu
+/**
+ * SlideMenu
+ *
+ * SP表示時のスライドメニューを表示・非表示
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].class='glbalnav.slidemenu' - メニューのタグを指定
+ *
+ * @return {void}
  */
-function EnableSlideMenu(nav) {
-  var _ = Object.create(p);
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports = factory(global);
+  } else {
+    SlideMenu = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
 
-  var nav = nav || '.globalnav.slidemenu';
-  
-  _ = {
-    body: document.body,
-    header: document.getElementsByTagName('header')[0],
-    nav: document.querySelector(nav),
+  var CLASS_NAME = '.globalnav.slidemenu';
+  var APPEND_CLASS_NAME_ACTIVE = 'slidemenu-active';
+  var APPEND_CLASS_NAME_ICON = 'slidemenu-icon';
+
+  function SlideMenu(options) {
+
+    options = options || {};
+
+    this._class = options['class'] || CLASS_NAME ;
+
+    this.attach();
   }
 
-  var icon = document.createElement('div');
-  icon.className = 'slidemenu-icon';
-  _.nav.parentNode.insertBefore(icon, _.nav.nextElementSibling);
-  icon.addEventListener('click', function() {
-    _.nav.style.opacity = 1;
-    _.nav.classList.toggle('slidemenu-active');
+  SlideMenu.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': SlideMenu },
+    'attach': { 'value': SlideMenu_attach }
   });
 
-  return true;
-}
+  function _generate() {
+    var el = global.document.createElement('div');
+    el.className = APPEND_CLASS_NAME_ICON;
+
+    return el;
+  }
+
+  function SlideMenu_attach() {
+    var icon = _generate();
+    var nav = global.document.querySelector(CLASS_NAME);
+    nav.parentNode.insertBefore(icon, nav.nextElementSibling);
+
+    icon.addEventListener('click', function() {
+      nav.style.opacity = 1;
+      nav.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
+    });
+  }
+
+  return SlideMenu;
+});
 
 
 /*
@@ -613,13 +650,14 @@ function SlideShow() {
 })(function() {
   'use strict';
 
+  var CLASS_NAME = '.ripple';
   var APPEND_CLASS_NAME = 'ripple-effect';
 
   function RippleEffect(options) {
 
     options = options || {};
 
-    this._class = options['class'] || '.ripple' ;
+    this._class = options['class'] || CLASS_NAME ;
 
     this.init();
   }

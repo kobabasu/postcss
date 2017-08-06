@@ -12,8 +12,8 @@ var loading = Loading();
 var slideshow = SlideShow();
 loading.emitter = function() {
   var scrolltop = new ScrollTop();
-  var inview = InView();
-  var scrollit = ScrollIt();
+  var inview = new InView();
+  // var scrollit = ScrollIt();
   slideshow.start();
 
   var scrollFlag = true;
@@ -25,7 +25,7 @@ loading.emitter = function() {
         // process
         scrolltop.animate();
         inview.animate();
-        scrollit.animate();
+        // scrollit.animate();
 
         scrollFlag = true;
         return scrollFlag;
@@ -513,56 +513,83 @@ function Loading(element) {
 });
 
 
-/*
- * inview
+/**
+ * InView 
+ *
+ * elementがブラウザ表示領域に入ったときにフェードイン
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].class='.inview' - 対象のクラスを指定
+ *
+ * @return {void}
  */
-function InView(cls) {
-  var _ = Object.create(p);
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports = factory;
+  } else {
+    InView = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
 
-  _ = {
-    els: document.querySelectorAll('.inview'),
+  var CLASS_NAME = '.inview';
 
-    animate: function() {
-      for (var i = 0; i < _.els.length; i++) {
-        var loc = _.els[i].getBoundingClientRect();
-        if (window.innerHeight - loc.top > 0) {
-          _.els[i].classList.add('active');
-        }
-      }
-    },
+  function InView(options) {
 
-    remove: function(e) {
-      e.target.removeEventListener(
+    options = options || {} ;
+
+    this._class = options['class'] || CLASS_NAME ;
+
+    var els = document.querySelectorAll(this._class);
+    this._els = Object.keys(els).map(function(key) {return els[key];});
+
+    this.init();
+  }
+
+  InView.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': InView },
+    'init': { 'value': InView_init },
+    'animate': { 'value': InView_animate },
+    'remove': { 'value': InView_remove }
+  });
+
+  function InView_init() {
+    for (var i = 0; i < this._els.length; i++) {
+      this._els[i].eventParam = i;
+      this._els[i].addEventListener(
         'transitionend',
-        _.remove,
+        this.remove.bind(this),
         {passive: true}
       );
-
-      for (var i = 0; i < _.els.length; i++) {
-        if (_.els[i].eventParam == e.target.eventParam) {
-          _.els.splice(i, 1);
-        }
-      }
     }
+
+    // 初期ロード時用
+    this.animate();
+  }
+
+  function InView_animate() {
+    Object.keys(this._els).forEach(function(key) {
+      var loc = this[key].getBoundingClientRect().top;
+      if (global.innerHeight - loc > 0) {
+        this[key].classList.add('active');
+        delete this[key];
+      }
+    }, this._els);
   };
 
-  // arrayに変換
-  _.els = Object.keys(_.els).map(function(key) {return _.els[key];});
-
-  for (var i = 0; i < _.els.length; i++) {
-    _.els[i].eventParam = i;
-    _.els[i].addEventListener(
+  function InView_remove(e) {
+    e.target.removeEventListener(
       'transitionend',
-      _.remove,
+      this.remove.bind(this),
       {passive: true}
     );
   }
 
-  // 初期ロード時用
-  _.animate();
+  return InView;
+});
 
-  return _;
-}
 
 /*
  * slideshow

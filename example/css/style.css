@@ -720,11 +720,11 @@ a.scrolltop{
   opacity:1;
 }
 
-.slideshow-container [class*='slideshow-item-']{
+.slideshow [class*='slideshow-item-']{
   background-color:rgb(189, 189, 189);
 }
 
-.slideshow-container [class*='slideshow-item-']:nth-child(odd){
+.slideshow [class*='slideshow-item-']:nth-child(odd){
   color:white;
   background-color:rgb(155, 155, 155);
 }
@@ -750,7 +750,7 @@ a.scrolltop{
   background-color:#5cb85c;
 }
 
-.slideshow-container{
+.slideshow{
   position:relative;
   height:300px;
   padding-bottom:0;
@@ -876,7 +876,7 @@ a.scrolltop{
 }
 
 @media only screen and (max-width: 767px){
-  .slideshow-container{
+  .slideshow{
     height:225px;
 
     // for ios safari overflow-x issue

@@ -15,7 +15,7 @@
 /*
  * theme
  */
-.slideshow-container {
+.slideshow {
   & [class*='slideshow-item-'] {
     background-color: var(--gray);
   }
@@ -48,9 +48,9 @@
 
 
 /*
- * .slideshow-container
+ * .slideshow
  */
-.slideshow-container {
+.slideshow {
   position: relative;
   height: var(--slideshow-height);
   padding-bottom: 0;
@@ -163,9 +163,9 @@
 
 @media (--sp-viewport) {
   /*
-   * .slideshow-container
+   * .slideshow
    */
-  .slideshow-container {
+  .slideshow {
     height: var(--slideshow-height-sp);
 
     // for ios safari overflow-x issue

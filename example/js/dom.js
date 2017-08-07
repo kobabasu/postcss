@@ -13,7 +13,7 @@ var slideshow = SlideShow();
 loading.emitter = function() {
   var scrolltop = new ScrollTop();
   var inview = new InView();
-  // var scrollit = ScrollIt();
+  var scrollit = new ScrollIt();
   slideshow.start();
 
   var scrollFlag = true;
@@ -25,7 +25,7 @@ loading.emitter = function() {
         // process
         scrolltop.animate();
         inview.animate();
-        // scrollit.animate();
+        scrollit.animate();
 
         scrollFlag = true;
         return scrollFlag;
@@ -823,61 +823,111 @@ function SlideShow() {
 });
 
 
-/*
- * Scroll Background
+/**
+ * ScrollIt
+ *
+ * スクロールに合わせ背景画像をアニメーション
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].class='.scrollit' - 対象のクラス名を指定
+ * @param {number} options[].margin=50 - スクロール開始する前のpx数
+ *
+ * @return {void}
  */
-function ScrollIt() {
-  var _ = Object.create(p);
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports = factory(global);
+  } else {
+    ScrollIt = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
 
-  _ = {
-    distance: 50,
+  var CLASS_NAME = '.scrollit';
+  var TRIGGER_MARGIN = 50;
 
-    doc: document.documentElement.clientHeight,
-    ups: document.querySelectorAll('.scrollit-up'),
-    downs: document.querySelectorAll('.scrollit-down'),
-    lefts: document.querySelectorAll('.scrollit-left'),
-    rights: document.querySelectorAll('.scrollit-right'),
+  function ScrollIt(options) {
 
-    animate: function() {
-      var limit = _.distance * 2;
-      var height = window.innerHeight;
-        
-      for (var i = 0; i < _.ups.length; i++) {
-        var loc = _.ups[i].getBoundingClientRect();
-        var dis = limit - loc.top / height * _.distance;
-        if (0 < dis && 100 > dis) {
-          _.ups[i].style.backgroundPositionY = dis + '%';
-        }
-      };
+    options = options || {} ;
 
-      for (var i = 0; i < _.downs.length; i++) {
-        var loc = _.downs[i].getBoundingClientRect();
-        var dis = loc.top / height * _.distance;
-        if (0 < dis && 100 > dis) {
-          _.downs[i].style.backgroundPositionY = dis + '%';
-        }
-      };
+    this._class = options['class'] || CLASS_NAME ;
+    this._margin = options['margin'] || TRIGGER_MARGIN ;
+    this._els = { 'up': [], 'down': [], 'left': [], 'right': [] };
 
-      for (var i = 0; i < _.lefts.length; i++) {
-        var loc = _.lefts[i].getBoundingClientRect();
-        var dis = loc.top / height * _.distance;
-        if (0 < dis && 100 > dis) {
-          _.lefts[i].style.backgroundPositionX = dis + '%';
-        }
-      };
-
-      for (var i = 0; i < _.rights.length; i++) {
-        var loc = _.rights[i].getBoundingClientRect();
-        var dis = limit - loc.top / height * _.distance;
-        if (0 < dis && 100 > dis) {
-          _.rights[i].style.backgroundPositionX = dis + '%';
-        }
-      };
-    },
+    this.init();
   };
 
-  return _;
-}
+  ScrollIt.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': ScrollIt },
+    'init': { 'value': ScrollIt_init },
+    'animate': { 'value': ScrollIt_animate }
+  });
+
+  function ScrollIt_init() {
+    var els = global.document.body.querySelectorAll('[class*="scrollit"]');
+
+    for (var i = 0; i < els.length; i++) {
+      var direction = els[i].className
+        .match(/scrollit-([a-z]*)\s*/)[1];
+
+      switch (direction) {
+        case 'down':
+          this._els['down'].push(els[i]);
+          break;
+        case 'left':
+          this._els['left'].push(els[i]);
+          break;
+        case 'right':
+          this._els['right'].push(els[i]);
+          break;
+        default:
+          this._els['up'].push(els[i]);
+          break;
+      }
+    }
+  }
+
+  function ScrollIt_animate() {
+    var limit = this._margin * 2;
+    var height = global.innerHeight;
+      
+    for (var i = 0; i < this._els['up'].length; i++) {
+      var loc = this._els['up'][i].getBoundingClientRect();
+      var dis = limit - loc.top / height * this._margin;
+      if (0 < dis && 100 > dis) {
+        this._els['up'][i].style.backgroundPositionY = dis + '%';
+      }
+    };
+
+    for (var i = 0; i < this._els['down'].length; i++) {
+      var loc = this._els['down'][i].getBoundingClientRect();
+      var dis = loc.top / height * this._margin;
+      if (0 < dis && 100 > dis) {
+        this._els['down'][i].style.backgroundPositionY = dis + '%';
+      }
+    };
+
+    for (var i = 0; i < this._els['left'].length; i++) {
+      var loc = this._els['left'][i].getBoundingClientRect();
+      var dis = loc.top / height * this._margin;
+      if (0 < dis && 100 > dis) {
+        this._els['left'][i].style.backgroundPositionX = dis + '%';
+      }
+    };
+
+    for (var i = 0; i < this._els['right'].length; i++) {
+      var loc = this._els['right'][i].getBoundingClientRect();
+      var dis = limit - loc.top / height * this._margin;
+      if (0 < dis && 100 > dis) {
+        this._els['right'][i].style.backgroundPositionX = dis + '%';
+      }
+    };
+  }
+
+  return ScrollIt;
+});
 
 
 /**

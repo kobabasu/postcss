@@ -9,11 +9,11 @@
  * -------------
  */
 var loading = Loading();
-var slideshow = SlideShow();
 loading.emitter = function() {
   var scrolltop = new ScrollTop();
   var inview = new InView();
   var scrollit = new ScrollIt();
+  var slideshow = new SlideShow();
   slideshow.start();
 
   var scrollFlag = true;
@@ -68,7 +68,7 @@ window.onload = function() {
   new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
   new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
   new InnerLink();
-  new SlideMenu();
+  // new SlideMenu();
   // new HumbergerMenu();
   new RippleEffect();
 
@@ -148,7 +148,7 @@ function Loading(element) {
 
     options = options || {};
 
-    this._isTablet = options['isTablet'] || false;
+    this._isTablet = options['isTablet'] || false ;
 
     if (!('device' in global)) {
       console.error('EnableViewport:error device.js not found.');
@@ -591,153 +591,219 @@ function Loading(element) {
 });
 
 
-/*
- * slideshow
+/**
+ * SlideShow
+ *
+ * slideshowを表示
+ * 
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].class='.slideshow' - 対象のクラスを指定
+ * @param {number} options[].duration=3000 - 表示間隔 ms
+ * @param {number} options[].total=120 - 表示階数
+ *
+ * @return {void}
  */
-function SlideShow() {
-  var _ = Object.create(p);
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports = factory;
+  } else {
+    SlideShow = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
 
-  _ = {
-    duration: 3000,
-    totalCounts: 120,
+  var CLASS_NAME = '.slideshow';
+  var DURATION = 3000;
+  var TOTAL_COUNTS = 120;
 
-    container: document.querySelector('.slideshow-container'),
-    ul: document.querySelector('.slideshow-container > ul:nth-of-type(1)'),
-    items: document.querySelectorAll("[class*='slideshow-item-']"),
-    forward: document.querySelector('.slideshow-forward'),
-    prev: document.querySelector('.slideshow-prev'),
-    dots: [], 
+  function SlideShow(options) {
 
-    now: 0,
-    next: 1,
-    count: 0,
-    timer: null,
+    options = options || {} ;
 
-    init: function() {
-      // for ios safari overflow-x issue
-      _.ul.style.position = 'relative';
-      _.ul.style.overflow = 'visible';
-      _.ul.style.width = '100%';
+    this._class = options['class'] || CLASS_NAME ;
+    this._duration = options['duration'] || DURATION ;
+    this._total = options['total'] || TOTAL_COUNTS ;
 
-      _.createDot();
-      _.createBg();
-    },
+    this._items = null;
+    this._container = null;
+    this._ul = null;
+    this._forward = null;
+    this._prev = null;
 
-    start: function() {
-      _.timer = setInterval(_.loop, _.duration);
-    },
+    this._flag = true;
+    this._count = 0;
+    this._now = 0;
+    this._next = 1;
+    this._timer = null;
+    this._dots = []; 
+    this._removeListener = null;
 
-    createBg: function() {
-      var bg = _.items[0].cloneNode(true);
-      bg.style.marginLeft = 0;
-      bg.style.zIndex = 0;
+    this.init();
+  }
 
-      var el = bg.childNodes[1];
-      el.style.opacity = 1;
+  SlideShow.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': SlideShow },
+    'init': { 'value': SlideShow_init },
+    'createDot': { 'value': SlideShow_createDot },
+    'createBackGround': { 'value': SlideShow_createBackGround },
+    'start': { 'value': SlideShow_start },
+    'loop': { 'value': SlideShow_loop },
+    'remove': { 'value': SlideShow_remove },
+    'click': { 'value': SlideShow_click }
+  });
 
-      _.ul.appendChild(bg);
+  function SlideShow_init() {
 
-      _.dots[0].classList.add('active');
-      _.dots[0].style.cursor = 'default';
-    },
+    this._items = document
+      .querySelectorAll('[class*="' + this._class.slice(1) + '-item-"]');
 
-    createDot: function() {
-      var ul = document.createElement('ul');
-      ul.className = 'slideshow-dot';
+    this._container = document.querySelector(this._class);
+    this._ul = document.querySelector(this._class + ' > ul:nth-of-type(1)');
+    this._forward = document.querySelector(this._class + '-forward');
+    this._prev = document.querySelector(this._class + '-prev');
+    this.createDot();
+    this.createBackGround();
 
-      for (var i = 0; i < _.items.length; i++) {
-        var li = document.createElement('li');
-        li.eventParam = i;
-        li.addEventListener('click', function(e) {
-          if (_.now != e.target.eventParam) {
-            _.next = e.target.eventParam;
-            _.reset();
-          }
-        }, false);
+    // for ios safari overflow-x issue
+    this._ul.style.position = 'relative';
+    this._ul.style.overflow = 'visible';
+    this._ul.style.width = '100%';
 
-        _.dots[i] = li;
-        ul.appendChild(li);
-      }
+    this._forward.eventParam = 'forward';
+    this._forward.addEventListener(
+      'click',
+      this.click.bind(this),
+      {passive: true}
+    );
 
-      _.container.appendChild(ul);
-    },
+    this._prev.eventParam = 'prev';
+    this._prev.addEventListener(
+      'click',
+      this.click.bind(this),
+      {passive: true}
+    );
+  };
 
-    restore: function() {
-      _.count += 1;
-      if (_.count >= _.totalCounts) {
-        _.stop();
-      }
+  function SlideShow_createDot() {
+    var ul = document.createElement('ul');
+    ul.className = this._class.slice(1) + '-dot';
 
-      for (var i = 0; i < _.items.length; i++) {
-        _.items[i].style.zIndex = 10;
-        _.dots[i].classList.remove('active');
-        _.dots[i].style.cursor = 'pointer';
-        if (i != _.now) {
-          _.items[i].classList.remove('active');
-        }
-      }
-    },
+    for (var i = 0; i < this._items.length; i++) {
+      var li = document.createElement('li');
 
-    animate: function() {
-      _.items[_.next].style.zIndex = 20;
-      _.items[_.next].addEventListener('animationend', _.animationEnd, false);
-      _.items[_.next].classList.add('active');
-      _.dots[_.next].classList.add('active');
-      _.dots[_.next].style.cursor = 'default';
-    },
+      li.eventParam = i;
+      li.addEventListener(
+        'click',
+        this.click.bind(this),
+        {passive: true}
+      );
 
-    animationEnd: function() {
-      _.items[_.next].removeEventListener('animationend', _.animationEnd, false);
-      _.items[_.now].classList.remove('active');
-      _.now = _.next;
-      _.next = _.returntozero(_.next + 1);
-    },
+      this._dots[i] = li;
+      ul.appendChild(li);
+    }
 
-    loop: function() {
-      _.restore();
-      _.animate();
-    },
+    this._container.appendChild(ul);
+  };
 
-    reset: function() {
-      clearInterval(_.timer);
-      _.loop();
-      _.timer = setInterval(_.loop, _.duration);
-    },
+  function SlideShow_createBackGround() {
+    var bg = this._items[0].cloneNode(true);
+    bg.style.marginLeft = 0;
+    bg.style.zIndex = 0;
 
-    stop: function() {
-      clearInterval(_.timer);
-    },
+    var el = bg.childNodes[1];
+    el.style.opacity = 1;
 
-    turnover: function(num) {
-      if (num < 0) {
-        num = _.items.length - 1;
-      }
-      return num;
-    },
+    this._ul.appendChild(bg);
 
-    returntozero: function(num) {
-      if (num > _.items.length - 1) {
-        num = 0;
-      }
-      return num;
+    this._dots[0].classList.add('active');
+    this._dots[0].style.cursor = 'default';
+  };
+
+  function SlideShow_start() {
+    this._timer = setInterval(this.loop.bind(this), this._duration);
+  };
+
+  function SlideShow_loop() {
+    this._count += 1;
+    if (this._count >= this._total) {
+      clearInterval(this._timer);
+    }
+
+    if (this._flag) {
+      this._items[this._now].style.zIndex = 10;
+      this._items[this._next].style.zIndex = 20;
+      this._items[this._next].classList.add('active');
+
+      this._removeListener = this.remove.bind(this);
+      this._items[this._next].addEventListener(
+        'animationend',
+        this._removeListener,
+        {passive: true}
+      );
+
+      this._dots[this._now].classList.remove('active');
+      this._dots[this._now].style.cursor = 'pointer';
+      this._dots[this._next].classList.add('active');
+      this._dots[this._next].style.cursor = 'default';
+
+      this._flag = false;
     }
   };
 
-  _.init();
+  function SlideShow_remove(e) {
+    if (e.animationName == 'slideshow') {
+      this._items[this._next].removeEventListener(
+        'animationend',
+        this._removeListener,
+        {passive: true}
+      );
+      this._items[this._now].classList.remove('active');
+      this._now = this._next;
+      this._next = _returntozero(this._next + 1, this._items.length);
+      this._flag = true;
+    }
+  };
 
-  _.forward.addEventListener('click', function() {
-    _.next = _.returntozero(_.now + 1);
-    _.reset();
-  }, false);
+  function SlideShow_click(e) {
+    switch (e.target.eventParam) {
+      case 'forward':
+        this._next = _returntozero(this._now + 1, this._items.length);
+        break;
+          
+      case 'prev':
+        this._next = _turnover(this._now - 1, this._items.length);
+        break;
 
-  _.prev.addEventListener('click', function() {
-    _.next = _.turnover(_.now - 1);
-    _.reset();
-  }, false);
-  
-  return _;
-}
+      default:
+        if (this._now != e.target.eventParam) {
+          this._next = e.target.eventParam;
+        };
+        break;
+    }
 
+    clearInterval(this._timer);
+    this.loop.bind(this)();
+    this._timer = setInterval(this.loop.bind(this), this._duration);
+  }
+
+  function _turnover(num, length) {
+    if (num < 0) {
+      num = length - 1;
+    }
+    return num;
+  };
+
+  function _returntozero(num, length) {
+    if (num > length - 1) {
+      num = 0;
+    }
+    return num;
+  };
+
+  return SlideShow;
+});
 
 /**
  * RippleEffect
@@ -845,7 +911,7 @@ function SlideShow() {
 })((this || 0).self || global, function(global) {
   'use strict';
 
-  var CLASS_NAME = '.scrollit';
+  var CLASS_NAME = 'scrollit';
   var TRIGGER_MARGIN = 50;
 
   function ScrollIt(options) {
@@ -866,11 +932,14 @@ function SlideShow() {
   });
 
   function ScrollIt_init() {
-    var els = global.document.body.querySelectorAll('[class*="scrollit"]');
+    var els = global.document.body
+      .querySelectorAll('[class*="' + this._class + '"]');
+
+    var exp = new RegExp(this._class + '-([a-z]*)\s*');
 
     for (var i = 0; i < els.length; i++) {
       var direction = els[i].className
-        .match(/scrollit-([a-z]*)\s*/)[1];
+        .match(exp)[1];
 
       switch (direction) {
         case 'down':

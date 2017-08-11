@@ -22,6 +22,12 @@ div.loading {
 }
 
 div.loading > p {
+  font-family: 'Consolas',
+               'Courier New', Courier, Monaco,
+               monospace;
+
+  font-size: 110%;
+  line-height: 95%;
   color: color(var(--color-device-bg) lightness(+40%));
   border-right: 1px solid color(var(--color-device-bg) lightness(+20%));
 }

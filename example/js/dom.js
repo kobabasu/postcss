@@ -60,15 +60,6 @@
   });
 
   function Loading_init() {
-    this.create();
-
-    this._removeListener = this.remove.bind(this);
-    this._el.addEventListener(
-      'transitionend',
-      this._removeListener,
-      {passive: true}
-    );
-
     this._loadedListener = this.loaded.bind(this);
     global.document.addEventListener(
       'DOMContentLoaded',
@@ -84,6 +75,13 @@
     p.innerHTML = '&nbsp;loading...';
     this._el.appendChild(p);
 
+    this._removeListener = this.remove.bind(this);
+    this._el.addEventListener(
+      'transitionend',
+      this._removeListener,
+      {passive: true}
+    );
+
     global.document.body.insertBefore(
       this._el,
       global.document.body.firstChild
@@ -97,6 +95,7 @@
       {passive: true}
     );
 
+    this.create();
     setInterval(this.transition.bind(this), this._delay);
   };
 

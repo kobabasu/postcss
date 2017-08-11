@@ -36,6 +36,7 @@ div.loading {
   height: 100%;
   text-align: center;
   opacity: 1;
+  transition: opacity .7s ease 0s;
 }
 
 div.loading.loaded {

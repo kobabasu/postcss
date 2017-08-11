@@ -14,7 +14,3 @@ nav.globalnav {
 header {
   z-index: 100;
 }
-
-div#wrap {
-  z-index: 9999;
-}

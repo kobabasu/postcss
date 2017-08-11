@@ -164,12 +164,14 @@ var loading = new Loading({'emitter': function() {
 }
 });
 
+/*
 if (!DEBUG_MODE) {
   // loading.run();
   // setTimeout(loading.loaded, 7000);
 } else {
   // loading.remove();
 }
+*/
 
 /*
  * -------------
@@ -449,13 +451,21 @@ window.onload = function() {
 
   var FIXED = -100;
 
+  global.requestAnimFrame = (function(){
+    return  window.requestAnimationFrame       ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            function( callback ){
+              window.setTimeout(callback, 1000 / 60);
+            };
+  })();
+
   function InnerLink(options) {
 
     options = options || {} ;
 
     this._links = global.document.documentElement
       .querySelectorAll('a[href^="#"]');
-
     for (var i = 0; i < this._links.length; i++) {
       this._links[i].addEventListener('click', _click, false);
     };
@@ -513,7 +523,7 @@ window.onload = function() {
       var t = easingEquations[easing](p);
 
       if (p < 1) {
-        requestAnimFrame(tick);
+        global.requestAnimFrame(tick);
 
         global.scrollTo(0, scrollY + ((scrollTargetY - scrollY) * t));
       } else {

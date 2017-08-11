@@ -3,13 +3,127 @@
  */
 
 
+
+
+
+
+/**
+ * loading
+ *
+ * ローディング画面を表示しcontentの読み込みを待つ
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].class='#wrap' - ローディング画面のdivを指定
+ * @param {number} options[].duration=1000 - 表示する長さ
+ * @param {number} options[].delay=0 - loadging画面で止まる長さ
+ *
+ * @return {void}
+ */
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports = factory;
+  } else {
+    Loading = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
+
+  var CLASS_NAME = '.loading' ;
+  var DURATION = 1000 ;
+  var DELAY = 0 ;
+
+  function Loading(options) {
+
+    options = options || {} ;
+
+    this._class = options['class'] || CLASS_NAME ;
+    this._duration = options['duration'] || DURATION ;
+    this._delay = options['delay'] || DELAY ;
+    this._emitter = options['emitter'] || function() {} ;
+
+    this._el = null ;
+    this._loadedListener = null ;
+    this._removeListener = null ;
+
+    this.init();
+  }
+
+  Loading.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': Loading },
+    'init': { 'value': Loading_init },
+    'create': { 'value': Loading_create },
+    'loaded': { 'value': Loading_loaded },
+    'remove': { 'value': Loading_remove },
+    'transition': { 'value': Loading_transition }
+  });
+
+  function Loading_init() {
+    this.create();
+
+    this._removeListener = this.remove.bind(this);
+    this._el.addEventListener(
+      'transitionend',
+      this._removeListener,
+      {passive: true}
+    );
+
+    this._loadedListener = this.loaded.bind(this);
+    global.document.addEventListener(
+      'DOMContentLoaded',
+      this._loadedListener,
+      {passive: true}
+    );
+  };
+
+  function Loading_create() {
+    this._el = global.document.createElement('div');
+    this._el.classList.add(this._class.slice(1));
+    var p = global.document.createElement('p');
+    p.innerHTML = '&nbsp;loading...';
+    this._el.appendChild(p);
+
+    global.document.body.insertBefore(
+      this._el,
+      global.document.body.firstChild
+    );
+  }
+
+  function Loading_loaded() {
+    global.document.removeEventListener(
+      'DOMContentLoaded',
+      this._loadedListener,
+      {passive: true}
+    );
+
+    setInterval(this.transition.bind(this), this._delay);
+  };
+
+  function Loading_remove() {
+    this._el.removeEventListener(
+      'transitionend',
+      this._removeListener,
+      {passive: true}
+    );
+    global.document.body.removeChild(this._el);
+    this._emitter();
+  };
+
+  function Loading_transition() {
+    this._el.classList.add('loaded');
+  };
+
+  return Loading;
+});
+
 /*
  * -------------
  * before load
  * -------------
  */
-var loading = Loading();
-loading.emitter = function() {
+var loading = new Loading({'emitter': function() {
+  console.log('emit');
   var scrolltop = new ScrollTop();
   var inview = new InView();
   var scrollit = new ScrollIt();
@@ -48,15 +162,15 @@ loading.emitter = function() {
       }, 300);
     }
   }, {passive: true});
-};
+}
+});
 
 if (!DEBUG_MODE) {
-  loading.run();
-  setTimeout(loading.loaded, 7000);
+  // loading.run();
+  // setTimeout(loading.loaded, 7000);
 } else {
-  loading.remove();
+  // loading.remove();
 }
-
 
 /*
  * -------------
@@ -74,51 +188,6 @@ window.onload = function() {
 
   new UpdateCopyright({'prefix': '2013-'});
 };
-
-
-/*
- * loading
- */
-function Loading(element) {
-  var _ = Object.create(p);
-  var el = element || '#wrap' ;
-
-  _ = {
-    duration: 1800,
-
-    complete: false,
-    el: document.querySelector(el),
-    emitter: null,
-
-    run: function() {
-      document.addEventListener('DOMContentLoaded', _.loaded, false);
-    },
-
-    loaded: function() {
-      document.removeEventListener('DOMContentLoaded', _.loaded, false);
-      
-      if (!_.complete) {
-        setTimeout(function() {
-          _.el.classList.add('loaded');
-          _.el.addEventListener('transitionend', _.remove, false);
-        }, _.duration);
-      }
-    },
-
-    remove: function() {
-      document.body.removeChild(_.el);
-      _.complete = true;
-      _.emitter();
-    },
-
-    trigger: function(fnc) {
-      fnc();
-    }
-  };
-
-  return _;
-}
-
 
 /**
  * EnableViewport
@@ -146,7 +215,7 @@ function Loading(element) {
 
   function EnableViewport(options) {
 
-    options = options || {};
+    options = options || {} ;
 
     this._isTablet = options['isTablet'] || false ;
 

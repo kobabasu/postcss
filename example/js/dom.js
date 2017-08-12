@@ -581,6 +581,7 @@
     } else {
       this._target.style.bottom = DISTANCE + 'px';
     };
+    this._target.style.zIndex = 9999;
   }
 
   return ScrollTop;

@@ -32,9 +32,7 @@
 <!--script src="vendor/platform/platform.js"></script-->
 <!--script src="vendor/animejs/anime.min.js"></script-->
 
-<script src="js/init.js"></script>
-<script src="js/debug.js"></script>
-
+<script src="js/dom.js"></script>
 
 <link href="/favicon.ico" rel="icon">
 <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon-180x180.png">
@@ -53,8 +51,6 @@
 <!--}}}-->
 
 <body>
-<div id="wrap"><p class="mono">&nbsp;loading...</p></div>
-
 <article><!--{{{-->
   <section class="hero">
     <div>
@@ -63,7 +59,7 @@
     </div>
   </section>
 
-  <section class="slideshow-container">
+  <section class="slideshow">
     <ul>
       <li class="hero slideshow-item-1">
         <div>
@@ -319,11 +315,8 @@
     </div>
   </div>
 
-  <div id="contact" class="copyright small">&copy;example.com Inc.</div>
+  <div id="contact" class="copyright small">&copy;<span>2016</span> example.com Inc.</div>
 </footer><!--}}}-->
 
-<script src="js/dom.js"></script>
 </body>
-</html><!--
-vim: foldmethod=marker:ts=2:sts=0:sw=2
--->
+</html>

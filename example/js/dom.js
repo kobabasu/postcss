@@ -996,7 +996,7 @@
 })((this || 0).self || global, function(global) {
   'use strict';
 
-  var CLASS_NAME = 'scrollit';
+  var CLASS_NAME = '.scrollit';
   var TRIGGER_MARGIN = 50;
 
   function ScrollIt(options) {
@@ -1018,7 +1018,7 @@
 
   function ScrollIt_init() {
     var els = global.document.body
-      .querySelectorAll('[class*="' + this._class + '"]');
+      .querySelectorAll('[class*="' + this._class.slice(1) + '"]');
 
     var exp = new RegExp(this._class + '-([a-z]*)\s*');
 

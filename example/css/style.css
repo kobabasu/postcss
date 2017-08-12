@@ -158,34 +158,37 @@ header{
   z-index:100;
 }
 
-div#wrap{
+div.loading{
+  background-color:#252525;
   z-index:9999;
 }
 
-div#wrap{
-  background-color:#252525;
-}
+div.loading > p{
+  font-family:'Consolas',
+               'Courier New', Courier, Monaco,
+               monospace;
 
-div#wrap > p{
+  font-size:110%;
+  line-height:95%;
   color:rgb(140, 140, 140);
   border-right:1px solid rgb(89, 89, 89);
 }
 
-div#wrap{
+div.loading{
   position:fixed;
   width:100%;
   height:100%;
   text-align:center;
   opacity:1;
-  -webkit-transition:opacity .3s ease 1s;
-  transition:opacity .3s ease 1s;
+  -webkit-transition:opacity .7s ease 0s;
+  transition:opacity .7s ease 0s;
 }
 
-div#wrap.loaded{
+div.loading.loaded{
   opacity:0;
 }
 
-div#wrap > p{
+div.loading > p{
   position:absolute;
   display:block;
   top:50%;
@@ -720,11 +723,11 @@ a.scrolltop{
   opacity:1;
 }
 
-.slideshow-container [class*='slideshow-item-']{
+.slideshow [class*='slideshow-item-']{
   background-color:rgb(189, 189, 189);
 }
 
-.slideshow-container [class*='slideshow-item-']:nth-child(odd){
+.slideshow [class*='slideshow-item-']:nth-child(odd){
   color:white;
   background-color:rgb(155, 155, 155);
 }
@@ -750,7 +753,7 @@ a.scrolltop{
   background-color:#5cb85c;
 }
 
-.slideshow-container{
+.slideshow{
   position:relative;
   height:300px;
   padding-bottom:0;
@@ -787,7 +790,7 @@ a.scrolltop{
   margin:auto 0;
   font-size:50px;
   font-size:5rem;
-  z-index:30;
+  z-index:10;
   cursor:pointer;
   opacity:.3;
   -webkit-transition:opacity .7s ease;
@@ -812,7 +815,7 @@ a.scrolltop{
   right:0;
   bottom:20px;
   bottom:2rem;
-  z-index:30;
+  z-index:10;
   margin:0 auto;
   text-align:center
 }
@@ -876,7 +879,7 @@ a.scrolltop{
 }
 
 @media only screen and (max-width: 767px){
-  .slideshow-container{
+  .slideshow{
     height:225px;
 
     // for ios safari overflow-x issue

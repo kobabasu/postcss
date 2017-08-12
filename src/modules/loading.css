@@ -16,11 +16,18 @@
 /*
  * theme
  */
-div#wrap {
+div.loading {
   background-color: var(--color-device-bg);
+  z-index: 9999;
 }
 
-div#wrap > p {
+div.loading > p {
+  font-family: 'Consolas',
+               'Courier New', Courier, Monaco,
+               monospace;
+
+  font-size: 110%;
+  line-height: 95%;
   color: color(var(--color-device-bg) lightness(+40%));
   border-right: 1px solid color(var(--color-device-bg) lightness(+20%));
 }
@@ -29,20 +36,20 @@ div#wrap > p {
 /*
  * div#wrap
  */
-div#wrap {
+div.loading {
   position: fixed;
   width: 100%;
   height: 100%;
   text-align: center;
   opacity: 1;
-  transition: opacity .3s ease 1s;
+  transition: opacity .7s ease 0s;
 }
 
-div#wrap.loaded {
+div.loading.loaded {
   opacity: 0;
 }
 
-div#wrap > p {
+div.loading > p {
   position: absolute;
   display: block;
   top: 50%;

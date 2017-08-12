@@ -37,7 +37,7 @@
     }
   }
 
-  nav.globalnav.humberger {
+  div.humberger-icon {
     background-color: var(--color-device-bg);
 
     &:before, &:after {

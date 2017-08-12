@@ -206,11 +206,11 @@ template{
 
 @font-face{
   font-family:'icomoon';
-  src:url('../../fonts/icomoon/fonts/icomoon.eot?23lkte');
-  src:url('../../fonts/icomoon/fonts/icomoon.eot?23lkte#iefix') format('embedded-opentype'),
-    url('../../fonts/icomoon/fonts/icomoon.ttf?23lkte') format('truetype'),
-    url('../../fonts/icomoon/fonts/icomoon.woff?23lkte') format('woff'),
-    url('../../fonts/icomoon/fonts/icomoon.svg?23lkte#icomoon') format('svg');
+  src:url('../../fonts/icomoon/fonts/icomoon.eot?3x13x0');
+  src:url('../../fonts/icomoon/fonts/icomoon.eot?3x13x0#iefix') format('embedded-opentype'),
+    url('../../fonts/icomoon/fonts/icomoon.ttf?3x13x0') format('truetype'),
+    url('../../fonts/icomoon/fonts/icomoon.woff?3x13x0') format('woff'),
+    url('../../fonts/icomoon/fonts/icomoon.svg?3x13x0#icomoon') format('svg');
   font-weight:normal;
   font-style:normal;
 }
@@ -239,6 +239,10 @@ template{
 
 .icon-chevron-circle-up:before{
   content:"\e900";
+}
+
+.icon-keyboard_arrow_down:before{
+  content:"\e903";
 }
 
 .icon-keyboard_arrow_left:before{

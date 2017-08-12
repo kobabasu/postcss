@@ -4,7 +4,7 @@
  * ローディング画面を表示しcontentの読み込みを待つ
  *
  * @param {Object[]} options - 各オプションを指定
- * @param {string} options[].class='#wrap' - ローディング画面のdivを指定
+ * @param {string} options[].class='.loading' - ローディング画面のdivを指定
  * @param {number} options[].duration=1000 - 表示する長さ
  * @param {number} options[].delay=0 - loadging画面で止まる長さ
  * @param {function} options[].interactive - DOMContentLoadedの発火後に実行

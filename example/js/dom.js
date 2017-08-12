@@ -786,7 +786,7 @@
   function SlideShow_createBackGround() {
     var bg = this._items[0].cloneNode(true);
     bg.style.marginLeft = 0;
-    bg.style.zIndex = 0;
+    bg.style.zIndex = 1;
 
     var el = bg.childNodes[1];
     el.style.opacity = 1;
@@ -808,8 +808,8 @@
     }
 
     if (this._flag) {
-      this._items[this._now].style.zIndex = 10;
-      this._items[this._next].style.zIndex = 20;
+      this._items[this._now].style.zIndex = 2;
+      this._items[this._next].style.zIndex = 5;
       this._items[this._next].classList.add('active');
 
       this._removeListener = this.remove.bind(this);
@@ -1172,5 +1172,6 @@ var loading = new Loading({
     this.scrolltop.animate();
   }
 });
+
 
 // vim: foldmethod=marker:ts=2:sts=0:sw=2

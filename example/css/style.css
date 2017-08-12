@@ -164,7 +164,7 @@ div.loading{
 }
 
 div.loading > p{
-  font-family:'Consolas', 
+  font-family:'Consolas',
                'Courier New', Courier, Monaco,
                monospace;
 
@@ -790,7 +790,7 @@ a.scrolltop{
   margin:auto 0;
   font-size:50px;
   font-size:5rem;
-  z-index:30;
+  z-index:10;
   cursor:pointer;
   opacity:.3;
   -webkit-transition:opacity .7s ease;
@@ -815,7 +815,7 @@ a.scrolltop{
   right:0;
   bottom:20px;
   bottom:2rem;
-  z-index:30;
+  z-index:10;
   margin:0 auto;
   text-align:center
 }

@@ -7,6 +7,10 @@
  * @param {string} options[].class='#wrap' - ローディング画面のdivを指定
  * @param {number} options[].duration=1000 - 表示する長さ
  * @param {number} options[].delay=0 - loadging画面で止まる長さ
+ * @param {function} options[].interactive - DOMContentLoadedの発火後に実行
+ * @param {function} options[].complete - loadの発火後に実行
+ * @param {function} options[].scroll - scroll時に実行
+ * @param {function} options[].resize - resize時に実行
  *
  * @return {void}
  */
@@ -32,10 +36,14 @@
     this._class = options['class'] || CLASS_NAME ;
     this._duration = options['duration'] || DURATION ;
     this._delay = options['delay'] || DELAY ;
-    this._emitter = options['emitter'] || function() {} ;
+    this._interactive = options['interactive'] || function() {} ;
+    this._complete = options['complete'] || function() {} ;
+    this._scroll = options['scroll'] || function() {} ;
+    this._resize = options['resize'] || function() {} ;
 
     this._el = null ;
-    this._loadedListener = null ;
+    this._interactiveListener = null ;
+    this._completeListener = null ;
     this._removeListener = null ;
 
     this.init();
@@ -45,18 +53,29 @@
     'constructor': { 'value': Loading },
     'init': { 'value': Loading_init },
     'create': { 'value': Loading_create },
-    'loaded': { 'value': Loading_loaded },
+    'interactive': { 'value': Loading_interactive },
     'remove': { 'value': Loading_remove },
-    'transition': { 'value': Loading_transition }
+    'transition': { 'value': Loading_transition },
+    'complete': { 'value': Loading_complete },
+    'scroll': { 'value': Loading_scroll },
+    'resize': { 'value': Loading_resize }
   });
 
   function Loading_init() {
-    this._loadedListener = this.loaded.bind(this);
+    this._interactiveListener = this.interactive.bind(this);
     global.document.addEventListener(
       'DOMContentLoaded',
-      this._loadedListener,
+      this._interactiveListener,
       {passive: true}
     );
+
+    this._completeListener = this.complete.bind(this);
+    global.addEventListener(
+      'load',
+      this._completeListener,
+      {passive: true}
+    );
+
   };
 
   function Loading_create() {
@@ -79,10 +98,10 @@
     );
   }
 
-  function Loading_loaded() {
+  function Loading_interactive() {
     global.document.removeEventListener(
       'DOMContentLoaded',
-      this._loadedListener,
+      this._interactiveListener,
       {passive: true}
     );
 
@@ -97,12 +116,60 @@
       {passive: true}
     );
     global.document.body.removeChild(this._el);
-    this._emitter();
+
+    this._interactive();
   };
 
   function Loading_transition() {
     this._el.classList.add('loaded');
   };
+
+  function Loading_complete() {
+    global.removeEventListener(
+      'load',
+      this._completeListener,
+      {passive: true}
+    );
+
+    this._complete();
+
+    this.scroll();
+    this.resize();
+  }
+
+  function Loading_scroll() {
+    this._scroll.flag = true;
+    global.addEventListener(
+      'scroll',
+      function() {
+        if (this._scroll.flag) {
+          this._scroll.flag = false;
+          setTimeout(function() {
+            this._scroll();
+            this._scroll.flag = true;
+          }.bind(this), 300);
+        }
+      }.bind(this),
+      {passive: true}
+    );
+  }
+
+  function Loading_resize() {
+    this._resize.flag = true;
+    global.addEventListener(
+      'resize',
+      function() {
+        if (this._resize.flag) {
+          this._resize.flag = false;
+          setTimeout(function() {
+            this._resize();
+            this._resize.flag = true;
+          }.bind(this), 300);
+        }
+      }.bind(this),
+      {passive: true}
+    );
+  }
 
   return Loading;
 });
@@ -1068,81 +1135,42 @@
 });
 
 
-
-
 /*
- * -------------
- * before load
- * -------------
+ * -----------
+ * settings
+ * -----------
  */
-var loading = new Loading({'emitter': function() {
-  console.log('emit');
-  var scrolltop = new ScrollTop();
-  var inview = new InView();
-  var scrollit = new ScrollIt();
-  var slideshow = new SlideShow();
-  slideshow.start();
+var loading = new Loading({
+  'interactive': function() {
+    new EnableViewport();
+    new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
+    new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
+    new InnerLink();
+    new SlideMenu();
+    // new HumbergerMenu();
 
-  var scrollFlag = true;
-  window.addEventListener('scroll', function() {
-    if (scrollFlag) {
-      scrollFlag = false;
-      setTimeout(function() {
+    var slideshow = new SlideShow();
+    slideshow.start();
+  },
 
-        // process
-        scrolltop.animate();
-        inview.animate();
-        scrollit.animate();
+  'complete': function() {
+    new RippleEffect();
+    new UpdateCopyright({'prefix': '2013-'});
 
-        scrollFlag = true;
-        return scrollFlag;
-      }, 300);
-    }
-  }, {passive: true});
+    this.scrolltop = new ScrollTop();
+    this.inview = new InView();
+    this.scrollit = new ScrollIt();
+  },
 
+  'scroll': function() {
+    this.scrolltop.animate();
+    this.inview.animate();
+    this.scrollit.animate();
+  },
 
-  var resizeFlag = true;
-  window.addEventListener('resize', function() {
-    if (resizeFlag) {
-      resizeFlag = false;
-      setTimeout(function() {
-
-        // process
-        scrolltop.animate();
-
-        resizeFlag = true;
-        return resizeFlag;
-      }, 300);
-    }
-  }, {passive: true});
-}
+  'resize': function() {
+    this.scrolltop.animate();
+  }
 });
-
-/*
-if (!DEBUG_MODE) {
-  // loading.run();
-  // setTimeout(loading.loaded, 7000);
-} else {
-  // loading.remove();
-}
-*/
-
-/*
- * -------------
- * main
- * -------------
- */
-window.onload = function() {
-  new EnableViewport();
-  new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
-  new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
-  new InnerLink();
-  // new SlideMenu();
-  // new HumbergerMenu();
-  new RippleEffect();
-
-  new UpdateCopyright({'prefix': '2013-'});
-};
-
 
 // vim: foldmethod=marker:ts=2:sts=0:sw=2

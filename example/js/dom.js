@@ -476,7 +476,6 @@
         e.target.parentNode.getAttribute('href');
 
     if (hash && hash.match(/^#.*/)) {
-      e.preventDefault();
       var el = global.document.getElementById(hash.replace(/#/g, ''));
       if (el) {
         _scroll(el.offsetTop + FIXED, 50, 'easeInOutQuint');

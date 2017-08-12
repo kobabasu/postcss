@@ -1090,6 +1090,7 @@
  * 'div.copyright span'内の年を動的に更新する
  *
  * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].class='.copyright' - 対象となるクラス
  * @param {string} options[].thisyear=Date.getFullYear - 年を指定する
  * @param {string} options[].prefix=null - 年の前に表示する
  *
@@ -1106,14 +1107,15 @@
 })(function() {
   'use strict';
 
-  var TARGET = '.copyright span';
+  var CLASS_NAME = '.copyright';
 
   function UpdateCopyright(options) {
     
     options = options || {};
 
-    this.thisyear = options['thisyear'] || _getThisyear();
-    this.prefix = options['prefix'] || null;
+    this._class = options['class'] || CLASS_NAME ;
+    this._thisyear = options['thisyear'] || _getThisyear();
+    this._prefix = options['prefix'] || null;
 
     this.change();
   }
@@ -1128,8 +1130,8 @@
   };
 
   function UpdateCopyright_change() {
-    var el = document.querySelector(TARGET);
-    el.innerHTML = this.prefix + this.thisyear;
+    var el = document.querySelector(this._class + ' span');
+    el.innerHTML = this._prefix + this._thisyear;
   };
 
   return UpdateCopyright;

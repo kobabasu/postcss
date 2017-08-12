@@ -880,6 +880,7 @@
   return SlideShow;
 });
 
+
 /**
  * RippleEffect
  *

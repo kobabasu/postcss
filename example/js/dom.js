@@ -1152,7 +1152,7 @@ var loading = new Loading({
     new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
     new InnerLink();
     new SlideMenu();
-    // new HumbergerMenu();
+    /* new HumbergerMenu(); */
   },
 
   'complete': function() {

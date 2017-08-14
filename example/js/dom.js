@@ -6,7 +6,7 @@
  * @param {Object[]} options - 各オプションを指定
  * @param {string} options[].class='.loading' - ローディング画面のdivを指定
  * @param {number} options[].duration=1000 - 表示する長さ
- * @param {number} options[].delay=0 - loadging画面で止まる長さ
+ * @param {number} options[].delay=300 - loadging画面で止まる長さ
  * @param {function} options[].interactive - DOMContentLoadedの発火後に実行
  * @param {function} options[].complete - loadの発火後に実行
  * @param {function} options[].scroll - scroll時に実行
@@ -27,7 +27,7 @@
 
   var CLASS_NAME = '.loading' ;
   var DURATION = 1000 ;
-  var DELAY = 0 ;
+  var DELAY = 300 ;
 
   function Loading(options) {
 
@@ -75,7 +75,6 @@
       this._completeListener,
       {passive: true}
     );
-
   };
 
   function Loading_create() {
@@ -106,7 +105,7 @@
     );
 
     this.create();
-    setInterval(this.transition.bind(this), this._delay);
+    this._interactive();
   };
 
   function Loading_remove() {
@@ -116,8 +115,6 @@
       {passive: true}
     );
     global.document.body.removeChild(this._el);
-
-    this._interactive();
   };
 
   function Loading_transition() {
@@ -135,6 +132,8 @@
 
     this.scroll();
     this.resize();
+
+    setInterval(this.transition.bind(this), this._delay);
   }
 
   function Loading_scroll() {
@@ -476,7 +475,6 @@
         e.target.parentNode.getAttribute('href');
 
     if (hash && hash.match(/^#.*/)) {
-      e.preventDefault();
       var el = global.document.getElementById(hash.replace(/#/g, ''));
       if (el) {
         _scroll(el.offsetTop + FIXED, 50, 'easeInOutQuint');
@@ -723,8 +721,8 @@
   SlideShow.prototype = Object.create(Object.prototype, {
     'constructor': { 'value': SlideShow },
     'init': { 'value': SlideShow_init },
-    'createDot': { 'value': SlideShow_createDot },
     'createBackGround': { 'value': SlideShow_createBackGround },
+    'createDot': { 'value': SlideShow_createDot },
     'start': { 'value': SlideShow_start },
     'loop': { 'value': SlideShow_loop },
     'remove': { 'value': SlideShow_remove },
@@ -738,10 +736,10 @@
 
     this._container = document.querySelector(this._class);
     this._ul = document.querySelector(this._class + ' > ul:nth-of-type(1)');
+    this.createBackGround();
     this._forward = document.querySelector(this._class + '-forward');
     this._prev = document.querySelector(this._class + '-prev');
     this.createDot();
-    this.createBackGround();
 
     // for ios safari overflow-x issue
     this._ul.style.position = 'relative';
@@ -763,6 +761,17 @@
     );
   };
 
+  function SlideShow_createBackGround() {
+    var bg = this._items[0].cloneNode(true);
+    bg.style.marginLeft = 0;
+    bg.style.zIndex = 1;
+
+    var el = bg.childNodes[1];
+    el.style.opacity = 1;
+
+    this._ul.appendChild(bg);
+  };
+
   function SlideShow_createDot() {
     var ul = document.createElement('ul');
     ul.className = this._class.slice(1) + '-dot';
@@ -781,21 +790,10 @@
       ul.appendChild(li);
     }
 
-    this._container.appendChild(ul);
-  };
-
-  function SlideShow_createBackGround() {
-    var bg = this._items[0].cloneNode(true);
-    bg.style.marginLeft = 0;
-    bg.style.zIndex = 1;
-
-    var el = bg.childNodes[1];
-    el.style.opacity = 1;
-
-    this._ul.appendChild(bg);
-
     this._dots[0].classList.add('active');
     this._dots[0].style.cursor = 'default';
+
+    this._container.appendChild(ul);
   };
 
   function SlideShow_start() {
@@ -881,6 +879,7 @@
 
   return SlideShow;
 });
+
 
 /**
  * RippleEffect
@@ -1150,19 +1149,19 @@ var loading = new Loading({
     new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
     new InnerLink();
     new SlideMenu();
-    // new HumbergerMenu();
+    /* new HumbergerMenu(); */
 
-    var slideshow = new SlideShow();
-    slideshow.start();
+    this.slideshow = new SlideShow();
+    this.scrolltop = new ScrollTop();
+    this.inview = new InView();
+    this.scrollit = new ScrollIt();
   },
 
   'complete': function() {
     new RippleEffect();
     new UpdateCopyright({'prefix': '2013-'});
 
-    this.scrolltop = new ScrollTop();
-    this.inview = new InView();
-    this.scrollit = new ScrollIt();
+    this.slideshow.start();
   },
 
   'scroll': function() {

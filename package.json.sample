@@ -20,7 +20,7 @@
   "dependencies": {},
 
   "devDependencies": {
-    "cssnano": "*",
+    "cssnano": "next",
     "postcss": "^6.0.0",
     "postcss-assets": "*",
     "postcss-cssnext": "*",

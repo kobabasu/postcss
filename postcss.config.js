@@ -57,7 +57,7 @@ module.exports = (ctx) => ({
     }),
     */
 
-    require('cssnano')(),
+    // require('cssnano')(),
 
     require('postcss-discard-comments')(),
 

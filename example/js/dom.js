@@ -1144,24 +1144,24 @@
  */
 var loading = new Loading({
   'interactive': function() {
-    var slideshow = new SlideShow();
-    slideshow.start();
-
     new EnableViewport();
     new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
     new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
     new InnerLink();
     new SlideMenu();
     /* new HumbergerMenu(); */
+
+    this.slideshow = new SlideShow();
+    this.scrolltop = new ScrollTop();
+    this.inview = new InView();
+    this.scrollit = new ScrollIt();
   },
 
   'complete': function() {
     new RippleEffect();
     new UpdateCopyright({'prefix': '2013-'});
 
-    this.scrolltop = new ScrollTop();
-    this.inview = new InView();
-    this.scrollit = new ScrollIt();
+    this.slideshow.start();
   },
 
   'scroll': function() {

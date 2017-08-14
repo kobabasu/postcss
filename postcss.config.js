@@ -19,8 +19,6 @@ module.exports = (ctx) => ({
 
     require('postcss-url')(),
 
-    // require('cssnano')(),
-
     require('postcss-reporter')(),
 
     require('postcss-flexibility')(),
@@ -58,6 +56,8 @@ module.exports = (ctx) => ({
       loadPaths: ['../imgs/']
     }),
     */
+
+    require('cssnano')(),
 
     require('postcss-discard-comments')(),
 

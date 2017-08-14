@@ -494,21 +494,20 @@
       Math.min(Math.abs(scrollY - scrollTargetY) / speed, .8)
     );
 
-    var PI_D2 = Math.PI / 2,
-      easingEquations = {
-        easeOutSine: function (pos) {
-          return Math.sin(pos * (Math.PI / 2));
-        },
-        easeInOutSine: function (pos) {
-          return (-0.5 * (Math.cos(Math.PI * pos) - 1));
-        },
-        easeInOutQuint: function (pos) {
-          if ((pos /= 0.5) < 1) {
-            return 0.5 * Math.pow(pos, 5);
-          }
-          return 0.5 * (Math.pow((pos - 2), 5) + 2);
+    var easingEquations = {
+      easeOutSine: function (pos) {
+        return Math.sin(pos * (Math.PI / 2));
+      },
+      easeInOutSine: function (pos) {
+        return (-0.5 * (Math.cos(Math.PI * pos) - 1));
+      },
+      easeInOutQuint: function (pos) {
+        if ((pos /= 0.5) < 1) {
+          return 0.5 * Math.pow(pos, 5);
         }
-      };
+        return 0.5 * (Math.pow((pos - 2), 5) + 2);
+      }
+    };
 
     function tick() {
       currentTime += 1 / 60;

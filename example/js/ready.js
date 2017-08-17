@@ -181,7 +181,7 @@
  * settings
  * -----------
  */
-var ready = new Ready({
+new Ready({
   'interactive': function() {
   },
 

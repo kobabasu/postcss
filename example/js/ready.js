@@ -2,12 +2,14 @@
 /**
  * Ready
  *
- * ローディング画面を表示しcontentの読み込みを待つ
+ * contentの読み込みを待つ
+ * ローディング画面を表示しoptionでdelayを加えるとloading画面を表示
+ * loading画面はcomplete時のみ。DOMContentLoaded後は発火しない
  *
  * @param {Object[]} options - 各オプションを指定
  * @param {string} options[].class='.loading' - ローディング画面のdivを指定
  * @param {string} options[].text='&nbsp;loading...' - ローディング画面の文字
- * @param {number} options[].duration=1000 - 表示する長さ
+ * @param {number} options[].duration=1000 - ローディング画面を表示する長さ
  * @param {number} options[].delay=300 - loadging画面で止まる長さ 0はloading画面をなくす
  * @param {function} options[].interactive - DOMContentLoadedの発火後に実行
  * @param {function} options[].complete - loadの発火後に実行

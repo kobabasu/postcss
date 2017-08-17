@@ -9,7 +9,7 @@
 :root {
   --header-height: 5rem;
   --trademark-img: '../imgs/example.png';
-  --trademark-img-2x: '../imgs/example-2x.png';
+  --trademark-img-2x: '../imgs/example@2x.png';
   --trademark-width: 80px;
   --trademark-height: 20px;
 }

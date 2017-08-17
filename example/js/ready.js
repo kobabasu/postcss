@@ -8,7 +8,7 @@
  * @param {string} options[].class='.loading' - ローディング画面のdivを指定
  * @param {string} options[].text='&nbsp;loading...' - ローディング画面の文字
  * @param {number} options[].duration=1000 - 表示する長さ
- * @param {number} options[].delay=300 - loadging画面で止まる長さ
+ * @param {number} options[].delay=300 - loadging画面で止まる長さ 0はloading画面をなくす
  * @param {function} options[].interactive - DOMContentLoadedの発火後に実行
  * @param {function} options[].complete - loadの発火後に実行
  * @param {function} options[].scroll - scroll時に実行
@@ -121,7 +121,9 @@
       {passive: true}
     );
 
-    this.create();
+    if (this._delay > 0) {
+      this.create();
+    }
 
     this._interactive();
   };
@@ -138,7 +140,9 @@
     this.scroll();
     this.resize();
 
-    setTimeout(this.transition.bind(this), this._delay);
+    if (this._delay > 0) {
+      setTimeout(this.transition.bind(this), this._delay);
+    }
   }
 
   function Ready_scroll() {

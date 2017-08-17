@@ -138,7 +138,7 @@
     this.scroll();
     this.resize();
 
-    setInterval(this.transition.bind(this), this._delay);
+    setTimeout(this.transition.bind(this), this._delay);
   }
 
   function Ready_scroll() {

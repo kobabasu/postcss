@@ -6,7 +6,6 @@
     "jquery-legacy": "jquery#^1",
     "devicejs": null,
     "platform": null,
-    "flexibility": null,
     "animejs": null,
 
     "normalize.css": null,

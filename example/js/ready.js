@@ -57,9 +57,9 @@
     'constructor': { 'value': Ready },
     'init': { 'value': Ready_init },
     'create': { 'value': Ready_create },
-    'interactive': { 'value': Ready_interactive },
     'remove': { 'value': Ready_remove },
     'transition': { 'value': Ready_transition },
+    'interactive': { 'value': Ready_interactive },
     'complete': { 'value': Ready_complete },
     'scroll': { 'value': Ready_scroll },
     'resize': { 'value': Ready_resize }
@@ -101,18 +101,6 @@
     );
   }
 
-  function Ready_interactive() {
-    global.document.removeEventListener(
-      'DOMContentLoaded',
-      this._interactiveListener,
-      {passive: true}
-    );
-
-    this.create();
-
-    this._interactive();
-  };
-
   function Ready_remove() {
     this._el.removeEventListener(
       'transitionend',
@@ -124,6 +112,18 @@
 
   function Ready_transition() {
     this._el.classList.add('loaded');
+  };
+
+  function Ready_interactive() {
+    global.document.removeEventListener(
+      'DOMContentLoaded',
+      this._interactiveListener,
+      {passive: true}
+    );
+
+    this.create();
+
+    this._interactive();
   };
 
   function Ready_complete() {

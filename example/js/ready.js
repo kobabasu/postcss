@@ -6,6 +6,7 @@
  *
  * @param {Object[]} options - 各オプションを指定
  * @param {string} options[].class='.loading' - ローディング画面のdivを指定
+ * @param {string} options[].text='&nbsp;loading...' - ローディング画面の文字
  * @param {number} options[].duration=1000 - 表示する長さ
  * @param {number} options[].delay=300 - loadging画面で止まる長さ
  * @param {function} options[].interactive - DOMContentLoadedの発火後に実行
@@ -27,6 +28,7 @@
   'use strict';
 
   var CLASS_NAME = '.loading' ;
+  var LOADING_TEXT = '&nbsp;loading...';
   var DURATION = 1000 ;
   var DELAY = 0 ;
 
@@ -35,6 +37,7 @@
     options = options || {} ;
 
     this._class = options['class'] || CLASS_NAME ;
+    this._text = options['text'] || LOADING_TEXT ;
     this._duration = options['duration'] || DURATION ;
     this._delay = options['delay'] || DELAY ;
     this._interactive = options['interactive'] || function() {} ;
@@ -82,7 +85,7 @@
     this._el = global.document.createElement('div');
     this._el.classList.add(this._class.slice(1));
     var p = global.document.createElement('p');
-    p.innerHTML = '&nbsp;loading...';
+    p.innerHTML = this._text;
     this._el.appendChild(p);
 
     this._removeListener = this.remove.bind(this);

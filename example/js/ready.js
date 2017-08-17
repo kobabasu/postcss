@@ -1,6 +1,6 @@
 
 /**
- * loading
+ * Ready
  *
  * ローディング画面を表示しcontentの読み込みを待つ
  *
@@ -21,7 +21,7 @@
   } else if (typeof exports === 'object') {
     module.exports = factory;
   } else {
-    Loading = factory(global);
+    Ready = factory(global);
   }
 })((this || 0).self || global, function(global) {
   'use strict';
@@ -30,7 +30,7 @@
   var DURATION = 1000 ;
   var DELAY = 0 ;
 
-  function Loading(options) {
+  function Ready(options) {
 
     options = options || {} ;
 
@@ -50,19 +50,19 @@
     this.init();
   }
 
-  Loading.prototype = Object.create(Object.prototype, {
-    'constructor': { 'value': Loading },
-    'init': { 'value': Loading_init },
-    'create': { 'value': Loading_create },
-    'interactive': { 'value': Loading_interactive },
-    'remove': { 'value': Loading_remove },
-    'transition': { 'value': Loading_transition },
-    'complete': { 'value': Loading_complete },
-    'scroll': { 'value': Loading_scroll },
-    'resize': { 'value': Loading_resize }
+  Ready.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': Ready },
+    'init': { 'value': Ready_init },
+    'create': { 'value': Ready_create },
+    'interactive': { 'value': Ready_interactive },
+    'remove': { 'value': Ready_remove },
+    'transition': { 'value': Ready_transition },
+    'complete': { 'value': Ready_complete },
+    'scroll': { 'value': Ready_scroll },
+    'resize': { 'value': Ready_resize }
   });
 
-  function Loading_init() {
+  function Ready_init() {
     this._interactiveListener = this.interactive.bind(this);
     global.document.addEventListener(
       'DOMContentLoaded',
@@ -78,7 +78,7 @@
     );
   };
 
-  function Loading_create() {
+  function Ready_create() {
     this._el = global.document.createElement('div');
     this._el.classList.add(this._class.slice(1));
     var p = global.document.createElement('p');
@@ -98,7 +98,7 @@
     );
   }
 
-  function Loading_interactive() {
+  function Ready_interactive() {
     global.document.removeEventListener(
       'DOMContentLoaded',
       this._interactiveListener,
@@ -110,7 +110,7 @@
     this._interactive();
   };
 
-  function Loading_remove() {
+  function Ready_remove() {
     this._el.removeEventListener(
       'transitionend',
       this._removeListener,
@@ -119,11 +119,11 @@
     global.document.body.removeChild(this._el);
   };
 
-  function Loading_transition() {
+  function Ready_transition() {
     this._el.classList.add('loaded');
   };
 
-  function Loading_complete() {
+  function Ready_complete() {
     global.removeEventListener(
       'load',
       this._completeListener,
@@ -138,7 +138,7 @@
     setInterval(this.transition.bind(this), this._delay);
   }
 
-  function Loading_scroll() {
+  function Ready_scroll() {
     this._scroll.flag = true;
     global.addEventListener(
       'scroll',
@@ -155,7 +155,7 @@
     );
   }
 
-  function Loading_resize() {
+  function Ready_resize() {
     this._resize.flag = true;
     global.addEventListener(
       'resize',
@@ -172,7 +172,7 @@
     );
   }
 
-  return Loading;
+  return Ready;
 });
 
 
@@ -181,7 +181,7 @@
  * settings
  * -----------
  */
-var loading = new Loading({
+var ready = new Ready({
   'interactive': function() {
   },
 

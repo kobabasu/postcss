@@ -217,9 +217,7 @@
  */
 var ready = new Ready({
   'preload': {
-    'img': [
-      'imgs/clear.png'
-    ]
+    'img': ['imgs/clear.png']
   },
 
   'interactive': function() {

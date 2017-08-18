@@ -435,8 +435,6 @@ new Ready({
   },
 
   'complete': function() {
-    this.imagesrcset = new ImageSrcset();
-    new EnableViewport();
     new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
     new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
     new InnerLink();
@@ -445,6 +443,8 @@ new Ready({
 
     new RippleEffect();
     new UpdateCopyright({'prefix': '2013-'});
+
+    this.imagesrcset = new ImageSrcset();
     this.scrolltop = new ScrollTop();
     this.scrollit = new ScrollIt();
     this.inview = new InView();

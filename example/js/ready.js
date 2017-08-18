@@ -11,6 +11,8 @@
  * @param {string} options[].text='&nbsp;loading...' - ローディング画面の文字
  * @param {number} options[].duration=1000 - ローディング画面を表示する長さ
  * @param {number} options[].delay=300 - loadging画面で止まる長さ 0はloading画面をなくす
+ * @param {object[]} options[].preload - 先読みするもの
+ * @param {array} options[].preload[].img - 先読みする画像
  * @param {function} options[].interactive - DOMContentLoadedの発火後に実行
  * @param {function} options[].complete - loadの発火後に実行
  * @param {function} options[].scroll - scroll時に実行
@@ -42,6 +44,7 @@
     this._text = options['text'] || LOADING_TEXT ;
     this._duration = options['duration'] || DURATION ;
     this._delay = options['delay'] || DELAY ;
+    this._preload = options['preload'] || { 'img': [] } ;
     this._interactive = options['interactive'] || function() {} ;
     this._complete = options['complete'] || function() {} ;
     this._scroll = options['scroll'] || function() {} ;
@@ -61,6 +64,7 @@
     'create': { 'value': Ready_create },
     'remove': { 'value': Ready_remove },
     'transition': { 'value': Ready_transition },
+    'preload': { 'value': Ready_preload },
     'interactive': { 'value': Ready_interactive },
     'complete': { 'value': Ready_complete },
     'scroll': { 'value': Ready_scroll },
@@ -68,6 +72,8 @@
   });
 
   function Ready_init() {
+    this.preload();
+
     this._interactiveListener = this.interactive.bind(this);
     global.document.addEventListener(
       'DOMContentLoaded',
@@ -115,6 +121,13 @@
   function Ready_transition() {
     this._el.classList.add('loaded');
   };
+
+  function Ready_preload() {
+    for (var i = 0; i < this._preload.img.length; i++) {
+      var img = new Image();
+      img.src = this._preload.img[i];
+    }
+  }
 
   function Ready_interactive() {
     global.document.removeEventListener(
@@ -191,6 +204,12 @@
  * -----------
  */
 new Ready({
+  'preload': {
+    'img': [
+      'imgs/clear.png'
+    ]
+  },
+
   'interactive': function() {
   },
 

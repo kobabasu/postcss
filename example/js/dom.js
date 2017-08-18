@@ -594,6 +594,7 @@
  *
  * @param {Object[]} options - 各オプションを指定
  * @param {string} options[].class='.inview' - 対象のクラスを指定
+ * @param {number} options[].margin=0 - 開始するしきい値
  *
  * @return {void}
  */
@@ -609,12 +610,14 @@
   'use strict';
 
   var CLASS_NAME = '.inview';
+  var TRIGGER_MARGIN = 0;
 
   function InView(options) {
 
     options = options || {} ;
 
     this._class = options['class'] || CLASS_NAME ;
+    this._margin = options['margin'] || TRIGGER_MARGIN ;
 
     var els = document.querySelectorAll(this._class);
     this._els = Object.keys(els).map(function(key) {return els[key];});
@@ -646,9 +649,10 @@
   }
 
   function InView_animate() {
+    var margin = this._margin;
     Object.keys(this._els).forEach(function(key) {
       var loc = this[key].getBoundingClientRect().top;
-      if (global.innerHeight - loc > 0) {
+      if (global.innerHeight - loc > margin) {
         this[key].classList.add('active');
         delete this[key];
       }

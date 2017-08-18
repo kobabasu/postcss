@@ -44,6 +44,7 @@
     this._text = options['text'] || LOADING_TEXT ;
     this._duration = options['duration'] || DURATION ;
     this._delay = options['delay'] || DELAY ;
+    this._flag = (this._delay == 0) ? false : true ;
     this._preload = options['preload'] || { 'img': [] } ;
     this._interactive = options['interactive'] || function() {} ;
     this._complete = options['complete'] || function() {} ;
@@ -68,7 +69,9 @@
     'interactive': { 'value': Ready_interactive },
     'complete': { 'value': Ready_complete },
     'scroll': { 'value': Ready_scroll },
-    'resize': { 'value': Ready_resize }
+    'resize': { 'value': Ready_resize },
+    'enable': { 'value': Ready_enable },
+    'disable': { 'value': Ready_disable }
   });
 
   function Ready_init() {
@@ -136,7 +139,7 @@
       {passive: true}
     );
 
-    if (this._delay > 0) {
+    if (this._flag) {
       this.create();
     }
 
@@ -155,7 +158,7 @@
     this.scroll();
     this.resize();
 
-    if (this._delay > 0) {
+    if (this._flag) {
       setTimeout(this.transition.bind(this), this._delay);
     }
   }
@@ -194,6 +197,15 @@
     );
   }
 
+  function Ready_enable(delay) {
+    this._flag = true;
+    this._delay = delay || 300;
+  }
+
+  function Ready_disable() {
+    this._flag = false;
+  }
+
   return Ready;
 });
 
@@ -203,7 +215,7 @@
  * settings
  * -----------
  */
-new Ready({
+var ready = new Ready({
   'preload': {
     'img': [
       'imgs/clear.png'

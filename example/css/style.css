@@ -1012,10 +1012,6 @@ ul.topics li{
   background-color:rgb(238, 238, 238);
 }
 
-.scrollit-up, .scrollit-down, .scrollit-left, .scrollit-right{
-  background-image:url('../imgs/sky.jpg');
-}
-
 [class*='grid-item-']{
   border:1px solid rgb(189, 189, 189);
 }
@@ -1064,8 +1060,7 @@ h1.trademark{
   display:table-cell;
   width:80px;
   height:20px;
-  background-image:url('../imgs/example.png');
-  background-size:80px 20px;
+  background-size:contain;
   background-repeat:no-repeat;
   background-position:center left
 }
@@ -1258,13 +1253,6 @@ article{
     line-height:2.0rem;
     padding-top:0.6rem;
   }
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){
-
-h1.trademark{
-  background-image:url('../imgs/example-2x.png')
-}
 }
 
 /*# sourceMappingURL=style.css.map */

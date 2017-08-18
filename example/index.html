@@ -7,35 +7,6 @@
 <meta content="keywords" name="keywords">
 <meta content="author" name="author">
 
-<link rel="canonical" href="/index.html">
-<link rel="help" href="/contact.html">
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<link rel="stylesheet" media="all" href="css/lib.css">
-<link rel="stylesheet" media="all" href="css/style.css">
-
-
-<!--[if lte IE 9]>
-<script src="vendor/jquery-legacy/dist/jquery.min.js"></script>
-<script src="vendor/flexibility/flexibility.js"></script>
-<script>
-  $(function(){flexibility(document.documentElement);});
-</script>
-<![endif]-->
-
-<!--[if gt IE 9]><!-->
-<!--script src="vendor/jquery-modern/dist/jquery.min.js"></script-->
-<!--<![endif]-->
-
-<script src="vendor/devicejs/lib/device.min.js"></script>
-<!--script src="vendor/platform/platform.js"></script-->
-<!--script src="vendor/animejs/anime.min.js"></script-->
-<script src="js/dom.js"></script>
-
-<link href="/favicon.ico" rel="icon">
-<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon-180x180.png">
-
 <meta property="og:type" content="website">
 <meta property="og:title" content="title">
 <meta property="og:description" content="description">
@@ -46,6 +17,30 @@
 <meta name="twitter:site" content="@site">
 <meta name="twitter:card" content="summary">
 
+<link rel="canonical" href="/index.html">
+<link rel="help" href="/contact.html">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="stylesheet" media="all" href="css/lib.css">
+<link rel="stylesheet" media="all" href="css/style.css">
+
+<script src="js/ready.js"></script>
+
+<!-- DOMContentLoaded end TCP connection 5/6 (14Kb) -->
+
+<script src="js/dom.js" async></script>
+<!--script src="vendor/animejs/anime.min.js"></script-->
+
+<!--[if lte IE 9]>
+<script src="vendor/jquery-legacy/dist/jquery.min.js"></script>
+<![endif]-->
+
+<script>ready.enable();</script>
+
+<link href="/favicon.ico" rel="icon">
+<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon-180x180.png">
 </head>
 <!--}}}-->
 
@@ -148,22 +143,22 @@
       <p>親譲おやゆずりの無鉄砲むてっぽうで小供の時から</p>
     </div>
 
-    <div class="grid-item-2 scrollit-left">
+    <div class="grid-item-2 scrollit-left srcset-fit lazyload" data-original-background="imgs/sky/sky.jpg">
       <h2>grid-item-2</h2>
       <p>親譲おやゆずりの無鉄砲むてっぽうで小供の時から</p>
     </div>
 
-    <div class="grid-item-3 scrollit-up">
+    <div class="grid-item-3 scrollit-up srcset-fit lazyload" data-original-background="imgs/sky/sky.jpg">
       <h2>grid-item-3</h2>
       <p>親譲おやゆずりの無鉄砲むてっぽうで小供の時から</p>
     </div>
 
-    <div class="grid-item-4 scrollit-right">
+    <div class="grid-item-4 scrollit-right srcset-fit lazyload" data-original-background="imgs/sky/sky.jpg">
       <h2>grid-item-4</h2>
       <p>親譲おやゆずりの無鉄砲むてっぽうで小供の時から</p>
     </div>
 
-    <div class="grid-item-5 scrollit-down">
+    <div class="grid-item-5 scrollit-down srcset-fit lazyload" data-original-background="imgs/sky/sky.jpg">
       <h2>grid-item-5</h2>
       <p>親譲おやゆずりの無鉄砲むてっぽうで小供の時から</p>
     </div>
@@ -218,7 +213,7 @@
 <!--}}}-->
 
 <header><!--{{{-->
-  <h1 id="scrolltop" class="trademark">
+  <h1 id="scrolltop" class="trademark" data-original-background="imgs/example.png">
     <a href="https://google.com/">
       <img src="imgs/clear.png" alt="PostCss" width="80" height="20" />
     </a>
@@ -235,8 +230,8 @@
 
 <nav class="globalnav slidemenu"><!--{{{-->
   <ul class="flexbox-container inner-container">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">会社概要</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="company.html">会社概要</a></li>
     <li><a href="#">商品ラインアップ</a></li>
     <li><a href="#">アクセス</a></li>
     <li><a href="#">FAQ</a></li>
@@ -251,7 +246,7 @@
 
   <div class="footerlink flexbox-container inner-container">
     <div class="flexbox-item-4">
-      <img src="imgs/example.png" width="80" height="20" alt="postcss" />
+      <img src="imgs/clear.png" data-original="imgs/example.png" width="80" height="20" alt="postcss" />
       <h1>株式会社example.com</h1>
       <address>
         〒420-1234 静岡県静岡市葵区天満宮12-24<br />

@@ -1,16 +1,16 @@
 /**
- * loading
+ * ImageSrcset
  *
- * ローディング画面を表示しcontentの読み込みを待つ
+ * 画像の先読み、遅延読み込み、retina変換
  *
  * @param {Object[]} options - 各オプションを指定
- * @param {string} options[].class='.loading' - ローディング画面のdivを指定
- * @param {number} options[].duration=1000 - 表示する長さ
- * @param {number} options[].delay=300 - loadging画面で止まる長さ
- * @param {function} options[].interactive - DOMContentLoadedの発火後に実行
- * @param {function} options[].complete - loadの発火後に実行
- * @param {function} options[].scroll - scroll時に実行
- * @param {function} options[].resize - resize時に実行
+ * @param {string} options[].attr='data-original' - 対象となる属性
+ * @param {string} options[].class-fit='.srcset-fit' - サイズを変更する対象
+ * @param {string} options[].class-lazyload='.lazyload' - 遅延読み込み対象
+ * @param {number} options[].margin=-300 - 読み込み開始のしきい値
+ * @param {array} options[].threshhold - srcset-fitのしきい値とsuffix
+ * @param {function} options[].loaded-without-lazyload - lazyload以外が完了時実行
+ * @param {function} options[].complete - すべてが完了時実行
  *
  * @return {void}
  */
@@ -18,221 +18,223 @@
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
-    module.exports = factory;
+    module.exports = factory(global);
   } else {
-    Loading = factory(global);
+    ImageSrcset = factory(global);
   }
 })((this || 0).self || global, function(global) {
-  'use strict';
 
-  var CLASS_NAME = '.loading' ;
-  var DURATION = 1000 ;
-  var DELAY = 300 ;
+  var ATTR_NAME = 'data-original';
+  var CLASS_NAME_FIT = '.srcset-fit';
+  var CLASS_NAME_LAZYLOAD = '.lazyload';
+  var TRIGGER_MARGIN = -300;
+  var THRESHHOLD = [
+    { 'suffix': '-s',  'size': 767 },
+    { 'suffix': '-l',  'size': 1280 },
+    { 'suffix': '-xl', 'size': 1920 } 
+  ];
 
-  function Loading(options) {
+  function ImageSrcset(options) {
 
     options = options || {} ;
 
-    this._class = options['class'] || CLASS_NAME ;
-    this._duration = options['duration'] || DURATION ;
-    this._delay = options['delay'] || DELAY ;
-    this._interactive = options['interactive'] || function() {} ;
+    this._attr = options['attribute'] || ATTR_NAME ;
+    this._classFit = options['class-fit'] || CLASS_NAME_FIT ;
+    this._classLazy = options['class-lazyload'] || CLASS_NAME_LAZYLOAD ;
+    this._margin = options['margin'] || TRIGGER_MARGIN;
+    this._threshhold = options['threshhold'] || THRESHHOLD ;
+    this._loadedWithoutLazyload = options['loaded-without-lazyload'] || function() {} ;
     this._complete = options['complete'] || function() {} ;
-    this._scroll = options['scroll'] || function() {} ;
-    this._resize = options['resize'] || function() {} ;
 
-    this._el = null ;
-    this._interactiveListener = null ;
-    this._completeListener = null ;
-    this._removeListener = null ;
+    this._min = this._threshhold.shift();
+    this._max = this._threshhold.pop();
+    this._dpx = global.windowDeviceRatio || 1 ;
+    this._width = global.document.body.clientWidth ;
+
+    this._els = null;
+    this._css = null;
+    this._elsLazy = null;
+    this._cssLazy = null;
+    this._totalWithoutLazyload = 0;
+    this._total = 0;
 
     this.init();
   }
 
-  Loading.prototype = Object.create(Object.prototype, {
-    'constructor': { 'value': Loading },
-    'init': { 'value': Loading_init },
-    'create': { 'value': Loading_create },
-    'interactive': { 'value': Loading_interactive },
-    'remove': { 'value': Loading_remove },
-    'transition': { 'value': Loading_transition },
-    'complete': { 'value': Loading_complete },
-    'scroll': { 'value': Loading_scroll },
-    'resize': { 'value': Loading_resize }
+  ImageSrcset.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': ImageSrcset },
+    'init': { 'value': ImageSrcset_init },
+    'change': { 'value': ImageSrcset_change },
+    'lazyload': { 'value': ImageSrcset_lazyload },
+    'loaded': { 'value': ImageSrcset_loaded }
   });
 
-  function Loading_init() {
-    this._interactiveListener = this.interactive.bind(this);
-    global.document.addEventListener(
-      'DOMContentLoaded',
-      this._interactiveListener,
-      {passive: true}
+  function ImageSrcset_init() {
+    var tgt, filename, path;
+
+    tgt = ':not(' + this._classLazy + ')[' + this._attr + ']';
+    this._els = global.document.body.querySelectorAll(tgt);
+
+    tgt = ':not(' + this._classLazy + ')[' + this._attr + '-background]';
+    this._css = global.document.body.querySelectorAll(tgt);
+
+    for (var i = 0; i < this._els.length; i++) {
+      this.change(this._els[i], true);
+    }
+
+    for (var i = 0; i < this._css.length; i++) {
+      this.change(this._css[i], false);
+    }
+
+    tgt = this._classLazy + '[' + this._attr + ']';
+    var elsLazy = global.document.body.querySelectorAll(tgt);
+    this._elsLazy = Object.keys(elsLazy)
+      .map(function(key) { return elsLazy[key];});
+
+    tgt = this._classLazy + '[' + this._attr + '-background]';
+    var cssLazy = global.document.body.querySelectorAll(tgt);
+    this._cssLazy = Object.keys(cssLazy)
+      .map(function(key) { return cssLazy[key];});
+
+    this._totalWithoutLazyload = (
+      this._els.length +
+      this._css.length
     );
 
-    this._completeListener = this.complete.bind(this);
-    global.addEventListener(
-      'load',
-      this._completeListener,
-      {passive: true}
-    );
-  };
-
-  function Loading_create() {
-    this._el = global.document.createElement('div');
-    this._el.classList.add(this._class.slice(1));
-    var p = global.document.createElement('p');
-    p.innerHTML = '&nbsp;loading...';
-    this._el.appendChild(p);
-
-    this._removeListener = this.remove.bind(this);
-    this._el.addEventListener(
-      'transitionend',
-      this._removeListener,
-      {passive: true}
+    this._total = (
+      this._totalWithoutLazyload +
+      this._elsLazy.length +
+      this._cssLazy.length
     );
 
-    global.document.body.insertBefore(
-      this._el,
-      global.document.body.firstChild
-    );
+    this.lazyload();
   }
 
-  function Loading_interactive() {
-    global.document.removeEventListener(
-      'DOMContentLoaded',
-      this._interactiveListener,
-      {passive: true}
-    );
+  function ImageSrcset_change(el, flag) {
+    var original, filename, path;
+    if (flag) {
+      original = el.getAttribute(this._attr);
+    } else {
+      original = el.getAttribute(this._attr + '-background');
+    }
+    var str = _parse(original);
 
-    this.create();
-    this._interactive();
-  };
+    if (str.extention.match(/^(gif|jpeg|jpg|png)$/)) {
+      if (el.classList.contains(this._classFit.slice(1))) {
+        filename = _detectWidth(
+          this._min,
+          this._max,
+          this._threshhold,
+          str.name
+        );
+      } else {
+        filename = str.name;
+      }
 
-  function Loading_remove() {
-    this._el.removeEventListener(
-      'transitionend',
-      this._removeListener,
-      {passive: true}
-    );
-    global.document.body.removeChild(this._el);
-  };
+      filename = _detectDpx(filename);
+      path = str.dir + filename + '.' + str.extention;
 
-  function Loading_transition() {
-    this._el.classList.add('loaded');
-  };
-
-  function Loading_complete() {
-    global.removeEventListener(
-      'load',
-      this._completeListener,
-      {passive: true}
-    );
-
-    this._complete();
-
-    this.scroll();
-    this.resize();
-
-    setInterval(this.transition.bind(this), this._delay);
-  }
-
-  function Loading_scroll() {
-    this._scroll.flag = true;
-    global.addEventListener(
-      'scroll',
-      function() {
-        if (this._scroll.flag) {
-          this._scroll.flag = false;
-          setTimeout(function() {
-            this._scroll();
-            this._scroll.flag = true;
-          }.bind(this), 300);
+      var img = new Image();
+      img.onload = function() {
+        if (flag) {
+          el.src = path;
+        } else {
+          el.style.backgroundImage = 'url(' + path + ')';
         }
-      }.bind(this),
-      {passive: true}
-    );
-  }
+        this.loaded();
+      }.bind(this);
 
-  function Loading_resize() {
-    this._resize.flag = true;
-    global.addEventListener(
-      'resize',
-      function() {
-        if (this._resize.flag) {
-          this._resize.flag = false;
-          setTimeout(function() {
-            this._resize();
-            this._resize.flag = true;
-          }.bind(this), 300);
+      img.onerror = function() {
+        if (flag) {
+          el.src = original;
+        } else {
+          el.style.backgroundImage = 'url(' + original + ')';
         }
-      }.bind(this),
-      {passive: true}
-    );
+      };
+
+      img.src = path;
+    }
   }
 
-  return Loading;
-});
+  function ImageSrcset_lazyload() {
+    Object.keys(this._elsLazy).forEach(function(key) {
+      var loc = this._elsLazy[key].getBoundingClientRect().top;
+      if (global.innerHeight - loc > this._margin) {
+        this.change(this._elsLazy[key], true);
+        delete this._elsLazy[key];
+      } 
+    }.bind(this));
 
-
-/**
- * EnableViewport
- *
- * viewportをjsで有効にする
- * tabletはdefaultで無効
- *
- * @param {Object[]} options - 各オプションを指定
- * @param {Boolean} options[].isTablet=false - タブレットもsp表示する場合はtrue
- *
- * @return {Boolean} device.jsが読み込めればtrue
- */
-(function(global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(factory(global));
-  } else if (typeof exports === 'object') {
-    module.exports = factory;
-  } else {
-    EnableViewport = factory(global);
+    Object.keys(this._cssLazy).forEach(function(key) {
+      var loc = this._cssLazy[key].getBoundingClientRect().top;
+      if (global.innerHeight - loc > this._margin) {
+        this.change(this._cssLazy[key], false);
+        delete this._cssLazy[key];
+      } 
+    }.bind(this));
   }
-})((this || 0).self || global, function(global) {
-  'use strict';
 
-  var CONTENT = 'width=device-width, initial-scale=1, user-scalable=no';
+  function ImageSrcset_loaded() {
+    this._totalWithoutLazyload--;
+    this._total--;
 
-  function EnableViewport(options) {
+    if (this._totalWithoutLazyload == 0) {
+      this._loadedWithoutLazyload();
+    }
 
-    options = options || {} ;
+    if (this._total == 0) {
+      this._complete();
+    }
+  }
 
-    this._isTablet = options['isTablet'] || false ;
+  function _detectWidth(min, max, threshhold, name) {
+    var width = global.document.body.clientWidth;
+    var suffix = '';
 
-    if (!('device' in global)) {
-      console.error('EnableViewport:error device.js not found.');
-      return false;
+    if (threshhold.length > 0) {
+      if (width <= min.size) {
+        suffix = min.suffix;
+      } else if (width >= max.size) {
+        suffix = max.suffix;
+      } else {
+        threshhold.forEach(function(obj) {
+          if (width > obj.size) {
+            suffix = obj.suffix;
+          }
+        });
+      }
+    }
+
+    return name + suffix;
+  }
+
+  function _detectDpx(name) {
+    var dpx = global.windowDeviceRatio;
+    var suffix = '';
+
+    if (dpx <= 1) {
+      suffix = '';
+    } else if (dpx > 2) {
+      suffix = '@3x';
+    } else {
+      suffix = '@2x';
     };
 
-    this.append();
-
-    return true;
+    return name + suffix;
   }
 
-  EnableViewport.prototype = Object.create(Object.prototype, {
-    'constructor': { 'value': EnableViewport },
-    'append': { 'value': EnableViewport_append }
-  });
+  function _parse(attr) {
+    var filename = attr.split('/').pop();
+    var arr = filename.split('.');
 
-  function _generate() {
-    var tag = document.createElement('meta');
-    tag.name = 'viewport';
-    tag.content = CONTENT;
-    return tag;
+    return {
+      dir: attr.replace(filename, '') || '',
+      name: arr[0].replace(/\@.*$/, '') || '',
+      extention: arr[1] || ''
+    };
   }
 
-  function EnableViewport_append() {
-    if (!this._isTablet && !device.tablet()) return;
-    var head = document.getElementByTagNAme('head')[0];
-    head.appendChild(_generate());
-  }
-
-  return EnableViewport;
+  return ImageSrcset;  
 });
 
 
@@ -592,6 +594,7 @@
  *
  * @param {Object[]} options - 各オプションを指定
  * @param {string} options[].class='.inview' - 対象のクラスを指定
+ * @param {number} options[].margin=0 - 開始するしきい値
  *
  * @return {void}
  */
@@ -607,12 +610,14 @@
   'use strict';
 
   var CLASS_NAME = '.inview';
+  var TRIGGER_MARGIN = 0;
 
   function InView(options) {
 
     options = options || {} ;
 
     this._class = options['class'] || CLASS_NAME ;
+    this._margin = options['margin'] || TRIGGER_MARGIN ;
 
     var els = document.querySelectorAll(this._class);
     this._els = Object.keys(els).map(function(key) {return els[key];});
@@ -644,9 +649,10 @@
   }
 
   function InView_animate() {
+    var margin = this._margin;
     Object.keys(this._els).forEach(function(key) {
       var loc = this[key].getBoundingClientRect().top;
-      if (global.innerHeight - loc > 0) {
+      if (global.innerHeight - loc > margin) {
         this[key].classList.add('active');
         delete this[key];
       }
@@ -1133,45 +1139,6 @@
   };
 
   return UpdateCopyright;
-});
-
-
-/*
- * -----------
- * settings
- * -----------
- */
-var loading = new Loading({
-  'interactive': function() {
-    new EnableViewport();
-    new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
-    new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
-    new InnerLink();
-    new SlideMenu();
-    /* new HumbergerMenu(); */
-
-    this.slideshow = new SlideShow();
-    this.scrolltop = new ScrollTop();
-    this.inview = new InView();
-    this.scrollit = new ScrollIt();
-  },
-
-  'complete': function() {
-    new RippleEffect();
-    new UpdateCopyright({'prefix': '2013-'});
-
-    this.slideshow.start();
-  },
-
-  'scroll': function() {
-    this.scrolltop.animate();
-    this.inview.animate();
-    this.scrollit.animate();
-  },
-
-  'resize': function() {
-    this.scrolltop.animate();
-  }
 });
 
 

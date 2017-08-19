@@ -464,11 +464,11 @@
   var FIXED = -100;
 
   global.requestAnimFrame = (function(){
-    return  window.requestAnimationFrame       ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
+    return  global.requestAnimationFrame       ||
+            global.webkitRequestAnimationFrame ||
+            global.mozRequestAnimationFrame    ||
             function( callback ){
-              window.setTimeout(callback, 1000 / 60);
+              global.setTimeout(callback, 1000 / 60);
             };
   })();
 

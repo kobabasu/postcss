@@ -1,3 +1,12 @@
+/**
+ * ready.js
+ *
+ * Ready
+ * setting
+ *
+ * @file Initial Connectionでロードされるクラス
+ */
+
 
 /**
  * Ready

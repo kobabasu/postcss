@@ -1,4 +1,23 @@
 /**
+ * dom.js
+ *
+ * ImageSrcset
+ * DetectViewport
+ * SlideMenu
+ * HumbergerMenu
+ * InnerLink
+ * ScrollTop
+ * InView
+ * SlideShow
+ * RippleEffect
+ * ScrollIt
+ * UpdateCopyright
+ *
+ * @file ページで利用するクラス
+ */
+
+
+/**
  * ImageSrcset
  *
  * 画像の先読み、遅延読み込み、retina変換

@@ -197,11 +197,20 @@
     );
   }
 
+  /**
+   * enable
+   * HTML側からloading画面を表示させる
+   * @param {number} [delay=300] - 表示時間を指定
+   */
   function Ready_enable(delay) {
     this._flag = true;
     this._delay = delay || 300;
   }
 
+  /**
+   * disable
+   * HTML側からloading画面を表示させないようにする
+   */
   function Ready_disable() {
     this._flag = false;
   }

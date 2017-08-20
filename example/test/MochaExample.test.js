@@ -4,13 +4,13 @@ if (!('chai' in global)) {
   var assert = chai.assert;
 
   var module = require('../js/mocha-example.js');
-  var mochaExample = new module.MochaExampleTwo();
+  var mochaExample = new module.MochaExample();
 };
 
 describe('my suite', function() {
 
   it('my test', function() {
-    assert.equal(mochaExample.change(), 4);
+    assert.equal(mochaExample.change(), 3);
   });
 
 });

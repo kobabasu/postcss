@@ -1119,15 +1119,15 @@
  *
  * @return {void}
  */
-(function(factory) {
+(function(global, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(factory);
+    define(factory(global));
   } else if (typeof exports === 'object') {
-    module.exports = factory();
+    module.exports.UpdateCopyright = factory(global);
   } else {
-    UpdateCopyright = factory();
+    UpdateCopyright = factory(global);
   }
-})(function() {
+})((this || 0).self || global, function(global) {
   'use strict';
 
   var CLASS_NAME = '.copyright';
@@ -1153,7 +1153,7 @@
   };
 
   function UpdateCopyright_change() {
-    var el = document.querySelector(this._class + ' span');
+    var el = global.document.querySelector(this._class + ' span');
     el.innerHTML = this._prefix + this._thisyear;
   };
 

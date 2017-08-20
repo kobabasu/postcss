@@ -19,11 +19,13 @@ var ready = new Ready({
     /* new HumbergerMenu(); */
 
     new RippleEffect();
-    new UpdateCopyright({'prefix': '2013-'});
+    this.updateCopyright = new UpdateCopyright({'prefix': '2013-'});
+    this.updateCopyright.change();
 
     this.imagesrcset = new ImageSrcset();
     this.scrolltop = new ScrollTop();
     this.scrollit = new ScrollIt();
+    this.scrollit.init();
     this.inview = new InView();
 
     this.slideshow = new SlideShow();

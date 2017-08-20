@@ -38,7 +38,11 @@
     "calipers": "*",
     "calipers-jpeg": "*",
     "calipers-png": "*",
-    "calipers-gif": "*"
+    "calipers-gif": "*",
+
+    "mocha": "*",
+    "chai": "*",
+    "mocha-phantomjs-core": "*"
   },
 
   "scripts": {

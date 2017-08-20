@@ -33,7 +33,7 @@
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
-    module.exports = factory;
+    module.exports.Ready = factory(global);
   } else {
     Ready = factory(global);
   }
@@ -64,8 +64,6 @@
     this._interactiveListener = null ;
     this._completeListener = null ;
     this._removeListener = null ;
-
-    this.init();
   }
 
   Ready.prototype = Object.create(Object.prototype, {
@@ -271,6 +269,8 @@ var ready = new Ready({
     this.scrolltop.animate();
   }
 });
+
+ready.init();
 
 
 // vim: foldmethod=marker:ts=2:sts=0:sw=2

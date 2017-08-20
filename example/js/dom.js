@@ -1012,7 +1012,7 @@
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
-    module.exports = factory(global);
+    module.exports.ScrollIt = factory(global);
   } else {
     ScrollIt = factory(global);
   }
@@ -1029,8 +1029,6 @@
     this._class = options['class'] || CLASS_NAME ;
     this._margin = options['margin'] || TRIGGER_MARGIN ;
     this._els = { 'up': [], 'down': [], 'left': [], 'right': [] };
-
-    this.init();
   };
 
   ScrollIt.prototype = Object.create(Object.prototype, {

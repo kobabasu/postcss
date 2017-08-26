@@ -11,6 +11,10 @@
 
     "icomoon": null,
     "fontawesome": null,
-    "material-design-icons-iconfont": null
+    "material-design-icons-iconfont": null,
+
+    "mocha": null,
+    "chai": null,
+    "sinonjs": null
   }
 }

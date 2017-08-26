@@ -16,7 +16,7 @@
 /*
  * theme
  */
-header > div.header-right {
+header.globalheader > div.header-right {
   & li {
     border-right: 1px solid var(--gray);
   }
@@ -26,7 +26,7 @@ header > div.header-right {
 /*
  * header
  */
-header {
+header.globalheader {
   position: fixed;
   display: table;
   top: 0;
@@ -39,7 +39,7 @@ header {
 /*
  * h1.trademark
  */
-h1.trademark {
+header.globalheader h1.trademark {
   display: table-cell;
   width: var(--trademark-width);
   height: var(--trademark-height);
@@ -56,7 +56,7 @@ h1.trademark {
 /*
  * header-right
  */
-header > div.header-right {
+header.globalheader > div.header-right {
   display: table-cell;
   vertical-align: middle;
   text-align: right;
@@ -79,7 +79,7 @@ header > div.header-right {
   /*
    * h1.trademark
    */
-  h1.trademark {
+  header.globalheader h1.trademark {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -91,7 +91,7 @@ header > div.header-right {
   /*
    * div.header-right
    */
-  header > div.header-right {
+  header.globalheader > div.header-right {
     display: none;
   }
 }

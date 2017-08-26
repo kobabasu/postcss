@@ -1,3 +1,12 @@
+/**
+ * ready.js
+ *
+ * Ready
+ * setting
+ *
+ * @file Initial Connectionでロードされるクラス
+ */
+
 
 /**
  * Ready
@@ -24,7 +33,7 @@
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
-    module.exports = factory;
+    module.exports.Ready = factory(global);
   } else {
     Ready = factory(global);
   }
@@ -55,8 +64,6 @@
     this._interactiveListener = null ;
     this._completeListener = null ;
     this._removeListener = null ;
-
-    this.init();
   }
 
   Ready.prototype = Object.create(Object.prototype, {
@@ -197,62 +204,23 @@
     );
   }
 
+  /**
+   * enable
+   * HTML側からloading画面を表示させる
+   * @param {number} [delay=300] - 表示時間を指定
+   */
   function Ready_enable(delay) {
     this._flag = true;
     this._delay = delay || 300;
   }
 
+  /**
+   * disable
+   * HTML側からloading画面を表示させないようにする
+   */
   function Ready_disable() {
     this._flag = false;
   }
 
   return Ready;
 });
-
-
-/*
- * -----------
- * settings
- * -----------
- */
-var ready = new Ready({
-  'preload': {
-    'img': ['imgs/clear.png']
-  },
-
-  'interactive': function() {
-  },
-
-  'complete': function() {
-    new DetectViewport({'name': 'sp', 'viewport': '(max-width: 767px)'});
-    new DetectViewport({'name': '5k', 'viewport': '(min-width: 1280px)'});
-    new InnerLink();
-    new SlideMenu();
-    /* new HumbergerMenu(); */
-
-    new RippleEffect();
-    new UpdateCopyright({'prefix': '2013-'});
-
-    this.imagesrcset = new ImageSrcset();
-    this.scrolltop = new ScrollTop();
-    this.scrollit = new ScrollIt();
-    this.inview = new InView();
-
-    this.slideshow = new SlideShow();
-    this.slideshow.start();
-  },
-
-  'scroll': function() {
-    this.imagesrcset.lazyload();
-    this.scrolltop.animate();
-    this.inview.animate();
-    this.scrollit.animate();
-  },
-
-  'resize': function() {
-    this.scrolltop.animate();
-  }
-});
-
-
-// vim: foldmethod=marker:ts=2:sts=0:sw=2

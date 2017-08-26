@@ -18,8 +18,7 @@ class Postcss extends DefaultRegistry {
     const style = {
       src:     dir.src  + 'style.css',
       dist:    dir.dist + 'style.css',
-      watch:   dir.src  + '**/*.*',
-      example: dir.example
+      watch:   dir.src  + '**/*.*'
     };
 
     gulp.task(prefix + 'postcss', shell.task([`
@@ -47,14 +46,81 @@ class Postcss extends DefaultRegistry {
     /*
      * example
      */
+    const example = {
+      dist:  dir.example.css.dist + 'lib.css'
+    };
+
     gulp.task(prefix + 'postcss:example', shell.task([`
-      postcss ${lib.src} \
-      -m \
-      -o ${style.example + 'lib.css'};
       postcss ${style.src} \
       -m \
-      -o ${style.example + 'style.css'};
+      -o ${dir.example.css.dist + 'lib.css'};
+      postcss ${lib.src} \
+      -m \
+      -o ${dir.example.css.dist + 'style.css'};
     `]));
+
+
+    /*
+     * example:nodejs
+     */
+    gulp.task(prefix + 'postcss:example:nodejs', shell.task([`
+      mocha ${dir.example.js.test}*.js \
+      -g '^(?!DOM)'
+    `]));
+
+
+    /*
+     * example:phantomjs
+     */
+    gulp.task(prefix + 'postcss:example:phantomjs', shell.task([`
+      for f in \`ls ${dir.example.js.test}*.html\`
+      do
+        phantomjs ${dir.node_module_path}node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js $f
+      done
+    `]));
+
+
+    /*
+     * nodejs:report
+     */
+    gulp.task(prefix + 'postcss:example:nodejs:report', shell.task([`
+      mocha ${dir.example.js.test}*.js \
+      --reporter mocha-junit-reporter \
+      --reporter-options mochaFile=${dir.example.js.report.nodejs} \
+      -g '^(?!DOM)'
+    `]));
+
+
+    /*
+     * phantomjs:report 
+     */
+    gulp.task(prefix + 'postcss:example:phantomjs:report', shell.task([`
+      if [ -f "${dir.example.js.report.phantomjs}" ]; then
+        rm ${dir.example.js.report.phantomjs};
+      fi
+      for f in \`ls ${dir.example.js.test}*.html\`
+      do
+        phantomjs ${dir.node_module_path}node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js $f xunit >> ${dir.example.js.report.phantomjs}
+      done
+    `]));
+
+
+    /*
+     * example:mocha
+     */
+    gulp.task(prefix + 'postcss:example:mocha', gulp.series(
+        prefix + 'postcss:example:nodejs',
+        prefix + 'postcss:example:phantomjs'
+    ));
+
+
+    /*
+     *  example:mocha:report
+     */
+    gulp.task(prefix + 'postcss:example:mocha:report', gulp.series(
+        prefix + 'postcss:example:nodejs:report',
+        prefix + 'postcss:example:phantomjs:report'
+    ));
 
 
     /*

@@ -1,12 +1,17 @@
 # common
 .DS_Store
 node_modules/
-/vendor/
+vendor/
+package-lock.json
 
 # config
+package.json
+bower.json
 gulp/dir.es6
 
 # build files
+example/results/test-results-nodejs.xml
+example/results/test-results-phantomjs.xml
 
 # exclude
 

@@ -6,21 +6,21 @@
 /*
  * footer
  */
-footer {
+footer.globalfooter {
   width: 100%;
 }
 
 /*
  * footerlink
  */
-div.footerlink {
+footer.globalfooter div.footerlink {
   padding: var(--base-spacing) 0;
 
   & img {
     float: left;
     width: 80px;
     height: 20px;
-    margin: calc(var(--tiny-spacing) / 2);
+    margin: calc(var(--base-spacing) / 2);
     margin-left: 0;
   }
 
@@ -51,7 +51,7 @@ div.footerlink {
 /*
  * .copyright
  */
-div.copyright {
+footer.globalfooter div.copyright {
   display: block;
   line-height: calc(var(--base-spacing) * 1.5);
   height: calc(var(--base-spacing) * 1.5);
@@ -61,7 +61,7 @@ div.copyright {
 
 
 @media (--sp-viewport) {
-  div.footerlink {
+  footer.globalfooter div.footerlink {
     padding-top: 0;
 
     & h2 {

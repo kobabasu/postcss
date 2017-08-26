@@ -1,4 +1,23 @@
 /**
+ * dom.js
+ *
+ * ImageSrcset
+ * DetectViewport
+ * SlideMenu
+ * HumbergerMenu
+ * InnerLink
+ * ScrollTop
+ * InView
+ * SlideShow
+ * RippleEffect
+ * ScrollIt
+ * UpdateCopyright
+ *
+ * @file ページで利用するクラス
+ */
+
+
+/**
  * ImageSrcset
  *
  * 画像の先読み、遅延読み込み、retina変換
@@ -445,11 +464,11 @@
   var FIXED = -100;
 
   global.requestAnimFrame = (function(){
-    return  window.requestAnimationFrame       ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
+    return  global.requestAnimationFrame       ||
+            global.webkitRequestAnimationFrame ||
+            global.mozRequestAnimationFrame    ||
             function( callback ){
-              window.setTimeout(callback, 1000 / 60);
+              global.setTimeout(callback, 1000 / 60);
             };
   })();
 
@@ -993,7 +1012,7 @@
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
-    module.exports = factory(global);
+    module.exports.ScrollIt = factory(global);
   } else {
     ScrollIt = factory(global);
   }
@@ -1010,8 +1029,6 @@
     this._class = options['class'] || CLASS_NAME ;
     this._margin = options['margin'] || TRIGGER_MARGIN ;
     this._els = { 'up': [], 'down': [], 'left': [], 'right': [] };
-
-    this.init();
   };
 
   ScrollIt.prototype = Object.create(Object.prototype, {
@@ -1100,15 +1117,15 @@
  *
  * @return {void}
  */
-(function(factory) {
+(function(global, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(factory);
+    define(factory(global));
   } else if (typeof exports === 'object') {
-    module.exports = factory();
+    module.exports.UpdateCopyright = factory(global);
   } else {
-    UpdateCopyright = factory();
+    UpdateCopyright = factory(global);
   }
-})(function() {
+})((this || 0).self || global, function(global) {
   'use strict';
 
   var CLASS_NAME = '.copyright';
@@ -1120,8 +1137,6 @@
     this._class = options['class'] || CLASS_NAME ;
     this._thisyear = options['thisyear'] || _getThisyear();
     this._prefix = options['prefix'] || null;
-
-    this.change();
   }
 
   UpdateCopyright.prototype = Object.create(Object.prototype, {
@@ -1134,7 +1149,7 @@
   };
 
   function UpdateCopyright_change() {
-    var el = document.querySelector(this._class + ' span');
+    var el = global.document.querySelector(this._class + ' span');
     el.innerHTML = this._prefix + this._thisyear;
   };
 

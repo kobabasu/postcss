@@ -1,15 +1,16 @@
 var global = (function() { return this })();
 if (!('chai' in global)) {
   var chai = require('chai');
+  var sinon = require('sinon');
   var assert = chai.assert;
 
-  var module = require('../js/mocha-example.js');
+  var module = require('../src/mocha-example.js');
   var mochaExample = new module.MochaExample();
 };
 
-describe('my suite', function() {
+describe('MochaExample', function() {
 
-  it('my test', function() {
+  it('結果が3となるか', function() {
     assert.equal(mochaExample.change(), 3);
   });
 

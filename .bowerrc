@@ -1,4 +1,5 @@
 {
-  "directory": "./example/vendor"
+  "directory": "./example/vendor",
+  "allow_root": true
 }
 

@@ -44,7 +44,7 @@ jobs:
       - run: npm test
 
       - store_test_results:
-          path: ./results
+          path: ./example/results
 
       - store_artifacts:
-          path: ./results
+          path: ./example/results

@@ -52,8 +52,9 @@
   },
 
   "scripts": {
-    "global": "npm install -g postcss-cli"
-  },
+    "global": "npm install -g postcss-cli phantomjs-prebuilt mocha mocha-junit-reporter github:gulpjs/gulp.git#4.0 gulp-shell gulp-cli",
+    "test": "gulp postcss:example:mocha:report"
+  }
 
   "preferGlobal": true,
   "author": "kobabasu",

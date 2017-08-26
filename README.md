@@ -19,9 +19,15 @@ example用の`test/*.html`で読み込むようにtest専用のライブラリ�
 1. `bower install`
 
 ## gulp
-1. gulp/dir.es6.sampleをコピーしgulp/dir.es6を作成
-1. gulp/dir.es6を変更
-1. documentRootのgulpfile.babel.js内で読み込み
+1. 単独で動かす場合はgulpfile.babel.js.sampleをgulpfile.babel.jsにリネーム
+1. projectに追加する場合はすでにあるgulpfile.babel.jsを編集
+1. cp gulp/dir.es6.sample gulp/dir.es6
+1. dir.es6を編集。  
+   rootは`package.json`からみたmicro-postcssレポジトリのディレクトリを指定  
+   `node_modules`は`package.json`からみた`node_modules/`の場所を指定。ほとんどの場合`./`
+1. gulp postcss:example:reportで正常に動作するか試す
+1. dir.es6のsrcを実際にソースがあるディレクトリに変更
+
 
 ## check
 1. ブラウザで確認

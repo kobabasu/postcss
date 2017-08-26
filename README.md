@@ -28,6 +28,30 @@ example用の`test/*.html`で読み込むようにtest専用のライブラリ�
 1. gulp postcss:example:reportで正常に動作するか試す
 1. dir.es6のsrcを実際にソースがあるディレクトリに変更
 
+## circleci
+1. githubとcircleciとslackを連携させる
+1. .cicrleci/config.ymlをプロジェクトルートにコピー
+1. config.ymlの`working_directory`を編集
+1. プロジェクトのREADME.mdのbadgeを編集
+1. git push してみて成功するか確認
+
+## Dockerfile
+もしcircleciのコンテナになにか追加する必要があれば、
+Dockerfileを編集しbuildしdocker hubにpush
+
+1. `hub clone cores/cores-vagrant coreos`
+1. config.rb, user-dataをコピー
+1. config.rbを編集
+1. `shared_folder`でレポジトリのルートを共有
+1. `docker build -t kobabasu/phantomjs:0.28` /home/core/share`
+1. `docker login`
+1. `docker push kobabasu/phantomjs:0.28`
+1. docker-composeをインストール
+1. `docker-compose up`
+1. `docker-compose start`
+1. `docker exec phantomjs gulp mocha:report`や`vagrant ssh -c 'docker exec phantomjs gulp mocha:report'`で確認
+1. 問題なければ`.circleci/config.yml`のimagesのバージョンを変更
+1. git pushで確認
 
 ## check
 1. ブラウザで確認

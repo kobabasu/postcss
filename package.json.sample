@@ -42,7 +42,13 @@
 
     "mocha": "*",
     "chai": "*",
-    "mocha-phantomjs-core": "*"
+    "sinon": "*",
+    "mocha-junit-reporter": "*",
+    "mocha-phantomjs-core": "*",
+
+    "babel-core": "*",
+    "babel-preset-es2015": "*",
+    "gulp": "gulpjs/gulp#4.0"
   },
 
   "scripts": {

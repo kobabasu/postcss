@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/kobabasu/micro-postcss.svg?style=shield&circle-token=c181a31aabfe59d8f79ece75e1af85b0726555a6)](https://circleci.com/gh/kobabasu/micro-postcss)
+
 # micro-postcss
 postcssを利用するためnodejs環境とpostcss-cliのインストールが必要
 

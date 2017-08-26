@@ -11,6 +11,13 @@ git clone git@github.com-kobabasu:kobabasu/micro-postcss.git postcss
 1. `npm start`
 1. `npm install`
 
+## bower
+example用の`test/*.html`で読み込むようにtest専用のライブラリを用意する  
+.bowerrcでexample/vendor以下にインストールされるよう設定
+1. jqueryやfontawesomeやmaterial-designなどいらないものを削除
+1. `cp bower.json.sample bower.json`
+1. `bower install`
+
 ## gulp
 1. gulp/dir.es6.sampleをコピーしgulp/dir.es6を作成
 1. gulp/dir.es6を変更

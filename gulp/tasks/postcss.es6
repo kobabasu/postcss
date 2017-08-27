@@ -29,21 +29,6 @@ class Postcss extends DefaultRegistry {
 
 
     /*
-     * lib
-     */
-    const lib = {
-      src:   dir.src  + 'lib.css',
-      dist:  dir.dist + 'lib.css',
-    };
-
-    gulp.task(prefix + 'postcss:lib', shell.task([`
-      postcss ${lib.src} \
-      -m \
-      -o ${lib.dist};
-    `]));
-
-
-    /*
      * example
      */
     const example = {
@@ -51,9 +36,6 @@ class Postcss extends DefaultRegistry {
     };
 
     gulp.task(prefix + 'postcss:example', shell.task([`
-      postcss ${lib.src} \
-      -m \
-      -o ${dir.example.css.dist + 'lib.css'};
       postcss ${style.src} \
       -m \
       -o ${dir.example.css.dist + 'style.css'};
@@ -141,8 +123,7 @@ class Postcss extends DefaultRegistry {
      */
     gulp.task(prefix + 'postcss:build',
       gulp.series(
-        prefix + 'postcss',
-        prefix + 'postcss:lib'
+        prefix + 'postcss'
         // prefix + 'postcss:docs'
     ));
   }

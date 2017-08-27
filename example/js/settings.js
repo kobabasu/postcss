@@ -20,7 +20,7 @@ var ready = new Ready({
 
     new RippleEffect();
     this.updateCopyright = new UpdateCopyright({'prefix': '2013-'});
-    this.updateCopyright.change();
+    this.updateCopyright.init();
 
     this.imagesrcset = new ImageSrcset();
     this.scrolltop = new ScrollTop();

@@ -1141,16 +1141,25 @@
 
   UpdateCopyright.prototype = Object.create(Object.prototype, {
     'constructor': { 'value': UpdateCopyright },
+    'init': { 'value': UpdateCopyright_init },
     'change': { 'value': UpdateCopyright_change }
   });
 
-  function _getThisyear() {
-    return new Date().getFullYear();
-  };
+  function UpdateCopyright_init() {
+    this._el = global.document.body
+      .querySelector(this._class + ' span');
+
+    if (!this._el) return;
+
+    this.change();
+  }
 
   function UpdateCopyright_change() {
-    var el = global.document.querySelector(this._class + ' span');
-    el.innerHTML = this._prefix + this._thisyear;
+    this._el.innerHTML = this._prefix + this._thisyear;
+  };
+
+  function _getThisyear() {
+    return new Date().getFullYear();
   };
 
   return UpdateCopyright;

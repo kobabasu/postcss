@@ -1176,7 +1176,7 @@ footer.globalfooter div.footerlink span{
   padding-right:1rem;
 }
 
-footer.globalfooter div.copyright{
+footer.globalfooter small{
   display:block;
   line-height:30px;
   line-height:3rem;

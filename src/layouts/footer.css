@@ -51,7 +51,7 @@ footer.globalfooter div.footerlink {
 /*
  * .copyright
  */
-footer.globalfooter div.copyright {
+footer.globalfooter small {
   display: block;
   line-height: calc(var(--base-spacing) * 1.5);
   height: calc(var(--base-spacing) * 1.5);

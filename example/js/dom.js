@@ -1146,7 +1146,7 @@
 
   function UpdateCopyright_init() {
     var el = global.document.body
-      .querySelector(this._class + ' span');
+      .querySelector(this._class);
 
     if (!el) return;
 

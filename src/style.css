@@ -2,6 +2,16 @@
  * style.css
  */
 
+
+/*
+ * libraries
+ */
+@import 'normalize.css';
+@import '../fonts/icomoon/style.css';
+/* @import 'animate.min.css'; */
+/* @import 'font-awesome.min.css'; */
+/* @import 'material-design-icons.css'; */
+
 @import 'configs/index.css';
 @import 'modules/index.css';
 

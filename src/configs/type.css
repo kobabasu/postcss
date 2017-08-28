@@ -9,19 +9,6 @@
  */
 /* @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css); */
 
-/*
- * config
- */
-:root {
-  --base-font-size:       1.6rem;
-  --small-font-size:      1.4rem;
-  --heading-font-size:    2.0rem;
-
-  --base-line-height:     2.4rem;
-  --small-line-height:    1.8rem;
-  --tiny-line-height:     1.4rem;
-  --heading-line-height:  3.2rem;
-}
 
 /*
  * base

@@ -4,18 +4,27 @@
  */
 
 @import 'loading.css';
-@import 'anchor.css';
-@import 'hero.css';
-@import 'flexbox.css';
-@import 'grid.css';
-@import 'masonry.css';
-@import 'responsive.css';
 @import 'decoration.css';
+@import 'anchor.css';
+@import 'responsive.css';
+@import 'articlefixed.css';
+@import 'globalfooter.css';
+@import 'globalheader.css';
+@import 'globalnav.css';
 @import 'topics.css';
-@import 'slidemenu.css';
+
+
+/*
+ * options
+ */
+/* @import 'flexbox.css'; */
+/* @import 'grid.css'; */
+/* @import 'masonry.css'; */
+/* @import 'scrolltop.css'; */
+/* @import 'inview.css'; */
+/* @import 'hero.css'; */
+/* @import 'slideshow.css'; */
+/* @import 'ripple.css'; */
+/* @import 'scrollit.css'; */
+/* @import 'slidemenu.css'; */
 /* @import 'humberger.css'; */
-@import 'scrolltop.css';
-@import 'inview.css';
-@import 'slideshow.css';
-@import 'ripple.css';
-@import 'scrollit.css';

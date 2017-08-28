@@ -4,10 +4,12 @@
 postcssを利用するためnodejs環境とpostcss-cliのインストールが必要
 
 ```
-git clone git@github.com-kobabasu:kobabasu/micro-postcss.git postcss 
+git add submodule git@github.com-kobabasu:kobabasu/micro-postcss.git postcss 
 ```
 
 ## npm
+preinstallでひとつ上の階層にstylesheets/が作成される
+変更はその中で行う
 1. 必要があればdevelopブランチを使う  
    `git checkout develop`
 1. `npm start`

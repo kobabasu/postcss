@@ -3,15 +3,6 @@
  * margin, paddingに関する定義
  */
 
-/*
- * config
- */
-:root {
-  --base-spacing:  2rem;
-  --tiny-spacing:  calc(1rem / 2);
-  --small-spacing: 1rem;
-  --large-spacing: 3rem;
-}
 
 /*
  * section

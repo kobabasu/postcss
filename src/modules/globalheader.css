@@ -1,6 +1,6 @@
 /*
- * # layouts/header.css
- * headerに関する定義
+ * # modules/globalheader.css
+ * globalheaderのスタイルを定義
  */
 
 /*
@@ -8,15 +8,15 @@
  */
 :root {
   --header-height: 5rem;
-  --trademark-width: 80px;
-  --trademark-height: 20px;
+  --header-trademark-width: 80px;
+  --header-trademark-height: 20px;
 }
 
 
 /*
  * theme
  */
-header.globalheader > div.header-right {
+.globalheader > div.header-right {
   & li {
     border-right: 1px solid var(--gray);
   }
@@ -24,9 +24,9 @@ header.globalheader > div.header-right {
 
 
 /*
- * header
+ * globalheader
  */
-header.globalheader {
+.globalheader {
   position: fixed;
   display: table;
   top: 0;
@@ -39,24 +39,24 @@ header.globalheader {
 /*
  * h1.trademark
  */
-header.globalheader h1.trademark {
+.globalheader h1.trademark {
   display: table-cell;
-  width: var(--trademark-width);
-  height: var(--trademark-height);
+  width: var(--header-trademark-width);
+  height: var(--header-trademark-height);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center left;
 
   & a {
     display: block;
-    line-height: var(--trademark-height);
+    line-height: var(--header-trademark-height);
   }
 }
 
 /*
  * header-right
  */
-header.globalheader > div.header-right {
+.globalheader > div.header-right {
   display: table-cell;
   vertical-align: middle;
   text-align: right;
@@ -79,7 +79,7 @@ header.globalheader > div.header-right {
   /*
    * h1.trademark
    */
-  header.globalheader h1.trademark {
+  .globalheader h1.trademark {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -91,7 +91,7 @@ header.globalheader > div.header-right {
   /*
    * div.header-right
    */
-  header.globalheader > div.header-right {
+  .globalheader > div.header-right {
     display: none;
   }
 }

@@ -1,26 +1,37 @@
 /*
- * # layouts/footer.css
- * footerに関する定義
+ * # modules/globalfooter.css
+ * globalfooterのスタイルを定義
  */
 
 /*
- * footer
+ * config
  */
-footer.globalfooter {
-  width: 100%;
+:root {
+  --footer-width: 100%;
+  --footer-trademark-width: 80px;
+  --footer-trademark-height: 20px;
+}
+
+
+/*
+ * globalfooter
+ */
+.globalfooter {
+  width: var(--footer-width);
 }
 
 /*
  * footerlink
  */
-footer.globalfooter div.footerlink {
+.globalfooter div.footerlink {
   padding: var(--base-spacing) 0;
 
   & img {
     float: left;
-    width: 80px;
-    height: 20px;
-    margin: calc(var(--base-spacing) / 2);
+    width: var(--footer-trademark-width);
+    height: var(--footer-trademark-height);;
+    margin: calc(var(--tiny-spacing) / 2);
+    margin-bottom: 0;
     margin-left: 0;
   }
 
@@ -51,7 +62,7 @@ footer.globalfooter div.footerlink {
 /*
  * .copyright
  */
-footer.globalfooter small {
+.globalfooter small {
   display: block;
   line-height: calc(var(--base-spacing) * 1.5);
   height: calc(var(--base-spacing) * 1.5);
@@ -61,7 +72,7 @@ footer.globalfooter small {
 
 
 @media (--sp-viewport) {
-  footer.globalfooter div.footerlink {
+  .globalfooter div.footerlink {
     padding-top: 0;
 
     & h2 {

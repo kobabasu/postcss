@@ -1,0 +1,32 @@
+/*
+ * # modules/articlefixed.css
+ * articleに関する定義
+ */
+
+/*
+ * config
+ */
+:root {
+  --articlefixed-header-height: 5rem;
+  --articlefixed-nav-height: 5rem;
+}
+
+
+/*
+ * article.articlefixed
+ */
+article.articlefixed {
+  min-height: 100vh;
+  padding-top: calc(
+    var(--articlefixed-header-height) +
+    var(--articlefixed-nav-height)
+  );
+}
+
+@media (--sp-viewport) {
+  article.articlefixed {
+    padding-top: calc(
+      var(--articlefixed-header-height)
+    );
+  }
+}

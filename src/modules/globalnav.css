@@ -1,25 +1,25 @@
 /*
- * # layouts/nav.css
- * navに関する定義
+ * # modules/globalnav.css
+ * globalnavのスタイルを定義
  */
 
 /*
  * config
- * header.cssを先に読み込むこと
  */
 :root {
   --nav-height: 5rem;
+  --nav-header-height: 5rem;
 }
 
 /*
- * global navigation
+ * globalnav
  */
-nav.globalnav {
+.globalnav {
   position: fixed;
   top: 0;
   width: 100%;
   height: var(--nav-height);
-  margin-top: var(--header-height);
+  margin-top: var(--nav-header-height);
 
   & ul {
     flex-wrap: nowrap;

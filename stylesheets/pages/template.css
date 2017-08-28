@@ -1,0 +1,18 @@
+/*
+ * # pages/template.css
+ * 各ページのみ使用のクラス
+ */
+
+@import '../../postcss/src/configs/vars.css';
+
+@import '../../postcss/src/modules/flexbox.css';
+@import '../../postcss/src/modules/grid.css';
+@import '../../postcss/src/modules/masonry.css';
+@import '../../postcss/src/modules/scrolltop.css';
+@import '../../postcss/src/modules/inview.css';
+@import '../../postcss/src/modules/hero.css';
+@import '../../postcss/src/modules/slideshow.css';
+@import '../../postcss/src/modules/ripple.css';
+@import '../../postcss/src/modules/scrollit.css';
+@import '../../postcss/src/modules/slidemenu.css';
+/* @import '../../postcss/src/modules/humberger.css'; */

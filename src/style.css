@@ -12,10 +12,19 @@
 /* @import 'font-awesome.min.css'; */
 /* @import 'material-design-icons.css'; */
 
+/*
+ * internal submodule
+ */
 @import 'configs/index.css';
 @import 'modules/index.css';
 
-@import 'theme.css';
-@import 'layouts/index.css';
+/*
+ * external submodule
+ */
+@import '../../stylesheets/theme.css';
+@import '../../stylesheets/layouts/index.css';
 
+/*
+ * after include all file
+ */
 @import 'devices/index.css';

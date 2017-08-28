@@ -20,7 +20,8 @@ footer.globalfooter div.footerlink {
     float: left;
     width: 80px;
     height: 20px;
-    margin: calc(var(--base-spacing) / 2);
+    margin: calc(var(--tiny-spacing) / 2);
+    margin-bottom: 0;
     margin-left: 0;
   }
 

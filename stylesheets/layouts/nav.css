@@ -2,33 +2,3 @@
  * # layouts/nav.css
  * navに関する定義
  */
-
-/*
- * config
- * header.cssを先に読み込むこと
- */
-:root {
-  --nav-height: 5rem;
-}
-
-/*
- * global navigation
- */
-nav.globalnav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: var(--nav-height);
-  margin-top: var(--header-height);
-
-  & ul {
-    flex-wrap: nowrap;
-    padding-top: 1rem;
-
-    & li {
-      flex: 1;
-      line-height: 3rem;
-      text-align: center;
-    }
-  }
-}

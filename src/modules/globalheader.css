@@ -1,0 +1,97 @@
+/*
+ * # modules/globalheader.css
+ * globalheaderのスタイルを定義
+ */
+
+/*
+ * config
+ */
+:root {
+  --header-height: 5rem;
+  --header-trademark-width: 80px;
+  --header-trademark-height: 20px;
+}
+
+
+/*
+ * theme
+ */
+.globalheader > div.header-right {
+  & li {
+    border-right: 1px solid var(--gray);
+  }
+}
+
+
+/*
+ * globalheader
+ */
+.globalheader {
+  position: fixed;
+  display: table;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+  padding: 0 var(--base-spacing);
+  vertical-align: middle;
+}
+
+/*
+ * h1.trademark
+ */
+.globalheader h1.trademark {
+  display: table-cell;
+  width: var(--header-trademark-width);
+  height: var(--header-trademark-height);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center left;
+
+  & a {
+    display: block;
+    line-height: var(--header-trademark-height);
+  }
+}
+
+/*
+ * header-right
+ */
+.globalheader > div.header-right {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+
+  & li {
+    display: inline-block;
+    font-size: var(--small-font-size);
+    border-right: 1px solid var(--gray);
+    padding: 0 var(--base-spacing);
+  }
+
+  & li:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+}
+
+
+@media (--sp-viewport) {
+  /*
+   * h1.trademark
+   */
+  .globalheader h1.trademark {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  /*
+   * div.header-right
+   */
+  .globalheader > div.header-right {
+    display: none;
+  }
+}

@@ -5,7 +5,12 @@
 
 @import 'loading.css';
 @import 'anchor.css';
+@import 'articlefixed.css';
 @import 'hero.css';
+@import 'flexbox.css';
+@import 'globalfooter.css';
+@import 'globalheader.css';
+@import 'globalnav.css';
 @import 'flexbox.css';
 @import 'grid.css';
 @import 'masonry.css';

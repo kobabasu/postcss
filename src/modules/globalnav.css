@@ -1,0 +1,34 @@
+/*
+ * # modules/globalnav.css
+ * globalnavのスタイルを定義
+ */
+
+/*
+ * config
+ */
+:root {
+  --nav-height: 5rem;
+  --nav-header-height: 5rem;
+}
+
+/*
+ * globalnav
+ */
+.globalnav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--nav-height);
+  margin-top: var(--nav-header-height);
+
+  & ul {
+    flex-wrap: nowrap;
+    padding-top: 1rem;
+
+    & li {
+      flex: 1;
+      line-height: 3rem;
+      text-align: center;
+    }
+  }
+}

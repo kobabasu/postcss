@@ -19,6 +19,12 @@
 @import 'modules/index.css';
 
 /*
+ * external submodule
+ */
+@import '../../stylesheets/theme.css';
+@import '../../stylesheets/layouts/index.css';
+
+/*
  * after include all file
  */
 @import 'devices/index.css';

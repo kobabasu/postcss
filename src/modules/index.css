@@ -3,28 +3,38 @@
  * モジュール定義
  */
 
-@import 'loading.css';
+/*
+ * common
+ */
 @import 'decoration.css';
 @import 'anchor.css';
 @import 'responsive.css';
+
+/*
+ * layout
+ */
 @import 'articlefixed.css';
 @import 'globalfooter.css';
 @import 'globalheader.css';
 @import 'globalnav.css';
 @import 'topics.css';
 
-
 /*
- * options
+ * grid
  */
 /* @import 'flexbox.css'; */
 /* @import 'grid.css'; */
 /* @import 'masonry.css'; */
-/* @import 'scrolltop.css'; */
+
+/*
+ * options
+ */
+@import 'loading.css';
 /* @import 'inview.css'; */
+/* @import 'scrollit.css'; */
+/* @import 'scrolltop.css'; */
+/* @import 'slidemenu.css'; */
+/* @import 'humberger.css'; */
 /* @import 'hero.css'; */
 /* @import 'slideshow.css'; */
 /* @import 'ripple.css'; */
-/* @import 'scrollit.css'; */
-/* @import 'slidemenu.css'; */
-/* @import 'humberger.css'; */

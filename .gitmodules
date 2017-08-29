@@ -1,0 +1,3 @@
+[submodule "example/lib"]
+	path = example/lib
+	url = git@github.com-kobabasu:kobabasu/micro-lib.git

@@ -4,7 +4,8 @@
 postcssを利用するためnodejs環境とpostcss-cliのインストールが必要
 
 ```
-git add submodule git@github.com-kobabasu:kobabasu/micro-postcss.git postcss 
+git add submodule git@github.com-kobabasu:kobabasu/micro-postcss.git postcss  
+git submodule init && git submodule update
 ```
 
 ## npm
@@ -91,6 +92,7 @@ gulp postcss:buildで一つ上の階層に以下が生成される
 1. stylesheets/test (テスト用ファイル)
 
 ## edit
+1. git submodule init && git submodule updateを実行
 1. package.json, bower.json, gulp/dir.es6を作成
 1. npm installでpostcss:buildが実行され../に./cssを生成, ./stylesheetsがコピーされる
 1. `postcss`でビルド

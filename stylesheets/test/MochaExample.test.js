@@ -1,7 +1,7 @@
 var global = (function() { return this })();
 if (!('chai' in global)) {
-  var chai = require('chai');
-  var sinon = require('sinon');
+  var chai = require('../../postcss/vendor/chai');
+  var sinon = require('../../postcss/vendor/sinon');
   var assert = chai.assert;
 };
 

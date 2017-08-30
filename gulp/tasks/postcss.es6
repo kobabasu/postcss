@@ -38,7 +38,7 @@ class Postcss extends DefaultRegistry {
      */
     gulp.task(prefix + 'postcss:copy', shell.task([`
       mkdir -p ${dir.root + '../css'};
-      cp -r ${dir.root + 'stylesheets'} ${dir.root + '../stylesheets/'};
+      cp -r ${dir.root + 'stylesheets'} ${dir.root + '../stylesheets'};
     `]));
 
 

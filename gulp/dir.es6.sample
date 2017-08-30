@@ -17,7 +17,7 @@ export const dir = {
   root:    root,
   src:     root + 'src/',
   pages:   root + '../stylesheets/pages/',
-  test:    root + '../stylesheets/test/',
+  test:    root + 'test/',
   dist:    root + '../css/',
   docs:    root + 'docs/postcss/',
   report:  {

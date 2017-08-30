@@ -142,6 +142,7 @@ class Postcss extends DefaultRegistry {
      */
     gulp.task(prefix + 'postcss:build',
       gulp.series(
+        prefix + 'postcss:copy',
         prefix + 'postcss'
         // prefix + 'postcss:docs'
     ));

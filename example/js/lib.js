@@ -1,23 +1,4 @@
 /**
- * dom.js
- *
- * ImageSrcset
- * DetectViewport
- * SlideMenu
- * HumbergerMenu
- * InnerLink
- * ScrollTop
- * InView
- * SlideShow
- * RippleEffect
- * ScrollIt
- * UpdateCopyright
- *
- * @file ページで利用するクラス
- */
-
-
-/**
  * ImageSrcset
  *
  * 画像の先読み、遅延読み込み、retina変換
@@ -255,8 +236,6 @@
 
   return ImageSrcset;  
 });
-
-
 /**
  * DetectViewport
  *
@@ -305,144 +284,6 @@
 
   return DetectViewport;
 });
-
-
-/**
- * SlideMenu
- *
- * SP表示時のスライドメニューを表示・非表示
- *
- * @param {Object[]} options - 各オプションを指定
- * @param {string} options[].class='glbalnav.slidemenu' - メニューのタグを指定
- *
- * @return {void}
- */
-(function(global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(factory(global));
-  } else if (typeof exports === 'object') {
-    module.exports = factory(global);
-  } else {
-    SlideMenu = factory(global);
-  }
-})((this || 0).self || global, function(global) {
-  'use strict';
-
-  var CLASS_NAME = '.globalnav.slidemenu';
-  var APPEND_CLASS_NAME_ACTIVE = 'slidemenu-active';
-  var APPEND_CLASS_NAME_ICON = 'slidemenu-icon';
-
-  function SlideMenu(options) {
-
-    options = options || {};
-
-    this._class = options['class'] || CLASS_NAME ;
-
-    this.attach();
-  }
-
-  SlideMenu.prototype = Object.create(Object.prototype, {
-    'constructor': { 'value': SlideMenu },
-    'attach': { 'value': SlideMenu_attach }
-  });
-
-  function _generate() {
-    var el = global.document.createElement('div');
-    el.className = APPEND_CLASS_NAME_ICON;
-
-    return el;
-  }
-
-  function SlideMenu_attach() {
-    if (global.document.querySelector(CLASS_NAME)) {
-      var icon = _generate();
-      var nav = global.document.querySelector(CLASS_NAME);
-      nav.parentNode.insertBefore(icon, nav.nextElementSibling);
-
-      icon.addEventListener(
-        'click',
-        function() {
-          nav.style.opacity = 1;
-          nav.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
-        },
-        {passive: true}
-      );
-    }
-  }
-
-  return SlideMenu;
-});
-
-
-/**
- * HumbergerMenu
- *
- * SP表示時のハンバーガーメニューを表示・非表示
- *
- * @param {Object[]} options - 各オプションを指定
- * @param {string} options[].class='glbalnav.humberger' - メニューのタグを指定
- *
- * @return {void}
- */
-(function(global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(factory(global));
-  } else if (typeof exports === 'object') {
-    module.exports = factory(global);
-  } else {
-    HumbergerMenu = factory(global);
-  }
-})((this || 0).self || global, function(global) {
-  'use strict';
-
-  var CLASS_NAME = '.globalnav.humberger';
-  var APPEND_CLASS_NAME_ACTIVE = 'humberger-active';
-  var APPEND_CLASS_NAME_ICON = 'humberger-icon';
-
-  function HumbergerMenu(options) {
-
-    options = options || {} ;
-
-    this._class = options['class'] || CLASS_NAME ;
-
-    this.attach();
-  }
-
-  HumbergerMenu.prototype = Object.create(Object.prototype, {
-    'constructor': { 'value': HumbergerMenu },
-    'attach': { 'value': HumbergerMenu_attach }
-  });
-
-  function _generate() {
-    var el = document.createElement('div');
-    el.className = APPEND_CLASS_NAME_ICON;
-
-    return el;
-  }
-
-  function HumbergerMenu_attach() {
-    if (global.document.querySelector(CLASS_NAME)) {
-      var icon = _generate();
-      var nav = global.document.querySelector(CLASS_NAME);
-      nav.parentNode.insertBefore(icon, nav.nextElementSibling);
-
-      icon.addEventListener(
-        'click',
-        function() {
-          global.document.body.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
-          global.document.getElementsByTagName('header')[0]
-            .classList.toggle(APPEND_CLASS_NAME_ACTIVE);
-          nav.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
-          icon.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
-        },
-        {passive: true});
-    }
-  }
-
-  return HumbergerMenu;
-});
-
-
 /**
  * InnerLink
  *
@@ -550,62 +391,6 @@
 
   return InnerLink;
 });
-
-
-/**
- * ScrollTop
- *
- * @param {Object[]} options - 各オプションを指定
- * @param {string} options[].class='.scrolltop' - スクロールアイコンのクラス
- *
- * @return {void}
- */
-(function(global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(factory(global));
-  } else if (typeof exports === 'object') {
-    module.exports = factory(global);
-  } else {
-    ScrollTop = factory(global);
-  }
-})((this || 0).self || global, function(global) {
-  'use strict';
-
-  var CLASS_NAME = '.scrolltop';
-  var MARGIN_BOTTOM_ELEMENT = 'footer';
-  var DISTANCE = 5;
-
-  function ScrollTop(options) {
-
-    options = options || {} ;
-
-    this._class = options['class'] || CLASS_NAME ;
-    this._target = global.document.querySelector(this._class);
-    this._bottomElement = global.document
-      .querySelector(MARGIN_BOTTOM_ELEMENT);
-  }
-
-  ScrollTop.prototype = Object.create(Object.prototype, {
-    'constructor': { 'value': ScrollTop },
-    'animate': { 'value': ScrollTop_animate }
-  });
-
-  function ScrollTop_animate() {
-    var pos = global.innerHeight - this._bottomElement
-      .getBoundingClientRect().top;
-
-    if (pos > 0) {
-      this._target.style.bottom = pos + DISTANCE + 'px';
-    } else {
-      this._target.style.bottom = DISTANCE + 'px';
-    };
-    this._target.style.zIndex = 9999;
-  }
-
-  return ScrollTop;
-});
-
-
 /**
  * InView 
  *
@@ -688,8 +473,229 @@
 
   return InView;
 });
+/**
+ * ScrollIt
+ *
+ * スクロールに合わせ背景画像をアニメーション
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].class='.scrollit' - 対象のクラス名を指定
+ * @param {number} options[].margin=50 - スクロール開始する前のpx数
+ *
+ * @return {void}
+ */
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports.ScrollIt = factory(global);
+  } else {
+    ScrollIt = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
 
+  var CLASS_NAME = '.scrollit';
+  var TRIGGER_MARGIN = 50;
 
+  function ScrollIt(options) {
+
+    options = options || {} ;
+
+    this._class = options['class'] || CLASS_NAME ;
+    this._margin = options['margin'] || TRIGGER_MARGIN ;
+    this._els = { 'up': [], 'down': [], 'left': [], 'right': [] };
+  };
+
+  ScrollIt.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': ScrollIt },
+    'init': { 'value': ScrollIt_init },
+    'animate': { 'value': ScrollIt_animate }
+  });
+
+  function ScrollIt_init() {
+    var els = global.document.body
+      .querySelectorAll('[class*="' + this._class.slice(1) + '"]');
+
+    var exp = new RegExp(this._class + '-([a-z]*)\s*');
+
+    for (var i = 0; i < els.length; i++) {
+      var direction = els[i].className
+        .match(exp)[1];
+
+      switch (direction) {
+        case 'down':
+          this._els['down'].push(els[i]);
+          break;
+        case 'left':
+          this._els['left'].push(els[i]);
+          break;
+        case 'right':
+          this._els['right'].push(els[i]);
+          break;
+        default:
+          this._els['up'].push(els[i]);
+          break;
+      }
+    }
+  }
+
+  function ScrollIt_animate() {
+    var limit = this._margin * 2;
+    var height = global.innerHeight;
+      
+    for (var i = 0; i < this._els['up'].length; i++) {
+      var loc = this._els['up'][i].getBoundingClientRect();
+      var dis = limit - loc.top / height * this._margin;
+      if (0 < dis && 100 > dis) {
+        this._els['up'][i].style.backgroundPositionY = dis + '%';
+      }
+    };
+
+    for (var i = 0; i < this._els['down'].length; i++) {
+      var loc = this._els['down'][i].getBoundingClientRect();
+      var dis = loc.top / height * this._margin;
+      if (0 < dis && 100 > dis) {
+        this._els['down'][i].style.backgroundPositionY = dis + '%';
+      }
+    };
+
+    for (var i = 0; i < this._els['left'].length; i++) {
+      var loc = this._els['left'][i].getBoundingClientRect();
+      var dis = loc.top / height * this._margin;
+      if (0 < dis && 100 > dis) {
+        this._els['left'][i].style.backgroundPositionX = dis + '%';
+      }
+    };
+
+    for (var i = 0; i < this._els['right'].length; i++) {
+      var loc = this._els['right'][i].getBoundingClientRect();
+      var dis = limit - loc.top / height * this._margin;
+      if (0 < dis && 100 > dis) {
+        this._els['right'][i].style.backgroundPositionX = dis + '%';
+      }
+    };
+  }
+
+  return ScrollIt;
+});
+/**
+ * ScrollTop
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].class='.scrolltop' - スクロールアイコンのクラス
+ *
+ * @return {void}
+ */
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports = factory(global);
+  } else {
+    ScrollTop = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
+
+  var CLASS_NAME = '.scrolltop';
+  var MARGIN_BOTTOM_ELEMENT = 'footer';
+  var DISTANCE = 5;
+
+  function ScrollTop(options) {
+
+    options = options || {} ;
+
+    this._class = options['class'] || CLASS_NAME ;
+    this._target = global.document.querySelector(this._class);
+    this._bottomElement = global.document
+      .querySelector(MARGIN_BOTTOM_ELEMENT);
+  }
+
+  ScrollTop.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': ScrollTop },
+    'animate': { 'value': ScrollTop_animate }
+  });
+
+  function ScrollTop_animate() {
+    var pos = global.innerHeight - this._bottomElement
+      .getBoundingClientRect().top;
+
+    if (pos > 0) {
+      this._target.style.bottom = pos + DISTANCE + 'px';
+    } else {
+      this._target.style.bottom = DISTANCE + 'px';
+    };
+    this._target.style.zIndex = 9999;
+  }
+
+  return ScrollTop;
+});
+/**
+ * SlideMenu
+ *
+ * SP表示時のスライドメニューを表示・非表示
+ *
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].class='glbalnav.slidemenu' - メニューのタグを指定
+ *
+ * @return {void}
+ */
+(function(global, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory(global));
+  } else if (typeof exports === 'object') {
+    module.exports = factory(global);
+  } else {
+    SlideMenu = factory(global);
+  }
+})((this || 0).self || global, function(global) {
+  'use strict';
+
+  var CLASS_NAME = '.globalnav.slidemenu';
+  var APPEND_CLASS_NAME_ACTIVE = 'slidemenu-active';
+  var APPEND_CLASS_NAME_ICON = 'slidemenu-icon';
+
+  function SlideMenu(options) {
+
+    options = options || {};
+
+    this._class = options['class'] || CLASS_NAME ;
+
+    this.attach();
+  }
+
+  SlideMenu.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': SlideMenu },
+    'attach': { 'value': SlideMenu_attach }
+  });
+
+  function _generate() {
+    var el = global.document.createElement('div');
+    el.className = APPEND_CLASS_NAME_ICON;
+
+    return el;
+  }
+
+  function SlideMenu_attach() {
+    if (global.document.querySelector(CLASS_NAME)) {
+      var icon = _generate();
+      var nav = global.document.querySelector(CLASS_NAME);
+      nav.parentNode.insertBefore(icon, nav.nextElementSibling);
+
+      icon.addEventListener(
+        'click',
+        function() {
+          nav.style.opacity = 1;
+          nav.classList.toggle(APPEND_CLASS_NAME_ACTIVE);
+        },
+        {passive: true}
+      );
+    }
+  }
+
+  return SlideMenu;
+});
 /**
  * SlideShow
  *
@@ -903,8 +909,6 @@
 
   return SlideShow;
 });
-
-
 /**
  * RippleEffect
  *
@@ -995,116 +999,6 @@
 
   return RippleEffect;
 });
-
-
-/**
- * ScrollIt
- *
- * スクロールに合わせ背景画像をアニメーション
- *
- * @param {Object[]} options - 各オプションを指定
- * @param {string} options[].class='.scrollit' - 対象のクラス名を指定
- * @param {number} options[].margin=50 - スクロール開始する前のpx数
- *
- * @return {void}
- */
-(function(global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(factory(global));
-  } else if (typeof exports === 'object') {
-    module.exports.ScrollIt = factory(global);
-  } else {
-    ScrollIt = factory(global);
-  }
-})((this || 0).self || global, function(global) {
-  'use strict';
-
-  var CLASS_NAME = '.scrollit';
-  var TRIGGER_MARGIN = 50;
-
-  function ScrollIt(options) {
-
-    options = options || {} ;
-
-    this._class = options['class'] || CLASS_NAME ;
-    this._margin = options['margin'] || TRIGGER_MARGIN ;
-    this._els = { 'up': [], 'down': [], 'left': [], 'right': [] };
-  };
-
-  ScrollIt.prototype = Object.create(Object.prototype, {
-    'constructor': { 'value': ScrollIt },
-    'init': { 'value': ScrollIt_init },
-    'animate': { 'value': ScrollIt_animate }
-  });
-
-  function ScrollIt_init() {
-    var els = global.document.body
-      .querySelectorAll('[class*="' + this._class.slice(1) + '"]');
-
-    var exp = new RegExp(this._class + '-([a-z]*)\s*');
-
-    for (var i = 0; i < els.length; i++) {
-      var direction = els[i].className
-        .match(exp)[1];
-
-      switch (direction) {
-        case 'down':
-          this._els['down'].push(els[i]);
-          break;
-        case 'left':
-          this._els['left'].push(els[i]);
-          break;
-        case 'right':
-          this._els['right'].push(els[i]);
-          break;
-        default:
-          this._els['up'].push(els[i]);
-          break;
-      }
-    }
-  }
-
-  function ScrollIt_animate() {
-    var limit = this._margin * 2;
-    var height = global.innerHeight;
-      
-    for (var i = 0; i < this._els['up'].length; i++) {
-      var loc = this._els['up'][i].getBoundingClientRect();
-      var dis = limit - loc.top / height * this._margin;
-      if (0 < dis && 100 > dis) {
-        this._els['up'][i].style.backgroundPositionY = dis + '%';
-      }
-    };
-
-    for (var i = 0; i < this._els['down'].length; i++) {
-      var loc = this._els['down'][i].getBoundingClientRect();
-      var dis = loc.top / height * this._margin;
-      if (0 < dis && 100 > dis) {
-        this._els['down'][i].style.backgroundPositionY = dis + '%';
-      }
-    };
-
-    for (var i = 0; i < this._els['left'].length; i++) {
-      var loc = this._els['left'][i].getBoundingClientRect();
-      var dis = loc.top / height * this._margin;
-      if (0 < dis && 100 > dis) {
-        this._els['left'][i].style.backgroundPositionX = dis + '%';
-      }
-    };
-
-    for (var i = 0; i < this._els['right'].length; i++) {
-      var loc = this._els['right'][i].getBoundingClientRect();
-      var dis = limit - loc.top / height * this._margin;
-      if (0 < dis && 100 > dis) {
-        this._els['right'][i].style.backgroundPositionX = dis + '%';
-      }
-    };
-  }
-
-  return ScrollIt;
-});
-
-
 /**
  * UpdateCopyright
  *
@@ -1163,6 +1057,3 @@
 
   return UpdateCopyright;
 });
-
-
-// vim: foldmethod=marker:ts=2:sts=0:sw=2

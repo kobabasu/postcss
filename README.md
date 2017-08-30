@@ -81,15 +81,19 @@ Dockerfileを編集しbuildしdocker hubにpush
 1. `gulp [prefix]:postcss:build`  
    postcss:mocha:report, postcss:copy, postcss, postcss:minをまとめて実行
 
-## check
-1. ブラウザで確認
-   `gulp <dir.es6で設定した名前>:postcss:build`
-   作成されたhtmlが動作するか確認
+## build files
+gulp postcss:buildで一つ上の階層に以下が生成される
 
-## guide
-1. ブラウザで確認
-   `gulp <dir.es6で設定した名前>:postcss:example`
-   /example/index.htmlが動作するか確認
+1. css/style.css (src/からビルドされたstyle.css), pages/*.cssが出力される
+1. css/*.css (pages/*.cssから出力される)
+1. stylesheets/layouts (レイアウトに関するcss header, footerなど0
+1. stylesheets/pages (各ページ固有のスタイル)
+1. stylesheets/test (テスト用ファイル)
+
+## edit
+1. package.json, bower.json, gulp/dir.es6を作成
+1. npm installでpostcss:buildが実行され../に./cssを生成, ./stylesheetsがコピーされる
+1. `postcss`でビルド
 
 ## todo
 - [ ] postcss-cli v3 がでたらcompressがswitchできるかどうか試す

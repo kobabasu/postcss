@@ -8,9 +8,9 @@ jobs:
 
     steps:
       - checkout:
-        - post:
-          - git submodule sync
-          - git submodule update --init
+          post:
+            - git submodule sync
+            - git submodule update --init
 
       - run: cp gulp/dir.es6.sample gulp/dir.es6
 

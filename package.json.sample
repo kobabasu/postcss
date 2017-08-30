@@ -54,6 +54,7 @@
   "scripts": {
     "global": "npm install -g postcss-cli phantomjs-prebuilt mocha mocha-junit-reporter github:gulpjs/gulp.git#4.0 gulp-shell gulp-cli",
     "preinstall": "cp -r -n ./stylesheets ../",
+    "postinstall": "gulp postcss:copy",
     "test": "gulp postcss:mocha:report"
   },
 

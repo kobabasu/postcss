@@ -41,7 +41,7 @@ class Postcss extends DefaultRegistry {
       postcss --no-map ${dir.pages + '**/*.css'} -c ${dir.root + 'postcss.config.js'} -d ${dir.dist};
       for file in \`find ${dir.dist} -type f -name '*.css'\`; do
         name=\`echo $file | awk -F/ '{print $NF}' | grep -v '.*min.*' | sed -e 's/\\..*//g'\`;
-        if [ ! -n $name ]; then
+        if [ -n "$name" ]; then
           csswring $file > ${dir.dist}$name.min.css;
         fi
       done;
@@ -70,7 +70,7 @@ class Postcss extends DefaultRegistry {
 
       for file in \`find ${dir.dist} -type f -name '*.css'\`; do
         name=\`echo $file | awk -F/ '{print $NF}' | grep -v '.*min.*' | sed -e 's/\\..*//g'\`;
-        if [ ! -n $name ]; then
+        if [ -n "$name" ]; then
           csswring $file > ${dir.example.css.dist}$name.min.css;
         fi
       done;

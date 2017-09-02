@@ -91,11 +91,13 @@ gulp postcss:buildで一つ上の階層に以下が生成される
 1. css/*.css (pages/*.cssから出力される)
 1. stylesheets/layouts (レイアウトに関するcss header, footerなど0
 1. stylesheets/pages (各ページ固有のスタイル)
+1. stylesheets/fonts (使用するfontsファイル)
 1. stylesheets/test (テスト用ファイル)
 
 ## edit
 1. git submodule init && git submodule updateを実行
 1. package.json, bower.json, gulp/dir.es6を作成
+1. 必要があれば、src/style.cssのexternal submodule, src/configs/type.cssのfont-faceのパスを変更
 1. npm installでpostcss:buildが実行され../に./cssを生成, ./stylesheetsがコピーされる
 1. `postcss`でビルド
 

@@ -23,9 +23,12 @@ class Postcss extends DefaultRegistry {
 
     gulp.task(prefix + 'postcss', shell.task([`
       postcss ${style.src} \
+      --no-map \
       -o ${style.dist}
 
       postcss ${dir.pages + '**/*.css'} \
+      --no-map \
+      -c ${dir.root + 'postcss.config.js'} \
       -d ${dir.dist};
     `]));
 
@@ -35,7 +38,7 @@ class Postcss extends DefaultRegistry {
      */
     gulp.task(prefix + 'postcss:min', shell.task([`
       postcss --no-map ${style.src} -o ${style.dist};
-      postcss --no-map ${dir.pages + '**/*.css'} -d ${dir.dist};
+      postcss --no-map ${dir.pages + '**/*.css'} -c ${dir.root + 'postcss.config.js'} -d ${dir.dist};
       for file in \`find ${dir.dist} -type f -name '*.css'\`; do
         name=\`echo $file | awk -F/ '{print $NF}' | grep -v '.*min.*' | sed -e 's/\\..*//g'\`;
         if [ ! -n $name ]; then
@@ -63,7 +66,7 @@ class Postcss extends DefaultRegistry {
 
     gulp.task(prefix + 'postcss:example', shell.task([`
       postcss --no-map ${style.src} -o ${dir.example.css.dist + 'style.css'};
-      postcss --no-map ${dir.pages + '**/*.css'} -d ${dir.example.css.dist};
+      postcss --no-map ${dir.pages + '**/*.css'} -c ${dir.root + 'postcss.config.js'} -d ${dir.example.css.dist};
 
       for file in \`find ${dir.dist} -type f -name '*.css'\`; do
         name=\`echo $file | awk -F/ '{print $NF}' | grep -v '.*min.*' | sed -e 's/\\..*//g'\`;

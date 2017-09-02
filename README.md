@@ -61,10 +61,12 @@ Dockerfileを編集しbuildしdocker hubにpush
 ## gulp tasks
 1. `gulp [prefix]:postcss`  
    style.cssと../stylesheets/pages/以下のファイルをbuildする
+1. `gulp [prefix]:postcss:min`  
+   style.cssと../stylesheets/pages/以下のファイルをbuildしcsswringで../cssのminがついていないファイルをminifyする
 1. `gulp [prefix]:postcss:copy`  
    ./cssと./stylesheetsを上の階層にコピー
 1. `gulp [prefix]:postcss:example`  
-   ../cssではなくexample/cssへ出力する
+   ../cssではなくexample/cssへ出力する。合わせてcsswringでminifyしたファイルも作成
 1. `gulp [prefix]:postcss:nodejs`  
    mochaでのDOM操作を伴わないファイルをtest (ほぼ使わないはず)
 1. `gulp [prefix]:postcss:phantomjs`  
@@ -80,7 +82,7 @@ Dockerfileを編集しbuildしdocker hubにpush
 1. `gulp [prefix]:postcss:watch`  
    src/, modules/, test/内のファイルが変更されたらlib:mochaを実行
 1. `gulp [prefix]:postcss:build`  
-   postcss:mocha:report, postcss:copy, postcss, postcss:minをまとめて実行
+   postcss:copy, postcss, postcss:min, postcss:exampleをまとめて実行
 
 ## build files
 gulp postcss:buildで一つ上の階層に以下が生成される

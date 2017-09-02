@@ -97,6 +97,8 @@ gulp postcss:buildで一つ上の階層に以下が生成される
 ## edit
 1. git submodule init && git submodule updateを実行
 1. package.json, bower.json, gulp/dir.es6を作成
+1. 必要があれば.htaccess, .htdigest, .htpasswdをコピーして利用  
+   (gtmetirixなどの評価が気になる場合はCACHEの項目を有効にする)
 1. 必要があれば、src/style.cssのexternal submodule, src/configs/type.cssのfont-faceのパスを変更
 1. npm installでpostcss:buildが実行され../に./cssを生成, ./stylesheetsがコピーされる
 1. `postcss`でビルド

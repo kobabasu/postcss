@@ -10,8 +10,7 @@ bower.json
 gulp/dir.es6
 
 # build files
-example/results/test-results-nodejs.xml
-example/results/test-results-phantomjs.xml
+example/results/test-results.xml
 
 # exclude
 

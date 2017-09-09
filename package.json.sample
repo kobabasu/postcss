@@ -40,11 +40,11 @@
     "calipers-png": "*",
     "calipers-gif": "*",
 
+    "phantom": "*",
     "mocha": "*",
     "chai": "*",
     "sinon": "*",
     "mocha-junit-reporter": "*",
-    "mocha-phantomjs-core": "*",
 
     "babel-core": "*",
     "babel-preset-es2015": "*",

@@ -78,66 +78,23 @@ class Postcss extends DefaultRegistry {
 
 
     /*
-     * example:nodejs
+     * mocha
      */
-    gulp.task(prefix + 'postcss:nodejs', shell.task([`
+    gulp.task(prefix + 'postcss:mocha', shell.task([`
       mocha ${dir.test}*.js \
-      -g '^(?!DOM)'
+      -g '^(?!EXCLUDE)'
     `]));
 
 
     /*
-     * example:phantomjs
+     * mocha:report
      */
-    gulp.task(prefix + 'postcss:phantomjs', shell.task([`
-      for f in \`ls ${dir.test}*.html\`
-      do
-        phantomjs ${dir.node_module_path}node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js $f
-      done
-    `]));
-
-
-    /*
-     * nodejs:report
-     */
-    gulp.task(prefix + 'postcss:nodejs:report', shell.task([`
+    gulp.task(prefix + 'postcss:mocha:report', shell.task([`
       mocha ${dir.test}*.js \
       --reporter mocha-junit-reporter \
-      --reporter-options mochaFile=${dir.report.nodejs} \
-      -g '^(?!DOM)'
+      --reporter-options mochaFile=${dir.report} \
+      -g '^(?!EXCLUDE)'
     `]));
-
-
-    /*
-     * phantomjs:report 
-     */
-    gulp.task(prefix + 'postcss:phantomjs:report', shell.task([`
-      if [ -f "${dir.report.phantomjs}" ]; then
-        rm ${dir.report.phantomjs};
-      fi
-      for f in \`ls ${dir.test}*.html\`
-      do
-        phantomjs ${dir.node_module_path}node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js $f xunit >> ${dir.report.phantomjs}
-      done
-    `]));
-
-
-    /*
-     * example:mocha
-     */
-    gulp.task(prefix + 'postcss:mocha', gulp.series(
-        prefix + 'postcss:nodejs',
-        prefix + 'postcss:phantomjs'
-    ));
-
-
-    /*
-     *  example:mocha:report
-     */
-    gulp.task(prefix + 'postcss:mocha:report', gulp.series(
-        prefix + 'postcss:nodejs:report',
-        prefix + 'postcss:phantomjs:report'
-    ));
 
 
     /*

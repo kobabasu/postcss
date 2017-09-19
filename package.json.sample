@@ -46,7 +46,7 @@
     "mocha-junit-reporter": "*",
 
     "chrome-launcher": "*",
-    "chrome-remote-interface",
+    "chrome-remote-interface": "*",
 
     "babel-core": "*",
     "babel-preset-es2015": "*",

@@ -82,7 +82,9 @@ class Postcss extends DefaultRegistry {
      */
     gulp.task(prefix + 'postcss:mocha', shell.task([`
       mocha ${dir.test}*.js \
-      -g '^(?!EXCLUDE)'
+      --compilers js:babel-register \
+      -g '^(?!EXCLUDE)' \
+      --timeout 10000
     `]));
 
 
@@ -91,9 +93,11 @@ class Postcss extends DefaultRegistry {
      */
     gulp.task(prefix + 'postcss:mocha:report', shell.task([`
       mocha ${dir.test}*.js \
+      --compilers js:babel-register \
       --reporter mocha-junit-reporter \
       --reporter-options mochaFile=${dir.report} \
-      -g '^(?!EXCLUDE)'
+      -g '^(?!EXCLUDE)' \
+      --timeout 10000
     `]));
 
 

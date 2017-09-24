@@ -1,13 +1,20 @@
-var assert = require('chai').assert;
-var chromelauncher = require('chrome-launcher');
-var CDP = require('chrome-remote-interface');
-var url = 'http://www.seiwa-chemical.net/example/';
+import fs from 'fs'
+import { assert } from 'chai'
+import { launch } from 'chrome-launcher'
+import CDP from 'chrome-remote-interface'
 
-async function startHeadlessChrome() {
+const URL = 'about:blank';
+const HTML = './test/Example.test.html';
+// const JS = './modules/UpdateCopyright.js';
+
+const fetch = (filename) => {
+  return fs.readFileSync(filename, 'utf-8');
+}
+
+const launchChrome = async () => {
   try {
-    return await chromelauncher.launch({
-      port: 9222,
-      startingUrl: 'target:blank',
+    return await launch({
+      startingUrl: 'about:blank',
       chromeFlags: ['--headless', '--disable-gpu', '--no-sandbox']
     });
   } catch(error) {
@@ -15,36 +22,50 @@ async function startHeadlessChrome() {
   }
 }
 
-describe('chromeのテスト', function() {
-  it('titleを評価できるか', function(done) {
+describe('chrome-headless-sample', () => {
+  it('titleを評価できるか', (done) => {
 
-    startHeadlessChrome().then(function(chrome) {
+    launchChrome().then(async (chrome) => {
+      const client = await CDP({ port: chrome.port });
+      const { Page, Runtime, Console } = client;
+      await Promise.all([
+        Page.enable(),
+        Runtime.enable(),
+        Console.enable()
+      ]);
 
-      CDP(async function (client) {
-        var Page = client.Page;
-        var Runtime = client.Runtime;
-        await Page.enable();
-        await Runtime.enable();
-        await Page.navigate({url: url});
+      Console.messageAdded((msg) => console.log(msg));
 
-        await Page.loadEventFired();
+      // await Page.addScriptToEvaluateOnLoad({
+      //   scriptSource: fetch(JS)
+      // });
 
-        var exp = `document.querySelector('title').innerHTML`;
-        var title = await Runtime.evaluate({
-          expression: exp 
-        });
+      const frame = await Page.navigate({ url: URL });
+      Page.loadEventFired();
 
-        try {
-          assert.equal(title.result.value, 'postcss');
-        } catch(error) {
-          return done(error);
-        } finally {
-          client.close();
-          chrome.kill();
-        }
-
-        done();
+      await Page.setDocumentContent({
+        frameId: frame.frameId,
+        html: fetch(HTML)
       });
+
+      const exp = `(() => {
+        const el = document.querySelector('title');
+        // console.log(el);
+        return el.innerHTML;
+      })()`;
+      const res = await Runtime.evaluate({ expression: exp });
+      // console.log(res);
+
+      try {
+        assert.equal(res.result.value, 'example');
+      } catch(error) {
+        return done(error);
+      } finally {
+        client.close();
+        chrome.kill();
+      }
+
+      done();
     });
   });
 });

@@ -76,9 +76,9 @@ Dockerfileを編集しbuildしdocker hubにpush
 1. `gulp [prefix]:postcss:phantomjs:report`  
    mocha-phantomjs-coreでDOM操作を伴うファイルをtestしresults/にレポートを作成
 1. `gulp [prefix]:postcss:mocha`  
-   postcss:nodejs, postcss:phantomjsをまとめて実行
+   mochaでtestディレクトリ内の`js`拡張子が付いたファイルをtest
 1. `gulp [prefix]:postcss:mocha:report`  
-   postcss:nodejs:report, postcss:phantomjs:reportをまとめて実行
+   mochaでtestディレクトリ内の`js`拡張子が付いたファイルをtestしresults/にレポートを作成
 1. `gulp [prefix]:postcss:watch`  
    src/, modules/, test/内のファイルが変更されたらlib:mochaを実行
 1. `gulp [prefix]:postcss:build`  

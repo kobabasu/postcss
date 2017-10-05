@@ -1,6 +1,7 @@
 /*
  * # modules/scrolltop.css
  * ページの先頭への定義
+ * js側でもposition: fixed, z-index: 9999を指定している
  */
 
 /*

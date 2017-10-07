@@ -48,7 +48,7 @@
 
     this._min = this._threshhold.shift();
     this._max = this._threshhold.pop();
-    this._dpx = global.windowDeviceRatio || 1 ;
+    this._dpx = global.devicePixelRatio || 1 ;
     this._width = global.document.body.clientWidth ;
 
     this._els = null;
@@ -209,7 +209,7 @@
   }
 
   function _detectDpx(name) {
-    var dpx = global.windowDeviceRatio;
+    var dpx = global.devicePixelRatio;
     var suffix = '';
 
     if (dpx <= 1) {
@@ -244,6 +244,7 @@
  * @param {Object[]} options - 各オプションを指定
  * @param {string} options[].name='sp' - viewportの名前 consoleに表示
  * @param {string} options[].viewport='(max-width: 767px)' - viewport
+ * @param {Boolean} optoins[].debug=false - デバッグモード
  *
  * @return {void}
  */
@@ -258,28 +259,50 @@
 })((this || 0).self || global, function(global) {
   'use strict';
 
+  var DEBUG = false ;
+
   function DetectViewport(options) {
 
     options = options || {};
 
     this._name = options['name'] || 'sp';
     this._viewport = options['viewport'] || '(max-width: 767px)';
-
-    this.listen();
+    this._debug = options['debug'] || DEBUG ;
+    this.status = this.setStatus();
   }
 
   DetectViewport.prototype = Object.create(Object.prototype, {
     'constructor': { 'value': DetectViewport },
-    'listen': { 'value': DetectViewport_listen }
+    'init': { 'value': DetectViewport_init },
+    'setStatus': { 'value': DetectViewport_setStatus },
+    'getStatus': { 'value': DetectViewport_getStatus }
   });
 
-  function DetectViewport_listen() {
+  function DetectViewport_init() {
     var name = this._name;
     global.matchMedia(this._viewport).addListener(function(e) {
-      if (e.matches) {
-        console.log(name);
-      }
-    });
+      return this.setStatus(e.matches);
+    }.bind(this));
+  }
+
+  function DetectViewport_setStatus(status) {
+    if (status) {
+      this.status = true;
+    } else {
+      this.status = global.matchMedia(this._viewport).matches;
+    }
+
+    if (this._debug) _showStatus(this.status, this._name);
+    return this.status;
+  }
+
+  function DetectViewport_getStatus() {
+    return this.status;
+  }
+
+  function _showStatus(status, name) {
+    var msg = 'DetectViewport: matchMedia status is '
+    console.log(msg + status + ' [' + name + ']');
   }
 
   return DetectViewport;
@@ -288,6 +311,8 @@
  * InnerLink
  *
  * インナーリンクにスクロールを加える
+ * @param {Object[]} options - 各オプションを指定
+ * @param {string} options[].fixed=-100 - スクロールを止める対象からの位置
  *
  * @return {void}
  */
@@ -295,7 +320,7 @@
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
-    module.exports = factory(global);
+    module.exports.InnerLink = factory(global);
   } else {
     InnerLink = factory(global);
   }
@@ -317,20 +342,27 @@
 
     options = options || {} ;
 
-    this._links = global.document.documentElement
+    this._fixed = (isFinite(options['fixed'])) ? options['fixed'] : FIXED ;
+  }
+
+  InnerLink.prototype = Object.create(Object.prototype, {
+    'constructor': { 'value': InnerLink },
+    'init': { 'value': InnerLink_init }
+  });
+
+  function InnerLink_init() {
+    var links = global.document.documentElement
       .querySelectorAll('a[href^="#"]');
-    for (var i = 0; i < this._links.length; i++) {
-      this._links[i].addEventListener(
+
+    for (var i = 0; i < links.length; i++) {
+      links[i].fixed = this._fixed;
+      links[i].addEventListener(
         'click',
         _click,
         {passive: true}
       );
     };
   }
-
-  InnerLink.prototype = Object.create(Object.prototype, {
-    'constructor': { 'value': InnerLink }
-  });
 
   function _click(e) {
     var hash = e.target.getAttribute('href') ||
@@ -339,7 +371,7 @@
     if (hash && hash.match(/^#.*/)) {
       var el = global.document.getElementById(hash.replace(/#/g, ''));
       if (el) {
-        _scroll(el.offsetTop + FIXED, 50, 'easeInOutQuint');
+        _scroll(el.offsetTop + e.target.fixed, 50, 'easeInOutQuint');
       }
     }
   }
@@ -584,6 +616,8 @@
  *
  * @param {Object[]} options - 各オプションを指定
  * @param {string} options[].class='.scrolltop' - スクロールアイコンのクラス
+ * @param {string} options[].tracked='footer' - .scrolltopを配置する下のelement
+ * @param {number} options[].margin=5 - tracked_elementからの距離
  *
  * @return {void}
  */
@@ -599,34 +633,47 @@
   'use strict';
 
   var CLASS_NAME = '.scrolltop';
-  var MARGIN_BOTTOM_ELEMENT = 'footer';
-  var DISTANCE = 5;
+  var TRACKED_ELEMENT = 'footer';
+  var MARGIN = 5;
 
   function ScrollTop(options) {
 
     options = options || {} ;
 
     this._class = options['class'] || CLASS_NAME ;
-    this._target = global.document.querySelector(this._class);
-    this._bottomElement = global.document
-      .querySelector(MARGIN_BOTTOM_ELEMENT);
+    this._tracked = options['tracked'] || TRACKED_ELEMENT ;
+    this._margin = options['margin'] || MARGIN ;
   }
 
   ScrollTop.prototype = Object.create(Object.prototype, {
     'constructor': { 'value': ScrollTop },
+    'init': { 'value': ScrollTop_init },
     'animate': { 'value': ScrollTop_animate }
   });
 
+  function ScrollTop_init() {
+    this._target = global.document
+      .querySelector(this._class);
+    this._trackedElement = global.document
+      .querySelector(this._tracked);
+
+    if (!this._target || !this._trackedElement) return;
+
+    this._target.style.position = 'fixed';
+    this._target.style.zIndex = 9999;
+  }
+
   function ScrollTop_animate() {
-    var pos = global.innerHeight - this._bottomElement
+    if (!this._target && !this._trackedElement) return;
+
+    var pos = global.innerHeight - this._trackedElement
       .getBoundingClientRect().top;
 
     if (pos > 0) {
-      this._target.style.bottom = pos + DISTANCE + 'px';
+      this._target.style.bottom = pos + this._margin + 'px';
     } else {
-      this._target.style.bottom = DISTANCE + 'px';
+      this._target.style.bottom = this._margin + 'px';
     };
-    this._target.style.zIndex = 9999;
   }
 
   return ScrollTop;
@@ -913,6 +960,7 @@
  * RippleEffect
  *
  * ripple effectを追加する
+ * APPEND_CLASS_NAMEを変更した場合はcss側も調整が必要
  *
  * @param {Object[]} options - 各オプションを指定
  * @param {string} opotions[].class='.ripple' - 付加するクラスを指定する
@@ -938,8 +986,6 @@
     options = options || {};
 
     this._class = options['class'] || CLASS_NAME ;
-
-    this.init();
   }
 
   RippleEffect.prototype = Object.create(Object.prototype, {
@@ -949,6 +995,9 @@
 
   function RippleEffect_init() {
     var els = document.querySelectorAll(this._class);
+
+    if (els.length) return;
+
     for (var i = 0; i < els.length; i++) {
       _append(els[i]);
     }
@@ -1030,7 +1079,7 @@
 
     this._class = options['class'] || CLASS_NAME ;
     this._thisyear = options['thisyear'] || _getThisyear();
-    this._prefix = options['prefix'] || null;
+    this._prefix = options['prefix'] || '';
   }
 
   UpdateCopyright.prototype = Object.create(Object.prototype, {

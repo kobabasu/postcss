@@ -103,6 +103,14 @@ gulp postcss:buildで一つ上の階層に以下が生成される
 1. npm installでpostcss:buildが実行され../に./cssを生成, ./stylesheetsがコピーされる
 1. `postcss`でビルド
 
+## font update
+icomoonなどfontを追加した場合など、アップデートするには以下の手順を実行
+
+1. icomoonのサイトからzipをダウンロード
+1. 解答したicomoonのディレクトリの中身すべてを./stylesheets/fonts/icomoon/内に上書き
+1. ./src/configs/type.css内のicomoonのスタイルにicomoon/style.cssの該当箇所をコピー
+1. min含めbuildして完了
+
 ## todo
 - [ ] postcss-cli v3 がでたらcompressがswitchできるかどうか試す
 - [ ] postcss-cli v3 がでたらnextcssrcの読み込みを試す

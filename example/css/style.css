@@ -385,6 +385,11 @@ li{
 }
 
 
+.icon-switch:before{
+  content:"\e9b6";
+}
+
+
 html{
   font-size:10px;
 }

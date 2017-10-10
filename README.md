@@ -48,13 +48,13 @@ Dockerfileを編集しbuildしdocker hubにpush
 1. config.rb, user-dataをコピー
 1. config.rbを編集
 1. `shared_folder`でレポジトリのルートを共有
-1. `docker build -t kobabasu/phantomjs:0.28` /home/core/share`
+1. `docker build -t kobabasu/alpine-chrome:0.xx` /home/core/share`
 1. `docker login`
-1. `docker push kobabasu/phantomjs:0.28`
+1. `docker push kobabasu/alpine-chrome:0.xx`
 1. docker-composeをインストール
 1. `docker-compose up`
 1. `docker-compose start`
-1. `docker exec phantomjs gulp mocha:report`や`vagrant ssh -c 'docker exec phantomjs gulp mocha:report'`で確認
+1. `docker exec chrome gulp mocha:report`や`vagrant ssh -c 'docker exec chrome gulp mocha:report'`で確認
 1. 問題なければ`.circleci/config.yml`のimagesのバージョンを変更
 1. git pushで確認
 
@@ -76,9 +76,9 @@ Dockerfileを編集しbuildしdocker hubにpush
 1. `gulp [prefix]:postcss:phantomjs:report`  
    mocha-phantomjs-coreでDOM操作を伴うファイルをtestしresults/にレポートを作成
 1. `gulp [prefix]:postcss:mocha`  
-   postcss:nodejs, postcss:phantomjsをまとめて実行
+   mochaでtestディレクトリ内の`js`拡張子が付いたファイルをtest
 1. `gulp [prefix]:postcss:mocha:report`  
-   postcss:nodejs:report, postcss:phantomjs:reportをまとめて実行
+   mochaでtestディレクトリ内の`js`拡張子が付いたファイルをtestしresults/にレポートを作成
 1. `gulp [prefix]:postcss:watch`  
    src/, modules/, test/内のファイルが変更されたらlib:mochaを実行
 1. `gulp [prefix]:postcss:build`  

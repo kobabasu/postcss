@@ -47,6 +47,7 @@
 
     "chrome-launcher": "*",
     "chrome-remote-interface": "*",
+    "jsdom": "*",
 
     "babel-core": "*",
     "babel-preset-es2015": "*",

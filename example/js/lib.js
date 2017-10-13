@@ -15,6 +15,7 @@
  * @return {void}
  */
 (function(global, factory) {
+  /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
@@ -249,6 +250,7 @@
  * @return {void}
  */
 (function(global, factory) {
+  /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
@@ -317,6 +319,7 @@
  * @return {void}
  */
 (function(global, factory) {
+  /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
@@ -435,6 +438,7 @@
  * @return {void}
  */
 (function(global, factory) {
+  /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
@@ -517,6 +521,7 @@
  * @return {void}
  */
 (function(global, factory) {
+  /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
@@ -622,6 +627,7 @@
  * @return {void}
  */
 (function(global, factory) {
+  /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
@@ -689,6 +695,7 @@
  * @return {void}
  */
 (function(global, factory) {
+  /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
@@ -756,6 +763,7 @@
  * @return {void}
  */
 (function(global, factory) {
+  /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
@@ -968,6 +976,7 @@
  * @return {void}
  */
 (function(factory) {
+  /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(factory);
   } else if (typeof exports === 'object') {
@@ -1057,14 +1066,16 @@
  * @param {string} options[].class='.copyright' - 対象となるクラス
  * @param {string} options[].thisyear=Date.getFullYear - 年を指定する
  * @param {string} options[].prefix=null - 年の前に表示する
+ * @param {string} options[].debug=false - デバッグモード
  *
  * @return {void}
  */
 (function(global, factory) {
+  /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(factory(global));
   } else if (typeof exports === 'object') {
-    module.exports.UpdateCopyright = factory(global);
+    module.exports = factory(global);
   } else {
     UpdateCopyright = factory(global);
   }
@@ -1078,30 +1089,43 @@
     options = options || {};
 
     this._class = options['class'] || CLASS_NAME ;
-    this._thisyear = options['thisyear'] || _getThisyear();
-    this._prefix = options['prefix'] || '';
-  }
+    this._thisyear = options['thisyear'] || this.getThisyear() ;
+    this._prefix = options['prefix'] || '' ;
+    this._debug = options['debug'] || false ;
+  };
 
   UpdateCopyright.prototype = Object.create(Object.prototype, {
     'constructor': { 'value': UpdateCopyright },
-    'init': { 'value': UpdateCopyright_init }
+    'init': { 'value': UpdateCopyright_init },
+    'log': { 'value': UpdateCopyright_log },
+    'getThisyear': { 'value': UpdateCopyright_getThisyear },
+    'change': { 'value': UpdateCopyright_change }
   });
 
   function UpdateCopyright_init() {
-    var el = global.document.body
-      .querySelector(this._class);
+    try {
+      var el = global.document.body
+        .querySelector(this._class);
 
-    if (!el) return;
-
-    _change(el, this._prefix, this._thisyear);
-  }
-
-  function _change(el, prefix, year) {
-    el.innerHTML = prefix + year;
+      el.innerHTML = this.change();
+    } catch(e) {
+      this.log(e);
+    }
   };
 
-  function _getThisyear() {
+  function UpdateCopyright_getThisyear() {
     return new Date().getFullYear();
+  };
+
+  function UpdateCopyright_change() {
+    return this._prefix + this._thisyear;
+  };
+
+  function UpdateCopyright_log(e) {
+    if (this._debug) {
+      var msg = 'UpdateCopyright: ';
+      console.log(msg + e);
+    }
   };
 
   return UpdateCopyright;

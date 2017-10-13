@@ -114,7 +114,7 @@ icomoonなどfontを追加した場合など、アップデートするには以
 ## postcss repository update
 1. postcssディレクリに移動
 1. git pullでアップデート
-1. [prefix]:postcss:mocha:buildする
+1. [prefix]:postcss:buildする
 1. ../stylesheets, ../cssはディレクトリが存在した場合コピーしないので注意する
 
 ## todo

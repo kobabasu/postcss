@@ -4,7 +4,7 @@
 postcssを利用するためnodejs環境とpostcss-cliのインストールが必要
 
 ```
-git add submodule git@github.com-kobabasu:kobabasu/micro-postcss.git postcss  
+git submodule add git@github.com-kobabasu:kobabasu/micro-postcss.git postcss  
 git submodule init && git submodule update
 ```
 

@@ -95,7 +95,7 @@ class Postcss extends DefaultRegistry {
     /*
      * mocha:cover
      */
-    gulp.task(prefix + 'lib:mocha:cover', shell.task([`
+    gulp.task(prefix + 'postcss:mocha:cover', shell.task([`
       nyc \
       --reporter=lcov \
       --reporter=text \

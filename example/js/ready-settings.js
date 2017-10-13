@@ -15,8 +15,7 @@ var ready = new Ready({
     this.imagesrcset = new ImageSrcset();
     this.viewportSp = new DetectViewport({
       'name': 'sp',
-      'viewport': '(max-width: 767px)',
-      'debug': true
+      'viewport': '(max-width: 767px)'
     });
     this.viewportSp.init();
     this.viewport5k = new DetectViewport({

@@ -51,11 +51,12 @@
 
     "babel-core": "*",
     "babel-preset-es2015": "*",
+    "babel-plugin-istanbul": "*",
     "gulp": "gulpjs/gulp#4.0"
   },
 
   "scripts": {
-    "global": "npm install -g chromium postcss-cli csswring mocha mocha-junit-reporter github:gulpjs/gulp.git#4.0 gulp-shell gulp-cli",
+    "global": "npm install -g chromium nyc postcss-cli csswring mocha mocha-junit-reporter github:gulpjs/gulp.git#4.0 gulp-shell gulp-cli",
     "preinstall": "cp -r -n ./stylesheets ../",
     "postinstall": "gulp postcss:build",
     "test": "gulp postcss:mocha:report"

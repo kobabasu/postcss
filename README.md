@@ -64,7 +64,7 @@ Dockerfileを編集しbuildしdocker hubにpush
 1. `gulp [prefix]:postcss:min`  
    style.cssと../stylesheets/pages/以下のファイルをbuildしcsswringで../cssのminがついていないファイルをminifyする
 1. `gulp [prefix]:postcss:copy`  
-   ./cssと./stylesheetsを上の階層にコピー
+   ./cssと./stylesheetsを上の階層にコピー (存在すればコピーしない)
 1. `gulp [prefix]:postcss:example`  
    ../cssではなくexample/cssへ出力する。合わせてcsswringでminifyしたファイルも作成
 1. `gulp [prefix]:postcss:nodejs`  
@@ -110,6 +110,12 @@ icomoonなどfontを追加した場合など、アップデートするには以
 1. 解答したicomoonのディレクトリの中身すべてを./stylesheets/fonts/icomoon/内に上書き
 1. ./src/configs/type.css内のicomoonのスタイルにicomoon/style.cssの該当箇所をコピー
 1. min含めbuildして完了
+
+## postcss repository update
+1. postcssディレクリに移動
+1. git pullでアップデート
+1. [prefix]:postcss:mocha:buildする
+1. ../stylesheets, ../cssはディレクトリが存在した場合コピーしないので注意する
 
 ## todo
 - [ ] postcss-cli v3 がでたらcompressがswitchできるかどうか試す

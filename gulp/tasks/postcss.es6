@@ -52,9 +52,13 @@ class Postcss extends DefaultRegistry {
      * copy
      */
     gulp.task(prefix + 'postcss:copy', shell.task([`
+
       mkdir -p ${dir.root + '../css'};
-      cp -r ${dir.root + 'stylesheets'} ${dir.root + '../'};
+      if [ ! -d ${dir.root + '../stylesheets'} ]; then
+        cp -r ${dir.root + 'stylesheets'} ${dir.root + '../'};
+      fi
     `]));
+
 
 
     /*
@@ -82,7 +86,7 @@ class Postcss extends DefaultRegistry {
      */
     gulp.task(prefix + 'postcss:mocha', shell.task([`
       mocha ${dir.test}*.js \
-      --compilers js:babel-register \
+      --require babel-register \
       -g '^(?!EXCLUDE)' \
       --timeout 10000
     `]));
@@ -93,7 +97,7 @@ class Postcss extends DefaultRegistry {
      */
     gulp.task(prefix + 'postcss:mocha:report', shell.task([`
       mocha ${dir.test}*.js \
-      --compilers js:babel-register \
+      --require babel-register \
       --reporter mocha-junit-reporter \
       --reporter-options mochaFile=${dir.report} \
       -g '^(?!EXCLUDE)' \

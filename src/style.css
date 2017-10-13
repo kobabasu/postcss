@@ -12,9 +12,13 @@
 /* @import 'material-design-icons.css'; */
 
 /*
+ * import configs (external)
+ */
+@import '../../stylesheets/configs/index.css';
+
+/*
  * internal submodule
  */
-@import 'configs/index.css';
 @import 'modules/index.css';
 
 /*

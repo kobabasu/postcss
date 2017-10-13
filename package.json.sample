@@ -47,6 +47,7 @@
 
     "chrome-launcher": "*",
     "chrome-remote-interface": "*",
+    "jsdom": "*",
 
     "babel-core": "*",
     "babel-preset-es2015": "*",
@@ -54,10 +55,10 @@
   },
 
   "scripts": {
-    "global": "npm install -g chromium postcss-cli csswring mocha mocha-junit-reporter github:gulpjs/gulp.git#4.0 gulp-shell gulp-cli",
+    "global": "npm install -g chromium nyc postcss-cli csswring mocha mocha-junit-reporter github:gulpjs/gulp.git#4.0 gulp-shell gulp-cli",
     "preinstall": "cp -r -n ./stylesheets ../",
     "postinstall": "gulp postcss:build",
-    "test": "gulp postcss:mocha:report"
+    "test": "nyc --reporter=lcov --reporter=text --reporter=cobertura gulp postcss:mocha:report"
   },
 
   "preferGlobal": true,

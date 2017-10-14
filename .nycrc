@@ -1,0 +1,13 @@
+{
+  "reporter": [
+    "lcov",
+    "text",
+    "cobertura"
+  ],
+  "require": [
+    "babel-register"
+  ],
+  "cache": false,
+  "sourceMap": false,
+  "instrument": false
+}

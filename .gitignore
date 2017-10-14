@@ -8,6 +8,7 @@ package-lock.json
 package.json
 bower.json
 gulp/dir.es6
+example/js/lib.hjson
 
 # build files
 example/results/test-results.xml

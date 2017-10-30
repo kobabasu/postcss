@@ -10,7 +10,7 @@ class Postcss extends DefaultRegistry {
 
   init() {
     // task名の接頭辞を設定
-    let prefix = (dir.name == '') ? '' : dir.name + ':';
+    const prefix = (dir.name == '') ? '' : dir.name + ':';
 
     /*
      * postcss

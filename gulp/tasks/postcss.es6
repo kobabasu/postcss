@@ -18,7 +18,7 @@ class Postcss extends DefaultRegistry {
     const style = {
       src:     dir.src  + 'style.css',
       dist:    dir.dist + 'style.css',
-      watch:   dir.src  + '**/*.*'
+      watch:   dir.root  + '../stylesheets/**/*.*'
     };
 
     gulp.task(prefix + 'postcss', shell.task([`
@@ -43,39 +43,6 @@ class Postcss extends DefaultRegistry {
         name=\`echo $file | awk -F/ '{print $NF}' | grep -v '.*min.*' | sed -e 's/\\..*//g'\`;
         if [ -n "$name" ]; then
           csswring $file > ${dir.dist}$name.min.css;
-        fi
-      done;
-    `]));
-      
-
-    /*
-     * copy
-     */
-    gulp.task(prefix + 'postcss:copy', shell.task([`
-
-      mkdir -p ${dir.root + '../css'};
-      if [ ! -d ${dir.root + '../stylesheets'} ]; then
-        cp -r ${dir.root + 'stylesheets'} ${dir.root + '../'};
-      fi
-    `]));
-
-
-
-    /*
-     * example
-     */
-    const example = {
-      dist:  dir.example.css.dist
-    };
-
-    gulp.task(prefix + 'postcss:example', shell.task([`
-      postcss --no-map ${style.src} -o ${dir.example.css.dist + 'style.css'};
-      postcss --no-map ${dir.pages + '**/*.css'} -c ${dir.root + 'postcss.config.js'} -d ${dir.example.css.dist};
-
-      for file in \`find ${dir.dist} -type f -name '*.css'\`; do
-        name=\`echo $file | awk -F/ '{print $NF}' | grep -v '.*min.*' | sed -e 's/\\..*//g'\`;
-        if [ -n "$name" ]; then
-          csswring $file > ${dir.example.css.dist}$name.min.css;
         fi
       done;
     `]));
@@ -111,11 +78,23 @@ class Postcss extends DefaultRegistry {
     gulp.task(prefix + 'postcss:watch', () => {
       gulp
         .watch(
-          [style.watch],
+          [dir.content],
           gulp.series(prefix + 'postcss')
         )
         .on('error', err => process.exit(1));
     });
+
+
+    /*
+     * copy
+     */
+    gulp.task(prefix + 'postcss:copy', shell.task([`
+
+      mkdir -p ${dir.root + '../css'};
+      if [ ! -d ${dir.root + '../stylesheets'} ]; then
+        cp -r ${dir.root + 'stylesheets'} ${dir.root + '../'};
+      fi
+    `]));
 
 
     /*
@@ -127,8 +106,27 @@ class Postcss extends DefaultRegistry {
         prefix + 'postcss',
         prefix + 'postcss:min',
         prefix + 'postcss:example'
-        // prefix + 'postcss:docs'
     ));
+
+
+    /*
+     * example
+     */
+    const example = {
+      dist:  dir.example.css.dist
+    };
+
+    gulp.task(prefix + 'postcss:example', shell.task([`
+      postcss --no-map ${style.src} -o ${dir.example.css.dist + 'style.css'};
+      postcss --no-map ${dir.pages + '**/*.css'} -c ${dir.root + 'postcss.config.js'} -d ${dir.example.css.dist};
+
+      for file in \`find ${dir.dist} -type f -name '*.css'\`; do
+        name=\`echo $file | awk -F/ '{print $NF}' | grep -v '.*min.*' | sed -e 's/\\..*//g'\`;
+        if [ -n "$name" ]; then
+          csswring $file > ${dir.example.css.dist}$name.min.css;
+        fi
+      done;
+    `]));
   }
 };
 

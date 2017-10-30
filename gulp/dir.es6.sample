@@ -5,27 +5,33 @@
  * nameはtask名の先頭になる
  */
 
-const root = './';
+import path from 'path';
+
+const ROOT = './admin/postcss/';
+const CONTENT_DIR = 'stylesheet';
+const DIST_DIRNAME = 'css';
 
 export const dir = {
-  name: '',
+  name: 'admin',
 
-  root:    root,
-  src:     root + 'src/',
-  pages:   root + '../stylesheets/pages/',
-  test:    root + 'test/',
-  dist:    root + '../css/',
-  docs:    root + 'docs/postcss/',
-  report:  root + 'example/results/test-results.xml',
+  root:    ROOT,
+  content: path.dirname(ROOT) + '/' + CONTENT_DIRNAME + '/',
+
+  src:     ROOT + 'src/',
+  dist:    path.dirname(ROOT) + '/' + DIST_DIRNAME,
+  test:    ROOT + 'test/',
+  report:  ROOT + 'example/results/test-results.xml',
+
+  pages:   ROOT + '../stylesheets/pages/',
 
   example: {
     js: {
-      src: root + 'example/js/'
+      src: ROOT + 'example/js/'
     },
 
     css: {
-      src: root + 'src/',
-      dist: root + 'example/css/'
+      src: ROOT + 'src/',
+      dist: ROOT + 'example/css/'
     }
   }
 }

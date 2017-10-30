@@ -98,18 +98,6 @@ class Postcss extends DefaultRegistry {
 
 
     /*
-     * build
-     */
-    gulp.task(prefix + 'postcss:build',
-      gulp.series(
-        prefix + 'postcss:copy',
-        prefix + 'postcss',
-        prefix + 'postcss:min',
-        prefix + 'postcss:example'
-    ));
-
-
-    /*
      * example
      */
     const example = {
@@ -127,6 +115,18 @@ class Postcss extends DefaultRegistry {
         fi
       done;
     `]));
+
+
+    /*
+     * build
+     */
+    gulp.task(prefix + 'postcss:build',
+      gulp.series(
+        prefix + 'postcss:copy',
+        prefix + 'postcss',
+        prefix + 'postcss:min',
+        prefix + 'postcss:example'
+    ));
   }
 };
 

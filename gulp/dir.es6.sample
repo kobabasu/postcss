@@ -7,12 +7,12 @@
 
 import path from 'path';
 
-const ROOT = './admin/postcss';
+const ROOT = '.';
 const CONTENT_DIR = '../stylesheet';
 const DIST_DIR = '../css';
 
 export const dir = {
-  name: 'admin',
+  name: '',
 
   root:    ROOT,
   content: path.join(ROOT + '/' + CONTENT_DIR),

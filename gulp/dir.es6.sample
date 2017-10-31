@@ -1,5 +1,5 @@
 /**
- * rootはnode_modulesが存在するディレクトリからのレポジトリの
+ * ROOTはnode_modulesが存在するディレクトリからのレポジトリの
  * ドキュメントルートを指定
  *
  * nameはtask名の先頭になる

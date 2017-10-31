@@ -14,7 +14,7 @@
 /*
  * import configs (external)
  */
-@import '../../stylesheets/configs/index.css';
+@import '../../stylesheet/configs/index.css';
 
 /*
  * internal submodule
@@ -24,8 +24,8 @@
 /*
  * external submodule
  */
-@import '../../stylesheets/theme.css';
-@import '../../stylesheets/layouts/index.css';
+@import '../../stylesheet/theme.css';
+@import '../../stylesheet/layouts/index.css';
 
 /*
  * after include all file

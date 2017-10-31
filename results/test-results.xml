@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.496" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2017-10-31T16:28:57" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Example" timestamp="2017-10-31T16:28:57" tests="1" file="/Users/keiji/projects/app/admin/postcss/test/Example.test.js" failures="0" time="0.496">
+    <testcase name="Example titleを評価できるか" time="0.496" classname="titleを評価できるか">
+    </testcase>
+  </testsuite>
+</testsuites>

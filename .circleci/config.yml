@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: kobabasu/alpine-chrome:0.35
+      - image: kobabasu/alpine-chrome:0.39
       
     working_directory: ~/app/repo
 
@@ -47,7 +47,7 @@ jobs:
       - run: npm test
 
       - store_test_results:
-          path: ./example/results
+          path: ./results
 
       - store_artifacts:
-          path: ./example/results
+          path: ./results

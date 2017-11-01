@@ -9,6 +9,9 @@
 :root {
   --grid-template-rows: 150px 150px 150px;
   --grid-template-columns: 20% 30% 1fr;
+
+  /* theme */
+  --grid-item-border: 1px solid var(--gray); 
 }
 
 
@@ -34,6 +37,8 @@
   margin: var(--small-spacing);
   padding: var(--small-spacing);
   text-align: center;
+
+  border: var(--grid-item-border);
 }
 
 /*

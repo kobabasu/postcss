@@ -3,14 +3,28 @@
  * トピックスリストに関する定義
  */
 
+/*
+ * config
+ */
+:root {
+  /* theme */
+  --topics-border-top: 2px solid var(--gray);
+  --topics-li-border-bottom: 1px solid var(--gray);
+}
+
+/*
+ * topics
+ */
 ul.topics {
-  border-top: 2px solid #ccc;
+  border-top: var(--topics-border-top);
 
   & li {
     line-height: calc(var(--small-line-height) * 1.25);
     padding: 0.5em 0;
     padding-left: 1em;
     text-indent: -1.25em;
+
+    border-bottom: var(--topics-li-border-bottom);
   }
 
   & li:before {

@@ -4,6 +4,20 @@
  */
 
 /*
+ * config
+ */
+:root {
+  /* theme */
+  --base-html-background-color: var(--color-device-bg);  
+  --base-body-color: var(--color-text);  
+  --base-body-background-color: var(--color-bg);  
+  --base-a-color: var(--color-link);
+  --base-a-hover-color: var(--color-hover);
+  --base-a-visited-color: var(--color-visited);
+  --base-input-border: 1px solid #999999;
+}
+
+/*
  * すべてにborder-boxを
  */
 *,
@@ -46,6 +60,14 @@ html, body {
 }
 
 /*
+ * # html
+ * 背景色を指定
+ */
+html {
+  background-color: var(--base-html-background-color);
+}
+
+/*
  * # body
  * positionはrelativeを予め設定
  * responsiveのhumbergermenu用にwidth100%を指定
@@ -57,6 +79,9 @@ body {
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+
+  color: var(--base-body-color);
+  background-color: var(--base-body-background-color);
 }
 
 /*
@@ -72,8 +97,18 @@ header, footer, section, article, nav, aside {
  * # anchor
  * 下線を消す
  */
-a {
+a, a:hover, a:visited {
   outline: none;
+
+  color: var(--base-a-color);
+}
+
+a:hover {
+  color: var(--base-a-hover-color);
+}
+
+a:visited {
+  color: var(--base-a-visited-color);
 }
 
 /*
@@ -117,4 +152,20 @@ img {
  */
 li {
   list-style-type: none;
+}
+
+/*
+ * # input
+ * ボーダーの色を設定
+ */
+input {
+  border: var(--base-input-border);
+}
+
+/*
+ * webfont
+ * フォントファミリーを設定
+ */
+i {
+  font-family: 'icomoon';
 }

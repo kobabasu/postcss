@@ -10,6 +10,9 @@
   --masonry-width: 960px;
   --masonry-column-count: 4;
   --masonry-column-gap: var(--small-spacing);
+
+  /* theme */
+  --masonry-item-border: 1px solid var(--gray);
 }
 
 
@@ -47,6 +50,8 @@
   break-inside: avoid;
   margin-bottom: var(--small-spacing);
   padding: var(--small-spacing);
+
+  border: var(--masonry-item-border);
 }
 
 

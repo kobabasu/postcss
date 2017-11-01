@@ -12,9 +12,10 @@
   --globalfooter-trademark-height: 20px;
 
   /* theme */
-  --globalfooter-background-color: red;
-  --globalfooter-color: white;
+  --globalfooter-background-color: var(--gray-lighter);
+  --globalfooter-color: var(--color-text);
   --globalfooter-li-border-right: 1px solid var(--gray);
+  --footerlink-color: var(--color-text);
 }
 
 
@@ -48,6 +49,8 @@
     line-height: var(--small-line-height);
     height: calc(var(--large-spacing) * 1.5);
     text-decoration: none;
+
+    color: var(--footerlink-color);
   }
 
   & h1 {

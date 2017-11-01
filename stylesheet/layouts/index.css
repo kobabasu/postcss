@@ -1,15 +1,16 @@
 /*
  * # layouts/index.css
  * レイアウトに関する定義
- * 色はtheme.css, フォントはconfings/type.cssで定義
+ *
+ * 実際にはstylesheet/pagesでそれぞれ読込利用
  */
 
-@import 'header.css';
-@import 'nav.css';
-@import 'footer.css';
-@import 'article.css';
-@import 'articlefixed.css';
-@import 'globalfooter.css';
-@import 'globalheader.css';
-@import 'globalnav.css';
-@import 'topics.css';
+/* @import 'header.css'; */
+/* @import 'nav.css'; */
+/* @import 'footer.css'; */
+/* @import 'article.css'; */
+/* @import 'articlefixed.css'; */
+/* @import 'globalfooter.css'; */
+/* @import 'globalheader.css'; */
+/* @import 'globalnav.css'; */
+/* @import 'topics.css'; */

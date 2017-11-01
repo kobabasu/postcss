@@ -7,8 +7,14 @@
  * config
  */
 :root {
-  --nav-height: 5rem;
-  --nav-header-height: 5rem;
+  --globalnav-height: 5rem;
+  --globalnav-header-height: 5rem;
+
+  /* theme */
+  --globalnav-background-color: color(var(--color-bg) alpha(-5%));  
+  --globalnav-border-bottom: 1px solid var(--gray-darker);
+  --globalnav-li-border: 1px solid var(--gray);
+  --globalnav-a-color: var(--color-text);
 }
 
 /*
@@ -18,8 +24,10 @@
   position: fixed;
   top: 0;
   width: 100%;
-  height: var(--nav-height);
-  margin-top: var(--nav-header-height);
+  height: var(--globalnav-height);
+  margin-top: var(--globalnav-header-height);
+  background-color: var(--globalnav-background-color);
+  border-bottom: var(--globalnav-border-bottom);
 
   & ul {
     flex-wrap: nowrap;
@@ -29,6 +37,15 @@
       flex: 1;
       line-height: 3rem;
       text-align: center;
+      border-left: var(--globalnav-li-border);
+
+      &:last-child {
+        border-right: var(--globalnav-li-border);
+      }
+
+      & a, & a:hover {
+        color: var(--globalnav-a-color);
+      }
     }
   }
 }

@@ -7,9 +7,14 @@
  * config
  */
 :root {
-  --footer-width: 100%;
-  --footer-trademark-width: 80px;
-  --footer-trademark-height: 20px;
+  --globalfooter-width: 100%;
+  --globalfooter-trademark-width: 80px;
+  --globalfooter-trademark-height: 20px;
+
+  /* theme */
+  --globalfooter-background-color: red;
+  --globalfooter-color: white;
+  --globalfooter-li-border-right: 1px solid var(--gray);
 }
 
 
@@ -17,7 +22,10 @@
  * globalfooter
  */
 .globalfooter {
-  width: var(--footer-width);
+  width: var(--globalfooter-width);
+
+  color: var(--globalfooter-color);
+  background-color: var(--globalfooter-background-color);
 }
 
 /*
@@ -28,8 +36,8 @@
 
   & img {
     float: left;
-    width: var(--footer-trademark-width);
-    height: var(--footer-trademark-height);;
+    width: var(--globalfooter-trademark-width);
+    height: var(--globalfooter-trademark-height);;
     margin: calc(var(--tiny-spacing) / 2);
     margin-bottom: 0;
     margin-left: 0;
@@ -86,7 +94,7 @@
     }
 
     & li {
-      border-right: 1px solid var(--gray);
+      border-right: var(--globalfooter-li-border-right);
       padding: 0 var(--tiny-spacing);
     }
 

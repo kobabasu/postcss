@@ -15,41 +15,9 @@ html {
  * body, article
  * articleはハンバーガーのスクロール時高さ対策
  */
-body, article {
+body {
   color: var(--color-text);
   background-color: var(--color-bg);
-}
-
-/*
- * section
- */
-header, footer {
-  background-color: var(--gray-lighter);
-}
-
-header {
-  border-top: 3px solid var(--color-corp);
-  border-bottom: 1px solid var(--gray);
-}
-
-/*
- * globalnav
- */
-nav.globalnav {
-  border-bottom: 1px solid var(--gray-darker);
-  background-color: color(var(--color-bg) alpha(-5%));
-
-  & ul li {
-    border-left: 1px solid var(--gray);
-
-    &:last-child {
-      border-right: 1px solid var(--gray);
-    }
-
-    & a, & a:hover {
-      color: var(--color-text);
-    }
-  }
 }
 
 /*

@@ -9,6 +9,10 @@
 :root {
   --articlefixed-header-height: 5rem;
   --articlefixed-nav-height: 5rem;
+
+  /* theme */
+  --article-color: var(--color-text);
+  --article-background-color: var(--color-bg);
 }
 
 

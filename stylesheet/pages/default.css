@@ -49,11 +49,6 @@
 /* @import '../layouts/topics.css'; */
 
 /*
- * theme
- */
-@import '../theme.css';
-
-/*
  * after include all file
  */
 @import '../../postcss/src/devices/index.css';

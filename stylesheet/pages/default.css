@@ -38,9 +38,6 @@
 /*
  * layouts
  */
-@import '../layouts/header.css';
-@import '../layouts/nav.css';
-@import '../layouts/footer.css';
 @import '../layouts/article.css';
 @import '../layouts/articlefixed.css';
 @import '../layouts/globalfooter.css';

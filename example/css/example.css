@@ -1,6 +1,9 @@
 :root{
 }
 
+:root{
+}
+
 *, *:after, *:before{
   -webkit-box-sizing:border-box;
           box-sizing:border-box;
@@ -23,19 +26,36 @@ html, body{
   min-height:100%;
 }
 
+html{
+  background-color:#252525;
+}
+
 body{
   position:relative;
   width:100%;
   overflow-x:hidden;
   overflow-y:scroll;
+
+  color:#333333;
+  background-color:#ffffff;
 }
 
 header, footer, section, article, nav, aside{
   overflow:visible;
 }
 
-a{
+a, a:hover, a:visited{
   outline:none;
+
+  color:#1d3994;
+}
+
+a:hover{
+  color:rgba(29, 57, 148, 0.5);
+}
+
+a:visited{
+  color:#663399;
 }
 
 span, small, strong{
@@ -58,6 +78,14 @@ img{
 
 li{
   list-style-type:none;
+}
+
+input{
+  border:1px solid #999999;
+}
+
+i{
+  font-family:'icomoon';
 }
 
 @font-face{
@@ -334,6 +362,9 @@ a.noeffect, button.noeffect{
   }
 }
 
+:root{
+}
+
 .flexbox-container{
   -js-display:flex;
   display:-webkit-box;
@@ -349,6 +380,12 @@ a.noeffect, button.noeffect{
 [class*='flexbox-item-']{
   padding:10px;
   padding:1rem;
+
+  background-color:rgb(245, 245, 245)
+}
+
+[class*='flexbox-item-']:nth-child(odd){
+  background-color:rgb(238, 238, 238);
 }
 
 .flexbox-item-1{
@@ -447,6 +484,9 @@ a.noeffect, button.noeffect{
   }
 }
 
+:root{ 
+}
+
 .grid-container{
   display:-ms-grid;
   -ms-grid-rows:150px 150px 150px;
@@ -465,6 +505,8 @@ a.noeffect, button.noeffect{
   padding:10px;
   padding:1rem;
   text-align:center;
+
+  border:1px solid rgb(189, 189, 189);
 }
 
 .grid-item-1{
@@ -516,6 +558,9 @@ a.noeffect, button.noeffect{
   }
 }
 
+:root{
+}
+
 .masonry-container{
   -webkit-columns:calc(240px - 0.75rem);
           columns:calc(240px - 0.75rem);
@@ -534,6 +579,8 @@ a.noeffect, button.noeffect{
   margin-bottom:1rem;
   padding:10px;
   padding:1rem;
+
+  border:1px solid rgb(189, 189, 189);
 }
 
 @media only screen and (max-width: 767px){
@@ -1019,8 +1066,8 @@ article.articlefixed{
 .globalfooter{
   width:100%;
 
-  color:white;
-  background-color:red;
+  color:#333333;
+  background-color:rgb(245, 245, 245);
 }
 
 .globalfooter div.footerlink{
@@ -1046,6 +1093,7 @@ article.articlefixed{
   height:45px;
   height:4.5rem;
   text-decoration:none;
+  color:#333333;
 }
 
 .globalfooter div.footerlink h1{
@@ -1114,8 +1162,8 @@ article.articlefixed{
   padding:0 2rem;
   vertical-align:middle;
 
-  color:white;
-  background-color:red;
+  color:#333333;
+  background-color:rgb(245, 245, 245);
   border-top:3px solid #195fa5;
   border-bottom:1px solid rgb(189, 189, 189);
 }
@@ -1206,11 +1254,14 @@ article.articlefixed{
 }
 
 .globalnav ul li a, .globalnav ul li a:hover{
-  color:red;
+  color:#333333;
+}
+
+:root{
 }
 
 ul.topics{
-  border-top:2px solid #ccc
+  border-top:2px solid rgb(189, 189, 189)
 }
 
 ul.topics li{
@@ -1219,6 +1270,7 @@ ul.topics li{
   padding:0.5em 0;
   padding-left:1em;
   text-indent:-1.25em;
+  border-bottom:1px solid rgb(189, 189, 189);
 }
 
 ul.topics li:before{
@@ -1232,63 +1284,6 @@ ul.topics li:before{
   ul.topics li:before{
     vertical-align:-0.35rem;
   }
-}
-
-html{
-  background-color:#252525;
-}
-
-body{
-  color:#333333;
-  background-color:#ffffff;
-}
-
-div.footerlink h2, div.footerlink address, div.footerlink li, div.footerlink a, div.footerlink a:hover{
-  color:#333333;
-}
-
-ul.topics{
-  border-top:2px solid rgb(189, 189, 189)
-}
-
-ul.topics li{
-  border-bottom:1px solid rgb(189, 189, 189);
-}
-
-[class*='flexbox-item-']{
-  background-color:rgb(245, 245, 245);
-}
-
-[class*='flexbox-item-']:nth-child(odd){
-  background-color:rgb(238, 238, 238);
-}
-
-[class*='grid-item-']{
-  border:1px solid rgb(189, 189, 189);
-}
-
-[class*='masonry-item-']{
-  border:1px solid rgb(189, 189, 189);
-}
-
-a{
-  color:#1d3994;
-}
-
-a:hover{
-  color:rgba(29, 57, 148, 0.5);
-}
-
-a:visited{
-  color:#663399;
-}
-
-input{
-  border:1px solid #999999;
-}
-
-i{
-  font-family:'icomoon';
 }
 
 @media only screen and (min-width: 768px){

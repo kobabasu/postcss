@@ -73,4 +73,30 @@
   --small-line-height:    1.8rem;
   --tiny-line-height:     1.4rem;
   --heading-line-height:  3.2rem;
+
+  /* modules */
+
+  /* flexbox */
+  /*
+  --flexbox-columns: 12 !important;
+  --flexbox-gutter: 1rem !important;
+
+  --flexbox-item-background-color: var(--gray-lighter) !important;
+  --flexbox-item-odd-background-color: color(var(--gray-lighter) blackness(+3%)) !important;
+   */
+
+  /* grid */
+  /*
+  --grid-template-rows: 150px 150px 150px !important;
+  --grid-template-columns: 20% 30% 1fr !important;
+  --grid-item-border: 1px solid var(--gray) !important;
+   */
+
+  /* masonry */
+  /*
+  --masonry-width: 960px; !important;
+  --masonry-column-count: 4 !important;
+  --masonry-column-gap: var(--small-spacing) !important;
+  --masonry-item-border: 1px solid red !important;
+   */
 }

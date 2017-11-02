@@ -3,19 +3,6 @@
  * 要素に影響を与えるスタイルを定義
  */
 
-/*
- * config
- */
-:root {
-  /* theme */
-  --base-html-background-color: var(--color-device-bg);  
-  --base-body-color: var(--color-text);  
-  --base-body-background-color: var(--color-bg);  
-  --base-a-color: var(--color-link);
-  --base-a-hover-color: var(--color-hover);
-  --base-a-visited-color: var(--color-visited);
-  --base-input-border: 1px solid #999999;
-}
 
 /*
  * すべてにborder-boxを
@@ -27,47 +14,21 @@
 }
 
 /*
- * # reset
- * html5用のreset.cssから引用
- * body, tableなどはnormalize.css
- * section elementsは削除
- */
-body, object, iframe, hr,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var, b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-time, mark, audio, video, canvas {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  vertical-align: baseline;
-  font-style: normal;
-  font-weight: normal;
-  text-transform: none;
-  background: transparent;
-}
-
-/*
  * # html
- * 背景色を指定
  * height100%でスクロールした場合対策
  */
 html {
   height: 100%;
   min-height: 100%;
-  background-color: var(--base-html-background-color);
+  font-size: 10px;
+  background-color: var(--color-device-bg);
 }
 
 /*
  * # body
  * positionはrelativeを予め設定
  * responsiveのhumbergermenu用にwidth100%を指定
- * windowsはscrollbarの有無で
- * widthが変わるため常に表示
+ * windowsはscrollbarの有無でwidthが変わるため常に表示
  * height100%でスクロールした場合対策
  */
 body {
@@ -78,43 +39,61 @@ body {
   overflow-x: hidden;
   overflow-y: scroll;
 
-  color: var(--base-body-color);
-  background-color: var(--base-body-background-color);
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Droid Sans',
+    'Yu Gothic', YuGothic,
+    'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN',
+    Arial, 'メイリオ', Meiryo, sans-serif;
+  font-size: var(--base-font-size);
+  font-weight: normal;
+  line-height: var(--base-line-height);
+
+  color: var(--color-text);
+  background-color: var(--color-device-bg);
 }
 
 /*
- * # section elements
- * outer-containerを設定
- * overflowをvisibleに設定
+ * heading
  */
-header, footer, section, article, nav, aside {
-  overflow: visible;
+h1, h2, h3, h4, h5, h6 {
+  font-size: var(--heading-font-size);
+  font-weight: 400;
+  line-height: var(--heading-line-height);
+  margin-top: 0;
+  margin-bottom: calc(var(--small-line-height) / 4);
+}
+
+h1:last-child, h2:last-child, h3:last-child,
+h4:last-child, h5:last-child, h6:last-child,
+p:last-child, blockquote:last-child, pre:last-child {
+  margin-bottom: 0;
 }
 
 /*
- * # anchor
- * 下線を消す
+ * ::selection
+ * 選択した文字の色を指定
+ */
+::selection {
+  background-color: color(var(--brand-warning) alpha(-50%));
+}
+
+/*
+ * link
+ * focusされた際の点線を消す
  */
 a, a:hover, a:visited {
   outline: none;
+  text-decoration: underline;
 
-  color: var(--base-a-color);
+  color: var(--color-link);
 }
 
 a:hover {
-  color: var(--base-a-hover-color);
+  color: var(--color-hover);
 }
 
 a:visited {
-  color: var(--base-a-visited-color);
-}
-
-/*
- * # span, small, strong
- * line-heightが無効にならないようにする
- */
-span, small, strong {
-  display: inline-block;
+  color: var(--color-visited);
 }
 
 /*
@@ -125,6 +104,49 @@ span, small, strong {
 p, blockquote, pre {
   text-align: justify;
   word-wrap: break-word;
+  margin-top: 0;
+  margin-bottom: calc(var(--small-line-height) / 2);
+}
+
+/*
+ * # span, strong
+ * line-heightが無効にならないようにする
+ */
+span {
+  display: inline-block;
+}
+
+/*
+ * strong
+ * line-heightが無効にならないようにする
+ */
+strong, .strong {
+  display: inline-block;
+  font-weight: 400;
+}
+
+/*
+ * small
+ * line-heightが無効にならないようにする
+ */
+small, .small {
+  display: inline-block;
+  font-size: var(--small-font-size);
+  font-weight: 400;
+  line-height: var(--small-line-height);
+}
+
+/*
+ * # list
+ * 装飾を消す
+ */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
 }
 
 /*
@@ -145,19 +167,11 @@ img {
 }
 
 /*
- * # list
- * 装飾を消す
+ * address
+ * 斜体をクリア
  */
-li {
-  list-style-type: none;
-}
-
-/*
- * # input
- * ボーダーの色を設定
- */
-input {
-  border: var(--base-input-border);
+address {
+  font-style: normal;
 }
 
 /*
@@ -166,4 +180,13 @@ input {
  */
 i {
   font-family: 'icomoon';
+  font-style: normal;
+}
+
+/*
+ * # input
+ * ボーダーの色を設定
+ */
+input {
+  border: var(--base-border);
 }

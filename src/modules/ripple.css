@@ -8,14 +8,9 @@
  */
 :root {
   --ripple-effect-size: 500px;
-}
 
-
-/*
- * theme
- */
-.ripple-effect {
-  background-color: var(--brand-info);
+  /* theme */
+  --ripple-effect-background-color: var(--brand-info);
 }
 
 /*
@@ -39,6 +34,8 @@
   transform: scale(0);
   opacity: 0;
   pointer-events: none;
+
+  background-color: var(--ripple-effect-background-color);
 
   &.active {
     animation: ripple .75s ease-out;

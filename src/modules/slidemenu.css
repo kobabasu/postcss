@@ -10,41 +10,14 @@
  */
 :root {
   --slidemenu-height: -240px;
-}
 
-
-/*
- * theme
- */
-@media (--sp-viewport) {
-  nav.globalnav.slidemenu {
-    border: none;
-    // スマホでロード時に表示されるため一度消す
-    opacity: 0;
-
-    & a, & a:hover {
-      color: var(--gray-dark);
-    }
-
-    & li {
-      border: none;
-      border-top: 1px solid color(var(--color-device-bg) lightness(+7%));
-      border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%));
-      background-color: color(var(--color-device-bg) lightness(+2%));
-    }
-
-    & li:last-child {
-      border-right: none;
-    }
-  }
-
-  div.slidemenu-icon {
-    background-color: var(--color-device-bg);
-
-    &:before, &:after {
-      border-top: 5px solid var(--color-bg);
-    }
-  }
+  /* theme */
+  --slidemenu-a-color: var(--gray-dark);
+  --slidemenu-background-color: color(var(--color-device-bg) lightness(+2%));
+  --slidemenu-li-border-top: 1px solid color(var(--color-device-bg) lightness(+7%));
+  --slidemenu-li-border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%));
+  --slidemenu-icon-background-color: var(--color-device-bg);
+  --slidemenu-icon-border-top: 5px solid var(--color-bg);
 }
 
 
@@ -56,6 +29,14 @@
     position: fixed;
     top: var(--slidemenu-height);
     transition: top .5s ease;
+
+    border: none;
+    // スマホでロード時に表示されるため一度消す
+    opacity: 0;
+
+    & a, & a:hover {
+      color: var(--slidemenu-a-color);
+    }
 
     &.slidemenu-active {
       top: 0;
@@ -69,6 +50,15 @@
         height: 4rem;
         padding: var(--small-spacing);
         line-height: var(--small-line-height);
+
+        border: none;
+        border-top: var(--slidemenu-li-border-top);
+        border-bottom: var(--slidemenu-li-border-bottom);
+        background-color: var(--slidemenu-background-color);
+
+        &:last-child {
+          border-right: none;
+        }
       }
     }
   }
@@ -87,10 +77,14 @@
     transition: left .3s ease;
     cursor: pointer;
 
+    background-color: var(--slidemenu-icon-background-color);
+
     &:before, &:after {
       position: absolute;
       content: '';
       width: 100%;
+
+      border-top: var(--slidemenu-icon-border-top);
     }
 
     &:before {

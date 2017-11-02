@@ -12,8 +12,8 @@
   --globalfooter-trademark-height: 20px;
 
   /* theme */
-  --globalfooter-background-color: var(--gray-lighter);
   --globalfooter-color: var(--color-text);
+  --globalfooter-background-color: var(--gray-lighter);
   --globalfooter-li-border-right: 1px solid var(--gray);
   --footerlink-color: var(--color-text);
 }

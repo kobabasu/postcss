@@ -92,11 +92,29 @@
   --grid-item-border: 1px solid var(--gray) !important;
    */
 
+  /* hero */
+  /*
+  --hero-height: 300px !important;
+  --hero-height-sp: 225px !important;
+  --hero-background-color: var(--gray) !important;
+   */
+
   /* masonry */
   /*
   --masonry-width: 960px; !important;
   --masonry-column-count: 4 !important;
   --masonry-column-gap: var(--small-spacing) !important;
   --masonry-item-border: 1px solid red !important;
+   */
+
+  /* ripple */
+  /*
+  --ripple-effect-size: 500px !important;
+  --ripple-effect-background-color: var(--brand-info) !important;
+   */
+
+  /* scrolltop */
+  /*
+  --scrolltop-a-visited-color: var(--color-link) !important;
    */
 }

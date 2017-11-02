@@ -12,8 +12,8 @@
   --globalheader-trademark-height: 20px;
 
   /* theme */
-  --globalheader-background-color: var(--gray-lighter);
   --globalheader-color: var(--color-text);
+  --globalheader-background-color: var(--gray-lighter);
   --globalheader-border-top: 3px solid var(--color-corp);
   --globalheader-border-bottom: 1px solid var(--gray);
   --globalheader-li-border-right: 1px solid var(--gray);

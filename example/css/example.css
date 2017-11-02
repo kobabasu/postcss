@@ -594,20 +594,7 @@ a.noeffect, button.noeffect{
   }
 }
 
-div.loading{
-  background-color:#252525;
-  z-index:9999;
-}
-
-div.loading > p{
-  font-family:'Consolas',
-               'Courier New', Courier, Monaco,
-               monospace;
-
-  font-size:110%;
-  line-height:95%;
-  color:rgb(140, 140, 140);
-  border-right:1px solid rgb(89, 89, 89);
+:root{
 }
 
 div.loading{
@@ -618,6 +605,9 @@ div.loading{
   opacity:1;
   -webkit-transition:opacity .7s ease 0s;
   transition:opacity .7s ease 0s;
+
+  background-color:#252525;
+  z-index:9999;
 }
 
 div.loading.loaded{
@@ -642,8 +632,17 @@ div.loading > p{
   line-height:1rem;
   white-space:nowrap;
   overflow:hidden;
+
+  font-family:'Consolas',
+                           'Courier New', Courier, Monaco,
+                           monospace;
+  line-height:110%;
+  color:rgb(140, 140, 140);
+  border-right:1px solid rgb(89, 89, 89);
+
   -webkit-animation:typing 2.5s steps(12, end) infinite,
              loadingBlink .5s step-end infinite alternate;
+
           animation:typing 2.5s steps(12, end) infinite,
              loadingBlink .5s step-end infinite alternate;
 }
@@ -713,31 +712,7 @@ a.scrolltop{
   text-decoration:none;
 }
 
-@media only screen and (max-width: 767px){
-  nav.globalnav.slidemenu{
-    border:none;
-    //スマホでロード時に表示されるため一度消す opacity:0
-  }
-  nav.globalnav.slidemenu a, nav.globalnav.slidemenu a:hover{
-    color:rgb(155, 155, 155);
-  }
-  nav.globalnav.slidemenu li{
-    border:none;
-    border-top:1px solid rgb(56, 56, 56);
-    border-bottom:1px solid rgb(33, 33, 33);
-    background-color:rgb(43, 43, 43);
-  }
-  nav.globalnav.slidemenu li:last-child{
-    border-right:none;
-  }
-
-  div.slidemenu-icon{
-    background-color:#252525
-  }
-
-  div.slidemenu-icon:before, div.slidemenu-icon:after{
-    border-top:5px solid #ffffff;
-  }
+:root{
 }
 
 @media only screen and (max-width: 767px){
@@ -745,7 +720,13 @@ a.scrolltop{
     position:fixed;
     top:-240px;
     -webkit-transition:top .5s ease;
-    transition:top .5s ease
+    transition:top .5s ease;
+
+    border:none;
+    //スマホでロード時に表示されるため一度消す opacity:0
+  }
+  nav.globalnav.slidemenu a, nav.globalnav.slidemenu a:hover{
+    color:rgb(155, 155, 155);
   }
   nav.globalnav.slidemenu.slidemenu-active{
     top:0;
@@ -758,6 +739,13 @@ a.scrolltop{
     height:4rem;
     padding:1rem;
     line-height:1.8rem;
+    border:none;
+    border-top:1px solid rgb(56, 56, 56);
+    border-bottom:1px solid rgb(33, 33, 33);
+    background-color:rgb(43, 43, 43);
+  }
+  nav.globalnav.slidemenu ul li:last-child{
+    border-right:none;
   }
   div.slidemenu-icon{
     position:fixed;
@@ -769,12 +757,15 @@ a.scrolltop{
     z-index:200;
     -webkit-transition:left .3s ease;
     transition:left .3s ease;
-    cursor:pointer
+    cursor:pointer;
+
+    background-color:#252525
   }
   div.slidemenu-icon:before, div.slidemenu-icon:after{
     position:absolute;
     content:'';
     width:100%;
+    border-top:5px solid #ffffff;
   }
   div.slidemenu-icon:before{
     top:3px;
@@ -782,6 +773,9 @@ a.scrolltop{
   div.slidemenu-icon:after{
     bottom:3px;
   }
+}
+
+:root{
 }
 
 .hero{
@@ -821,34 +815,7 @@ a.scrolltop{
   }
 }
 
-.slideshow [class*='slideshow-item-']{
-  background-color:rgb(189, 189, 189);
-}
-
-.slideshow [class*='slideshow-item-']:nth-child(odd){
-  color:white;
-  background-color:rgb(155, 155, 155);
-}
-
-.slideshow-prev, .slideshow-forward{
-  color:white;
-}
-
-.slideshow-dot{
-  color:white
-}
-
-.slideshow-dot > li{
-  border-radius:6px;
-  width:12px;
-  height:12px;
-  background-color:white;
-  -webkit-box-shadow:0px 1px 1px black inset;
-          box-shadow:0px 1px 1px black inset;
-}
-
-.slideshow-dot > li.active{
-  background-color:#5cb85c;
+:root{
 }
 
 .slideshow{
@@ -860,12 +827,19 @@ a.scrolltop{
 
 [class*='slideshow-item-']{
   position:absolute;
-  margin-left:100%
+  margin-left:100%;
+
+  background-color:rgb(189, 189, 189)
 }
 
 [class*='slideshow-item-'] > *{
   opacity:0;
   //for ios safari z-index issue -webkit-transform:translate3d(0,0,0);
+}
+
+[class*='slideshow-item-']:nth-child(odd){
+  color:white;
+  background-color:rgb(155, 155, 155);
 }
 
 [class*='slideshow-item-'].active{
@@ -892,7 +866,9 @@ a.scrolltop{
   cursor:pointer;
   opacity:.3;
   -webkit-transition:opacity .7s ease;
-  transition:opacity .7s ease
+  transition:opacity .7s ease;
+
+  color:white
 }
 
 .slideshow-prev:hover, .slideshow-forward:hover{
@@ -901,10 +877,14 @@ a.scrolltop{
 
 .slideshow-prev{
   left:0;
+
+  color:white;
 }
 
 .slideshow-forward{
   right:0;
+
+  color:white;
 }
 
 .slideshow-dot{
@@ -915,7 +895,9 @@ a.scrolltop{
   bottom:2rem;
   z-index:10;
   margin:0 auto;
-  text-align:center
+  text-align:center;
+
+  color:white
 }
 
 .slideshow-dot > li{
@@ -926,14 +908,22 @@ a.scrolltop{
   -webkit-transition:all .5s ease;
   transition:all .5s ease;
   cursor:pointer;
+  border-radius:6px;
+  width:12px;
+  height:12px;
+  background-color:white;
+  -webkit-box-shadow:0px 1px 1px black inset;
+          box-shadow:0px 1px 1px black inset;
 }
 
 .slideshow-dot > li:hover{
   opacity:1;
+  background-color:#5cb85c;
 }
 
 .slideshow-dot > li.active{
   opacity:1;
+  background-color:#5cb85c;
 }
 
 @-webkit-keyframes slideshow{
@@ -988,8 +978,7 @@ a.scrolltop{
   }
 }
 
-.ripple-effect{
-  background-color:#5bc0de;
+:root{
 }
 
 .ripple{
@@ -1007,7 +996,9 @@ a.scrolltop{
   -webkit-transform:scale(0);
           transform:scale(0);
   opacity:0;
-  pointer-events:none
+  pointer-events:none;
+
+  background-color:#5bc0de
 }
 
 .ripple-effect.active{

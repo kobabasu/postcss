@@ -24,7 +24,7 @@
   display: flex;
   flex-wrap: wrap;
   width: var(--container-width);
-  margin: 0 auto;
+  margin: 0 auto var(--small-spacing);
   /* ie11だと、画像があると隙間ができる */
   min-width: 0%;
 }

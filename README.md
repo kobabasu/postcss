@@ -18,6 +18,7 @@ preinstallでひとつ上の階層にcss/, stylesheet/が作成される
 
 ## bower
 example用の`test/*.html`で読み込むようにtest専用のライブラリを用意する  
+(npmでデフォルトのものは用意できるため、必須ではない)
 .bowerrcでexample/vendor以下にインストールされるよう設定
 1. jqueryやfontawesomeやmaterial-designなどいらないものを削除
 1. `cp bower.json.sample bower.json`
@@ -81,16 +82,16 @@ gulp postcss:buildで一つ上の階層に以下が生成される
 
 1. css/style.css (src/からビルドされたstyle.css), pages/*.cssが出力される
 1. css/*.css (pages/*.cssから出力される)
+1. stylesheet/configs (各種設定、vars, base, fonts, modulesなど)
+1. stylesheet/fonts (使用するfontsファイル)
 1. stylesheet/layouts (レイアウトに関するcss header, footerなど0
 1. stylesheet/pages (各ページ固有のスタイル)
-1. stylesheet/fonts (使用するfontsファイル)
-1. stylesheet/test (テスト用ファイル)
 
 ## edit
 1. package.json, bower.json, gulp/dir.es6を作成
 1. 必要があれば.htaccess, .htdigest, .htpasswdをコピーして利用  
    (gtmetirixなどの評価が気になる場合はCACHEの項目を有効にする)
-1. 必要があれば、src/style.cssのexternal submodule, src/configs/type.cssのfont-faceのパスを変更
+1. 必要があれば、src/style.css, src/configs/fonts.cssのfont-faceのパスを変更
 1. npm installでpostcss:buildが実行され../cssを生成, ../stylesheetがコピーされる
 1. `postcss`でビルド
 
@@ -98,7 +99,7 @@ gulp postcss:buildで一つ上の階層に以下が生成される
 icomoonなどfontを追加した場合など、アップデートするには以下の手順を実行
 1. icomoonのサイトからzipをダウンロード
 1. 解答したicomoonのディレクトリの中身すべてを./stylesheet/fonts/icomoon/内に上書き
-1. ./src/configs/type.css内のicomoonのスタイルにicomoon/style.cssの該当箇所をコピー
+1. ./src/configs/fonts.css内のicomoonのスタイルにicomoon/style.cssの該当箇所をコピー
 1. min含めbuildして完了
 
 ## postcss repository update

@@ -73,4 +73,7 @@
   --small-line-height:    1.8rem;
   --tiny-line-height:     1.4rem;
   --heading-line-height:  3.2rem;
+
+  /* border */
+  --base-border:          1px solid var(--gray-light);
 }

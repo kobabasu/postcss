@@ -47,7 +47,7 @@ time, mark, audio, video, canvas {
   vertical-align: baseline;
   font-style: normal;
   font-weight: normal;
-  text-transform: normal;
+  text-transform: none;
   background: transparent;
 }
 

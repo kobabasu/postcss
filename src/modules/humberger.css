@@ -10,40 +10,15 @@
  */
 :root {
   --burger-width: 160px;
-}
 
-
-/*
- * theme
- */
-@media (--sp-viewport) {
-  nav.globalnav.humberger {
-    background-color: var(--color-device-bg);
-    border: none;
-
-    & a, & a:hover {
-      color: var(--gray-dark);
-    }
-
-    & li {
-      border: none;
-      border-top: 1px solid color(var(--color-device-bg) lightness(+7%));
-      border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%));
-      background-color: color(var(--color-device-bg) lightness(+2%));
-    }
-
-    & li:last-child {
-      border-right: none;
-    }
-  }
-
-  div.humberger-icon {
-    background-color: var(--color-device-bg);
-
-    &:before, &:after {
-      border-top: 5px solid var(--color-bg);
-    }
-  }
+  /* theme */
+  --humberger-a-color: var(--gray-dark);
+  --humberger-background-color: var(--color-device-bg);
+  --humberger-li-border-top: 1px solid color(var(--color-device-bg) lightness(+7%));
+  --humberger-li-border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%));
+  --humberger-li-background-color: color(var(--color-device-bg) lightness(+2%));
+  --humberger-icon-background-color: var(--color-device-bg);
+  --humberger-icon-border-top: 5px solid var(--color-bg);
 }
 
 
@@ -72,6 +47,13 @@
     padding-top: 0;
     transition: left .3s ease;
 
+    background-color: var(--humberger-background-color);
+    border: none;
+
+    & a, & a:hover {
+      color: var(--humberger-a-color);
+    }
+
     &.humberger-active {
       top: 0;
       left: 0;
@@ -86,6 +68,15 @@
         padding: var(--small-spacing);
         text-align: left;
         line-height: var(--small-line-height);
+
+        border: none;
+        border-top: var(--humberger-li-border-top);
+        border-bottom: var(--humberger-li-border-bottom);
+        background-color: var(--humberger-li-background-color);
+
+        &:last-child {
+          border-right: none;
+        }
       }
     }
   }
@@ -104,10 +95,14 @@
     transition: left .3s ease;
     cursor: pointer;
 
+    background-color: var(--humberger-icon-background-color);
+
     &:before, &:after {
       position: absolute;
       content: '';
       width: 100%;
+
+      border-top: var(--humberger-icon-border-top);
     }
 
     &:before {

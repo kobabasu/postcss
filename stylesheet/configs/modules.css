@@ -1,0 +1,95 @@
+/*
+ * # configs/modules.css
+ * src/modulesの設定を上書きする
+ */
+
+:root {
+  /* flexbox */
+  /*
+  --flexbox-columns: 12 !important;
+  --flexbox-gutter: 1rem !important;
+
+  --flexbox-item-background-color: var(--gray-lighter) !important;
+  --flexbox-item-odd-background-color: color(var(--gray-lighter) blackness(+3%)) !important;
+   */
+
+  /* grid */
+  /*
+  --grid-template-rows: 150px 150px 150px !important;
+  --grid-template-columns: 20% 30% 1fr !important;
+  --grid-item-border: 1px solid var(--gray) !important;
+   */
+
+  /* hero */
+  /*
+  --hero-height: 300px !important;
+  --hero-height-sp: 225px !important;
+  --hero-background-color: var(--gray) !important;
+   */
+
+  /* humberger */
+  /*
+   *
+  --burger-width: 160px !important;
+  --humberger-a-color: var(--gray-dark) !important;
+  --humberger-background-color: var(--color-device-bg) !important;
+  --humberger-li-border-top: 1px solid color(var(--color-device-bg) lightness(+7%)) !important;
+  --humberger-li-border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%)) !important;
+  --humberger-li-background-color: color(var(--color-device-bg) lightness(+2%)) !important;
+  --humberger-icon-background-color: var(--color-device-bg) !important;
+  --humberger-icon-border-top: 5px solid var(--color-bg) !important;
+   */
+
+  /* loading */
+  /*
+  --loading-font-width: 12rem !important;
+  --loading-background-color: var(--color-device-bg) !important;
+  --loading-p-font-family: 'Consolas',
+                           'Courier New', Courier, Monaco,
+                           monospace !important;
+  --loading-p-font-size: 110% !important;
+  --loading-p-line-height: 95% !important;
+  --loading-p-color: color(var(--color-device-bg) lightness(+40%)) !important;
+  --loading-p-border-right: 1px solid color(var(--color-device-bg) lightness(+20%)) !important;
+   */
+
+  /* masonry */
+  /*
+  --masonry-width: 960px; !important;
+  --masonry-column-count: 4 !important;
+  --masonry-column-gap: var(--small-spacing) !important;
+  --masonry-item-border: 1px solid red !important;
+   */
+
+  /* ripple */
+  /*
+  --ripple-effect-size: 500px !important;
+  --ripple-effect-background-color: var(--brand-info) !important;
+   */
+
+  /* scrolltop */
+  /*
+  --scrolltop-a-visited-color: var(--color-link) !important;
+   */
+
+  /* slidemenu */
+  /*
+  --slidemenu-height: -240px !important;
+  --slidemenu-a-color: var(--gray-dark) !important;
+  --slidemenu-background-color: color(var(--color-device-bg) lightness(+2%)) !important;
+  --slidemenu-li-border-top: 1px solid color(var(--color-device-bg) lightness(+7%)) !important;
+  --slidemenu-li-border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%)) !important;
+  --slidemenu-icon-background-color: var(--color-device-bg) !important;
+  --slidemenu-icon-border-top: 5px solid var(--color-bg) !important;
+   */
+
+  /* slideshow */
+  /*
+  --slideshow-height: 300px; !important;
+  --slideshow-height-sp: 225px !important;
+  --slideshow-btn-color: white !important;
+  --slideshow-btn-active-color: var(--brand-success) !important;
+  --slideshow-item-background-color: var(--gray) !important;
+  --slideshow-item-odd-background-color: var(--gray-dark) !important;
+   */
+}

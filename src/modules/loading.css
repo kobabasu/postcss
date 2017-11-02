@@ -10,26 +10,16 @@
  */
 :root {
   --loading-font-width: 12rem;
-}
 
-
-/*
- * theme
- */
-div.loading {
-  background-color: var(--color-device-bg);
-  z-index: 9999;
-}
-
-div.loading > p {
-  font-family: 'Consolas',
-               'Courier New', Courier, Monaco,
-               monospace;
-
-  font-size: 110%;
-  line-height: 95%;
-  color: color(var(--color-device-bg) lightness(+40%));
-  border-right: 1px solid color(var(--color-device-bg) lightness(+20%));
+  /* theme */
+  --loading-background-color: var(--color-device-bg);
+  --loading-p-font-family: 'Consolas',
+                           'Courier New', Courier, Monaco,
+                           monospace;
+  --loading-p-font-size: 110%;
+  --loading-p-line-height: 95%;
+  --loading-p-color: color(var(--color-device-bg) lightness(+40%));
+  --loading-p-border-right: 1px solid color(var(--color-device-bg) lightness(+20%));
 }
 
 
@@ -43,6 +33,9 @@ div.loading {
   text-align: center;
   opacity: 1;
   transition: opacity .7s ease 0s;
+
+  background-color: var(--loading-background-color);
+  z-index: 9999;
 }
 
 div.loading.loaded {
@@ -63,6 +56,12 @@ div.loading > p {
   line-height: var(--small-spacing);
   white-space: nowrap;
   overflow: hidden;
+
+  font-family: var(--loading-p-font-family);
+  line-height: var(--loading-p-font-size);
+  color: var(--loading-p-color);
+  border-right: var(--loading-p-border-right);
+
   animation: typing 2.5s steps(12, end) infinite,
              loadingBlink .5s step-end infinite alternate;
 }

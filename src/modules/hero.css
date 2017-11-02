@@ -9,6 +9,9 @@
 :root {
   --hero-height: 300px;
   --hero-height-sp: 225px;
+
+  /* theme */
+  --hero-background-color: var(--gray);
 }
 
 
@@ -16,7 +19,7 @@
  * theme
  */
 .hero {
-  background-color: var(--gray);
+  background-color: var(--hero-background-color);
 }
 
 

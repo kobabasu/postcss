@@ -2,3 +2,17 @@
  * # layouts/article.css
  * articleに関する定義
  */
+
+:root {
+  /* theme */
+  --article-color: var(--color-text);
+  --article-background-color: var(--color-bg);
+}
+
+/*
+ * article
+ */
+article {
+  color: var(--article-color);
+  background-color: var(--article-background-color);
+}

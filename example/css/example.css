@@ -232,6 +232,9 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   margin-bottom:0;
 }
 
+:root{
+}
+
 body{
   z-index:0;
 }
@@ -699,8 +702,7 @@ div.loading > p{
   }
 }
 
-a.scrolltop:visited{
-  color:#1d3994;
+:root{
 }
 
 a.scrolltop{
@@ -709,7 +711,11 @@ a.scrolltop{
   padding-right:10px;
   padding-right:1rem;
   font-size:48px;
-  text-decoration:none;
+  text-decoration:none
+}
+
+a.scrolltop:visited{
+  color:#1d3994;
 }
 
 :root{

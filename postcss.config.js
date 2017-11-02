@@ -10,22 +10,18 @@ module.exports = (ctx) => ({
   plugins: [
     require('postcss-import')({
       path: [
-        "vendor/normalize.css/",
-        "vendor/animate.css/",
-        "vendor/fontawesome/css/",
-        "vendor/material-design-icons-iconfont/dist/"
+        // npmでnormalize.cssだけインストールしているため、
+        // 以下はデフォルトでは不要。node_modulesは自動で読み込まれる
+        // bower経由でインストールした場合は以下のようにする。
+        //
+        // "vendor/normalize.css/",
+        // "vendor/animate.css/",
+        // "vendor/fontawesome/css/",
+        // "vendor/material-design-icons-iconfont/dist/"
       ]
     }),
 
     require('postcss-url')(),
-
-    require('postcss-reporter')(),
-
-    require('postcss-flexibility')(),
-
-    require('postcss-mixins')(),
-
-    require('postcss-extend')(),
 
     require('postcss-for-variables')(),
 
@@ -34,33 +30,5 @@ module.exports = (ctx) => ({
     require('postcss-cssnext')({
       warnForDuplicates: false
     }),
-
-    /*
-     * default: path to example
-     */
-
-    require('postcss-assets')({
-      relative: 'example/css/',
-      basePath: 'admin/postcss/',
-      loadPaths: ['example/imgs/']
-    }),
-
-    /*
-     * assets settings for admin case
-     */
-
-    /*
-    require('postcss-assets')({
-      relative: '../css/',
-      basePath: 'admin/postcss/',
-      loadPaths: ['../imgs/']
-    }),
-    */
-
-    // require('cssnano')(),
-
-    require('postcss-discard-comments')(),
-
-    require('lost')()
   ]
 })

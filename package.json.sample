@@ -17,28 +17,17 @@
     "!win32"
   ],
 
-  "dependencies": {},
+  "dependencies": {
+    "normalize.css": "*"
+  },
 
   "devDependencies": {
-    "cssnano": "next",
     "postcss": "^6.0.0",
-    "postcss-assets": "*",
     "postcss-cssnext": "*",
     "postcss-url": "*",
     "postcss-import": "*",
-    "postcss-discard-comments": "*",
-    "postcss-reporter": "*",
-    "postcss-flexibility": "*",
-    "postcss-mixins": "*",
-    "postcss-extend": "*",
     "postcss-for": "*",
     "postcss-for-variables": "*",
-    "lost": "*",
-
-    "calipers": "*",
-    "calipers-jpeg": "*",
-    "calipers-png": "*",
-    "calipers-gif": "*",
 
     "mocha": "*",
     "chai": "*",

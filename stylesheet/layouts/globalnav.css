@@ -14,8 +14,11 @@
   --globalnav-background-color: color(var(--color-bg) alpha(-5%));  
   --globalnav-border-bottom: 1px solid var(--gray-darker);
   --globalnav-li-border: 1px solid var(--gray);
+  --globalnav-a-font-size: var(--small-font-size);
+  --globalnav-a-line-height: var(--small-line-height);
   --globalnav-a-color: var(--color-text);
 }
+
 
 /*
  * globalnav
@@ -44,6 +47,9 @@
       }
 
       & a, & a:hover {
+        font-size: var(--globalnav-a-font-size);
+        line-height: var(--globalnav-a-line-height);
+        text-decoration: none;
         color: var(--globalnav-a-color);
       }
     }

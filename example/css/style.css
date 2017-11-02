@@ -13,7 +13,12 @@ body{
 }
 
 
-article, aside, footer, header, nav, section{
+article,
+aside,
+footer,
+header,
+nav,
+section{
   display:block;
 }
 
@@ -24,7 +29,9 @@ h1{
 }
 
 
-figcaption, figure, main{
+figcaption,
+figure,
+main{
   display:block;
 }
 
@@ -62,17 +69,21 @@ abbr[title]{
 }
 
 
-b, strong{
+b,
+strong{
   font-weight:inherit;
 }
 
 
-b, strong{
+b,
+strong{
   font-weight:bolder;
 }
 
 
-code, kbd, samp{
+code,
+kbd,
+samp{
   font-family:monospace, monospace;
   font-size:1em;
 }
@@ -94,7 +105,8 @@ small{
 }
 
 
-sub, sup{
+sub,
+sup{
   font-size:75%;
   line-height:0;
   position:relative;
@@ -112,7 +124,8 @@ sup{
 }
 
 
-audio, video{
+audio,
+video{
   display:inline-block;
 }
 
@@ -133,7 +146,11 @@ svg:not(:root){
 }
 
 
-button, input, optgroup, select, textarea{
+button,
+input,
+optgroup,
+select,
+textarea{
   font-family:sans-serif;
   font-size:100%;
   line-height:1.15;
@@ -141,12 +158,14 @@ button, input, optgroup, select, textarea{
 }
 
 
-button, input{
+button,
+input{
   overflow:visible;
 }
 
 
-button, select{
+button,
+select{
   text-transform:none;
 }
 
@@ -156,13 +175,19 @@ button, html [type="button"], [type="reset"], [type="submit"]{
 }
 
 
-button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner{
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner{
   border-style:none;
   padding:0;
 }
 
 
-button:-moz-focusring, [type="button"]:-moz-focusring, [type="reset"]:-moz-focusring, [type="submit"]:-moz-focusring{
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring{
   outline:1px dotted ButtonText;
 }
 
@@ -194,14 +219,16 @@ textarea{
 }
 
 
-[type="checkbox"], [type="radio"]{
+[type="checkbox"],
+[type="radio"]{
   -webkit-box-sizing:border-box;
           box-sizing:border-box;
   padding:0;
 }
 
 
-[type="number"]::-webkit-inner-spin-button, [type="number"]::-webkit-outer-spin-button{
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button{
   height:auto;
 }
 
@@ -212,7 +239,8 @@ textarea{
 }
 
 
-[type="search"]::-webkit-search-cancel-button, [type="search"]::-webkit-search-decoration{
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration{
   -webkit-appearance:none;
 }
 

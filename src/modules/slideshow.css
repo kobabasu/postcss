@@ -9,41 +9,12 @@
 :root {
   --slideshow-height: 300px;
   --slideshow-height-sp: 225px;
-}
 
-
-/*
- * theme
- */
-.slideshow {
-  & [class*='slideshow-item-'] {
-    background-color: var(--gray);
-  }
-
-  & [class*='slideshow-item-']:nth-child(odd) {
-    color: white;
-    background-color: var(--gray-dark);
-  }
-}
-
-.slideshow-prev, .slideshow-forward {
-  color: white;
-}
-
-.slideshow-dot {
-  color: white;
-
-  & > li {
-    border-radius: 6px;
-    width: 12px;
-    height: 12px;
-    background-color: white;
-    box-shadow: 0px 1px 1px black inset;
-
-    &.active {
-      background-color: var(--brand-success);
-    }
-  }
+  /* theme */
+  --slideshow-btn-color: white;
+  --slideshow-btn-active-color: var(--brand-success);
+  --slideshow-item-background-color: var(--gray);
+  --slideshow-item-odd-background-color: var(--gray-dark);
 }
 
 
@@ -64,10 +35,17 @@
   position: absolute;
   margin-left: 100%;
 
+  background-color: var(--slideshow-item-background-color);
+
   & > * {
     opacity: 0;
     // for ios safari z-index issue
     -webkit-transform: translate3d(0,0,0);
+  }
+
+  &:nth-child(odd) {
+    color: var(--slideshow-btn-color);
+    background-color: var(--slideshow-item-odd-background-color);
   }
 }
 
@@ -98,6 +76,8 @@
   opacity: .3;
   transition: opacity .7s ease;
 
+  color: var(--slideshow-btn-color);
+
   &:hover {
     opacity: 1;
   }
@@ -105,10 +85,14 @@
 
 .slideshow-prev {
   left: 0;
+
+  color: var(--slideshow-btn-color);
 }
 
 .slideshow-forward {
   right: 0;
+
+  color: var(--slideshow-btn-color);
 }
 
 .slideshow-dot {
@@ -120,6 +104,8 @@
   margin: 0 auto;
   text-align: center;
 
+  color: var(--slideshow-btn-color);
+
   & > li {
     display: inline-block;
     margin: 0 var(--small-spacing);
@@ -127,12 +113,20 @@
     transition: all .5s ease;
     cursor: pointer;
 
+    border-radius: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--slideshow-btn-color);
+    box-shadow: 0px 1px 1px black inset;
+
     &:hover {
       opacity: 1;
+      background-color: var(--slideshow-btn-active-color);
     }
 
     &.active {
       opacity: 1;
+      background-color: var(--slideshow-btn-active-color);
     }
   }
 }

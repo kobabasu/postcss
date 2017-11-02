@@ -129,10 +129,10 @@ class Postcss extends DefaultRegistry {
       --no-map \
       -o ${dir.example.css.dist}/style.css;
 
-      postcss ${dir.pages + '**/*.css'} \
+      postcss ${dir.pages + '/example.css'} \
       --no-map \
       -c ${dir.root + '/postcss.config.js'} \
-      -d ${dir.example.css.dist}/;
+      -o ${dir.example.css.dist}/example.css;
 
       for file in \`find ${dir.example.css.dist} -type f -name '*.css'\`; do
         name=\`echo $file | awk -F/ '{print $NF}' | grep -v '.*min.*' | sed -e 's/\\..*//g'\`;

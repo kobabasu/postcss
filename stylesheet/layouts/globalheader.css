@@ -7,19 +7,16 @@
  * config
  */
 :root {
-  --header-height: 5rem;
-  --header-trademark-width: 80px;
-  --header-trademark-height: 20px;
-}
+  --globalheader-height: 5rem;
+  --globalheader-trademark-width: 80px;
+  --globalheader-trademark-height: 20px;
 
-
-/*
- * theme
- */
-.globalheader > div.header-right {
-  & li {
-    border-right: 1px solid var(--gray);
-  }
+  /* theme */
+  --globalheader-color: var(--color-text);
+  --globalheader-background-color: var(--gray-lighter);
+  --globalheader-border-top: 3px solid var(--color-corp);
+  --globalheader-border-bottom: 1px solid var(--gray);
+  --globalheader-li-border-right: 1px solid var(--gray);
 }
 
 
@@ -31,9 +28,14 @@
   display: table;
   top: 0;
   width: 100%;
-  height: var(--header-height);
+  height: var(--globalheader-height);
   padding: 0 var(--base-spacing);
   vertical-align: middle;
+
+  color: var(--globalheader-color);
+  background-color: var(--globalheader-background-color);
+  border-top: var(--globalheader-border-top);
+  border-bottom: var(--globalheader-border-bottom);
 }
 
 /*
@@ -41,15 +43,15 @@
  */
 .globalheader h1.trademark {
   display: table-cell;
-  width: var(--header-trademark-width);
-  height: var(--header-trademark-height);
+  width: var(--globalheader-trademark-width);
+  height: var(--globalheader-trademark-height);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center left;
 
   & a {
     display: block;
-    line-height: var(--header-trademark-height);
+    line-height: var(--globalheader-trademark-height);
   }
 }
 
@@ -66,6 +68,7 @@
     font-size: var(--small-font-size);
     border-right: 1px solid var(--gray);
     padding: 0 var(--base-spacing);
+    border-right: var(--globalheader-li-border-right);
   }
 
   & li:last-child {

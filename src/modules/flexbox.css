@@ -7,8 +7,12 @@
  * config
  */
 :root {
-  --flexbox-columns:    12;
-  --flexbox-gutter:     1rem;
+  --flexbox-columns: 12;
+  --flexbox-gutter: 1rem;
+
+  /* theme */
+  --flexbox-item-background-color: var(--gray-lighter);
+  --flexbox-item-odd-background-color: color(var(--gray-lighter) blackness(+3%));
 }
 
 
@@ -30,6 +34,12 @@
  */
 [class*='flexbox-item-'] {
   padding: var(--flexbox-gutter);
+
+  background-color: var(--flexbox-item-background-color);
+
+  &:nth-child(odd) {
+    background-color: var(--flexbox-item-odd-background-color); 
+  }
 }
 
 @for $i from 1 to var(--flexbox-columns) {

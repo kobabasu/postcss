@@ -10,24 +10,3 @@
 /* @import 'animate.min.css'; */
 /* @import 'font-awesome.min.css'; */
 /* @import 'material-design-icons.css'; */
-
-/*
- * import configs (external)
- */
-@import '../../stylesheet/configs/index.css';
-
-/*
- * internal submodule
- */
-@import 'modules/index.css';
-
-/*
- * external submodule
- */
-@import '../../stylesheet/theme.css';
-@import '../../stylesheet/layouts/index.css';
-
-/*
- * after include all file
- */
-@import 'devices/index.css';

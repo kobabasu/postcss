@@ -5,12 +5,12 @@
  */
 
 /*
- * theme
+ * config
  */
-a.scrolltop:visited {
-  color: var(--color-link);
+:root {
+  /* theme */
+  --scrolltop-a-visited-color: var(--color-link);
 }
-
 
 a.scrolltop {
   position: fixed;
@@ -18,4 +18,8 @@ a.scrolltop {
   padding-right: var(--small-spacing);
   font-size: 48px;
   text-decoration: none;
+
+  &:visited {
+    color: var(--scrolltop-a-visited-color);
+  }
 }

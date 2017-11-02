@@ -1,23 +1,16 @@
 /*
  * # modules/index.css
  * モジュール定義
+ *
+ * 実際にはstylesheet/pagesでそれぞれ読込利用
  */
 
 /*
  * common
  */
-@import 'decoration.css';
-@import 'anchor.css';
-@import 'responsive.css';
-
-/*
- * layout
- */
-@import 'articlefixed.css';
-@import 'globalfooter.css';
-@import 'globalheader.css';
-@import 'globalnav.css';
-@import 'topics.css';
+/* @import 'decoration.css'; */
+/* @import 'anchor.css'; */
+/* @import 'responsive.css'; */
 
 /*
  * grid
@@ -29,7 +22,7 @@
 /*
  * options
  */
-@import 'loading.css';
+/* @import 'loading.css'; */
 /* @import 'inview.css'; */
 /* @import 'scrollit.css'; */
 /* @import 'scrolltop.css'; */

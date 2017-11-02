@@ -16,7 +16,7 @@
   --humberger-background-color: var(--color-device-bg);
   --humberger-li-border-top: 1px solid color(var(--color-device-bg) lightness(+7%));
   --humberger-li-border-bottom: 1px solid color(var(--color-device-bg) blackness(+90%));
-  --humberger-li-background-color: color(var(--color-device-bg) lightness(+2%))
+  --humberger-li-background-color: color(var(--color-device-bg) lightness(+2%));
   --humberger-icon-background-color: var(--color-device-bg);
   --humberger-icon-border-top: 5px solid var(--color-bg);
 }

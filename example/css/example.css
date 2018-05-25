@@ -1592,6 +1592,10 @@ a.scrolltop:visited {
  * articleに関する定義
  */
 
+/*
+ * config
+ */
+
 :root {
   /* theme */
 }
@@ -1905,6 +1909,100 @@ article.articlefixed {
   color: #333333;
 }
 
+@supports (-ms-ime-align: auto) {
+  .globalnav > .header-right label.arrow:after {
+    top: 0.53333rem;
+  } 
+}
+
+/*
+ * # layouts/tabel.css
+ * tableに関する定義
+ */
+
+/*
+ * config
+ */
+
+:root {
+  /* theme */
+}
+
+/*
+ * .table-container
+ */
+
+.table-container {
+  font-size: 12.6px;
+  font-size: 1.26rem;
+  padding-bottom: 20px;
+  padding-bottom: 2rem;
+}
+
+/*
+ * table
+ */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-bottom: 1rem
+}
+
+table a, table a:hover {
+  text-decoration: none;
+}
+
+table i {
+  margin-right: 5px;
+  margin-right: 0.5rem;
+  font-size: 16.8px;
+  font-size: 1.68rem;
+  vertical-align: text-bottom;
+}
+
+table th, table td {
+  padding: 5px 0;
+  padding: 0.5rem 0;
+}
+
+table th:first-child, table td:first-child {
+  padding-left: 10px;
+  padding-left: 1rem;
+}
+
+table th:last-child, table td:last-child {
+  padding-right: 10px;
+  padding-right: 1rem;
+}
+
+table th {
+  font-weight: normal;
+  border-top: 1px solid rgba(212, 213, 213, 0.7);
+  border-bottom: 1px solid #333333;
+  background-color: rgba(213, 229, 233, 0.09999999999999998);
+}
+
+table td {
+  border-bottom: 1px solid rgba(212, 213, 213, 0.7);
+  background-color: white;
+}
+
+/*
+ * MS Edge hack
+ */
+
+@supports (-ms-ime-align: auto) {
+  table i:before {
+    vertical-align: 3px;
+  }
+
+  table td {
+    padding-top: 0.75rem;
+  }
+}
+
 /*
  * # modules/topic.css
  * トピックスリストに関する定義
@@ -1950,80 +2048,6 @@ ul.topics li:before {
   ul.topics li:before {
     vertical-align: -0.35rem;
   }
-}
-
-/*
- * tables
- */
-
-/*
- * # tables/list.css
- * table.listの主に各カラムの横幅を定義
- */
-
-table {
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-top: 3rem;
-  padding-bottom: 30px;
-  padding-bottom: 3rem;
-  border-collapse: collapse;
-  font-size: 12.6px;
-  font-size: 1.26rem
-}
-
-table th {
-  font-weight: normal;
-  border-top: 1px solid rgba(212, 213, 213, 0.7);
-  border-bottom: 1px solid #002356;
-  background-color: rgba(213, 229, 233, 0.09999999999999998);
-  padding: 5px 0;
-  padding: 0.5rem 0;
-}
-
-table td {
-  border-bottom: 1px solid rgba(212, 213, 213, 0.7);
-  background-color: white;
-  padding: 5px 0;
-  padding: 0.5rem 0;
-}
-
-table td a, table td a:hover {
-  text-decoration: none;
-}
-
-table td i {
-  margin-right: 5px;
-  font-size: 16.8px;
-  font-size: 1.68rem;
-  vertical-align: text-bottom;
-}
-
-table th:first-child, table td:first-child {
-  padding-left: 10px;
-}
-
-table th:last-child, table td:last-child {
-  padding-right: 10px;
-}
-
-@supports (-ms-ime-align: auto) {
-  .globalnav > .header-right label.arrow:after {
-    top: 0.53333rem;
-  } 
-
-  table i:before {
-    vertical-align: 3px;
-  }
-
-  table td {
-    padding-top: 0.75rem;
-  }
-}
-
-table.list {
-
 }
 
 /*

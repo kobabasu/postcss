@@ -43,12 +43,8 @@
 @import '../layouts/globalfooter.css';
 @import '../layouts/globalheader.css';
 @import '../layouts/globalnav.css';
+@import '../layouts/table.css';
 @import '../layouts/topics.css';
-
-/*
- * tables
- */
-@import '../tables/list.css';
 
 /*
  * after include all file

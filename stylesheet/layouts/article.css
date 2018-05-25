@@ -3,6 +3,9 @@
  * articleに関する定義
  */
 
+/*
+ * config
+ */
 :root {
   /* theme */
   --article-color: var(--color-text);

@@ -1,0 +1,64 @@
+/*
+ * # tables/list.css
+ * table.listの主に各カラムの横幅を定義
+ */
+
+table {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: var(--large-spacing);
+  padding-bottom: var(--large-spacing);
+  border-collapse: collapse;
+  font-size: calc(var(--small-font-size) * 0.9);
+
+  & th {
+    font-weight: normal;
+    border-top: 1px solid color(var(--gray-light) alpha(-30%));
+    border-bottom: 1px solid #002356;
+    background-color: color(#d5e5e9 alpha(-90%));
+    padding: var(--tiny-spacing) 0;
+  }
+
+  & td {
+    border-bottom: 1px solid color(var(--gray-light) alpha(-30%));
+    background-color: white;
+    padding: var(--tiny-spacing) 0;
+
+    & a, & a:hover {
+      text-decoration: none;
+    }
+
+    & i {
+      margin-right: 5px;
+      font-size: calc(var(--base-font-size) * 1.05);
+      vertical-align: text-bottom;
+    }
+  }
+
+  & th:first-child, & td:first-child {
+    padding-left: 10px;
+  }
+
+  & th:last-child, & td:last-child {
+    padding-right: 10px;
+  }
+}
+
+
+@supports (-ms-ime-align: auto) {
+  .globalnav > .header-right label.arrow:after {
+    top: calc(var(--base-font-size) / 3);
+  } 
+
+  table i:before {
+    vertical-align: 3px;
+  }
+
+  table td {
+    padding-top: calc(var(--tiny-spacing) * 1.5);
+  }
+}
+
+table.list {
+
+}

@@ -129,7 +129,7 @@ class Postcss extends DefaultRegistry {
       --no-map \
       -o ${dir.example.css.dist}/style.css;
 
-      postcss ${dir.pages + '/example.css'} \
+      postcss ${dir.root + '/stylesheet/pages/example.css'} \
       --no-map \
       -c ${dir.root + '/postcss.config.js'} \
       -o ${dir.example.css.dist}/example.css;

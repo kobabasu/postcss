@@ -1912,12 +1912,15 @@ article.articlefixed {
 @supports (-ms-ime-align: auto) {
   .globalnav > .header-right label.arrow:after {
     top: 0.53333rem;
-  } 
+  }
 }
 
 /*
  * # layouts/tabel.css
  * tableに関する定義
+ * 
+ * 各カラムの横幅の定義は
+ * stylesheet/pagesの各ファイルで設定
  */
 
 /*
@@ -2131,4 +2134,33 @@ ul.topics li:before {
     line-height: 2.0rem;
     padding-top: 0.6rem;
   }
+}
+
+/*
+ * table
+ */
+
+table th:nth-child(1),  table td:nth-child(1)  {
+  width:  10%;
+  text-align: left;
+}
+
+table th:nth-child(2),  table td:nth-child(2)  {
+  width: auto;
+  text-align: left;
+}
+
+table th:nth-child(3),  table td:nth-child(3)  {
+  width:  20%;
+  text-align: left;
+}
+
+table th:nth-child(4),  table td:nth-child(4)  {
+  width:  20%;
+  text-align: left;
+}
+
+table th:nth-child(5),  table td:nth-child(5)  {
+  width:  10%;
+  text-align: center;
 }

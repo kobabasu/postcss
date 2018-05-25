@@ -50,3 +50,14 @@
  * after include all file
  */
 @import '../../src/devices/index.css';
+
+/*
+ * table
+ */
+table {
+ & th:nth-child(1),  & td:nth-child(1)  { width:  10%; text-align: left; }
+ & th:nth-child(2),  & td:nth-child(2)  { width: auto; text-align: left; }
+ & th:nth-child(3),  & td:nth-child(3)  { width:  20%; text-align: left; }
+ & th:nth-child(4),  & td:nth-child(4)  { width:  20%; text-align: left; }
+ & th:nth-child(5),  & td:nth-child(5)  { width:  10%; text-align: center; }
+}

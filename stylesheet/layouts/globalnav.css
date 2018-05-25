@@ -55,3 +55,9 @@
     }
   }
 }
+
+@supports (-ms-ime-align: auto) {
+  .globalnav > .header-right label.arrow:after {
+    top: calc(var(--base-font-size) / 3);
+  }
+}

@@ -1588,7 +1588,7 @@ a.scrolltop:visited {
  */
 
 /*
- * # modues/table.css
+ * # modules/table.css
  * tableに関する定義
  * 
  * 各カラムの横幅の定義は
@@ -1676,6 +1676,108 @@ table td {
   table td {
     padding-top: 0.75rem;
   }
+}
+
+/*
+ * # modules/button-arrow.css
+ * 矢印アイコンのスタイルを定義
+ */
+
+/*
+ * config
+ */
+
+:root {
+  
+  /* theme */
+}
+
+/*
+ * label.button
+ */
+
+label.button {
+  position: relative
+}
+
+label.button:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 55%;
+  width: 8.727px;
+  width: 0.87273rem;
+  height: 8.727px;
+  height: 0.87273rem;
+  -webkit-transform: translateY(-50%) rotate(45deg);
+          transform: translateY(-50%) rotate(45deg);
+  pointer-events: none;
+}
+
+label.button a {
+  display: inline-block;
+  height: 24px;
+  height: 2.4rem;
+  line-height: 24px;
+  line-height: 2.4rem;
+  padding: 0 14px;
+  padding: 0 1.4rem;
+  padding-top: 1.4px;
+  padding-top: 0.14rem;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 12.8px;
+  font-size: 1.28rem;
+  background-color: #008bd0;
+  border-radius: 0.5rem;
+}
+
+/*
+ * label.button.left
+ */
+
+label.button.left:after {
+  border: 2px solid;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: rgb(255, 255, 255);
+  border-left-color: rgb(255, 255, 255);
+  left: 14px;
+  left: 1.4rem;
+}
+
+label.button.left a {
+  padding-left: 24px;
+  padding-left: 2.4rem;
+}
+
+/*
+ * label.button.right
+ */
+
+label.button.right:after {
+  border: 2px solid;
+  border-top-color: rgb(255, 255, 255);
+  border-right-color: rgb(255, 255, 255);
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  right: 14px;
+  right: 1.4rem;
+}
+
+label.button.right a {
+  padding-right: 24px;
+  padding-right: 2.4rem;
+}
+
+/*
+ * for MS Edge
+ */
+
+@supports (-ms-ime-align: auto) {
+  label.button a {
+    padding-top: 0;
+  } 
 }
 
 /*
@@ -2003,16 +2105,6 @@ article.articlefixed {
   line-height: 1.8rem;
   text-decoration: none;
   color: #333333;
-}
-
-/*
- * MS Edge hack
- */
-
-@supports (-ms-ime-align: auto) {
-  .globalnav > .header-right label.arrow:after {
-    top: 0.53333rem;
-  } 
 }
 
 /*

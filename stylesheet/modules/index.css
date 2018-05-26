@@ -1,0 +1,17 @@
+/*
+ * # modules/index.css
+ * モジュール定義
+ *
+ * プロジェクト毎で調整が必要なものを記述
+ * 必要ないものはsrc/modules内のものを利用
+ *
+ * 実際にはstylesheet/pagesでそれぞれ読込利用
+ */
+
+/*
+ * options
+ */
+/* @import 'arrow.css'; */
+/* @import 'button.css'; */
+/* @import 'form.css'; */
+/* @import 'table.css'; */

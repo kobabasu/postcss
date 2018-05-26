@@ -8,10 +8,12 @@
  */
 :root {
   --globalnav-height: 5rem;
+  --globalnav-header-width: 15rem;
   --globalnav-header-height: 5rem;
 
   /* theme */
   --globalnav-background-color: color(var(--color-bg) alpha(-5%));  
+  --globalnav-h1-background-color: color(#d5e5e9 alpha(-55%));
   --globalnav-border-bottom: 1px solid var(--gray-darker);
   --globalnav-li-border: 1px solid var(--gray);
   --globalnav-a-font-size: var(--small-font-size);
@@ -25,6 +27,7 @@
  */
 .globalnav {
   position: fixed;
+  display: table;
   top: 0;
   width: 100%;
   height: var(--globalnav-height);
@@ -56,8 +59,11 @@
   }
 }
 
+/*
+ * MS Edge hack
+ */
 @supports (-ms-ime-align: auto) {
   .globalnav > .header-right label.arrow:after {
     top: calc(var(--base-font-size) / 3);
-  }
+  } 
 }

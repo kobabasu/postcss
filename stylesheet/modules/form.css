@@ -1,0 +1,89 @@
+/*
+ * # layouts/tabel.css
+ * tableに関する定義
+ * 
+ * 各カラムの横幅の定義は
+ * stylesheet/pagesの各ファイルで設定
+ */
+
+/*
+ * config
+ */
+:root {
+  /* theme */
+}
+
+/*
+ * select
+ */
+
+select {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: calc(var(--small-font-size) * 0.9);
+  height: var(--base-line-height);
+  line-height: var(--base-line-height);
+  vertical-align: middle;
+  padding: 0 calc(var(--base-spacing) * 1) 0 var(--small-spacing);
+  background-color: var(--gray-lighter);
+  background: linear-gradient(to bottom, white 0%, var(--gray-lighter) 100%);
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+  outline: none;
+  color: var(--color-text);
+}
+
+select:focus {
+  outline: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+label.arrow, label.arrow-left, label.arrow-right {
+  position: relative;
+}
+
+label.arrow:after, label.arrow-left:after, label.arrow-right:after {
+  display: block;
+  content: '';
+  position: absolute;
+  height: calc(var(--base-font-size) / 2);
+  width: calc(var(--base-font-size) / 2);
+  border: 2px solid;
+  border-color: transparent transparent black black;
+  transform: rotate(-45deg);
+  top: calc(var(--base-font-size) / 6);
+  right: calc(var(--small-spacing) / 0.9);
+  pointer-events: none;
+}
+
+label.arrow-left:after {
+  border-color: transparent transparent white white;
+  transform: rotate(45deg);
+  top: calc(var(--base-font-size) / 2.5);
+  left: calc(var(--small-spacing) / 0.9);
+  right: auto;
+}
+
+label.arrow-right:after {
+  border-color: white white transparent transparent;
+  transform: rotate(45deg);
+  top: calc(var(--base-font-size) / 2.5);
+  right: calc(var(--small-spacing) / 0.9);
+  left: auto;
+}
+
+label.arrow-left a {
+  padding-left: var(--base-line-height);
+  padding-right: 10px;
+}
+
+label.arrow-right a {
+  padding-right: var(--base-line-height);
+  padding-left: 10px;
+}
+

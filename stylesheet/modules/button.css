@@ -1,6 +1,12 @@
 /*
  * # modules/button-arrow.css
- * 矢印アイコンのスタイルを定義
+ * ボタンのスタイルを定義
+ * left, rightのクラスを指定すると矢印がつく
+ *
+ * Example:
+ * <label class="button left">
+ *   <a href="#">前へ</a>
+ * </label>
  */
 
 /*
@@ -89,7 +95,7 @@ label.button.right {
 }
 
 /*
- * MS Edge hack
+ * for MS Edge
  */
 @supports (-ms-ime-align: auto) {
   label.button a {

@@ -1,6 +1,14 @@
 /*
  * # modules/select.css
- * formに関する定義
+ * formのselectのスタイルを変更
+ *
+ * Example:
+ * <label class="select">
+ *   <select>
+ *       <option value="10">10月</option>
+ *       <option value="11">11月</option>
+ *   </select>
+ * </label>
  */
 
 /*

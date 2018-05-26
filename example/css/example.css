@@ -1588,99 +1588,14 @@ a.scrolltop:visited {
  */
 
 /*
- * # modules/table.css
- * tableに関する定義
- * 
- * 各カラムの横幅の定義は
- * stylesheet/pagesの各ファイルで設定
- */
-
-/*
- * config
- */
-
-:root {
-  /* theme */
-}
-
-/*
- * .table-container
- */
-
-.table-container {
-  font-size: 12.6px;
-  font-size: 1.26rem;
-  padding-bottom: 20px;
-  padding-bottom: 2rem;
-}
-
-/*
- * table
- */
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 10px;
-  margin-bottom: 1rem
-}
-
-table a, table a:hover {
-  text-decoration: none;
-}
-
-table i {
-  margin-right: 5px;
-  margin-right: 0.5rem;
-  font-size: 16.8px;
-  font-size: 1.68rem;
-  vertical-align: text-bottom;
-}
-
-table th, table td {
-  padding: 5px 0;
-  padding: 0.5rem 0;
-}
-
-table th:first-child, table td:first-child {
-  padding-left: 10px;
-  padding-left: 1rem;
-}
-
-table th:last-child, table td:last-child {
-  padding-right: 10px;
-  padding-right: 1rem;
-}
-
-table th {
-  font-weight: normal;
-  border-top: 1px solid rgba(212, 213, 213, 0.7);
-  border-bottom: 1px solid #333333;
-  background-color: rgba(213, 229, 233, 0.09999999999999998);
-}
-
-table td {
-  border-bottom: 1px solid rgba(212, 213, 213, 0.7);
-  background-color: white;
-}
-
-/*
- * MS Edge hack
- */
-
-@supports (-ms-ime-align: auto) {
-  table i:before {
-    vertical-align: 3px;
-  }
-
-  table td {
-    padding-top: 0.75rem;
-  }
-}
-
-/*
  * # modules/button-arrow.css
- * 矢印アイコンのスタイルを定義
+ * ボタンのスタイルを定義
+ * left, rightのクラスを指定すると矢印がつく
+ *
+ * Example:
+ * <label class="button left">
+ *   <a href="#">前へ</a>
+ * </label>
  */
 
 /*
@@ -1778,6 +1693,191 @@ label.button.right a {
   label.button a {
     padding-top: 0;
   } 
+}
+
+/*
+ * # modules/select.css
+ * formに関する定義
+ */
+
+/*
+ * config
+ */
+
+:root {
+  
+  /* theme */
+}
+
+/*
+ * select
+ */
+
+select {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+
+  font-size: 12.8px;
+  font-size: 1.28rem;
+  height: 24px;
+  height: 2.4rem;
+  vertical-align: middle;
+  padding: 0 24px 0 14px;
+  padding: 0 2.4rem 0 1.4rem;
+  padding-top: 1.4px;
+  padding-top: 0.14rem;
+  color: rgb(0, 0, 0);
+  background-color: rgb(245, 245, 245);
+  background: -webkit-gradient(
+    linear,
+    left top, left bottom,
+    from(white),
+    to(rgb(245, 245, 245))
+  );
+  background: linear-gradient(
+    to bottom,
+    white 0%,
+    rgb(245, 245, 245) 100%
+  );
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 0.5rem;
+}
+
+select:focus {
+  outline: none;
+}
+
+label.select {
+  position: relative;
+}
+
+label.select:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 40%;
+  right: 14px;
+  right: 1.4rem;
+  width: 8.727px;
+  width: 0.87273rem;
+  height: 8.727px;
+  height: 0.87273rem;
+  border: 2px solid;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: rgb(0, 0, 0);
+  border-left-color: rgb(0, 0, 0);
+  -webkit-transform: translateY(-50%) rotate(-45deg);
+          transform: translateY(-50%) rotate(-45deg);
+  pointer-events: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+/*
+ * for MS Edge
+ */
+
+@supports (-ms-ime-align: auto) {
+  label.select:after {
+    top: 43%;
+  } 
+}
+
+/*
+ * # modules/table.css
+ * tableに関する定義
+ * 
+ * 各カラムの横幅の定義は
+ * stylesheet/pagesの各ファイルで設定
+ */
+
+/*
+ * config
+ */
+
+:root {
+  /* theme */
+}
+
+/*
+ * .table-container
+ */
+
+.table-container {
+  font-size: 12.6px;
+  font-size: 1.26rem;
+  padding-bottom: 20px;
+  padding-bottom: 2rem;
+}
+
+/*
+ * table
+ */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-bottom: 1rem
+}
+
+table a, table a:hover {
+  text-decoration: none;
+}
+
+table i {
+  margin-right: 5px;
+  margin-right: 0.5rem;
+  font-size: 16.8px;
+  font-size: 1.68rem;
+  vertical-align: text-bottom;
+}
+
+table th, table td {
+  padding: 5px 0;
+  padding: 0.5rem 0;
+}
+
+table th:first-child, table td:first-child {
+  padding-left: 10px;
+  padding-left: 1rem;
+}
+
+table th:last-child, table td:last-child {
+  padding-right: 10px;
+  padding-right: 1rem;
+}
+
+table th {
+  font-weight: normal;
+  border-top: 1px solid rgba(212, 213, 213, 0.7);
+  border-bottom: 1px solid #333333;
+  background-color: rgba(213, 229, 233, 0.09999999999999998);
+}
+
+table td {
+  border-bottom: 1px solid rgba(212, 213, 213, 0.7);
+  background-color: white;
+}
+
+/*
+ * for MS Edge
+ */
+
+@supports (-ms-ime-align: auto) {
+  table i:before {
+    vertical-align: 3px;
+  }
+
+  table td {
+    padding-top: 0.75rem;
+  }
 }
 
 /*

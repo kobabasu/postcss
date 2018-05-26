@@ -23,7 +23,7 @@
 @import '../../src/modules/masonry.css';
 
 /*
- * options
+ * src/modules
  */
 @import '../../src/modules/loading.css';
 @import '../../src/modules/inview.css';
@@ -36,6 +36,11 @@
 @import '../../src/modules/ripple.css';
 
 /*
+ * stylesheet/modules
+ */
+@import '../modules/table.css';
+
+/*
  * layouts
  */
 @import '../layouts/article.css';
@@ -43,7 +48,6 @@
 @import '../layouts/globalfooter.css';
 @import '../layouts/globalheader.css';
 @import '../layouts/globalnav.css';
-@import '../layouts/table.css';
 @import '../layouts/topics.css';
 
 /*

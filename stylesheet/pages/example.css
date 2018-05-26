@@ -38,6 +38,8 @@
 /*
  * stylesheet/modules
  */
+@import '../modules/button.css';
+@import '../modules/form.css';
 @import '../modules/table.css';
 
 /*

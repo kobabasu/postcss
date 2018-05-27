@@ -18,7 +18,7 @@
   --button-border-radius: var(--tiny-spacing);
   
   /* theme */
-  --button-font-size: calc(var(--base-font-size) * 0.8);
+  --button-font-size: calc(var(--base-font-size) * 0.7);
   --button-background-color: var(--brand-primary);
   --button-color: color(
     var(--button-background-color)

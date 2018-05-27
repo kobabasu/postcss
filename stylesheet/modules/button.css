@@ -38,7 +38,7 @@ label.button {
     display: block;
     content: '';
     position: absolute;
-    top: 55%;
+    top: 50%;
     width: calc(var(--button-height) / 2.75);
     height: calc(var(--button-height) / 2.75);
     transform: translateY(-50%) rotate(45deg);
@@ -50,7 +50,6 @@ label.button {
     height: var(--button-height);
     line-height: var(--button-height);
     padding: 0 var(--button-padding);
-    padding-top: calc(var(--button-padding) / 10);
     color: var(--button-color);
     text-decoration: none;
     font-size: var(--button-font-size);

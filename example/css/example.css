@@ -1612,6 +1612,7 @@ a.scrolltop:visited {
  */
 
 label.button {
+  display: inline-block;
   position: relative
 }
 
@@ -1697,7 +1698,15 @@ label.button.right a {
 
 /*
  * # modules/select.css
- * formに関する定義
+ * formのselectのスタイルを変更
+ *
+ * Example:
+ * <label class="select">
+ *   <select>
+ *       <option value="10">10月</option>
+ *       <option value="11">11月</option>
+ *   </select>
+ * </label>
  */
 
 /*
@@ -2072,14 +2081,97 @@ article.articlefixed {
   width: 100%;
   height: 50px;
   height: 5rem;
-  padding: 0 20px;
-  padding: 0 2rem;
-  vertical-align: middle;
+  line-height: 30px;
+  line-height: 3rem;
+  font-size: 14px;
+  font-size: 1.4rem;
 
   color: #333333;
   background-color: rgb(245, 245, 245);
   border-top: 3px solid #195fa5;
   border-bottom: 1px solid rgb(189, 189, 189);
+  vertical-align: middle
+}
+
+.globalheader a, .globalheader a:hover {
+  text-decoration: none;
+}
+
+.globalheader > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/*
+ * .globalheader > div.header-left
+ */
+
+.globalheader > div.header-left {
+  width: 30%;
+  padding-left: 20px;
+  padding-left: 2rem;
+  text-align: left;
+  background-color: rgba(213, 229, 233, 0.44999999999999996);
+}
+
+/*
+ * .globalheader > div.header-left
+ */
+
+.globalheader > div.header-right {
+  padding-right: 20px;
+  padding-right: 2rem;
+  text-align: right;
+}
+
+/*
+ * .globalheader ul
+ */
+
+.globalheader > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  max-width: 960px;
+  margin: 0 auto;
+  padding-top: calc(1rem - 3px)
+}
+
+.globalheader > ul li {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  line-height: 30px;
+  line-height: 3rem;
+  text-align: center;
+  border-left: 1px solid rgb(189, 189, 189);
+}
+
+.globalheader > ul li:last-child {
+  border-right: 1px solid rgb(189, 189, 189);
+}
+
+/*
+ * .globalheader div > ul
+ */
+
+.globalheader div > ul {
+  display: inline-block;
+  padding: 0 10px;
+  padding: 0 1rem
+}
+
+.globalheader div > ul li {
+  display: inline-block;
+  text-align: center;
+  padding: 0 20px;
+  padding: 0 2rem;
+}
+
+.globalheader div > ul li + li {
+  border-left: 1px solid rgb(189, 189, 189);
 }
 
 /*
@@ -2087,7 +2179,6 @@ article.articlefixed {
  */
 
 .globalheader h1.trademark {
-  display: table-cell;
   width: 80px;
   height: 20px;
   background-size: contain;
@@ -2098,31 +2189,6 @@ article.articlefixed {
 .globalheader h1.trademark a {
   display: block;
   line-height: 20px;
-}
-
-/*
- * header-right
- */
-
-.globalheader > div.header-right {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: right
-}
-
-.globalheader > div.header-right li {
-  display: inline-block;
-  font-size: 14px;
-  font-size: 1.4rem;
-  border-right: 1px solid rgb(189, 189, 189);
-  padding: 0 20px;
-  padding: 0 2rem;
-  border-right: 1px solid rgb(189, 189, 189);
-}
-
-.globalheader > div.header-right li:last-child {
-  border-right: none;
-  padding-right: 0;
 }
 
 @media only screen and (max-width: 767px) {
@@ -2149,6 +2215,52 @@ article.articlefixed {
 /*
  * # modules/globalnav.css
  * globalnavのスタイルを定義
+ * globalheaderと同じコード
+ *
+ *<nav class="globalnav slidemenu">
+ *  <div class="header-left">
+ *    <h1 
+ *      class="trademark"
+ *      data-original-background="imgs/example.png"
+ *      >
+ *      <a href="#">
+ *        <img
+ *          src="imgs/clear.png"
+ *          alt="PostCss"
+ *          width="80"
+ *          height="20"
+ *          />
+ *      </a>
+ *    </h1>
+ *  </div>
+ *  
+ *  <div class="header-right">
+ *    <ul>
+ *      <li><a href="#">サイトマップ</a></li>
+ *      <li><a href="#">採用情報</a></li>
+ *    </ul>
+ *  
+ *    <label class="select">
+ *      <select>
+ *        <option value="taro">太郎</option>
+ *        <option value="hanako">花子</option>
+ *      </select>
+ *    </label>
+ *  
+ *    <label class="button">
+ *      <a href="#">ログアウト</a>
+ *    </label>
+ *  </div>
+ *</header>
+ *
+ * もしくは直下のul,liでflexboxとなる
+ *
+ *<nav class="globalnav slidemenu">
+ *  <ul>
+ *    <li><a href="index.html">Home</a></li>
+ *    <li><a href="#">会社概要</a></li>
+ *  </ul>
+ *</nav>
  */
 
 /*
@@ -2167,21 +2279,68 @@ article.articlefixed {
 .globalnav {
   position: fixed;
   display: table;
-  top: 0;
+  top: 50px;
+  top: 5rem;
   width: 100%;
   height: 50px;
   height: 5rem;
-  margin-top: 50px;
-  margin-top: 5rem;
+  line-height: 30px;
+  line-height: 3rem;
+  font-size: 14px;
+  font-size: 1.4rem;
+
+  color: #333333;
   background-color: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid rgb(138, 138, 138)
+  border-top: 0px solid #195fa5;
+  border-bottom: 1px solid rgb(138, 138, 138);
+  vertical-align: middle
 }
 
+.globalnav a, .globalnav a:hover {
+  text-decoration: none;
+}
+
+.globalnav > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/*
+ * .globalnav > div.header-left
+ */
+
+.globalnav > div.header-left {
+  width: 30%;
+  padding-left: 20px;
+  padding-left: 2rem;
+  text-align: left;
+  background-color: rgba(213, 229, 233, 0.44999999999999996);
+}
+
+/*
+ * .globalnav > div.header-left
+ */
+
+.globalnav > div.header-right {
+  padding-right: 20px;
+  padding-right: 2rem;
+  text-align: right;
+}
+
+/*
+ * .globalnav ul
+ */
+
 .globalnav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+  max-width: 960px;
+  margin: 0 auto;
   padding-top: 10px;
-  padding-top: 1rem;
+  padding-top: 1rem
 }
 
 .globalnav ul li {
@@ -2198,13 +2357,63 @@ article.articlefixed {
   border-right: 1px solid rgb(189, 189, 189);
 }
 
-.globalnav ul li a, .globalnav ul li a:hover {
-  font-size: 14px;
-  font-size: 1.4rem;
-  line-height: 18px;
-  line-height: 1.8rem;
-  text-decoration: none;
-  color: #333333;
+/*
+ * .globalheader div > ul
+ */
+
+.globalnav div > ul {
+  display: inline-block;
+  padding: 0 10px;
+  padding: 0 1rem
+}
+
+.globalnav div > ul li {
+  display: inline-block;
+  text-align: center;
+  padding: 0 20px;
+  padding: 0 2rem;
+}
+
+.globalnav div > ul li + li {
+  border-left: 1px solid rgb(189, 189, 189);
+}
+
+/*
+ * h1.trademark
+ */
+
+.globalnav h1.trademark {
+  width: 80px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center left
+}
+
+.globalnav h1.trademark a {
+  display: block;
+  line-height: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  /*
+   * h1.trademark
+   */
+  .globalnav h1.trademark {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  /*
+   * div.header-right
+   */
+  .globalnav > div.header-right {
+    display: none;
+  }
 }
 
 /*

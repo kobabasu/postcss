@@ -246,33 +246,17 @@
       注釈の色ははmodules/decoration.cssの.noteを使っています
     </p>
   </div>
-
-  <div class="inner-container">
-    <label class="select">
-      <select>
-          <option>10月</option>
-          <option>11月</option>
-          <option>12月</option>
-      </select>
-    </label>
-
-    <label class="button left">
-      <a href="#">前へ</a>
-    </label>
-
-    <label class="button right">
-      <a href="#">次へ</a>
-    </label>
-  </div>
 </article>
 <!--}}}-->
 
 <header class="globalheader"><!--{{{-->
-  <h1 id="scrolltop" class="trademark" data-original-background="imgs/example.png">
-    <a href="https://google.com/">
-      <img src="imgs/clear.png" alt="PostCss" width="80" height="20" />
-    </a>
-  </h1>
+  <div class="header-left">
+    <h1 id="scrolltop" class="trademark" data-original-background="imgs/example.png">
+      <a href="https://google.com/">
+        <img src="imgs/clear.png" alt="PostCss" width="80" height="20" />
+      </a>
+    </h1>
+  </div>
 
   <div class="header-right">
     <ul>
@@ -280,11 +264,22 @@
       ><li><a href="#">採用情報</a></li
       ><li><a href="#">サイトポリシー</a></li>
     </ul>
+
+    <label class="select">
+      <select>
+        <option value="taro">太郎</option>
+        <option value="hanako">花子</option>
+      </select>
+    </label>
+
+    <label class="button">
+      <a href="#">ログアウト</a>
+    </label>
   </div>
 </header><!--}}}-->
 
 <nav class="globalnav slidemenu"><!--{{{-->
-  <ul class="flexbox-container inner-container">
+  <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="#">会社概要</a></li>
     <li><a href="#">商品ラインアップ</a></li>

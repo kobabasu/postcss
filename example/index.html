@@ -23,11 +23,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<link rel="stylesheet" media="all" href="css/style.min.css">
-<link rel="stylesheet" media="all" href="css/example.min.css">
+<link rel="stylesheet" media="all" href="/postcss/example/css/style.min.css">
+<link rel="stylesheet" media="all" href="/postcss/example/css/example.min.css">
 
-<script src="js/ready.min.js"></script>
-<script src="js/ready-settings.js"></script>
+<script src="/postcss/example/js/ready.min.js"></script>
+<script src="/postcss/example/js/ready-settings.js"></script>
 
 <!-- DOMContentLoaded end TCP connection 5/6 (14Kb) -->
 
@@ -210,15 +210,53 @@
       <p>親譲おやゆずりの無鉄砲むてっぽう</p>
     </div>
   </div>
+
+  <div class="table-container inner-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名前</th>
+          <th>記事</th>
+          <th>内容</th>
+          <th>投稿時刻</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>1021</td>
+          <td><a href="#"><i class="icon-twitter"></i>山田太郎</a></td>
+          <td>自動ドアのメンテ</td>
+          <td>対応可能です</td>
+          <td>01/31 14:00</td>
+        </tr>
+
+        <tr>
+          <td>1022</td>
+          <td><a href="#"><i class="icon-twitter"></i>山田花子</a></td>
+          <td>自動ドアのメンテ</td>
+          <td>対応可能です</td>
+          <td>01/31 12:00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="note">※ 
+      注釈の色ははmodules/decoration.cssの.noteを使っています
+    </p>
+  </div>
 </article>
 <!--}}}-->
 
 <header class="globalheader"><!--{{{-->
-  <h1 id="scrolltop" class="trademark" data-original-background="imgs/example.png">
-    <a href="https://google.com/">
-      <img src="imgs/clear.png" alt="PostCss" width="80" height="20" />
-    </a>
-  </h1>
+  <div class="header-left">
+    <h1 id="scrolltop" class="trademark" data-original-background="imgs/example.png">
+      <a href="https://google.com/">
+        <img src="imgs/clear.png" alt="PostCss" width="80" height="20" />
+      </a>
+    </h1>
+  </div>
 
   <div class="header-right">
     <ul>
@@ -226,11 +264,22 @@
       ><li><a href="#">採用情報</a></li
       ><li><a href="#">サイトポリシー</a></li>
     </ul>
+
+    <label class="select">
+      <select>
+        <option value="taro">太郎</option>
+        <option value="hanako">花子</option>
+      </select>
+    </label>
+
+    <label class="button">
+      <a href="#">ログアウト</a>
+    </label>
   </div>
 </header><!--}}}-->
 
 <nav class="globalnav slidemenu"><!--{{{-->
-  <ul class="flexbox-container inner-container">
+  <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="#">会社概要</a></li>
     <li><a href="#">商品ラインアップ</a></li>

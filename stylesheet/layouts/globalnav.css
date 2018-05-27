@@ -1,22 +1,79 @@
 /*
  * # modules/globalnav.css
  * globalnavのスタイルを定義
+ * globalheaderと同じコード
+ *
+ *<nav class="globalnav slidemenu">
+ *  <div class="header-left">
+ *    <h1 
+ *      class="trademark"
+ *      data-original-background="imgs/example.png"
+ *      >
+ *      <a href="#">
+ *        <img
+ *          src="imgs/clear.png"
+ *          alt="PostCss"
+ *          width="80"
+ *          height="20"
+ *          />
+ *      </a>
+ *    </h1>
+ *  </div>
+ *  
+ *  <div class="header-right">
+ *    <ul>
+ *      <li><a href="#">サイトマップ</a></li>
+ *      <li><a href="#">採用情報</a></li>
+ *    </ul>
+ *  
+ *    <label class="select">
+ *      <select>
+ *        <option value="taro">太郎</option>
+ *        <option value="hanako">花子</option>
+ *      </select>
+ *    </label>
+ *  
+ *    <label class="button">
+ *      <a href="#">ログアウト</a>
+ *    </label>
+ *  </div>
+ *</header>
+ *
+ * もしくは直下のul,liでflexboxとなる
+ *
+ *<nav class="globalnav slidemenu">
+ *  <ul>
+ *    <li><a href="index.html">Home</a></li>
+ *    <li><a href="#">会社概要</a></li>
+ *  </ul>
+ *</nav>
  */
 
 /*
  * config
  */
 :root {
+  --globalnav-top: 5rem;
+  --globalnav-max-width: 960px;
   --globalnav-height: 5rem;
-  --globalnav-header-height: 5rem;
+  --globalnav-border-top-size: 0px;
+  --globalnav-line-height: 3rem;
+  --globalnav-left-width: 30%;
+  --globalnav-trademark-width: 80px;
+  --globalnav-trademark-height: 20px;
 
   /* theme */
+  --globalnav-color: var(--color-text);
+  --globalnav-font-size: var(--small-font-size);
   --globalnav-background-color: color(var(--color-bg) alpha(-5%));  
+  --globalnav-h1-background-color: color(
+    var(--color-corp-fourth) alpha(-55%)
+  );
+
+  --globalnav-border-top: var(--globalnav-border-top-size) solid var(--color-corp);
   --globalnav-border-bottom: 1px solid var(--gray-darker);
   --globalnav-li-border: 1px solid var(--gray);
-  --globalnav-a-font-size: var(--small-font-size);
-  --globalnav-a-line-height: var(--small-line-height);
-  --globalnav-a-color: var(--color-text);
+  --globalnav-li-border-right: 1px solid var(--gray);
 }
 
 
@@ -25,33 +82,125 @@
  */
 .globalnav {
   position: fixed;
-  top: 0;
+  display: table;
+  top: var(--globalnav-top);
   width: 100%;
   height: var(--globalnav-height);
-  margin-top: var(--globalnav-header-height);
+  line-height: var(--globalnav-line-height);
+  font-size: var(--globalnav-font-size);
+
+  color: var(--globalnav-color);
   background-color: var(--globalnav-background-color);
+  border-top: var(--globalnav-border-top);
   border-bottom: var(--globalnav-border-bottom);
+  vertical-align: middle;
 
-  & ul {
-    flex-wrap: nowrap;
-    padding-top: 1rem;
+  & a, & a:hover {
+    text-decoration: none;
+  }
 
-    & li {
-      flex: 1;
-      line-height: 3rem;
-      text-align: center;
-      border-left: var(--globalnav-li-border);
+  & > div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
 
-      &:last-child {
-        border-right: var(--globalnav-li-border);
-      }
+/*
+ * .globalnav > div.header-left
+ */
+.globalnav > div.header-left {
+  width: var(--globalnav-left-width);
+  padding-left: var(--base-spacing);
+  text-align: left;
+  background-color: var(--globalnav-h1-background-color);
+}
 
-      & a, & a:hover {
-        font-size: var(--globalnav-a-font-size);
-        line-height: var(--globalnav-a-line-height);
-        text-decoration: none;
-        color: var(--globalnav-a-color);
-      }
+/*
+ * .globalnav > div.header-left
+ */
+.globalnav > div.header-right {
+  padding-right: var(--base-spacing);
+  text-align: right;
+}
+
+/*
+ * .globalnav ul
+ */
+.globalnav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: var(--globalnav-max-width);
+  margin: 0 auto;
+  padding-top: calc(
+    (var(--globalnav-height) -
+    var(--globalnav-line-height)) / 2
+    - var(--globalnav-border-top-size)
+  );
+
+  & li {
+    flex: 1;
+    line-height: var(--globalnav-line-height);
+    text-align: center;
+    border-left: var(--globalnav-li-border);
+
+    &:last-child {
+      border-right: var(--globalnav-li-border);
     }
+  }
+}
+
+/*
+ * .globalheader div > ul
+ */
+.globalnav div > ul {
+  display: inline-block;
+  padding: 0 var(--small-spacing);
+
+  & li {
+    display: inline-block;
+    text-align: center;
+    padding: 0 var(--base-spacing);
+
+    & + li {
+      border-left: var(--globalnav-li-border);
+    }
+  }
+}
+
+/*
+ * h1.trademark
+ */
+.globalnav h1.trademark {
+  width: var(--globalnav-trademark-width);
+  height: var(--globalnav-trademark-height);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center left;
+
+  & a {
+    display: block;
+    line-height: var(--globalnav-trademark-height);
+  }
+}
+
+
+@media (--sp-viewport) {
+  /*
+   * h1.trademark
+   */
+  .globalnav h1.trademark {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  /*
+   * div.header-right
+   */
+  .globalnav > div.header-right {
+    display: none;
   }
 }

@@ -1,0 +1,85 @@
+/*
+ * # modules/table.css
+ * tableに関する定義
+ * 
+ * 各カラムの横幅の定義は
+ * stylesheet/pagesの各ファイルで設定
+ */
+
+/*
+ * config
+ */
+:root {
+  /* theme */
+  --table-font-size: calc(var(--small-font-size) * 0.9);
+  --table-background-color: white;
+  --table-th-background-color: color(var(--color-corp-fourth) alpha(-90%));
+  --table-border: 1px solid color(var(--gray-light) alpha(-30%));
+  --table-separator: 1px solid var(--color-text);
+  --table-th-font-weight: normal;
+}
+
+
+/*
+ * .table-container
+ */
+.table-container {
+  font-size: var(--table-font-size);
+  padding-bottom: var(--base-spacing);
+}
+
+/*
+ * table
+ */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: var(--small-spacing);
+
+  & a, & a:hover {
+    text-decoration: none;
+  }
+
+  & i {
+    margin-right: var(--tiny-spacing);
+    font-size: calc(var(--base-font-size) * 1.05);
+    vertical-align: text-bottom;
+  }
+
+  & th, & td {
+    padding: var(--tiny-spacing) 0;
+  }
+
+  & th:first-child, & td:first-child {
+    padding-left: var(--small-spacing);
+  }
+
+  & th:last-child, & td:last-child {
+    padding-right: var(--small-spacing);
+  }
+
+  & th {
+    font-weight: var(--table-th-font-weight);
+    border-top: var(--table-border);
+    border-bottom: var(--table-separator);
+    background-color: var(--table-th-background-color);
+  }
+
+  & td {
+    border-bottom: var(--table-border);
+    background-color: var(--table-background-color);
+  }
+}
+
+/*
+ * for MS Edge
+ */
+@supports (-ms-ime-align: auto) {
+  table i:before {
+    vertical-align: 3px;
+  }
+
+  table td {
+    padding-top: calc(var(--tiny-spacing) * 1.5);
+  }
+}

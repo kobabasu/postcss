@@ -1,0 +1,95 @@
+/*
+ * # modules/select.css
+ * formのselectのスタイルを変更
+ *
+ * Example:
+ * <label class="select">
+ *   <select>
+ *       <option value="10">10月</option>
+ *       <option value="11">11月</option>
+ *   </select>
+ * </label>
+ */
+
+/*
+ * config
+ */
+:root {
+  --select-height: var(--base-line-height);
+  --select-padding: var(--small-font-size);
+  --select-border-radius: var(--tiny-spacing);
+  
+  /* theme */
+  --select-font-size: calc(var(--base-font-size) * 0.8);
+  --select-background-color: var(--gray-lighter);
+  --select-border: 1px solid var(--gray);
+  --select-color: color(
+    var(--select-background-color)
+    contrast(100%)
+  );
+}
+
+
+/*
+ * select
+ */
+select {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+
+  font-size: var(--select-font-size);
+  height: var(--select-height);
+  vertical-align: middle;
+  padding: 0 var(--select-height) 0 var(--select-padding);
+  padding-top: calc(var(--select-padding) / 10);
+  color: var(--select-color);
+  background-color: var(--select-background-color);
+  background: linear-gradient(
+    to bottom,
+    white 0%,
+    var(--select-background-color) 100%
+  );
+  border: var(--select-border);
+  border-radius: var(--select-border-radius);
+}
+
+select:focus {
+  outline: none;
+}
+
+label.select {
+  position: relative;
+}
+
+label.select:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 40%;
+  right: var(--select-padding);
+  width: calc(var(--select-height) / 2.75);
+  height: calc(var(--select-height) / 2.75);
+  border: 2px solid;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: var(--select-color);
+  border-left-color: var(--select-color);
+  transform: translateY(-50%) rotate(-45deg);
+  pointer-events: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+/*
+ * for MS Edge
+ */
+@supports (-ms-ime-align: auto) {
+  label.select:after {
+    top: 43%;
+  } 
+}

@@ -287,11 +287,11 @@ input {
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('../../../stylesheet/fonts/icomoon/fonts/icomoon.eot');
-  src:  url('../../../stylesheet/fonts/icomoon/fonts/icomoon.eot#iefix') format('embedded-opentype'),
-    url('../../../stylesheet/fonts/icomoon/fonts/icomoon.ttf') format('truetype'),
-    url('../../../stylesheet/fonts/icomoon/fonts/icomoon.woff') format('woff'),
-    url('../../../stylesheet/fonts/icomoon/fonts/icomoon.svg#icomoon') format('svg');
+  src:  url('../../stylesheet/fonts/icomoon/fonts/icomoon.eot');
+  src:  url('../../stylesheet/fonts/icomoon/fonts/icomoon.eot#iefix') format('embedded-opentype'),
+    url('../../stylesheet/fonts/icomoon/fonts/icomoon.ttf') format('truetype'),
+    url('../../stylesheet/fonts/icomoon/fonts/icomoon.woff') format('woff'),
+    url('../../stylesheet/fonts/icomoon/fonts/icomoon.svg#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -982,7 +982,7 @@ a.noeffect, button.noeffect {
 }
 
 /*
- * options
+ * src/modules
  */
 
 /*
@@ -1240,7 +1240,7 @@ a.scrolltop:visited {
   }
 }
 
-/* @import '../../postcss/src/modules/humberger.css'; */
+/* @import '../../src/modules/humberger.css'; */
 
 /*
  * # modules/hero.css
@@ -1584,12 +1584,322 @@ a.scrolltop:visited {
 }
 
 /*
+ * stylesheet/modules
+ */
+
+/*
+ * # modules/button-arrow.css
+ * ボタンのスタイルを定義
+ * left, rightのクラスを指定すると矢印がつく
+ *
+ * Example:
+ * <label class="button left">
+ *   <a href="#">前へ</a>
+ * </label>
+ */
+
+/*
+ * config
+ */
+
+:root {
+  
+  /* theme */
+}
+
+/*
+ * label.button
+ */
+
+label.button {
+  display: inline-block;
+  position: relative
+}
+
+label.button:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 55%;
+  width: 8.727px;
+  width: 0.87273rem;
+  height: 8.727px;
+  height: 0.87273rem;
+  -webkit-transform: translateY(-50%) rotate(45deg);
+          transform: translateY(-50%) rotate(45deg);
+  pointer-events: none;
+}
+
+label.button a {
+  display: inline-block;
+  height: 24px;
+  height: 2.4rem;
+  line-height: 24px;
+  line-height: 2.4rem;
+  padding: 0 14px;
+  padding: 0 1.4rem;
+  padding-top: 1.4px;
+  padding-top: 0.14rem;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 12.8px;
+  font-size: 1.28rem;
+  background-color: #008bd0;
+  border-radius: 0.5rem;
+}
+
+/*
+ * label.button.left
+ */
+
+label.button.left:after {
+  border: 2px solid;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: rgb(255, 255, 255);
+  border-left-color: rgb(255, 255, 255);
+  left: 14px;
+  left: 1.4rem;
+}
+
+label.button.left a {
+  padding-left: 24px;
+  padding-left: 2.4rem;
+}
+
+/*
+ * label.button.right
+ */
+
+label.button.right:after {
+  border: 2px solid;
+  border-top-color: rgb(255, 255, 255);
+  border-right-color: rgb(255, 255, 255);
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  right: 14px;
+  right: 1.4rem;
+}
+
+label.button.right a {
+  padding-right: 24px;
+  padding-right: 2.4rem;
+}
+
+/*
+ * for MS Edge
+ */
+
+@supports (-ms-ime-align: auto) {
+  label.button a {
+    padding-top: 0;
+  } 
+}
+
+/*
+ * # modules/select.css
+ * formのselectのスタイルを変更
+ *
+ * Example:
+ * <label class="select">
+ *   <select>
+ *       <option value="10">10月</option>
+ *       <option value="11">11月</option>
+ *   </select>
+ * </label>
+ */
+
+/*
+ * config
+ */
+
+:root {
+  
+  /* theme */
+}
+
+/*
+ * select
+ */
+
+select {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+
+  font-size: 12.8px;
+  font-size: 1.28rem;
+  height: 24px;
+  height: 2.4rem;
+  vertical-align: middle;
+  padding: 0 24px 0 14px;
+  padding: 0 2.4rem 0 1.4rem;
+  padding-top: 1.4px;
+  padding-top: 0.14rem;
+  color: rgb(0, 0, 0);
+  background-color: rgb(245, 245, 245);
+  background: -webkit-gradient(
+    linear,
+    left top, left bottom,
+    from(white),
+    to(rgb(245, 245, 245))
+  );
+  background: linear-gradient(
+    to bottom,
+    white 0%,
+    rgb(245, 245, 245) 100%
+  );
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 0.5rem;
+}
+
+select:focus {
+  outline: none;
+}
+
+label.select {
+  position: relative;
+}
+
+label.select:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 40%;
+  right: 14px;
+  right: 1.4rem;
+  width: 8.727px;
+  width: 0.87273rem;
+  height: 8.727px;
+  height: 0.87273rem;
+  border: 2px solid;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: rgb(0, 0, 0);
+  border-left-color: rgb(0, 0, 0);
+  -webkit-transform: translateY(-50%) rotate(-45deg);
+          transform: translateY(-50%) rotate(-45deg);
+  pointer-events: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+/*
+ * for MS Edge
+ */
+
+@supports (-ms-ime-align: auto) {
+  label.select:after {
+    top: 43%;
+  } 
+}
+
+/*
+ * # modules/table.css
+ * tableに関する定義
+ * 
+ * 各カラムの横幅の定義は
+ * stylesheet/pagesの各ファイルで設定
+ */
+
+/*
+ * config
+ */
+
+:root {
+  /* theme */
+}
+
+/*
+ * .table-container
+ */
+
+.table-container {
+  font-size: 12.6px;
+  font-size: 1.26rem;
+  padding-bottom: 20px;
+  padding-bottom: 2rem;
+}
+
+/*
+ * table
+ */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-bottom: 1rem
+}
+
+table a, table a:hover {
+  text-decoration: none;
+}
+
+table i {
+  margin-right: 5px;
+  margin-right: 0.5rem;
+  font-size: 16.8px;
+  font-size: 1.68rem;
+  vertical-align: text-bottom;
+}
+
+table th, table td {
+  padding: 5px 0;
+  padding: 0.5rem 0;
+}
+
+table th:first-child, table td:first-child {
+  padding-left: 10px;
+  padding-left: 1rem;
+}
+
+table th:last-child, table td:last-child {
+  padding-right: 10px;
+  padding-right: 1rem;
+}
+
+table th {
+  font-weight: normal;
+  border-top: 1px solid rgba(212, 213, 213, 0.7);
+  border-bottom: 1px solid #333333;
+  background-color: rgba(213, 229, 233, 0.09999999999999998);
+}
+
+table td {
+  border-bottom: 1px solid rgba(212, 213, 213, 0.7);
+  background-color: white;
+}
+
+/*
+ * for MS Edge
+ */
+
+@supports (-ms-ime-align: auto) {
+  table i:before {
+    vertical-align: 3px;
+  }
+
+  table td {
+    padding-top: 0.75rem;
+  }
+}
+
+/*
  * layouts
  */
 
 /*
  * # layouts/article.css
  * articleに関する定義
+ */
+
+/*
+ * config
  */
 
 :root {
@@ -1771,14 +2081,97 @@ article.articlefixed {
   width: 100%;
   height: 50px;
   height: 5rem;
-  padding: 0 20px;
-  padding: 0 2rem;
-  vertical-align: middle;
+  line-height: 30px;
+  line-height: 3rem;
+  font-size: 14px;
+  font-size: 1.4rem;
 
   color: #333333;
   background-color: rgb(245, 245, 245);
   border-top: 3px solid #195fa5;
   border-bottom: 1px solid rgb(189, 189, 189);
+  vertical-align: middle
+}
+
+.globalheader a, .globalheader a:hover {
+  text-decoration: none;
+}
+
+.globalheader > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/*
+ * .globalheader > div.header-left
+ */
+
+.globalheader > div.header-left {
+  width: 30%;
+  padding-left: 20px;
+  padding-left: 2rem;
+  text-align: left;
+  background-color: rgba(213, 229, 233, 0.44999999999999996);
+}
+
+/*
+ * .globalheader > div.header-left
+ */
+
+.globalheader > div.header-right {
+  padding-right: 20px;
+  padding-right: 2rem;
+  text-align: right;
+}
+
+/*
+ * .globalheader ul
+ */
+
+.globalheader > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  max-width: 960px;
+  margin: 0 auto;
+  padding-top: calc(1rem - 3px)
+}
+
+.globalheader > ul li {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  line-height: 30px;
+  line-height: 3rem;
+  text-align: center;
+  border-left: 1px solid rgb(189, 189, 189);
+}
+
+.globalheader > ul li:last-child {
+  border-right: 1px solid rgb(189, 189, 189);
+}
+
+/*
+ * .globalheader div > ul
+ */
+
+.globalheader div > ul {
+  display: inline-block;
+  padding: 0 10px;
+  padding: 0 1rem
+}
+
+.globalheader div > ul li {
+  display: inline-block;
+  text-align: center;
+  padding: 0 20px;
+  padding: 0 2rem;
+}
+
+.globalheader div > ul li + li {
+  border-left: 1px solid rgb(189, 189, 189);
 }
 
 /*
@@ -1786,7 +2179,6 @@ article.articlefixed {
  */
 
 .globalheader h1.trademark {
-  display: table-cell;
   width: 80px;
   height: 20px;
   background-size: contain;
@@ -1797,31 +2189,6 @@ article.articlefixed {
 .globalheader h1.trademark a {
   display: block;
   line-height: 20px;
-}
-
-/*
- * header-right
- */
-
-.globalheader > div.header-right {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: right
-}
-
-.globalheader > div.header-right li {
-  display: inline-block;
-  font-size: 14px;
-  font-size: 1.4rem;
-  border-right: 1px solid rgb(189, 189, 189);
-  padding: 0 20px;
-  padding: 0 2rem;
-  border-right: 1px solid rgb(189, 189, 189);
-}
-
-.globalheader > div.header-right li:last-child {
-  border-right: none;
-  padding-right: 0;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1848,6 +2215,52 @@ article.articlefixed {
 /*
  * # modules/globalnav.css
  * globalnavのスタイルを定義
+ * globalheaderと同じコード
+ *
+ *<nav class="globalnav slidemenu">
+ *  <div class="header-left">
+ *    <h1 
+ *      class="trademark"
+ *      data-original-background="imgs/example.png"
+ *      >
+ *      <a href="#">
+ *        <img
+ *          src="imgs/clear.png"
+ *          alt="PostCss"
+ *          width="80"
+ *          height="20"
+ *          />
+ *      </a>
+ *    </h1>
+ *  </div>
+ *  
+ *  <div class="header-right">
+ *    <ul>
+ *      <li><a href="#">サイトマップ</a></li>
+ *      <li><a href="#">採用情報</a></li>
+ *    </ul>
+ *  
+ *    <label class="select">
+ *      <select>
+ *        <option value="taro">太郎</option>
+ *        <option value="hanako">花子</option>
+ *      </select>
+ *    </label>
+ *  
+ *    <label class="button">
+ *      <a href="#">ログアウト</a>
+ *    </label>
+ *  </div>
+ *</header>
+ *
+ * もしくは直下のul,liでflexboxとなる
+ *
+ *<nav class="globalnav slidemenu">
+ *  <ul>
+ *    <li><a href="index.html">Home</a></li>
+ *    <li><a href="#">会社概要</a></li>
+ *  </ul>
+ *</nav>
  */
 
 /*
@@ -1865,21 +2278,69 @@ article.articlefixed {
 
 .globalnav {
   position: fixed;
-  top: 0;
+  display: table;
+  top: 50px;
+  top: 5rem;
   width: 100%;
   height: 50px;
   height: 5rem;
-  margin-top: 50px;
-  margin-top: 5rem;
+  line-height: 30px;
+  line-height: 3rem;
+  font-size: 14px;
+  font-size: 1.4rem;
+
+  color: #333333;
   background-color: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid rgb(138, 138, 138)
+  border-top: 0px solid #195fa5;
+  border-bottom: 1px solid rgb(138, 138, 138);
+  vertical-align: middle
 }
 
+.globalnav a, .globalnav a:hover {
+  text-decoration: none;
+}
+
+.globalnav > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/*
+ * .globalnav > div.header-left
+ */
+
+.globalnav > div.header-left {
+  width: 30%;
+  padding-left: 20px;
+  padding-left: 2rem;
+  text-align: left;
+  background-color: rgba(213, 229, 233, 0.44999999999999996);
+}
+
+/*
+ * .globalnav > div.header-left
+ */
+
+.globalnav > div.header-right {
+  padding-right: 20px;
+  padding-right: 2rem;
+  text-align: right;
+}
+
+/*
+ * .globalnav ul
+ */
+
 .globalnav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+  max-width: 960px;
+  margin: 0 auto;
   padding-top: 10px;
-  padding-top: 1rem;
+  padding-top: 1rem
 }
 
 .globalnav ul li {
@@ -1896,13 +2357,63 @@ article.articlefixed {
   border-right: 1px solid rgb(189, 189, 189);
 }
 
-.globalnav ul li a, .globalnav ul li a:hover {
-  font-size: 14px;
-  font-size: 1.4rem;
-  line-height: 18px;
-  line-height: 1.8rem;
-  text-decoration: none;
-  color: #333333;
+/*
+ * .globalheader div > ul
+ */
+
+.globalnav div > ul {
+  display: inline-block;
+  padding: 0 10px;
+  padding: 0 1rem
+}
+
+.globalnav div > ul li {
+  display: inline-block;
+  text-align: center;
+  padding: 0 20px;
+  padding: 0 2rem;
+}
+
+.globalnav div > ul li + li {
+  border-left: 1px solid rgb(189, 189, 189);
+}
+
+/*
+ * h1.trademark
+ */
+
+.globalnav h1.trademark {
+  width: 80px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center left
+}
+
+.globalnav h1.trademark a {
+  display: block;
+  line-height: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  /*
+   * h1.trademark
+   */
+  .globalnav h1.trademark {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  /*
+   * div.header-right
+   */
+  .globalnav > div.header-right {
+    display: none;
+  }
 }
 
 /*
@@ -2033,4 +2544,33 @@ ul.topics li:before {
     line-height: 2.0rem;
     padding-top: 0.6rem;
   }
+}
+
+/*
+ * table
+ */
+
+table th:nth-child(1),  table td:nth-child(1)  {
+  width:  10%;
+  text-align: left;
+}
+
+table th:nth-child(2),  table td:nth-child(2)  {
+  width: auto;
+  text-align: left;
+}
+
+table th:nth-child(3),  table td:nth-child(3)  {
+  width:  20%;
+  text-align: left;
+}
+
+table th:nth-child(4),  table td:nth-child(4)  {
+  width:  20%;
+  text-align: left;
+}
+
+table th:nth-child(5),  table td:nth-child(5)  {
+  width:  10%;
+  text-align: center;
 }

@@ -36,9 +36,10 @@
   --color-corp:        #195fa5;
   --color-corp-second: #b51c15;
   --color-corp-third:  #fefff8;
+  --color-corp-fourth: #d5e5e9;
 
   /* brand */
-  --brand-primary: #337ab7;
+  --brand-primary: #008bd0;
   --brand-success: #5cb85c;
   --brand-info:    #5bc0de;
   --brand-warning: #f0ad4e;

@@ -7,15 +7,26 @@
  * config
  */
 :root {
+  --globalheader-top: 0;
+  --globalheader-max-width: 960px;
   --globalheader-height: 5rem;
+  --globalheader-border-top-size: 3px;
+  --globalheader-line-height: 3rem;
+  --globalheader-left-width: 30%;
   --globalheader-trademark-width: 80px;
   --globalheader-trademark-height: 20px;
 
   /* theme */
   --globalheader-color: var(--color-text);
+  --globalheader-font-size: var(--small-font-size);
   --globalheader-background-color: var(--gray-lighter);
-  --globalheader-border-top: 3px solid var(--color-corp);
+  --globalheader-h1-background-color: color(
+    var(--color-corp-fourth) alpha(-55%)
+  );
+
+  --globalheader-border-top: var(--globalheader-border-top-size) solid var(--color-corp);
   --globalheader-border-bottom: 1px solid var(--gray);
+  --globalheader-li-border: 1px solid var(--gray);
   --globalheader-li-border-right: 1px solid var(--gray);
 }
 
@@ -26,23 +37,94 @@
 .globalheader {
   position: fixed;
   display: table;
-  top: 0;
+  top: var(--globalheader-top);
   width: 100%;
   height: var(--globalheader-height);
-  padding: 0 var(--base-spacing);
-  vertical-align: middle;
+  line-height: var(--globalheader-line-height);
+  font-size: var(--globalheader-font-size);
 
   color: var(--globalheader-color);
   background-color: var(--globalheader-background-color);
   border-top: var(--globalheader-border-top);
   border-bottom: var(--globalheader-border-bottom);
+  vertical-align: middle;
+
+  & a, & a:hover {
+    text-decoration: none;
+  }
+
+  & > div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+/*
+ * .globalheader > div.header-left
+ */
+.globalheader > div.header-left {
+  width: var(--globalheader-left-width);
+  padding-left: var(--base-spacing);
+  text-align: left;
+  background-color: var(--globalheader-h1-background-color);
+}
+
+/*
+ * .globalheader > div.header-left
+ */
+.globalheader > div.header-right {
+  padding-right: var(--base-spacing);
+  text-align: right;
+}
+
+/*
+ * .globalheader ul
+ */
+.globalheader > ul {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: var(--globalheader-max-width);
+  margin: 0 auto;
+  padding-top: calc(
+    (var(--globalheader-height) -
+    var(--globalheader-line-height)) / 2
+    - var(--globalheader-border-top-size)
+  );
+
+  & li {
+    flex: 1;
+    line-height: var(--globalheader-line-height);
+    text-align: center;
+    border-left: var(--globalheader-li-border);
+
+    &:last-child {
+      border-right: var(--globalheader-li-border);
+    }
+  }
+}
+
+/*
+ * .globalheader div > ul
+ */
+.globalheader div > ul {
+  display: inline-block;
+  padding: 0 var(--small-spacing);
+
+  & li {
+    display: inline-block;
+    text-align: center;
+    padding: 0 var(--base-spacing);
+
+    & + li {
+      border-left: var(--globalheader-li-border);
+    }
+  }
 }
 
 /*
  * h1.trademark
  */
 .globalheader h1.trademark {
-  display: table-cell;
   width: var(--globalheader-trademark-width);
   height: var(--globalheader-trademark-height);
   background-size: contain;
@@ -52,28 +134,6 @@
   & a {
     display: block;
     line-height: var(--globalheader-trademark-height);
-  }
-}
-
-/*
- * header-right
- */
-.globalheader > div.header-right {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: right;
-
-  & li {
-    display: inline-block;
-    font-size: var(--small-font-size);
-    border-right: 1px solid var(--gray);
-    padding: 0 var(--base-spacing);
-    border-right: var(--globalheader-li-border-right);
-  }
-
-  & li:last-child {
-    border-right: none;
-    padding-right: 0;
   }
 }
 

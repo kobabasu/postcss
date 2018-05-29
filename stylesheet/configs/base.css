@@ -189,4 +189,8 @@ i {
  */
 input {
   border: var(--base-border);
+
+  &::placeholder {
+    color: var(--gray-light);
+  }
 }

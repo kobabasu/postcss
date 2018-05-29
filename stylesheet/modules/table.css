@@ -31,7 +31,7 @@
 /*
  * table
  */
-table {
+table.table-list {
   border-collapse: collapse;
   width: 100%;
   margin-bottom: var(--small-spacing);
@@ -75,11 +75,11 @@ table {
  * for MS Edge
  */
 @supports (-ms-ime-align: auto) {
-  table i:before {
+  table.table-list i:before {
     vertical-align: 3px;
   }
 
-  table td {
+  table.table-list td {
     padding-top: calc(var(--tiny-spacing) * 1.5);
   }
 }

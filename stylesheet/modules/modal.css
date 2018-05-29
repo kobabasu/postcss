@@ -1,0 +1,161 @@
+/*
+ * # modules/modal.css
+ * モーダルウィンドウのスタイルを定義
+ *
+ * Example:
+ *
+ * <div class="modal">
+ *   <header>
+ *     <h1>Log In</h1>
+ *     <p>エラーメッセージ表示行です</p>
+ *   </header>
+ * 
+ *   <section>
+ *     <table>
+ *       <tbody>
+ *         <tr>
+ *           <th>ログインID</th>
+ *           <td>
+ *             <input type="text" placeholder="abc" />
+ *             <p>メールアドレスを入力</p>
+ *           </td>
+ *         </tr>
+ * 
+ *         <tr>
+ *           <th>パスワード</th>
+ *           <td>
+ *             <input type="password" />
+ *             <p>半角英数で入力してください</p>
+ *           </td>
+ *         </tr>
+ *       </tbody>
+ *     </table>
+ *   </section>
+ * 
+ *   <footer>
+ *     <p class="note">パスワードが違います </p>
+ *     <label class="button disable">
+ *       <a href="#">キャンセル</a>
+ *     </label>
+ *    
+ *     <label class="button">
+ *       <a href="#">ログイン</a>
+ *     </label>
+ *   </footer>
+ * </div>
+ */
+
+/*
+ * config
+ */
+:root {
+  --modal-padding: var(--base-spacing);
+
+  /* theme */
+  --modal-background-color: white;
+  --modal-header-background-color: color(
+    var(--color-corp-fourth) alpha(-85%)
+  );
+  --modal-h1-color: var(--color-corp);
+
+  --modal-border: 1px solid var(--gray);
+  --modal-header-border: 1px solid var(--gray-lighter);
+  --modal-border-radius: var(--tiny-spacing);
+  --modal-box-shadow: 0 1px 1px var(--gray-light);
+  --modal-font-size: var(--small-font-size);
+}
+
+
+/*
+ * label.button
+ */
+.modal {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  min-width: 400px;
+  background-color: var(--modal-background-color);
+  border: var(--modal-border);
+  border-radius: var(--modal-border-radius);
+  box-shadow: var(--modal-box-shadow);
+  font-size: var(--modal-font-size);
+  text-align: center;
+  transform: translate(-50%, -50%);
+
+  & header, & footer, & section {
+    padding: var(--modal-padding);
+  }
+
+  & p {
+    line-height: var(--small-line-height);
+    text-align: center;
+  }
+}
+
+/*
+ * .modal header
+ */
+.modal header {
+  background-color: var(--modal-header-background-color);
+  border-bottom: var(--modal-header-border);
+
+  & h1 {
+    color: var(--modal-h1-color);
+  }
+}
+
+/*
+ * .modal footer
+ */
+.modal footer {
+  width: 100%;
+  padding-top: 0;
+
+  & label.button a {
+    width: 14rem;
+    height: var(--large-spacing);
+    line-height: var(--large-spacing);
+    font-size: var(--small-font-size);
+  }
+}
+
+/*
+ * .modal table
+ */
+.modal section > table {
+  margin: 0 auto;
+  line-height: var(--large-spacing);
+  text-align: left;
+
+  & th, & td {
+    padding: var(--tiny-spacing) 0;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+
+  & th {
+    width: 35%;
+    text-align: right;
+    font-weight: normal;
+    padding-right: var(--small-spacing);
+  }
+
+  & td p {
+    margin-top: var(--tiny-spacing);
+    color: color(var(--color-text) alpha(-20%));
+    font-size: calc(var(--small-font-size) * 0.85);
+    text-align: left;
+  }
+}
+
+/*
+ * .modal input
+ */
+.modal input[type="text"], .modal input[type="password"] {
+  height: var(--heading-line-height);
+  line-height: var(--heading-line-height);
+  margin: 0;
+  padding: var(--tiny-spacing) var(--small-spacing);
+  border: var(--modal-border);
+  border-radius: calc(var(--tiny-spacing) / 2);
+}

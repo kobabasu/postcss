@@ -71,7 +71,7 @@
   );
 
   --globalnav-border-top: var(--globalnav-border-top-size) solid var(--color-corp);
-  --globalnav-border-bottom: 1px solid var(--gray-darker);
+  --globalnav-border-bottom: 1px solid var(--gray-light);
   --globalnav-li-border: 1px solid var(--gray);
   --globalnav-li-border-right: 1px solid var(--gray);
 }
@@ -181,6 +181,13 @@
     display: block;
     line-height: var(--globalnav-trademark-height);
   }
+}
+
+/*
+ * .globalheader div > ul
+ */
+.globalnav h1 {
+  font-size: var(--base-font-size);
 }
 
 

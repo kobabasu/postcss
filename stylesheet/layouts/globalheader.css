@@ -19,13 +19,13 @@
   /* theme */
   --globalheader-color: var(--color-text);
   --globalheader-font-size: var(--small-font-size);
-  --globalheader-background-color: var(--gray-lighter);
+  --globalheader-background-color: transparent;
   --globalheader-h1-background-color: color(
-    var(--color-corp-fourth) alpha(-55%)
+    var(--color-bg-second) alpha(-55%)
   );
 
-  --globalheader-border-top: var(--globalheader-border-top-size) solid var(--color-corp);
-  --globalheader-border-bottom: 1px solid var(--gray);
+  --globalheader-border-top: var(--globalheader-border-top-size) solid transparent;
+  --globalheader-border-bottom: 1px solid var(--gray-light);
   --globalheader-li-border: 1px solid var(--gray);
   --globalheader-li-border-right: 1px solid var(--gray);
 }

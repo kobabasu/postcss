@@ -65,12 +65,12 @@
   /* theme */
   --globalnav-color: var(--color-text);
   --globalnav-font-size: var(--small-font-size);
-  --globalnav-background-color: color(var(--color-bg) alpha(-5%));  
+  --globalnav-background-color: color(var(--color-bg-second) alpha(-85%));  
   --globalnav-h1-background-color: color(
-    var(--color-corp-fourth) alpha(-55%)
+    var(--color-bg-second) alpha(-55%)
   );
 
-  --globalnav-border-top: var(--globalnav-border-top-size) solid var(--color-corp);
+  --globalnav-border-top: var(--globalnav-border-top-size) solid transparent;
   --globalnav-border-bottom: 1px solid var(--gray-light);
   --globalnav-li-border: 1px solid var(--gray);
   --globalnav-li-border-right: 1px solid var(--gray);

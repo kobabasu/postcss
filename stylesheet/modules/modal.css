@@ -54,7 +54,7 @@
   /* theme */
   --modal-background-color: white;
   --modal-header-background-color: color(
-    var(--color-corp-fourth) alpha(-85%)
+    var(--color-bg-second) alpha(-85%)
   );
   --modal-h1-color: var(--color-corp);
 

@@ -95,6 +95,30 @@ label.button.right {
 }
 
 /*
+ * color
+ */
+label.button.disable a {
+  background-color: var(--gray-lighter);
+}
+
+label.button.success a {
+  background-color: var(--brand-success);
+}
+
+label.button.info a {
+  background-color: var(--brand-info);
+}
+
+label.button.warning a {
+  background-color: var(--brand-warning);
+}
+
+label.button.danger a {
+  background-color: var(--brand-danger);
+}
+
+
+/*
  * for MS Edge
  */
 @supports (-ms-ime-align: auto) {

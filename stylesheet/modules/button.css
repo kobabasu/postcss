@@ -98,6 +98,7 @@ label.button.right {
  * color
  */
 label.button.disable a {
+  color: var(--color-text);
   background-color: var(--gray-lighter);
 }
 

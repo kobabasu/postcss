@@ -65,9 +65,8 @@
   --modal-font-size: var(--small-font-size);
 }
 
-
 /*
- * label.button
+ * .modal
  */
 .modal {
   position: absolute;
@@ -81,6 +80,7 @@
   font-size: var(--modal-font-size);
   text-align: center;
   transform: translate(-50%, -50%);
+  transition: all 0.3s linear 0s;
 
   & header, & footer, & section {
     padding: var(--modal-padding);
@@ -89,6 +89,45 @@
   & p {
     line-height: var(--small-line-height);
     text-align: center;
+  }
+}
+
+/*
+ * .modal .modal-close
+ */
+.modal .modal-close {
+  position: absolute;
+  top: var(--small-spacing);
+  right: -30px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--gray-darker);
+  box-shadow: var(--modal-box-shadow);
+  border-left: 1px solid black;
+  border-top-right-radius: var(--modal-border-radius);
+  border-bottom-right-radius: var(--modal-border-radius);
+  cursor: pointer;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    top: 9px;
+    left: 12px;
+    width: 3px;
+    height: 12px;
+    background-color: white;
+  }
+
+  &:before {
+    transform: rotate(-45deg);
+  }
+
+  &:after {
+    transform: rotate(45deg);
   }
 }
 
@@ -153,7 +192,7 @@
  */
 .modal input[type="text"], .modal input[type="password"] {
   height: var(--heading-line-height);
-  line-height: var(--heading-line-height);
+  line-height: normal;
   margin: 0;
   padding: var(--tiny-spacing) var(--small-spacing);
   border: var(--modal-border);

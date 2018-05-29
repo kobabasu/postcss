@@ -18,7 +18,7 @@
   --button-border-radius: var(--tiny-spacing);
   
   /* theme */
-  --button-font-size: calc(var(--base-font-size) * 0.8);
+  --button-font-size: calc(var(--base-font-size) * 0.7);
   --button-background-color: var(--brand-primary);
   --button-color: color(
     var(--button-background-color)
@@ -38,7 +38,7 @@ label.button {
     display: block;
     content: '';
     position: absolute;
-    top: 55%;
+    top: 50%;
     width: calc(var(--button-height) / 2.75);
     height: calc(var(--button-height) / 2.75);
     transform: translateY(-50%) rotate(45deg);
@@ -50,7 +50,6 @@ label.button {
     height: var(--button-height);
     line-height: var(--button-height);
     padding: 0 var(--button-padding);
-    padding-top: calc(var(--button-padding) / 10);
     color: var(--button-color);
     text-decoration: none;
     font-size: var(--button-font-size);
@@ -94,6 +93,30 @@ label.button.right {
     padding-right: var(--button-height);
   }
 }
+
+/*
+ * color
+ */
+label.button.disable a {
+  background-color: var(--gray-lighter);
+}
+
+label.button.success a {
+  background-color: var(--brand-success);
+}
+
+label.button.info a {
+  background-color: var(--brand-info);
+}
+
+label.button.warning a {
+  background-color: var(--brand-warning);
+}
+
+label.button.danger a {
+  background-color: var(--brand-danger);
+}
+
 
 /*
  * for MS Edge

@@ -72,7 +72,6 @@
   position: absolute;
   top: 40%;
   left: 50%;
-  min-width: 400px;
   background-color: var(--modal-background-color);
   border: var(--modal-border);
   border-radius: var(--modal-border-radius);
@@ -173,7 +172,6 @@
   }
 
   & th {
-    width: 35%;
     text-align: right;
     font-weight: normal;
     padding-right: var(--small-spacing);
@@ -209,6 +207,7 @@
     border: none;
     box-shadow: none;
     transform: translate(0%, 0%);
+    background-color: transparent;
   }
 
   .modal .modal-close {

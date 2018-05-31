@@ -7,10 +7,26 @@
   .nopc {
     display: none;
   }
+
+  br.nopc {
+    display: none;
+  }
+
+  br.nosp {
+    display: inline;
+  }
 }
 
 @media (--sp-viewport) {
   .nosp {
+    display: none;
+  }
+
+  br.nopc {
+    display: inline;
+  }
+
+  br.nosp {
     display: none;
   }
 }

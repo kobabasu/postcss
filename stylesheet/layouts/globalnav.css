@@ -116,7 +116,7 @@
 }
 
 /*
- * .globalnav > div.header-left
+ * .globalnav > div.header-right
  */
 .globalnav > div.header-right {
   padding-right: var(--base-spacing);

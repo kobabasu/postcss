@@ -16,7 +16,6 @@ small {
 }
 a {
   color: #e74c3c;
-  text-decoration: none;
 }
 a:hover, a:focus {
   box-shadow: 0 1px #e74c3c;

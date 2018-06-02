@@ -144,11 +144,12 @@ p:last-child, blockquote:last-child, pre:last-child {
 /*
  * link
  * focusされた際の点線を消す
+ * 下線を使わないことが多いのでデフォルトで消す
  */
 
 a, a:hover, a:visited {
   outline: none;
-  text-decoration: underline;
+  text-decoration: none;
 
   color: #1d3994;
 }
@@ -1149,7 +1150,6 @@ a.scrolltop {
   padding-right: 10px;
   padding-right: 1rem;
   font-size: 48px;
-  text-decoration: none
 }
 
 a.scrolltop:visited {
@@ -1641,7 +1641,6 @@ label.button a {
   padding-top: 1.4px;
   padding-top: 0.14rem;
   color: rgb(255, 255, 255);
-  text-decoration: none;
   font-size: 12.8px;
   font-size: 1.28rem;
   background-color: #008bd0;
@@ -1836,10 +1835,6 @@ table {
   margin-bottom: 1rem
 }
 
-table a, table a:hover {
-  text-decoration: none;
-}
-
 table i {
   margin-right: 5px;
   margin-right: 0.5rem;
@@ -1996,7 +1991,6 @@ article.articlefixed {
   line-height: 1.8rem;
   height: 45px;
   height: 4.5rem;
-  text-decoration: none;
   color: #333333;
 }
 
@@ -2091,10 +2085,6 @@ article.articlefixed {
   border-top: 3px solid #195fa5;
   border-bottom: 1px solid rgb(189, 189, 189);
   vertical-align: middle
-}
-
-.globalheader a, .globalheader a:hover {
-  text-decoration: none;
 }
 
 .globalheader > div {
@@ -2294,10 +2284,6 @@ article.articlefixed {
   border-top: 0px solid #195fa5;
   border-bottom: 1px solid rgb(138, 138, 138);
   vertical-align: middle
-}
-
-.globalnav a, .globalnav a:hover {
-  text-decoration: none;
 }
 
 .globalnav > div {

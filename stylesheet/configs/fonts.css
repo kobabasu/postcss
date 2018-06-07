@@ -37,6 +37,12 @@
 }
 
 /* 以下をstylesheets/fonts/icomoon/style.cssからコピー */
+.icon-close-solid:before {
+  content: "\e908";
+}
+.icon-edit:before {
+  content: "\e907";
+}
 .icon-facebook:before {
   content: "\e906";
 }

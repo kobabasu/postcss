@@ -16,6 +16,7 @@ small {
 }
 a {
   color: #e74c3c;
+  text-decoration: none;
 }
 a:hover, a:focus {
   box-shadow: 0 1px #e74c3c;
@@ -146,12 +147,15 @@ p {
   font-size: 16px;
 }
 .fs1 {
-  font-size: 28px;
+  font-size: 20px;
 }
 .fs2 {
-  font-size: 24px;
+  font-size: 28px;
 }
 .fs3 {
+  font-size: 24px;
+}
+.fs4 {
   font-size: 32px;
 }
 

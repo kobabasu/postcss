@@ -48,7 +48,6 @@
     font-size: var(--small-font-size);
     line-height: var(--small-line-height);
     height: calc(var(--large-spacing) * 1.5);
-    text-decoration: none;
 
     color: var(--footerlink-color);
   }

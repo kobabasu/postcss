@@ -37,6 +37,15 @@
 }
 
 /* 以下をstylesheets/fonts/icomoon/style.cssからコピー */
+.icon-close-solid:before {
+  content: "\e908";
+}
+.icon-chevron-circle-down:before {
+  content: "\e909";
+}
+.icon-edit:before {
+  content: "\e907";
+}
 .icon-facebook:before {
   content: "\e906";
 }
@@ -57,6 +66,9 @@
 }
 .icon-home:before {
   content: "\e901";
+}
+.icon-file-text2:before {
+  content: "\e926";
 }
 .icon-switch:before {
   content: "\e9b6";

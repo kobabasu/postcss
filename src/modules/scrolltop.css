@@ -17,7 +17,6 @@ a.scrolltop {
   right: 0;
   padding-right: var(--small-spacing);
   font-size: 48px;
-  text-decoration: none;
 
   &:visited {
     color: var(--scrolltop-a-visited-color);

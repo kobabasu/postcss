@@ -95,10 +95,6 @@
   border-bottom: var(--globalnav-border-bottom);
   vertical-align: middle;
 
-  & a, & a:hover {
-    text-decoration: none;
-  }
-
   & > div {
     display: table-cell;
     vertical-align: middle;

@@ -36,10 +36,6 @@ table.table-list {
   width: 100%;
   margin-bottom: var(--small-spacing);
 
-  & a, & a:hover {
-    text-decoration: none;
-  }
-
   & i {
     margin-right: var(--tiny-spacing);
     font-size: calc(var(--base-font-size) * 1.05);

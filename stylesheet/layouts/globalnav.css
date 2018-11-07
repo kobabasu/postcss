@@ -95,10 +95,6 @@
   border-bottom: var(--globalnav-border-bottom);
   vertical-align: middle;
 
-  & a, & a:hover {
-    text-decoration: none;
-  }
-
   & > div {
     display: table-cell;
     vertical-align: middle;
@@ -116,7 +112,7 @@
 }
 
 /*
- * .globalnav > div.header-left
+ * .globalnav > div.header-right
  */
 .globalnav > div.header-right {
   padding-right: var(--base-spacing);

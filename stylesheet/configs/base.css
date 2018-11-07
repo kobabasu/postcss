@@ -11,6 +11,7 @@
 *:after,
 *:before {
   box-sizing: border-box;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
 /*
@@ -80,10 +81,11 @@ p:last-child, blockquote:last-child, pre:last-child {
 /*
  * link
  * focusされた際の点線を消す
+ * 下線を消すことが多いためデフォルトで消しておく
  */
 a, a:hover, a:visited {
   outline: none;
-  text-decoration: underline;
+  text-decoration: none;
 
   color: var(--color-link);
 }

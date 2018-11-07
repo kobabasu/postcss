@@ -4,7 +4,7 @@ import gulp from 'gulp';
 import DefaultRegistry from 'undertaker-registry';
 import shell from '/usr/local/lib/node_modules/gulp-shell';
 
-import { dir } from '../dir.es6';
+import { dir } from '../dir.js';
 
 class Postcss extends DefaultRegistry {
 

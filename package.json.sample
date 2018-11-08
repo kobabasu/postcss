@@ -22,7 +22,7 @@
   },
 
   "devDependencies": {
-    "postcss": "^6.0.0",
+    "postcss": "*",
     "postcss-cssnext": "*",
     "postcss-url": "*",
     "postcss-import": "*",
@@ -38,10 +38,11 @@
     "chrome-remote-interface": "*",
     "jsdom": "*",
 
-    "babel-core": "*",
+    "@babel/core": "*",
+    "@babel/register": "*",
     "babel-preset-env": "*",
     "babel-plugin-istanbul": "*",
-    "gulp": "gulpjs/gulp#4.0"
+    "gulp": "*"
   },
 
   "scripts": {

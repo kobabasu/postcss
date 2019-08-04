@@ -1,6 +1,6 @@
 {
   "name": "postcss-app",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "postcss minimum app",
   "main": "./src/style.css",
   "repository": {

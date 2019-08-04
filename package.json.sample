@@ -29,20 +29,19 @@
     "postcss-for": "*",
     "postcss-for-variables": "*",
 
-    "mocha": "*",
-    "chai": "*",
-    "sinon": "*",
-    "mocha-junit-reporter": "*",
+    "@babel/core": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-plugin-istanbul": "^5.2.0",
 
-    "chrome-launcher": "*",
-    "chrome-remote-interface": "*",
-    "jsdom": "*",
+    "chrome-launcher": "^0.11.1",
+    "chrome-remote-interface": "^0.27.2",
+    "jsdom": "^15.1.1",
 
-    "@babel/core": "*",
-    "@babel/register": "*",
-    "babel-preset-env": "*",
-    "babel-plugin-istanbul": "*",
-    "gulp": "*"
+    "mocha": "^6.2.0",
+    "mocha-junit-reporter": "^1.23.1",
+    "chai": "^4.2.0",
+    "sinon": "^7.3.2"
   },
 
   "scripts": {

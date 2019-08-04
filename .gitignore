@@ -5,16 +5,18 @@ vendor/
 package-lock.json
 
 # config
-package.json
-bower.json
-gulp/dir.es6
-example/js/lib.hjson
 
 # build files
-results/test-results.xml
-example/results/test-results.xml
+test-results.xml
+coverage/
+.nyc_output/
 
 # exclude
+backup/
+
+# for CPI
+cgi-bin/
+sys-common/
 
 # gitkeep
 !.gitkeep

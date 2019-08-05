@@ -1,8 +1,7 @@
 # common
 .DS_Store
 node_modules/
-vendor/
-package-lock.json
+yarn-error.log
 
 # config
 
@@ -12,7 +11,6 @@ coverage/
 .nyc_output/
 
 # exclude
-backup/
 
 # for CPI
 cgi-bin/

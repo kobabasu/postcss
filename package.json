@@ -48,6 +48,7 @@
 
   "scripts": {
     "global": "npm install -g chromium nyc postcss-cli uglify-js mocha watch @babel/register @babel/core @babel/preset-env",
+    "start": "NODE_ENV=development",
     "test": "gulp postcss:mocha:report"
   },
 

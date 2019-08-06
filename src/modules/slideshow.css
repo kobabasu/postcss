@@ -39,7 +39,7 @@
 
   & > * {
     opacity: 0;
-    // for ios safari z-index issue
+    /* for ios safari z-index issue */
     -webkit-transform: translate3d(0,0,0);
   }
 

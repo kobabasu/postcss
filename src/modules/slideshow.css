@@ -162,7 +162,7 @@
   .slideshow {
     height: var(--slideshow-height-sp);
 
-    // for ios safari overflow-x issue
+    /* for ios safari overflow-x issue */
     & > ul {
       position: relative;
       overflow: hidden;

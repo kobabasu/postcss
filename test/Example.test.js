@@ -2,7 +2,6 @@ import fs from 'fs'
 import { assert } from 'chai'
 import { launch } from 'chrome-launcher'
 import CDP from 'chrome-remote-interface'
-import { dir } from '../gulp/dir.js'
 // import UpdateCopyright from '../src/modules/DetectViewport.js';
 
 const URL = 'about:blank';
@@ -10,7 +9,7 @@ const HTML = 'test/Example.test.html';
 // const JS = './src/modules/UpdateCopyright.js';
 
 const fetch = (filename) => {
-  const filepath = dir.root + '/' + filename;
+  const filepath = './' + filename;
   return fs.readFileSync(filepath, 'utf-8');
 }
 

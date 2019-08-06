@@ -4,8 +4,8 @@ module.exports = {
   plugins: {
     'postcss-import': {},
     'postcss-url': {},
-    'postcss-for': {},
     'postcss-for-variables': {},
+    'postcss-for': {},
 
     'postcss-preset-env': {
       stage: 3,

@@ -51,7 +51,7 @@
     "start": "NODE_ENV=development",
     "copy": "rsync -ru ./stylesheet ..",
     "minify": "bash ./src/minify.sh",
-    "build": "postcss --config ./postcss.config.js ../stylesheet/pages -d ../css && yarn run minify",
+    "build": "bash ./src/build.sh && yarn run minify",
 
     "test": "mocha test/*.js",
     "reporter": "mocha test/*.js --reporter mocha-junit-reporter",

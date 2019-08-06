@@ -8,5 +8,8 @@
 readonly TARGET="../css"
 
 
-find $TARGET ! -type f -a -name "*.min.css" -exec basename {} .css \; |
+#
+# ../css内のmin.css以外のファイルをminifyする
+#
+find $TARGET -type f -a ! -name "*.min.css" -exec basename {} .css \; |
 xargs -I{} cleancss $TARGET/{}.css -o $TARGET/{}.min.css

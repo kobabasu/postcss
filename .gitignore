@@ -1,20 +1,20 @@
 # common
 .DS_Store
 node_modules/
-vendor/
-package-lock.json
+yarn-error.log
 
 # config
-package.json
-bower.json
-gulp/dir.es6
-example/js/lib.hjson
 
 # build files
-results/test-results.xml
-example/results/test-results.xml
+test-results.xml
+coverage/
+.nyc_output/
 
 # exclude
+
+# for CPI
+cgi-bin/
+sys-common/
 
 # gitkeep
 !.gitkeep

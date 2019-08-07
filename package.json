@@ -1,0 +1,67 @@
+{
+  "name": "postcss-app",
+  "version": "0.1.0",
+  "description": "postcss minimum app",
+  "main": "./src/style.css",
+  "repository": {
+    "type": "git",
+    "url": "//github.com/kobabasu/micro-postcss.git"
+  },
+  "keywords": [
+    "postcss",
+    "babel",
+    "mocha"
+  ],
+  "os": [
+    "darwin",
+    "linux",
+    "!win32"
+  ],
+
+  "dependencies": {
+    "normalize.css": "*"
+  },
+
+  "devDependencies": {
+    "postcss": "^7.0.17",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-url": "^8.0.0",
+    "postcss-import": "^12.0.1",
+    "postcss-for": "^2.1.1",
+    "postcss-for-variables": "^0.0.5",
+    "clean-css-cli": "^4.3.0",
+
+    "@babel/core": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-plugin-istanbul": "^5.2.0",
+
+    "chrome-launcher": "^0.11.1",
+    "chrome-remote-interface": "^0.27.2",
+    "jsdom": "^15.1.1",
+
+    "mocha": "^6.2.0",
+    "mocha-junit-reporter": "^1.23.1",
+    "chai": "^4.2.0",
+    "sinon": "^7.3.2"
+  },
+
+  "scripts": {
+    "global": "npm install -g chromium nyc stylelint postcss-cli clean-css-cli uglify-js mocha watch @babel/register @babel/core @babel/preset-env",
+    "start": "NODE_ENV=development",
+    "copy": "rsync -ru ./stylesheet ..",
+    "minify": "bash ./src/minify.sh",
+    "build": "bash ./src/build.sh && yarn run minify",
+    "postinstall": "yarn run copy && yarn run build",
+
+    "test": "mocha test/*.js",
+    "reporter": "mocha test/*.js --reporter mocha-junit-reporter",
+    "coverage": "nyc mocha test/*.js",
+
+    "watch": "watch 'yarn run build' ../stylesheet"
+  },
+
+  "preferGlobal": true,
+  "author": "kobabasu",
+  "license": "MIT"
+}

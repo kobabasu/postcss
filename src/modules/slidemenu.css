@@ -31,7 +31,7 @@
     transition: top .5s ease;
 
     border: none;
-    // スマホでロード時に表示されるため一度消す
+    /* スマホでロード時に表示されるため一度消す */
     opacity: 0;
 
     & a, & a:hover {

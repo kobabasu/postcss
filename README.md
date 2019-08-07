@@ -1,38 +1,20 @@
 [![CircleCI](https://circleci.com/gh/kobabasu/micro-postcss.svg?style=shield&circle-token=c181a31aabfe59d8f79ece75e1af85b0726555a6)](https://circleci.com/gh/kobabasu/micro-postcss)
 
 # micro-postcss
-postcssを利用するためnodejs環境とpostcss-cliのインストールが必要
+postcssを利用するためnodejs環境とpostcss-cli, clean-css-cliのインストールが必要
 
 ```
 git submodule add git@github.com-kobabasu:kobabasu/micro-postcss.git postcss  
 git submodule update
 ```
 
-## npm
+## yarn
 preinstallでひとつ上の階層にcss/, stylesheet/が作成される
 変更はその中で行う
 1. 必要があればdevelopブランチを使う  
    `git checkout develop`
-1. `npm start`
-1. `npm install`
-
-## bower
-example用の`test/*.html`で読み込むようにtest専用のライブラリを用意する  
-(npmでデフォルトのものは用意できるため、必須ではない)
-.bowerrcでexample/vendor以下にインストールされるよう設定
-1. jqueryやfontawesomeやmaterial-designなどいらないものを削除
-1. `cp bower.json.sample bower.json`
-1. `bower install`
-
-## gulp
-1. 単独で動かす場合はgulpfile.babel.js.sampleをgulpfile.babel.jsにリネーム
-1. projectに追加する場合はすでにあるgulpfile.babel.jsを編集
-1. cp gulp/dir.es6.sample gulp/dir.es6
-1. dir.es6を編集。  
-   rootは`package.json`からみたmicro-postcssレポジトリのディレクトリを指定  
-   `node_modules`は`package.json`からみた`node_modules/`の場所を指定。ほとんどの場合`./`
-1. gulp postcss:example:reportで正常に動作するか試す
-1. dir.es6のsrcを実際にソースがあるディレクトリに変更
+1. `yarn start`
+1. `yarn install`
 
 ## circleci
 1. githubとcircleciとslackを連携させる
@@ -59,26 +41,26 @@ Dockerfileを編集しbuildしdocker hubにpush
 1. 問題なければ`.circleci/config.yml`のimagesのバージョンを変更
 1. git pushで確認
 
-## gulp tasks
-1. `gulp [prefix]:postcss`  
-   style.cssと../stylesheet/pages/以下のファイルをbuildする
-1. `gulp [prefix]:postcss:min`  
-   style.cssと../stylesheet/pages/以下のファイルをbuildしcsswringで../cssのminがついていないファイルをminifyする
-1. `gulp [prefix]:postcss:mocha`  
-   mochaでtestディレクトリ内の`js`拡張子が付いたファイルをtest
-1. `gulp [prefix]:postcss:mocha:report`  
-   mochaでtestディレクトリ内の`js`拡張子が付いたファイルをtestしresults/にレポートを作成
-1. `gulp [prefix]:postcss:watch`  
-   src/, ../stylesheet内のファイルが変更されたらpostcss, postcss:minを実行
-1. `gulp [prefix]:postcss:copy`  
-   ./cssと./stylesheetを上の階層にコピー (存在すればコピーしない)
-1. `gulp [prefix]:postcss:example`  
-   ../cssではなくexample/cssへ出力する。合わせてcsswringでminifyしたファイルも作成
-1. `gulp [prefix]:postcss:build`  
-   postcss:copy, postcss:mocha:report, postcss:exampleをまとめて実行
+## npm script
+1. `yarn run copy`  
+   css, stylesheetをひとつ上の階層にコピー
+1. `yarn run minify`  
+   ../css/*.min.css以外のminifyしたファイルを../css以下に作成
+1. `yarn run build`  
+   build.shとminifyをあわせて行う
+1. `yarn run postinstall`  
+   `yarn install`直後に実行される copyとbuild
+1. `yarn run test`  
+    mochaによるtestの実行
+1. `yarn run reporter`  
+   circleci用のレポートを出力 
+1. `yarn run coverage`  
+   テストのカバレッジを計測
+1. `yarn run watch`  
+   ../styleheet内のファイルを更新したらbuildを実行する
 
 ## build files
-gulp postcss:buildで一つ上の階層に以下が生成される
+`yarn run build`で一つ上の階層の../css, ../stylesheetに以下が生成される
 
 1. css/style.css (src/からビルドされたstyle.css), pages/*.cssが出力される
 1. css/*.css (pages/*.cssから出力される)
@@ -88,29 +70,63 @@ gulp postcss:buildで一つ上の階層に以下が生成される
 1. stylesheet/pages (各ページ固有のスタイル)
 
 ## edit
-1. package.json, bower.json, gulp/dir.es6を作成
-1. 必要があれば.htaccess, .htdigest, .htpasswdをコピーして利用  
-   (gtmetirixなどの評価が気になる場合はCACHEの項目を有効にする)
-1. 必要があれば、src/style.css, src/configs/fonts.cssのfont-faceのパスを変更
-1. npm installでpostcss:buildが実行され../cssを生成, ../stylesheetがコピーされる
-1. `postcss`でビルド
+1. `yarn install`
+1. 生成した../stylesheet内で必要なファイルを編集
+1. `yarn run build` 
 
 ## font update
 icomoonなどfontを追加した場合など、アップデートするには以下の手順を実行
 1. icomoonのサイトからzipをダウンロード
 1. 解答したicomoonのディレクトリの中身すべてを./stylesheet/fonts/icomoon/内に上書き
-1. ./src/configs/fonts.css内のicomoonのスタイルにicomoon/style.cssの該当箇所をコピー
+1. ./stylesheet/configs/fonts.css内のicomoonのスタイルにicomoon/style.cssの該当箇所をコピー
 1. min含めbuildして完了
 
 ## postcss repository update
 1. postcssディレクリに移動
 1. git pullでアップデート
-1. [prefix]:postcss:buildする
+1. `yarn run build`
 1. ../css, ../stylesheetはディレクトリが存在した場合コピーしないので注意する
 
+## test
+1. test/*.jsが対象となる
+1. describe, itのタイトルの先頭にEXCLUDEをつけるとそのテストを無視する
+1. package.json内のscriptは省略しているがmocha, nycのオプションはtest/mocha.opts, .nycrc, .babelrcに記述
+
+
+---
+
+## npm packages
+|name                    |desc                                                |
+|:-----------------------|:---------------------------------------------------|
+|postcss                 |cssを変換                                           |
+|postcss-preset-env      |必要なセットを用意                                  |
+|postcss-url             |img srcのパスなどを解決                             |
+|postcss-import          |import構文を実現する                                |
+|postcss-for             |for文が書けるようになる                             |
+|postcss-for-variables   |for文内で変数が使えるようになる                     |
+|clean-css-cli           |cssファイルをminify globalにも必要                  |
+|@babel/core             |mochaのes6用 circleci用にglobalにも必要             |
+|@babel/register         |.nycrcでrequireしてる circleci用にglobalにも必要    |
+|@babel/preset-env       |.babelrcでrequireしてる circleci用にglobalにも必要  |
+|babel-plugin-istanbul   |.babelrcでrequireしてる circleci用にglobalにも必要  |
+|chrome-launcher         |E2Eテストで利用                                     |
+|chrome-remote-interface |E2Eテストコードを書きやすくする                     |
+|jsdom                   |テストコードを書きやすくする                        |
+|mocha                   |テスト用 globalにも必要                             |
+|mocha-junit-reporter    |circleci用のレポート出力に必要 test/mocha.optsで設定|
+|chai                    |テスト用ライブラリ                                  |
+|sinon                   |テスト用 spy, stub, mock                            |
+
+
+---
+
+
+## trouble shooting
+1. `yarn run build`と`yarn run  minify`がエラーとなる場合はsrc/{build.sh, minify.sh}の実行権限を確認
+
+
+---
+
+
 ## todo
-- [ ] postcss-cli v3 がでたらcompressがswitchできるかどうか試す
-- [ ] postcss-cli v3 がでたらnextcssrcの読み込みを試す
-- [ ] bower packageの読み込み方
-- [ ] postcss.jsonのmapのinline:false化
-- [ ] styleguideをどうするか(候補sc5, postcss-style-guide)
+- [ ] exampleのフォントが太字になっている原因を調べる

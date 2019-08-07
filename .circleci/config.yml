@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: kobabasu/alpine-chrome:0.46
       
-    working_directory: ~/app/repo
+    working_directory: ~/app/postcss
 
     steps:
       - checkout

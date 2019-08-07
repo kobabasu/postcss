@@ -52,6 +52,7 @@
     "copy": "rsync -ru ./stylesheet ..",
     "minify": "bash ./src/minify.sh",
     "build": "bash ./src/build.sh && yarn run minify",
+    "postinstall": "yarn run copy && yarn run build",
 
     "test": "mocha test/*.js",
     "reporter": "mocha test/*.js --reporter mocha-junit-reporter",

@@ -13,6 +13,8 @@ module.exports = {
       features: {
         'nesting-rules': true
       }
-    }
+    },
+
+    'postcss-color-function': {}
   }
 }

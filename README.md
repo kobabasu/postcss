@@ -123,6 +123,7 @@ icomoonなどfontを追加した場合など、アップデートするには以
 
 ## trouble shooting
 1. `yarn run build`と`yarn run  minify`がエラーとなる場合はsrc/{build.sh, minify.sh}の実行権限を確認
+1. loading...の文字が表示されない場合、postcss-color-functionがインストールされていることと、postcss.config.js内でvariablesを解決するpostcss-preset-envのあとに記述があるかどうかを確かめる
 
 
 ---
@@ -130,3 +131,4 @@ icomoonなどfontを追加した場合など、アップデートするには以
 
 ## todo
 - [ ] exampleのフォントが太字になっている原因を調べる
+- [ ] color()がpostcss-color-functionを使わないとできないので代替案を探す

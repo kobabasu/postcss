@@ -1,10 +1,10 @@
-[![CircleCI](https://circleci.com/gh/kobabasu/micro-postcss.svg?style=shield&circle-token=c181a31aabfe59d8f79ece75e1af85b0726555a6)](https://circleci.com/gh/kobabasu/micro-postcss)
+[![CircleCI](https://circleci.com/gh/kobabasu/postcss.svg?style=shield&circle-token=c181a31aabfe59d8f79ece75e1af85b0726555a6)](https://circleci.com/gh/kobabasu/postcss)
 
-# micro-postcss
+# postcss
 postcssを利用するためnodejs環境とpostcss-cli, clean-css-cliのインストールが必要
 
 ```
-git submodule add git@github.com-kobabasu:kobabasu/micro-postcss.git postcss  
+git submodule add git@github.com-kobabasu:kobabasu/postcss.git postcss  
 git submodule update
 ```
 

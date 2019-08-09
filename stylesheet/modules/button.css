@@ -45,7 +45,7 @@ label.button {
     pointer-events: none;
   }
 
-  & a {
+  & a, & input[type=submit], & input[type=button] {
     display: inline-block;
     height: var(--button-height);
     line-height: var(--button-height);
@@ -70,7 +70,7 @@ label.button.left {
     left: var(--button-padding);
   }
 
-  & a {
+  & a, & input[type=submit], & input[type=button] {
     padding-left: var(--button-height);
   }
 }
@@ -88,7 +88,7 @@ label.button.right {
     right: var(--button-padding);
   }
 
-  & a {
+  & a, & input[type=submit], & input[type=button] {
     padding-right: var(--button-height);
   }
 }
@@ -96,24 +96,34 @@ label.button.right {
 /*
  * color
  */
-label.button.disable a {
+label.button.disable a,
+label.button.disable input[type=submit],
+label.button.disable input[type=button] {
   color: var(--color-text);
   background-color: var(--gray-lighter);
 }
 
-label.button.success a {
+label.button.success a,
+label.button.success input[type=submit],
+label.button.success input[type=button] {
   background-color: var(--brand-success);
 }
 
-label.button.info a {
+label.button.info a,
+label.button.info input[type=submit],
+label.button.info input[type=button] {
   background-color: var(--brand-info);
 }
 
-label.button.warning a {
+label.button.warning a,
+label.button.warning input[type=submit],
+label.button.warning input[type=button] {
   background-color: var(--brand-warning);
 }
 
-label.button.danger a {
+label.button.danger a,
+label.button.danger input[type=submit],
+label.button.danger input[type=button] {
   background-color: var(--brand-danger);
 }
 
@@ -122,7 +132,9 @@ label.button.danger a {
  * for MS Edge
  */
 @supports (-ms-ime-align: auto) {
-  label.button a {
+  label.button a,
+  label.button input[type=submit],
+  label.button input[type=button] {
     padding-top: 0;
-  } 
+  }
 }

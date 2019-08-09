@@ -149,7 +149,9 @@
   width: 100%;
   padding-top: 0;
 
-  & label.button a {
+  & label.button a,
+  & label.button input[type=button],
+  & label.button input[type=submit] {
     width: 14rem;
     height: var(--large-spacing);
     line-height: var(--large-spacing);

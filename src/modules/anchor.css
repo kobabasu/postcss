@@ -3,7 +3,9 @@
  * リンクのマウスオーバー時のトランジション
  */
 
-a, button {
+a, button,
+input[type=submit],
+input[type=button] {
   transition: all 0.3s linear 0s;
 
   &:hover {

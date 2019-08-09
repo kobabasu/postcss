@@ -188,9 +188,11 @@ i {
 /*
  * # input
  * ボーダーの色を設定
+ * focusされた際の点線を消す
  */
 input {
   border: var(--base-border);
+  outline: none;
 
   &::placeholder {
     color: var(--gray-light);

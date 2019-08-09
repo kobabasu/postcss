@@ -54,6 +54,7 @@ label.button {
     font-size: var(--button-font-size);
     background-color: var(--button-background-color);
     border-radius: var(--button-border-radius);
+    cursor: pointer;
   }
 }
 

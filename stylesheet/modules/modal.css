@@ -87,6 +87,7 @@
 
   & p {
     line-height: var(--small-line-height);
+    min-height: var(--small-line-height);
     text-align: center;
   }
 }

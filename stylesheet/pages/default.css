@@ -51,6 +51,11 @@
 /* @import '../layouts/topics.css'; */
 
 /*
+ * local modules
+ */
+@import '../modules/index.css';
+
+/*
  * after include all file
  */
 @import '../../postcss/src/devices/index.css';

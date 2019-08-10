@@ -1,24 +1,17 @@
 #!/bin/bash
 #
-# 対象ディレクトリ内のmin.css以外のファイルをminifyする
+# ../javascript/pages内の.cssファイルをコンパイル
 #
 
 
-# style.cssのディレクトリ 
-readonly SRC="./src"
-# ソースファイルのディレクトリ 
-readonly TARGET="../stylesheet/pages"
-# 設定ファイルのあるディレクトリ 
-readonly SETTINGS="./"
+# レポジトリ内にあるsrcのディレクトリ 
+readonly REPO="./src"
+# ファイルのあるディレクトリ 
+readonly SRC="../stylesheet"
 # 出力するディレクトリ
 readonly DIST="../css"
 
 #
-# style.cssをコンパイル
+# ../javascript/pages内の.cssファイルをコンパイル
 #
-postcss --config $SETTINGS/postcss.config.js $SRC/style.css -d $DIST
-
-#
-# ../stylesheet/pages内のcssを../cssにコンパイル
-#
-postcss --config $SETTINGS/postcss.config.js $TARGET -d $DIST
+postcss $SRC/pages --config ./postcss.config.js --no-map -d $DIST

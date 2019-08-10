@@ -4,6 +4,11 @@
  */
 
 /*
+ * init
+ */
+@import '../../postcss/src/style.css';
+
+/*
  * config
  */
 @import '../configs/index.css';

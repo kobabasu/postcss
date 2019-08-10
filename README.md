@@ -62,11 +62,11 @@ Dockerfileを編集しbuildしdocker hubにpush
 ## build files
 `yarn run build`で一つ上の階層の../css, ../stylesheetに以下が生成される
 
-1. css/style.css (src/からビルドされたstyle.css), pages/*.cssが出力される
 1. css/*.css (pages/*.cssから出力される)
 1. stylesheet/configs (各種設定、vars, base, fonts, modulesなど)
 1. stylesheet/fonts (使用するfontsファイル)
 1. stylesheet/layouts (レイアウトに関するcss header, footerなど0
+1. stylesheet/modules (カスタマイズする可能性のあるmodules郡)
 1. stylesheet/pages (各ページ固有のスタイル)
 
 ## edit
@@ -104,6 +104,7 @@ icomoonなどfontを追加した場合など、アップデートするには以
 |postcss-import          |import構文を実現する                                |
 |postcss-for             |for文が書けるようになる                             |
 |postcss-for-variables   |for文内で変数が使えるようになる                     |
+|postcss-color-function  |color()が使えるようになる                           |
 |clean-css-cli           |cssファイルをminify globalにも必要                  |
 |@babel/core             |mochaのes6用 circleci用にglobalにも必要             |
 |@babel/register         |.nycrcでrequireしてる circleci用にglobalにも必要    |
@@ -124,6 +125,8 @@ icomoonなどfontを追加した場合など、アップデートするには以
 ## trouble shooting
 1. `yarn run build`と`yarn run  minify`がエラーとなる場合はsrc/{build.sh, minify.sh}の実行権限を確認
 1. loading...の文字が表示されない場合、postcss-color-functionがインストールされていることと、postcss.config.js内でvariablesを解決するpostcss-preset-envのあとに記述があるかどうかを確かめる
+1. postcss.config.jsにはmap: trueの設定を入れない。強制的にsourcemapがついてしまうため。コマンドのオプションで都度対応
+1. style.cssをconcatで結合しようとしたが、stylesheets/pages内のファイルに直接importを記述するようにした
 
 
 ---

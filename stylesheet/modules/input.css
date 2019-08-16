@@ -1,0 +1,52 @@
+/*
+ * # modules/input.css
+ * inputのスタイルを定義
+ */
+
+/*
+ * config
+ */
+:root {
+  --input-height:          var(--heading-line-height);
+  --input-line-height:     normal;
+  --input-margin:          0;
+  --input-padding:         var(--tiny-spacing) var(--small-spacing);
+  
+  /* theme */
+  --input-border:          2px solid var(--gray-light);
+  --input-border-width:    2px;
+  --input-border-radius:   var(--tiny-spacing);
+}
+
+
+/*
+ * input
+ */
+input[type=text],
+input[type=password],
+input[type=number],
+input[type=tel],
+input[type=email],
+input[type=url],
+input[type=search],
+input[type=date],
+input[type=datetime-local],
+input[type=month],
+input[type=week],
+input[type=time] {
+  height: var(--input-height);
+  line-height: var(--input-line-height);
+  margin: var(--input-margin);
+  padding: var(--input-padding);
+  border: var(--input-border);
+  border-width: var(--input-border-width);
+  border-radius: var(--input-border-radius);
+
+  &:valid {
+    border-color:  var(--brand-success);
+  }
+
+  &.warning {
+    border-color:  var(--brand-danger);
+  }
+}

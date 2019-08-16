@@ -188,17 +188,6 @@
   }
 }
 
-/*
- * .modal input
- */
-.modal input[type="text"], .modal input[type="password"] {
-  height: var(--heading-line-height);
-  line-height: normal;
-  margin: 0;
-  padding: var(--tiny-spacing) var(--small-spacing);
-  border: var(--modal-border);
-  border-radius: calc(var(--tiny-spacing) / 2);
-}
 
 @media (--sp-viewport) {
   .modal {

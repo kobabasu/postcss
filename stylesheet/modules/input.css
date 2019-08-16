@@ -42,11 +42,56 @@ input[type=time] {
   border-width: var(--input-border-width);
   border-radius: var(--input-border-radius);
 
+  /*
+   * :valid
+   * 条件を満たしたら緑になる
+   */
   &:valid {
     border-color:  var(--brand-success);
   }
 
+  /*
+   * .warning
+   *  borderを赤くする:invalidだと
+   *  ブラウザによってunfocus, submit後であったりと
+   *  動作がバラバラであるため
+   *  jsでsubmit時などに統一するために利用
+   */
   &.warning {
     border-color:  var(--brand-danger);
+  }
+
+  /*
+   * .failed
+   * ログイン失敗などを知らせる
+   * 点滅するアニメーション
+   */
+  &.failed {
+    animation: input-failed 0.6s ease 0s 1;
+  }
+}
+
+/*
+ * kekyframes
+ */
+@keyframes input-failed {
+  0% {
+    border-color: var(--gray-light);
+  }
+
+  20% {
+    border-color: var(--brand-danger);
+  }
+
+  30% {
+    border-color: var(--gray-light);
+  }
+
+  40% {
+    border-color: var(--brand-danger);
+  }
+
+  100% {
+    border-color: var(--gray-light);
   }
 }

@@ -191,7 +191,6 @@ i {
  * focusされた際の点線を消す
  */
 input {
-  border: var(-base--border);
   outline: none;
 
   &::placeholder {

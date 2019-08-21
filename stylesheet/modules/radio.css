@@ -1,0 +1,141 @@
+/*
+ * # modules/radio.css
+ * formのradioのスタイルを変更
+ *
+ * Example:
+ * <label class="radio">
+ *   <input type="radio" name="radio" value="1" />
+ *   <span>aaa</span>
+ * </label>
+ */
+
+/*
+ * config
+ */
+:root {
+  --radio-height: calc(var(--base-line-height) * 0.9);
+  --radio-border-radius: calc(var(--base-line-height) * 0.9);
+  
+  /* theme */
+  --radio-font-size: calc(var(--base-font-size) * 0.8);
+  --radio-background-color: white;
+  --radio-border: 2px solid var(--gray-light);
+  --radio-border-width: 2px;
+  --radio-color: color(
+    var(--radio-background-color)
+    contrast(100%)
+  );
+}
+
+
+/*
+ * radio
+ */
+input[type=radio] {
+  display: none;
+}
+
+label.radio {
+  margin-right: var(--base-spacing);
+  cursor: pointer;
+
+  &::selection {
+    background: none;
+  }
+}
+
+label.radio span::selection {
+  background: none;
+}
+
+label.radio > input[type=radio] + span:before {
+  content: '';
+  display: inline-block;
+  height: var(--radio-height);
+  width:  var(--radio-height);
+  margin-right: var(--tiny-spacing);
+  vertical-align: middle;
+  color: var(--radio-color);
+  background-color: var(--radio-background-color);
+  border: var(--radio-border);
+  border-width: var(--radio-border-width);
+  border-radius: var(--radio-border-radius);
+}
+
+label.radio > input[type=radio]:checked + span:before {
+  box-sizing: border-box;
+  border-color: var(--brand-success);
+  border-width: calc(var(--tiny-spacing) * 1.5);
+}
+
+/*
+ * :valid
+ * 条件を満たしたら緑になる
+ * radioの場合は必須の状況が考えにくいのでなにもしない
+ */
+label.radio > input[type=radio]:valid + span:before {
+  /* border-color: var(--brand-success); */
+}
+
+/*
+ * .warning 
+ *  borderを赤くする:invalidだと
+ *  ブラウザによってunfocus, submit後であったりと
+ *  動作がバラバラであるため
+ *  jsでsubmit時などに統一するために利用
+ */
+label.radio > input[type=radio].warning + span:before {
+  border-color:  var(--brand-danger);
+}
+
+/*
+ * .failed
+ * ログイン失敗などを知らせる
+ * 点滅するアニメーション
+ */
+label.radio > input[type=radio].failed + span:before {
+  animation: input-failed 0.6s ease 0s 1;
+}
+
+input[type=radio]::-ms-expand {
+  display: none;
+}
+
+input[type=radio]:-moz-focusring { 
+  color: transparent; 
+  text-shadow: 0 0 0 #828c9a;
+}
+
+/*
+ * for MS Edge
+ */
+@supports (-ms-ime-align: auto) {
+  label.select:after {
+    top: 43%;
+  } 
+}
+
+/*
+ * kekyframes
+ */
+@keyframes input-failed {
+  0% {
+    border-color: var(--gray-light);
+  }
+
+  20% {
+    border-color: var(--brand-danger);
+  }
+
+  30% {
+    border-color: var(--gray-light);
+  }
+
+  40% {
+    border-color: var(--brand-danger);
+  }
+
+  100% {
+    border-color: var(--gray-light);
+  }
+}

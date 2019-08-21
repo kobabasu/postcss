@@ -15,14 +15,15 @@
  * config
  */
 :root {
-  --select-height: var(--base-line-height);
+  --select-height: var(--heading-line-height);
   --select-padding: var(--small-font-size);
   --select-border-radius: var(--tiny-spacing);
   
   /* theme */
   --select-font-size: calc(var(--base-font-size) * 0.8);
-  --select-background-color: var(--gray-lighter);
-  --select-border: 1px solid var(--gray);
+  --select-background-color: white;
+  --select-border: 2px solid var(--gray-light);
+  --select-border-width: 2px;
   --select-color: color(
     var(--select-background-color)
     contrast(100%)
@@ -47,13 +48,38 @@ select {
   padding-top: calc(var(--select-padding) / 10);
   color: var(--select-color);
   background-color: var(--select-background-color);
-  background: linear-gradient(
-    to bottom,
-    white 0%,
-    var(--select-background-color) 100%
-  );
   border: var(--select-border);
+  border-width: var(--select-border-width);
   border-radius: var(--select-border-radius);
+  cursor: pointer;
+
+  /*
+   * :valid
+   * 条件を満たしたら緑になる
+   */
+  &:valid {
+    border-color:  var(--brand-success);
+  }
+
+  /*
+   * .warning 
+   *  borderを赤くする:invalidだと
+   *  ブラウザによってunfocus, submit後であったりと
+   *  動作がバラバラであるため
+   *  jsでsubmit時などに統一するために利用
+   */
+  &.warning {
+    border-color:  var(--brand-danger);
+  }
+
+  /*
+   * .failed
+   * ログイン失敗などを知らせる
+   * 点滅するアニメーション
+   */
+  &.failed {
+    animation: input-failed 0.6s ease 0s 1;
+  }
 }
 
 select:focus {
@@ -85,6 +111,11 @@ select::-ms-expand {
   display: none;
 }
 
+select:-moz-focusring { 
+  color: transparent; 
+  text-shadow: 0 0 0 #828c9a;
+}
+
 /*
  * for MS Edge
  */
@@ -92,4 +123,29 @@ select::-ms-expand {
   label.select:after {
     top: 43%;
   } 
+}
+
+/*
+ * kekyframes
+ */
+@keyframes input-failed {
+  0% {
+    border-color: var(--gray-light);
+  }
+
+  20% {
+    border-color: var(--brand-danger);
+  }
+
+  30% {
+    border-color: var(--gray-light);
+  }
+
+  40% {
+    border-color: var(--brand-danger);
+  }
+
+  100% {
+    border-color: var(--gray-light);
+  }
 }

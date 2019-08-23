@@ -17,14 +17,9 @@
   --checkbox-border-radius: calc(var(--tiny-spacing) * 0.5);
   
   /* theme */
-  --checkbox-font-size: calc(var(--base-font-size) * 0.8);
+  --checkbox-color: var(--brand-success);
   --checkbox-background-color: white;
   --checkbox-border: 2px solid var(--gray-light);
-  --checkbox-border-width: 2px;
-  --checkbox-color: color(
-    var(--checkbox-background-color)
-    contrast(100%)
-  );
 }
 
 
@@ -36,16 +31,17 @@ input[type=checkbox] {
 }
 
 label.checkbox {
+  position: relative;
   margin-right: var(--base-spacing);
   cursor: pointer;
 
   &::selection {
     background: none;
   }
-}
 
-label.checkbox span::selection {
-  background: none;
+  & span::selection {
+    background: none;
+  }
 }
 
 label.checkbox > input[type=checkbox] + span:before {
@@ -55,22 +51,34 @@ label.checkbox > input[type=checkbox] + span:before {
   width:  var(--checkbox-height);
   margin-right: var(--tiny-spacing);
   vertical-align: middle;
-  color: var(--checkbox-color);
   background-color: var(--checkbox-background-color);
   border: var(--checkbox-border);
-  border-width: var(--checkbox-border-width);
   border-radius: var(--checkbox-border-radius);
 }
 
 label.checkbox > input[type=checkbox]:checked + span:before {
-  background-color: var(--brand-success);
-  border-color: var(--brand-success);
+  background-color: var(--checkbox-color);
+  border-color: var(--checkbox-color);
+}
+
+label.checkbox > input[type=checkbox]:checked + span:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: calc(var(--tiny-spacing) * 1.28);
+  left: var(--tiny-spacing);
+  width: 12px;
+  height: 5px;
+  border-left: 2px solid var(--checkbox-background-color);
+  border-bottom: 2px solid var(--checkbox-background-color);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 /*
  * :valid
  * 条件を満たしたら緑になる
- * checkboxの場合は必須の状況が考えにくいのでなにもしない
+ * checkboxの場合は緑にするとわかりにくくなるのでデフォルト
  */
 label.checkbox > input[type=checkbox]:valid + span:before {
   /* border-color: var(--brand-success); */
@@ -102,7 +110,7 @@ input[type=checkbox]::-ms-expand {
 
 input[type=checkbox]:-moz-focusring { 
   color: transparent; 
-  text-shadow: 0 0 0 #828c9a;
+  text-shadow: 0 0 0 var(--checkbox-background-color);
 }
 
 /*
@@ -111,7 +119,7 @@ input[type=checkbox]:-moz-focusring {
 @supports (-ms-ime-align: auto) {
   label.select:after {
     top: 43%;
-  } 
+  }
 }
 
 /*

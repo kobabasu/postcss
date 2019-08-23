@@ -23,7 +23,6 @@
   --select-font-size: calc(var(--base-font-size) * 0.8);
   --select-background-color: white;
   --select-border: 2px solid var(--gray-light);
-  --select-border-width: 2px;
   --select-color: color(
     var(--select-background-color)
     contrast(100%)
@@ -49,7 +48,6 @@ select {
   color: var(--select-color);
   background-color: var(--select-background-color);
   border: var(--select-border);
-  border-width: var(--select-border-width);
   border-radius: var(--select-border-radius);
   cursor: pointer;
 
@@ -91,8 +89,8 @@ label.select {
 }
 
 label.select:after {
-  display: block;
   content: '';
+  display: block;
   position: absolute;
   top: 40%;
   right: var(--select-padding);
@@ -113,7 +111,7 @@ select::-ms-expand {
 
 select:-moz-focusring { 
   color: transparent; 
-  text-shadow: 0 0 0 #828c9a;
+  text-shadow: 0 0 0 var(--select-color);
 }
 
 /*

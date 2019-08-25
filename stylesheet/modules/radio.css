@@ -27,6 +27,11 @@
  * radio
  */
 input[type=radio] {
+  position: absolute;
+  display: inline;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   opacity: 0;
 }
 

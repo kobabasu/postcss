@@ -27,6 +27,15 @@
  * checkbox
  */
 input[type=checkbox] {
+  position: absolute;
+  display: inline;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  opacity: 0;
+}
+
+input[type=checkbox]:checked {
   opacity: 0;
 }
 
@@ -66,7 +75,7 @@ label.checkbox > input[type=checkbox]:checked + span:after {
   display: block;
   position: absolute;
   top: calc(var(--tiny-spacing) * 1.28);
-  left: var(--tiny-spacing);
+  left: 5px;
   width: 12px;
   height: 5px;
   border-left: 2px solid var(--checkbox-background-color);

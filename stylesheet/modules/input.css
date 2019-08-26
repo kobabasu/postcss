@@ -13,7 +13,8 @@
   --input-padding:         var(--tiny-spacing) var(--small-spacing);
   
   /* theme */
-  --input-border:          2px solid var(--gray-light);
+  --input-border-color:    var(--gray-light);
+  --input-border:          2px solid var(--input-border-color);
   --input-border-width:    2px;
   --input-border-radius:   var(--tiny-spacing);
 }
@@ -53,6 +54,15 @@ textarea {
    */
   &:valid {
     border-color:  var(--brand-success);
+  }
+
+  /*
+   * :optional
+   * requiredではない普通のinputが
+   * validの色になるのを防ぐ
+   */
+  &:optional {
+    border-color: var(--input-border-color);
   }
 
   /*

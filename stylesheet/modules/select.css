@@ -22,7 +22,8 @@
   /* theme */
   --select-font-size: calc(var(--base-font-size) * 0.8);
   --select-background-color: white;
-  --select-border: 2px solid var(--gray-light);
+  --select-border-color: var(--gray-light);
+  --select-border: 2px solid var(--select-border-color);
   --select-color: color(
     var(--select-background-color)
     contrast(100%)
@@ -57,6 +58,15 @@ select {
    */
   &:valid {
     border-color:  var(--brand-success);
+  }
+
+  /*
+   * :optional
+   * requiredではない普通のinputが
+   * validの色になるのを防ぐ
+   */
+  &:optional {
+    border-color: var(--select-border-color);
   }
 
   /*

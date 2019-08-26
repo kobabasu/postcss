@@ -19,7 +19,8 @@
   /* theme */
   --checkbox-color: var(--brand-success);
   --checkbox-background-color: white;
-  --checkbox-border: 2px solid var(--gray-light);
+  --checkbox-border-color: var(--gray-light);
+  --checkbox-border: 2px solid var(--checkbox-border-color);
 }
 
 
@@ -91,6 +92,15 @@ label.checkbox > input[type=checkbox]:checked + span:after {
  */
 label.checkbox > input[type=checkbox]:valid + span:before {
   /* border-color: var(--brand-success); */
+}
+
+/*
+ * :optional
+ * requiredではない普通のinputが
+ * validの色になるのを防ぐ
+ */
+label.radio > input[type=checkbox]:optional + span:before {
+  border-color: var(--checkbox-border-color);
 }
 
 /*

@@ -33,7 +33,8 @@ input[type=date],
 input[type=datetime-local],
 input[type=month],
 input[type=week],
-input[type=time] {
+input[type=time],
+textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -73,6 +74,13 @@ input[type=time] {
   &.failed {
     animation: input-failed 0.6s ease 0s 1;
   }
+}
+
+/*
+ * textarea
+ */
+textarea {
+  height: auto;
 }
 
 /*

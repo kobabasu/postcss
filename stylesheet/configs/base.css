@@ -186,11 +186,12 @@ i {
 }
 
 /*
- * # input
+ * # input, textarea
  * ボーダーの色を設定
  * focusされた際の点線を消す
  */
-input {
+input,
+textarea {
   outline: none;
 
   &::placeholder {

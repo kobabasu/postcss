@@ -101,7 +101,7 @@ label.radio > input[type=radio].warning + span:before {
  * 点滅するアニメーション
  */
 label.radio > input[type=radio].failed + span:before {
-  animation: blink 0.2s ease-in-out 0s 2;
+  animation: failed 0.2s ease-in-out 0s 2;
 }
 
 input[type=radio]::-ms-expand {
@@ -125,7 +125,7 @@ input[type=radio]:-moz-focusring {
 /*
  * kekyframes
  */
-@keyframes blink {
+@keyframes failed {
   50% {
     border-color: var(--brand-danger);
   }

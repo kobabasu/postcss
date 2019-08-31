@@ -120,7 +120,7 @@ label.checkbox > input[type=checkbox].warning + span:before {
  * 点滅するアニメーション
  */
 label.checkbox > input[type=checkbox].failed + span:before {
-  animation: blink 0.2s ease-in-out 0s 2;
+  animation: failed 0.2s ease-in-out 0s 2;
 }
 
 input[type=checkbox]::-ms-expand {
@@ -144,7 +144,7 @@ input[type=checkbox]:-moz-focusring {
 /*
  * kekyframes
  */
-@keyframes blink {
+@keyframes failed {
   50% {
     border-color: var(--brand-danger);
   }

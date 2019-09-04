@@ -30,6 +30,7 @@
 /*
  * options
  */
+@import '../../postcss/src/modules/loader.css';
 @import '../../postcss/src/modules/loading.css';
 /* @import '../../postcss/src/modules/inview.css'; */
 /* @import '../../postcss/src/modules/scrollit.css'; */

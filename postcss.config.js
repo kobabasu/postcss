@@ -1,6 +1,4 @@
 module.exports = {
-  map: true,
-
   plugins: {
     'postcss-import': {},
     'postcss-url': {},
@@ -13,6 +11,8 @@ module.exports = {
       features: {
         'nesting-rules': true
       }
-    }
+    },
+
+    'postcss-color-function': {}
   }
 }

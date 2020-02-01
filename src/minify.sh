@@ -1,15 +1,18 @@
 #!/bin/bash
 #
-# 対象ディレクトリ内のmin.css以外のファイルをminifyする
+# ../css内のmin.css以外のファイルをminifyする
 #
 
 
-# 対象ディレクトリ
-readonly TARGET="../css"
-
+# レポジトリ内にあるsrcのディレクトリ 
+readonly REPO="./src"
+# ファイルのあるディレクトリ 
+readonly SRC="../stylesheet"
+# 出力するディレクトリ
+readonly DIST="../css"
 
 #
 # ../css内のmin.css以外のファイルをminifyする
 #
-find $TARGET -type f -a ! -name "*.min.css" -exec basename {} .css \; |
-xargs -I{} cleancss $TARGET/{}.css -o $TARGET/{}.min.css
+find $DIST -type f -a ! -name "*.min.css" -exec basename {} .css \; |
+xargs -I{} cleancss $DIST/{}.css -o $DIST/{}.min.css

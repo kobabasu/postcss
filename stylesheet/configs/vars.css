@@ -76,4 +76,5 @@
 
   /* border */
   --base-border:          1px solid var(--gray-light);
+  --base-border-width:    1px;
 }

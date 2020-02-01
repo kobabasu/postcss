@@ -87,6 +87,7 @@
 
   & p {
     line-height: var(--small-line-height);
+    min-height: var(--small-line-height);
     text-align: center;
   }
 }
@@ -149,7 +150,9 @@
   width: 100%;
   padding-top: 0;
 
-  & label.button a {
+  & label.button a,
+  & label.button input[type=button],
+  & label.button input[type=submit] {
     width: 14rem;
     height: var(--large-spacing);
     line-height: var(--large-spacing);
@@ -185,17 +188,6 @@
   }
 }
 
-/*
- * .modal input
- */
-.modal input[type="text"], .modal input[type="password"] {
-  height: var(--heading-line-height);
-  line-height: normal;
-  margin: 0;
-  padding: var(--tiny-spacing) var(--small-spacing);
-  border: var(--modal-border);
-  border-radius: calc(var(--tiny-spacing) / 2);
-}
 
 @media (--sp-viewport) {
   .modal {

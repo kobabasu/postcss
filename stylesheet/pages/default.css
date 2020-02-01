@@ -4,6 +4,11 @@
  */
 
 /*
+ * init
+ */
+@import '../../postcss/src/style.css';
+
+/*
  * config
  */
 @import '../configs/index.css';
@@ -25,6 +30,7 @@
 /*
  * options
  */
+@import '../../postcss/src/modules/loader.css';
 @import '../../postcss/src/modules/loading.css';
 /* @import '../../postcss/src/modules/inview.css'; */
 /* @import '../../postcss/src/modules/scrollit.css'; */
@@ -44,6 +50,11 @@
 @import '../layouts/globalheader.css';
 @import '../layouts/globalnav.css';
 /* @import '../layouts/topics.css'; */
+
+/*
+ * local modules
+ */
+@import '../modules/index.css';
 
 /*
  * after include all file

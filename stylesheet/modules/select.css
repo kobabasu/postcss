@@ -15,14 +15,15 @@
  * config
  */
 :root {
-  --select-height: var(--base-line-height);
+  --select-height: var(--heading-line-height);
   --select-padding: var(--small-font-size);
   --select-border-radius: var(--tiny-spacing);
   
   /* theme */
   --select-font-size: calc(var(--base-font-size) * 0.8);
-  --select-background-color: var(--gray-lighter);
-  --select-border: 1px solid var(--gray);
+  --select-background-color: white;
+  --select-border-color: var(--gray-light);
+  --select-border: 2px solid var(--select-border-color);
   --select-color: color(
     var(--select-background-color)
     contrast(100%)
@@ -47,13 +48,46 @@ select {
   padding-top: calc(var(--select-padding) / 10);
   color: var(--select-color);
   background-color: var(--select-background-color);
-  background: linear-gradient(
-    to bottom,
-    white 0%,
-    var(--select-background-color) 100%
-  );
   border: var(--select-border);
   border-radius: var(--select-border-radius);
+  cursor: pointer;
+
+  /*
+   * :valid
+   * 条件を満たしたら緑になる
+   */
+  &:valid {
+    border-color:  var(--brand-success);
+  }
+
+  /*
+   * :optional
+   * requiredではない普通のinputが
+   * validの色になるのを防ぐ
+   */
+  &:optional {
+    border-color: var(--select-border-color);
+  }
+
+  /*
+   * .warning 
+   *  borderを赤くする:invalidだと
+   *  ブラウザによってunfocus, submit後であったりと
+   *  動作がバラバラであるため
+   *  jsでsubmit時などに統一するために利用
+   */
+  &.warning {
+    border-color:  var(--brand-danger);
+  }
+
+  /*
+   * .failed
+   * ログイン失敗などを知らせる
+   * 点滅するアニメーション
+   */
+  &.failed {
+    animation: failed 0.2s ease-in-out 0s 2;
+  }
 }
 
 select:focus {
@@ -65,8 +99,8 @@ label.select {
 }
 
 label.select:after {
-  display: block;
   content: '';
+  display: block;
   position: absolute;
   top: 40%;
   right: var(--select-padding);
@@ -85,6 +119,11 @@ select::-ms-expand {
   display: none;
 }
 
+select:-moz-focusring { 
+  color: transparent; 
+  text-shadow: 0 0 0 var(--select-color);
+}
+
 /*
  * for MS Edge
  */
@@ -92,4 +131,13 @@ select::-ms-expand {
   label.select:after {
     top: 43%;
   } 
+}
+
+/*
+ * kekyframes
+ */
+@keyframes failed {
+  50% {
+    border-color: var(--brand-danger);
+  }
 }

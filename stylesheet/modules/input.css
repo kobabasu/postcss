@@ -1,0 +1,103 @@
+/*
+ * # modules/input.css
+ * inputのスタイルを定義
+ */
+
+/*
+ * config
+ */
+:root {
+  --input-height:          var(--heading-line-height);
+  --input-line-height:     normal;
+  --input-margin:          0;
+  --input-padding:         var(--tiny-spacing) var(--small-spacing);
+  
+  /* theme */
+  --input-border-color:    var(--gray-light);
+  --input-border:          2px solid var(--input-border-color);
+  --input-border-width:    2px;
+  --input-border-radius:   var(--tiny-spacing);
+}
+
+
+/*
+ * input
+ */
+input[type=text],
+input[type=password],
+input[type=number],
+input[type=tel],
+input[type=email],
+input[type=url],
+input[type=search],
+input[type=date],
+input[type=datetime-local],
+input[type=month],
+input[type=week],
+input[type=time],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  height: var(--input-height);
+  line-height: var(--input-line-height);
+  margin: var(--input-margin);
+  padding: var(--input-padding);
+  border: var(--input-border);
+  border-width: var(--input-border-width);
+  border-radius: var(--input-border-radius);
+
+  /*
+   * :valid
+   * 条件を満たしたら緑になる
+   */
+  &:valid {
+    border-color:  var(--brand-success);
+  }
+
+  /*
+   * :optional
+   * requiredではない普通のinputが
+   * validの色になるのを防ぐ
+   */
+  &:optional {
+    border-color: var(--input-border-color);
+  }
+
+  /*
+   * .warning
+   *  borderを赤くする:invalidだと
+   *  ブラウザによってunfocus, submit後であったりと
+   *  動作がバラバラであるため
+   *  jsでsubmit時などに統一するために利用
+   */
+  &.warning {
+    border-color:  var(--brand-danger);
+  }
+
+  /*
+   * .failed
+   * ログイン失敗などを知らせる
+   * 点滅するアニメーション
+   */
+  &.failed {
+    animation: failed 0.2s ease-in-out 0s 2;
+  }
+}
+
+/*
+ * textarea
+ */
+textarea {
+  height: auto;
+}
+
+/*
+ * kekyframes
+ */
+@keyframes failed {
+  50% {
+    border-color: var(--brand-danger);
+  }
+}

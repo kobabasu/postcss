@@ -50,7 +50,7 @@ body {
   line-height: var(--base-line-height);
 
   color: var(--color-text);
-  background-color: var(--color-device-bg);
+  background-color: var(--color-bg);
 }
 
 /*
@@ -186,11 +186,13 @@ i {
 }
 
 /*
- * # input
+ * # input, textarea
  * ボーダーの色を設定
+ * focusされた際の点線を消す
  */
-input {
-  border: var(--base-border);
+input,
+textarea {
+  outline: none;
 
   &::placeholder {
     color: var(--gray-light);

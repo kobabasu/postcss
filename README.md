@@ -1,20 +1,40 @@
 [![CircleCI](https://circleci.com/gh/kobabasu/postcss.svg?style=shield&circle-token=c181a31aabfe59d8f79ece75e1af85b0726555a6)](https://circleci.com/gh/kobabasu/postcss)
 
 # postcss
-postcssを利用するためnodejs環境とpostcss-cli, clean-css-cliのインストールが必要
+postcssを使うプロジェクト用skelton  
+nodejs環境とnpmのグローバルにpostcss-cli, clean-css-cliのインストールが必要
 
-```
-git submodule add git@github.com-kobabasu:kobabasu/postcss.git postcss  
-git submodule update
-```
+## install
+ドキュメントルートでリポジトリをクローンしyarnでインストール<br>
+（クローン先のディレクトリ名は必ず`postcss`）
+1. `git clone git@github.com-kobabasu:kobabasu/postcss.git postcss`
 
-## yarn
-preinstallでひとつ上の階層にcss/, stylesheet/が作成される
-変更はその中で行う
-1. 必要があればdevelopブランチを使う  
-   `git checkout develop`
+
+既にドキュメントルートをgit管理している場合はsubmoduleとして追加
+1. `git submodule add git@github.com-kobabasu:kobabasu/postcss.git postcss`
+1. `git submodule update`
+
+クローン先`postcss`ディレクトリに移動
+1. `cd ./postcss`
+
+git関連の初期設定
+1. `git checkout develop`か`git checkout master`を実行 (defaultのブランチ以外も取得)
+1. `git pull origin --tags`
+1. `git flow init -d`
+
+作業するブランチの開始
+1. `git flow feature start 任意の修正作業の名前`
+
+インストール
 1. `yarn start`
 1. `yarn install`
+1. ひとつ上の階層であるドキュメントルートにcss, stylesheetディレクトリが作成されれば成功
+
+
+## 使い方
+1. ドキュメントルートに生成されたstylesheetディレクトリ内を編集
+1. `yarn --cwd ./postcss run build` (cwdオプションで移動せずに実行できる)
+1. css/default.cssに反映
 
 ## circleci
 1. githubとcircleciとslackを連携させる
@@ -124,6 +144,8 @@ icomoonなどfontを追加した場合など、アップデートするには以
 
 ## trouble shooting
 1. `yarn run build`と`yarn run  minify`がエラーとなる場合はsrc/{build.sh, minify.sh}の実行権限を確認
+1. `yarn run build`で`Failed to find`や場合、リポジトリをクローンしたディレクトリがpostcssとなっているかどうか確認
+1. `yarn run build`でpostcss-importのエラーが出た場合もディレクトリがpostcssとなっているかどうか確認
 1. loading...の文字が表示されない場合、postcss-color-functionがインストールされていることと、postcss.config.js内でvariablesを解決するpostcss-preset-envのあとに記述があるかどうかを確かめる
 1. postcss.config.jsにはmap: trueの設定を入れない。強制的にsourcemapがついてしまうため。コマンドのオプションで都度対応
 1. style.cssをconcatで結合しようとしたが、stylesheets/pages内のファイルに直接importを記述するようにした

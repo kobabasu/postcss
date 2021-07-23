@@ -14,13 +14,22 @@ nodejs環境とnpmのグローバルにpostcss-cli, clean-css-cliのインスト
 1. `git submodule add git@github.com-kobabasu:kobabasu/postcss.git postcss`
 1. `git submodule update`
 
-クローン先`postcss`ディレクトリに移動しインストール
+クローン先`postcss`ディレクトリに移動
 1. `cd ./postcss`
+
+git関連の初期設定
+1. `git checkout develop`か`git checkout master`を実行 (defaultのブランチ以外も取得)
+1. `git pull origin --tags`
+1. `git flow init -d`
+
+作業するブランチの開始
+1. `git flow feature start 任意の修正作業の名前`
+
+インストール
 1. `yarn start`
 1. `yarn install`
-1. `git checkout develop` (developブランチに切り替えておく)
+1. ひとつ上の階層であるドキュメントルートにcss, stylesheetディレクトリが作成されれば成功
 
-ひとつ上の階層であるドキュメントルートにcss, stylesheetディレクトリが作成されれば成功
 
 ## 使い方
 1. ドキュメントルートに生成されたstylesheetディレクトリ内を編集
